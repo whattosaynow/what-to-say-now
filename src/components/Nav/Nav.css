@@ -8,13 +8,14 @@
 
 .nav {
   overflow: hidden;
-  background-color: #00acb0;
+  background-color: #35297f;
+  font-family: 'Poppins', Libre Franklin
 }
 
 .nav-link {
   float: left;
-  color: #f2f2f2;
-  background-color: #00acb0;
+  color: white;
+  background-color: #ff6624;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
@@ -28,9 +29,10 @@
 }
 
 .nav-link:hover {
-  background-color: #008183;
+  background-color: #af3a11;
 }
 
 .nav-right {
   float: right;
 }
+
