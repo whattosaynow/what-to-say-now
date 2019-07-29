@@ -7,16 +7,19 @@
 }
 
 .nav {
-  overflow: hidden;
-  background-color: #00acb0;
+  /* overflow: hidden; */
+  max-height: 41px;
+  background-color: #35297f;
+  font-family: Poppins, Libre Franklin;
+  border-bottom: 60px solid #faf0e8;
 }
 
-.nav-link {
+.nav-link{
   float: left;
-  color: #f2f2f2;
-  background-color: #00acb0;
+  color: white;
+  background-color: #ff6624;
   text-align: center;
-  padding: 24px 10px;
+  padding: 12px 10px;
   text-decoration: none;
   font-size: 15px;
 
@@ -27,10 +30,32 @@
   outline:0;
 }
 
+#donate{
+  float: left;
+  color: white;
+  background-color: #35297f;
+  text-align: center;
+  padding: 12px 10px;
+  text-decoration: none;
+  font-size: 15px;
+
+  /* these last two make the logout button in
+  the nav bar look like another link */
+  border:none;
+  cursor: pointer;
+  outline:0;
+}
+
+
 .nav-link:hover {
-  background-color: #008183;
+  background-color: #af3a11;
 }
 
 .nav-right {
   float: right;
 }
+
+.logo{
+  max-width: 195px;
+}
+
