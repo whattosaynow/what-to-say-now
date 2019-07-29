@@ -1,5 +1,5 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'typeface-libre-franklin', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
 }
 
@@ -47,3 +47,4 @@ input {
     border-bottom:1px solid #444; 
     cursor: pointer;
 }
+
