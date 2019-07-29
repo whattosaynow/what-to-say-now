@@ -14,7 +14,7 @@
   border-bottom: 60px solid #faf0e8;
 }
 
-.nav-link {
+.nav-link{
   float: left;
   color: white;
   background-color: #ff6624;
@@ -29,6 +29,23 @@
   cursor: pointer;
   outline:0;
 }
+
+#donate{
+  float: left;
+  color: white;
+  background-color: #35297f;
+  text-align: center;
+  padding: 12px 10px;
+  text-decoration: none;
+  font-size: 15px;
+
+  /* these last two make the logout button in
+  the nav bar look like another link */
+  border:none;
+  cursor: pointer;
+  outline:0;
+}
+
 
 .nav-link:hover {
   background-color: #af3a11;

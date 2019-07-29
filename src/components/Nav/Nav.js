@@ -27,7 +27,7 @@ const Nav = (props) => (
         About WithAll
           </a>
       {/* Always show this link since the about page is not protected */}
-      <a className="nav-link" href="https://withall.org/donate/">
+      <a id="donate" href="https://withall.org/donate/">
         Donate
       </a>
     </div>
