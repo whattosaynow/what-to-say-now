@@ -19,6 +19,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import signUp_1 from '../SignUp/signUp_1';
 
+
 import './App.css';
 
 
@@ -30,7 +31,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -63,11 +64,17 @@ class App extends Component {
               path="/signup1"
               component={signUp_1}
             />
+
+
+
+
+
+
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
           <Footer />
-        </div>
+  
       </Router>
   )}
 }

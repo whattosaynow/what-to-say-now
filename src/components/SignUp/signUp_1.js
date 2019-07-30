@@ -6,7 +6,8 @@ class signUp_1 extends Component {
   render() {
     return (
       <center>
-      <Header width={'10%'} />
+      <Header width={'20%'} /><br />
+
       <div>
         <h2>Personal Information</h2><br />
         <input label="First Name" placeholder="First Name"></input><br />
@@ -17,8 +18,8 @@ class signUp_1 extends Component {
         <input label="Street Address" placeholder="Street Address"></input><br />
         <input label="City" placeholder="City"></input><br />
         <input label="State" placeholder="State"></input><input label="Zip" placeholder="Zip"></input><br />
-      </div>
-      <div>
+      </div><br />
+      <div className="bottom-signup">
         <button>Next</button>
       </div>
       </center>
