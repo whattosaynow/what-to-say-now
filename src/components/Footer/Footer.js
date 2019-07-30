@@ -21,7 +21,7 @@ const footerStyle = {
     paddingLeft: "40px",
     paddingTop: "8px",
     paddingBottom: '8px',
-    position: "fixed",
+    position: "relative",
     left: "10",
     bottom: "0",
     height: "42px",

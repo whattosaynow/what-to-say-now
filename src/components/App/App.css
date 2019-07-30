@@ -1,6 +1,7 @@
-body {
+html, body {
     font-family: Poppins, Libre Franklin, Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
+    padding: 0px;
 }
 
 .alert {
@@ -48,3 +49,13 @@ input {
     cursor: pointer;
 }
 
+.sign-up-header{
+    background-color: #faf0e8;
+    color: #35297f;
+}
+
+.bottom-signup{
+    background-color: #faf0e8;
+    overflow: auto;
+    height: 350px;
+}
