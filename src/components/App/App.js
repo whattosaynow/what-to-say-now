@@ -21,6 +21,7 @@ import signUp_1 from '../SignUp/signUp_1';
 
 import signUp_3 from '../SignUp/signUp_3';
 import signUp_4 from '../SignUp/signUp_4';
+import signUp_5 from '../SignUp/signUp_5';
 
 
 import './App.css';
@@ -80,12 +81,18 @@ class App extends Component {
           />
 
 
-        <Route
+          <Route
             exact
             path="/signup4"
             component={signUp_4}
           />
 
+
+          <Route
+            exact
+            path="/signup5"
+            component={signUp_5}
+          />
 
 
           {/* If none of the other routes matched, we will show a 404. */}
