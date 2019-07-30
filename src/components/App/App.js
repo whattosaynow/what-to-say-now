@@ -20,6 +20,8 @@ import InfoPage from '../InfoPage/InfoPage';
 import signUp_1 from '../SignUp/signUp_1';
 
 import signUp_3 from '../SignUp/signUp_3';
+import signUp_4 from '../SignUp/signUp_4';
+
 
 import './App.css';
 
@@ -75,6 +77,13 @@ class App extends Component {
             exact
             path="/signup3"
             component={signUp_3}
+          />
+
+
+        <Route
+            exact
+            path="/signup4"
+            component={signUp_4}
           />
 
 
