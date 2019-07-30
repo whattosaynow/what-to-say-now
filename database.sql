@@ -18,7 +18,7 @@ CREATE TABLE "users" (
 "email" VARCHAR (256) NOT NULL,
 "password" VARCHAR (256) NOT NULL,
 "phone_number" VARCHAR NOT NULL,
-"street_ address" VARCHAR (256) NOT NULL,
+"street_address" VARCHAR (256) NOT NULL,
 "city" VARCHAR (256) NOT NULL,
 "state" VARCHAR NOT NULL,
 "zip" INT NOT NULL,
