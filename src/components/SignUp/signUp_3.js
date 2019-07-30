@@ -35,7 +35,7 @@ class signUp_3 extends Component {
         </div>
         <br />
         <div className="bottom-signup">
-          <button>Next</button>
+          <button>Previous Page</button><button>Next</button>
         </div>
       </center>
     );
