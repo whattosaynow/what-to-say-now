@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+import Header from './signUp_header';
 
 class signUp_1 extends Component {
+
   render() {
     return (
-      <>
-      <header>
-        Thank you for participating in WithAll's "What To Say" Coaches Challenge. 
-        Please fill out the following form to participate.
-      </header>
+      <center>
+      <Header width={'10%'} />
       <div>
         <h2>Personal Information</h2><br />
         <input label="First Name" placeholder="First Name"></input><br />
@@ -22,7 +21,7 @@ class signUp_1 extends Component {
       <div>
         <button>Next</button>
       </div>
-      </>
+      </center>
     );
   }
 }
