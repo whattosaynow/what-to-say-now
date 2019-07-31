@@ -25,7 +25,9 @@ import signUp_4 from '../SignUp/signUp_4';
 import signUp_5 from '../SignUp/signUp_5';
 
 
+
 import './App.css';
+import PostSurvey_2 from '../PostSurvey/PostSurvey_2';
 
 
 
@@ -60,21 +62,21 @@ class App extends Component {
           />
           {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
-            <ProtectedRoute
-              exact
-              path="/info"
-              component={InfoPage}
-            />
-            <Route
-              exact
-              path="/signup2"
-              component={signUp_2}
-            />
-            <Route
-              exact
-              path="/signup1"
-              component={signUp_1}
-            />
+          <ProtectedRoute
+            exact
+            path="/info"
+            component={InfoPage}
+          />
+          <Route
+            exact
+            path="/signup2"
+            component={signUp_2}
+          />
+          <Route
+            exact
+            path="/signup1"
+            component={signUp_1}
+          />
 
 
 
@@ -98,6 +100,11 @@ class App extends Component {
             component={signUp_5}
           />
 
+          <Route
+            exact
+            path="/postsurvey2"
+            component={PostSurvey_2}
+          />
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route render={() => <h1>404</h1>} />
