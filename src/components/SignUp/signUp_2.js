@@ -8,7 +8,7 @@ class signUp_2 extends Component {
   state = {}
 
   handleChangeFor = propertyName => (event) => {
-    // console.log(propertyName, event.target.value);
+    console.log(this.state);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value
@@ -22,9 +22,16 @@ class signUp_2 extends Component {
 
   handleClickNext = () => {
     console.log('next button clicked!', this.state);
-    this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
+    let survey2 = Object.keys(this.state);
+    console.log(survey2.length);
+    if (survey2.length < 3) {
+      alert("Please Answer All Questions")
+    } else {
+      this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
+    }
+
   }
-  
+
   render() {
     return (
       <center>
@@ -54,9 +61,9 @@ class signUp_2 extends Component {
           </div>
 
         </div>
-        {/* <pre>
+        <pre>
           {JSON.stringify(this.props.reduxState, null, 2)}
-        </pre> */}
+        </pre>
       </center>
     );
   }
