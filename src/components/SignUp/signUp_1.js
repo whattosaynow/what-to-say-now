@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+//component
 import Header from './signUp_header';
 
 
@@ -23,8 +26,7 @@ class signUp_1 extends Component {
     if (answersLength < 11) {
       alert('Please complete every answer')
     } else {
-      // this.props.dispatch({type: 'SET_SURVEY_ANSWERS', payload: this.state.newUser)
-
+      this.props.dispatch({type: 'SET_SIGNUP_ANSWERS', payload: this.state.newUser});
       console.log('this.state.newUser:', this.state.newUser)
       this.setState({
         newUser: {
@@ -32,6 +34,8 @@ class signUp_1 extends Component {
         }
       })
       document.getElementById("signUp1").reset();
+      this.props.history.push('/signup2');
+
     }
 
   }
@@ -66,5 +70,8 @@ class signUp_1 extends Component {
     );
   }
 }
+const mapStateToProps = (reduxState) => ({
+  reduxState,
+})
 
-export default signUp_1;
+export default connect(mapStateToProps)(signUp_1);
