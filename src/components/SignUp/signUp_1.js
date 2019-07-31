@@ -35,7 +35,6 @@ class signUp_1 extends Component {
       })
       document.getElementById("signUp1").reset();
       this.props.history.push('/signup2');
-
     }
 
   }

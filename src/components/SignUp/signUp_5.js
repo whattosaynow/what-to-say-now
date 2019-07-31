@@ -42,7 +42,7 @@ class signUp_5 extends Component {
         <div>
           <h2>Personal Information Continued</h2><br />
           <pre>
-            {JSON.stringify(this.state, null, 2)}
+            {/* {JSON.stringify(this.props.reduxState, null, 2)} */}
           </pre>
             #. Why are you particpating in the "What to say" Coaches Challenge?<br /><br />
             <label>Choose One</label><br />
@@ -55,8 +55,8 @@ class signUp_5 extends Component {
             <br />
             #. Can we call you at the completion of the Challenge for more information about your experience? 
             <label>Choose One</label><br />
-            <input onChange={this.handleChange('can_we_call_after_completion')} type="radio" name="q1" value="yes" />yes<br />
-            <input onChange={this.handleChange('can_we_call_after_completion')} type="radio" name="q1" value="no" />no<br />
+            <input onChange={this.handleChange('can_we_call_after_completion')} type="radio" name="q2" value="yes" />yes<br />
+            <input onChange={this.handleChange('can_we_call_after_completion')} type="radio" name="q2" value="no" />no<br />
 
             <br />
         </div>
