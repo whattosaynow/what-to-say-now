@@ -7,7 +7,7 @@ import Logo from './new-logo.png';
 
 const Nav = (props) => (
   <div className="nav">
-    <img src={Logo} className="logo"/>
+    <img alt='what to say logo' src={Logo} className="logo"/>
     <div className="nav-right">
       <Link className="nav-link" to="/home">
         {/* Show this link if they are logged in or not,

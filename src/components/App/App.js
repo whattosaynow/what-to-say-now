@@ -29,6 +29,7 @@ import postSurvey_3 from "../PostSurvey/PostSurvey_3";
 
 
 import './App.css';
+import ThreeMonthSurvey from '../ThreeMonthSurvey/ThreeMonthSurvey';
 
 
 
@@ -63,6 +64,11 @@ class App extends Component {
 
           <Route exact path="/signup5" component={signUp_5} />
 
+          <Route 
+          exact
+          path="/three-month-survey"
+          component={ThreeMonthSurvey}
+          />
           {/* post survey routes */}
           <Route exact path="/postsurvey1" component={postSurvey_1} />
           <Route exact path="/postsurvey2" component={postSurvey_2} />
