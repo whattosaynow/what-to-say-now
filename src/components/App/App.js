@@ -26,6 +26,7 @@ import signUp_5 from '../SignUp/signUp_5';
 
 
 import './App.css';
+import ThreeMonthSurvey from '../ThreeMonthSurvey/ThreeMonthSurvey';
 
 
 
@@ -98,6 +99,11 @@ class App extends Component {
             component={signUp_5}
           />
 
+          <Route 
+          exact
+          path="/three-month-survey"
+          component={ThreeMonthSurvey}
+          />
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route render={() => <h1>404</h1>} />
