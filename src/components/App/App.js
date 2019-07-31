@@ -17,6 +17,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
+import signUp_2 from '../SignUp/signUp_2';
 import signUp_1 from '../SignUp/signUp_1';
 
 import signUp_3 from '../SignUp/signUp_3';
@@ -59,18 +60,21 @@ class App extends Component {
           />
           {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
-          <ProtectedRoute
-            exact
-            path="/info"
-            component={InfoPage}
-          />
-          <Route
-            exact
-            path="/signup1"
-            component={signUp_1}
-          />
-
-
+            <ProtectedRoute
+              exact
+              path="/info"
+              component={InfoPage}
+            />
+            <Route
+              exact
+              path="/signup2"
+              component={signUp_2}
+            />
+            <Route
+              exact
+              path="/signup1"
+              component={signUp_1}
+            />
 
 
 
