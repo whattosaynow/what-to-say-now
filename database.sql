@@ -14,6 +14,7 @@ CREATE TABLE "user" (
 "id" SERIAL PRIMARY KEY,
 "first_name" VARCHAR (80), 
 "last_name" VARCHAR (80),
+"username" VARCHAR (80) UNIQUE,
 "role" INT REFERENCES "role"(id),
 "email" VARCHAR (256),
 "password" VARCHAR (256),
@@ -23,6 +24,7 @@ CREATE TABLE "user" (
 "state" VARCHAR,
 "zip" INT,
 "is_admin" BOOLEAN DEFAULT 'f',
+"date_created" DATE DEFAULT CURRENT_DATE,
 
 "S1_choose_receive" VARCHAR (256),
 "S1_your_gender" VARCHAR (140),
@@ -71,7 +73,7 @@ CREATE TABLE "role" (
 
 CREATE TABLE "user_content" (
 "id" SERIAL PRIMARY KEY,
-"user_id" INT REFERENCES "users"(id),
+"user_id" INT REFERENCES "user"(id),
 "content_id" INT REFERENCES "content"(id)
 );
 
