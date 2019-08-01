@@ -81,3 +81,8 @@ CREATE TABLE "ageGroup" (
 "id" SERIAL PRIMARY KEY,
 "ages" VARCHAR 
 );
+
+
+
+INSERT INTO "role" ("role_title")
+VALUES ('Coach');
