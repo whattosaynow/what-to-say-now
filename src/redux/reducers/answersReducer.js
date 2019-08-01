@@ -1,4 +1,6 @@
-const answersReducer = (state = {}, action) => {
+import { combineReducers } from 'redux';
+
+const signupReducer = (state = {}, action) => {
     console.log('Set Answers', action.payload);
 
     switch (action.type) {
@@ -9,4 +11,6 @@ const answersReducer = (state = {}, action) => {
     }
 }
 
-export default answersReducer;
+export default combineReducers({
+    signupReducer
+  });
