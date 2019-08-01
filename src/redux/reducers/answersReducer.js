@@ -11,6 +11,30 @@ const signupReducer = (state = {}, action) => {
     }
 }
 
+const postSurveyReducer = (state = {}, action) => {
+    console.log('Set Answers', action.payload);
+
+    switch (action.type) {
+        case `SET_POST_ANSWERS`:
+            return {...state,...action.payload};
+        default:
+            return state;
+    }
+}
+
+const threeMonthReducer = (state = {}, action) => {
+    console.log('Set Answers', action.payload);
+
+    switch (action.type) {
+        case `SET_THREE_MONTH_ANSWERS`:
+            return {...state,...action.payload};
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
-    signupReducer
+    signupReducer,
+    postSurveyReducer,
+    threeMonthReducer
   });
