@@ -21,7 +21,7 @@ class PostSurvey_1 extends Component {
     if (survey2.length < 4) {
       alert("Please Answer All Questions")
     } else {
-      this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
+      this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state })
     }
 
   }
