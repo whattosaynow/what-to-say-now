@@ -22,6 +22,7 @@ class PostSurvey_1 extends Component {
       alert("Please Answer All Questions")
     } else {
       this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
+      this.props.history.push('/postsurvey2');
     }
 
   }
