@@ -1,12 +1,13 @@
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
-
+const encryptLib = require("../modules/encryption");
 /**
  * POST route template
  */
 router.post("/", (req, res) => {
     console.log('submit answer route hit', req.body);
+    const password = encryptLib.encryptPassword(req.body.password);
     pool.query(`
         INSERT INTO "user" (
                             "first_name", 
@@ -35,7 +36,7 @@ router.post("/", (req, res) => {
          req.body.last_name,
          req.body.username, 
          req.body.email, 
-         req.body.password, 
+         password, 
          req.body.phone_number, 
          req.body.street_address,
          req.body.city,
