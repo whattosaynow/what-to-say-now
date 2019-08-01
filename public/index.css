@@ -1,0 +1,41 @@
+.bold-style {
+    font-weight: bold;
+}
+
+.color-style {
+    color: #F46641;
+    text-decoration: none;
+}
+
+.footer-style {
+    font-family: 'Libre Franklin';
+    color: white;
+    background-color: #2C2A42;
+    border-top: 1px solid #E7E7E7;
+    text-align: left;
+    font-size: 12px;
+    padding-left: 40px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    /* position: absolute; */
+    margin-top: auto;
+    left: 10;
+    bottom: 0;
+    height: 42px;
+    width: 100%;
+    letter-spacing: .0125em;
+    flex-shrink: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#react-root {
+    flex: 1 0 auto;
+}
