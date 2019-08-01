@@ -83,4 +83,5 @@ CREATE TABLE "user_content" (
 "content_id" INT REFERENCES "content"(id)
 );
 
-
+INSERT INTO "role" ("role_title")
+VALUES ('Coach');
