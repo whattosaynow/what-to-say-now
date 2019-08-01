@@ -10,4 +10,8 @@ router.post("/", (req, res) => {
 
 });
 
+router.post('/threeMonth', (req, res) => {
+    console.log('submit threeMonth answer route hit', req.body);
+})
+
 module.exports = router;

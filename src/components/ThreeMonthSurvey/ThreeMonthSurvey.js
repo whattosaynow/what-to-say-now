@@ -26,7 +26,7 @@ class ThreeMonthSurvey extends Component {
     if (survey2.length < 5) {
       alert("Please Answer All Questions")
     } else {
-      this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
+      this.props.dispatch({ type: `SUBMIT_THREE_MONTH_ANSWERS`, payload: this.state })
     }
 
   }
