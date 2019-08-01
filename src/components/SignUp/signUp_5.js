@@ -27,7 +27,7 @@ class signUp_5 extends Component {
     if (survey2.length < 2) {
       alert("Please Answer All Questions")
     } else {
-      this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
+      this.props.dispatch({ type: `SUBMIT_SIGNUP_ANSWERS`, payload: this.state })
       this.props.history.push('/home');
 
     }
