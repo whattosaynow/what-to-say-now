@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 const signupReducer = (state = {}, action) => {
-    console.log('Set Answers', action.payload);
+    // console.log('Set Answers', action.payload);
 
     switch (action.type) {
         case `SET_SIGNUP_ANSWERS`:
@@ -12,7 +12,7 @@ const signupReducer = (state = {}, action) => {
 }
 
 const postSurveyReducer = (state = {}, action) => {
-    console.log('Set Answers', action.payload);
+    // console.log('Set Answers', action.payload);
 
     switch (action.type) {
         case `SET_POST_ANSWERS`:
@@ -23,7 +23,7 @@ const postSurveyReducer = (state = {}, action) => {
 }
 
 const threeMonthReducer = (state = {}, action) => {
-    console.log('Set Answers', action.payload);
+    // console.log('Set Answers', action.payload);
 
     switch (action.type) {
         case `SET_THREE_MONTH_ANSWERS`:
