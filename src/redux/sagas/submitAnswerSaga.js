@@ -1,13 +1,20 @@
-import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
+import axios from "axios";
+import { put, takeEvery, takeLatest } from "redux-saga/effects";
 
-function* finishSignup(action) {
-    yield put({ type: 'SET_SIGNUP_ANSWERS', payload: action.payload })
-    console.log('response saga')
+function* submitSignUpAnswers(action) {
+    try {
+        console.log('submitResponse saga hit')
+        const getResponse = yield put({type: "SET_SIGNUP_ANSWERS", payload: action.payload});
+        
+        // yield axios.post('/api/answer', getResponse.data);
+        console.log('getResponse saga:', getResponse)
+    } catch(error) {
+        console.log('error with submitting answers,', error);
+    }
 }
 
-function* submitAnswerSaga() {
-    yield takeLatest('FINISH_SIGNUP_ANSWERS', finishSignup)
+function* submitAnswerSaga(){
+    yield takeLatest(`SUBMIT_SIGNUP_ANSWERS`, submitSignUpAnswers);
 }
 
 export default submitAnswerSaga;

@@ -18,6 +18,7 @@ class ThreeMonthSurvey extends Component {
     });
   }
 
+
   handleClick = () => {
     console.log('next button clicked!', this.state);
     let survey2 = Object.keys(this.state);

@@ -7,6 +7,7 @@ import Header from './signUp_header';
 
 class signUp_5 extends Component {
   state = {}
+  
 
   handleChange = (propertyName) => (event) => {
     this.setState({
@@ -27,7 +28,7 @@ class signUp_5 extends Component {
     if (survey2.length < 2) {
       alert("Please Answer All Questions")
     } else {
-      this.props.dispatch({ type: `FINISH_SIGNUP_ANSWERS`, payload: this.state })
+      this.props.dispatch({ type: `SUBMIT_SIGNUP_ANSWERS`, payload: (this.state, this.props.reduxState.answersReducer.signupReducer) })
       this.props.history.push('/home');
 
     }
@@ -42,7 +43,7 @@ class signUp_5 extends Component {
         <div>
           <h2>Personal Information Continued</h2><br />
           <pre>
-            {/* {JSON.stringify(this.props.reduxState, null, 2)} */}
+            {JSON.stringify(this.props.reduxState.answersReducer.signupReducer, null, 2)}
           </pre>
           #. Why are you particpating in the "What to say" Coaches Challenge?<br /><br />
           <label>Choose One</label><br />

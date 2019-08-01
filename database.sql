@@ -10,6 +10,11 @@
 --     "password" VARCHAR (1000)
 -- );
 
+CREATE TABLE "role" (
+"id" SERIAL PRIMARY KEY,
+"role_title" VARCHAR
+);
+
 CREATE TABLE "user" (
 "id" SERIAL PRIMARY KEY,
 "first_name" VARCHAR (80), 
@@ -55,6 +60,11 @@ CREATE TABLE "user" (
 "S3_call_more_information" VARCHAR
 );
 
+CREATE TABLE "ageGroup" (
+"id" SERIAL PRIMARY KEY,
+"ages" VARCHAR 
+);
+
 CREATE TABLE "content" (
 "id" SERIAL PRIMARY KEY,
 "role_id" INT, 
@@ -66,23 +76,12 @@ CREATE TABLE "content" (
 "action_steps" VARCHAR
 );
 
-CREATE TABLE "role" (
-"id" SERIAL PRIMARY KEY,
-"role_title" VARCHAR
-);
 
 CREATE TABLE "user_content" (
 "id" SERIAL PRIMARY KEY,
 "user_id" INT REFERENCES "user"(id),
 "content_id" INT REFERENCES "content"(id)
 );
-
-CREATE TABLE "ageGroup" (
-"id" SERIAL PRIMARY KEY,
-"ages" VARCHAR 
-);
-
-
 
 INSERT INTO "role" ("role_title")
 VALUES ('Coach');
