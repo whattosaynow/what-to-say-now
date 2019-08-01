@@ -19,6 +19,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 //sign-up survey pages
 import signUp_1 from '../SignUp/signUp_1';
+import signUp_2 from '../SignUp/signUp_2';
 import signUp_3 from '../SignUp/signUp_3';
 import signUp_4 from '../SignUp/signUp_4';
 import signUp_5 from '../SignUp/signUp_5';
@@ -57,6 +58,8 @@ class App extends Component {
             they will see the info page instead. */}
           <ProtectedRoute exact path="/info" component={InfoPage} />
           <Route exact path="/signup1" component={signUp_1} />
+          
+          <Route exact path="/signup2" component={signUp_2} />
 
           <Route exact path="/signup3" component={signUp_3} />
 
