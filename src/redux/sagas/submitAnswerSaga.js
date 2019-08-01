@@ -4,10 +4,10 @@ import { put, takeEvery, takeLatest } from "redux-saga/effects";
 function* submitSignUpAnswers(action) {
     try {
         console.log('submitResponse saga hit')
-        const getResponse = yield put({type: "SET_SIGNUP_ANSWERS", payload: action.payload});
+        // const getResponse = yield put({type: "SET_SIGNUP_ANSWERS", payload: action.payload});
         
-        // yield axios.post('/api/answer', getResponse.data);
-        console.log('getResponse saga:', getResponse)
+        yield axios.post('/api/answer', action.payload);
+        // console.log('getResponse saga:', getResponse)
     } catch(error) {
         console.log('error with submitting answers,', error);
     }

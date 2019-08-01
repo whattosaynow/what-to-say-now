@@ -4,10 +4,14 @@ import { connect } from 'react-redux';
 
 import Header from './signUp_header';
 
+//sweetAlert
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
 
 class signUp_5 extends Component {
   state = {}
-  
+
 
   handleChange = (propertyName) => (event) => {
     this.setState({
@@ -28,8 +32,24 @@ class signUp_5 extends Component {
     if (survey2.length < 2) {
       alert("Please Answer All Questions")
     } else {
-      this.props.dispatch({ type: `SUBMIT_SIGNUP_ANSWERS`, payload: (this.state, this.props.reduxState.answersReducer.signupReducer) })
-      this.props.history.push('/home');
+      this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
+      MySwal.fire({
+        title: '',
+        text: `Are you done filling out the form?`,
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Submit'
+      }).then((result) => {
+        if (result.value) {
+          this.props.dispatch({ type: 'SUBMIT_SIGNUP_ANSWERS', payload: this.props.reduxState.answersReducer.signupReducer })
+          //console.log('true')
+          this.props.history.push('/home');
+
+        }
+      }
+      )
 
     }
 
