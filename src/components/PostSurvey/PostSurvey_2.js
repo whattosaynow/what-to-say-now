@@ -21,7 +21,7 @@ class PostSurvey_2 extends Component {
     if (survey2.length < 4) {
       alert("Please Answer All Questions")
     } else {
-      this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
+      this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state })
       this.props.history.push('/postsurvey3');
     }
     
@@ -40,23 +40,23 @@ handleClickBack = () => {
         <div>
 
           <label>5.The Challenge felt relevant to the age I coach:</label><br />
-          <input onChange={this.handleChangeFor('challenge_felt_relavent')} type="radio" value="Agree"></input>Agree<br />
-          <input onChange={this.handleChangeFor('challenge_felt_relavent')} type="radio" value="Neutral"></input>Neutral<br />
-          <input onChange={this.handleChangeFor('challenge_felt_relavent')} type="radio" value="Disagree"></input>Disagree<br />
+          <input onChange={this.handleChangeFor('challenge_felt_relavent')} name='q5'type="radio" value="Agree"></input>Agree<br />
+          <input onChange={this.handleChangeFor('challenge_felt_relavent')} name='q5'type="radio" value="Neutral"></input>Neutral<br />
+          <input onChange={this.handleChangeFor('challenge_felt_relavent')} name='q5'type="radio" value="Disagree"></input>Disagree<br />
           <label>6.The Challenge impacted my behavior with the athletes I coach:</label><br />
-          <input onChange={this.handleChangeFor('challenge_impacted_behavior')} type="radio" value="Agree"></input>Agree<br />
-          <input onChange={this.handleChangeFor('challenge_impacted_behavior')} type="radio" value="Neutral"></input>Neutral<br />
-          <input onChange={this.handleChangeFor('challenge_impacted_behavior')} type="radio" value="Disagree"></input>Disagree<br />
+          <input onChange={this.handleChangeFor('challenge_impacted_behavior')} name='q6'type="radio" value="Agree"></input>Agree<br />
+          <input onChange={this.handleChangeFor('challenge_impacted_behavior')} name='q6'type="radio" value="Neutral"></input>Neutral<br />
+          <input onChange={this.handleChangeFor('challenge_impacted_behavior')} name='q6'type="radio" value="Disagree"></input>Disagree<br />
           <label>7.My understanding of the importance of messages kids hear from
             adults about food and body has changed:</label><br />
-          <input onChange={this.handleChangeFor('understanding_importance_changed')} type="radio" value="Agree"></input>Agree<br />
-          <input onChange={this.handleChangeFor('understanding_importance_changed')} type="radio" value="Neutral"></input>Neutral<br />
-          <input onChange={this.handleChangeFor('understanding_importance_changed')} type="radio" value="Disagree"></input>Disagree<br />
+          <input onChange={this.handleChangeFor('understanding_importance_changed')} name='q7'type="radio" value="Agree"></input>Agree<br />
+          <input onChange={this.handleChangeFor('understanding_importance_changed')} name='q7'type="radio" value="Neutral"></input>Neutral<br />
+          <input onChange={this.handleChangeFor('understanding_importance_changed')} name='q7'type="radio" value="Disagree"></input>Disagree<br />
           <label>8.The Challenge tools have positively affected my ability to interact
             with my team about body and food:</label><br />
-          <input onChange={this.handleChangeFor('affected_ability_interact')} type="radio" value="Agree"></input>Agree<br />
-          <input onChange={this.handleChangeFor('affected_ability_interact')} type="radio" value="Neutral"></input>Neutral<br />
-          <input onChange={this.handleChangeFor('affected_ability_interact')} type="radio" value="Disagree"></input>Disagree<br />
+          <input onChange={this.handleChangeFor('affected_ability_interact')} name='q8'type="radio" value="Agree"></input>Agree<br />
+          <input onChange={this.handleChangeFor('affected_ability_interact')} name='q8' type="radio" value="Neutral"></input>Neutral<br />
+          <input onChange={this.handleChangeFor('affected_ability_interact')} name='q8' type="radio" value="Disagree"></input>Disagree<br />
        
 
         </div>

@@ -18,6 +18,10 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     numbersSaga(),
+<<<<<<< HEAD
     submitAnswerSaga(),
+=======
+    submitAnswerSaga()
+>>>>>>> master
   ]);
 }
