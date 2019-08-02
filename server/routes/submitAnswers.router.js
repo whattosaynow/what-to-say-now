@@ -108,4 +108,39 @@ router.post("/postSurvey", (req, res) => {
 
 
 
+router.post('/threeMonth', (req, res) => {
+    console.log('req.user.id', req.user.id);
+    
+    console.log('submit threeMonth answer route hit', req.body);
+    pool
+    .query(
+      `
+    UPDATE "user" SET 
+                          "S3_continued_impact" = $1, 
+                          "S3_how_impact" = $2, 
+                          "S3_continued_affected_ability_interact" = $3, 
+                          "S3_anything_else" = $4, 
+                          "S3_call_more_information" = $5
+                          
+      WHERE id = $6;
+  `,
+      [
+        req.body.continued_impact,
+        req.body.how_impact,
+        req.body.continued_affected_ability_interact,
+        req.body.anything_else,
+        req.body.call_more_information,
+        req.user.id
+      ]
+    )
+    .then(result => {
+      console.log(result);
+      res.sendStatus(201);
+    })
+    .catch(error => {
+      console.log("error with INSERT INTO,", error);
+      res.sendStatus(500);
+    });
+})
+
 module.exports = router;
