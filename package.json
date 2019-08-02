@@ -6,9 +6,12 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt": "^3.0.6",
+    "chart.js": "^2.8.0",
     "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^4.0.0",
     "express": "^4.16.4",
+    "moment": "^2.24.0",
+    "node-cron": "^2.0.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^7.9.0",
@@ -21,8 +24,12 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.2",
+<<<<<<< HEAD
     "semantic-ui-react": "^0.87.3",
     "sweetalert2": "^8.14.0",
+=======
+    "sweetalert2": "^8.14.1",
+>>>>>>> master
     "sweetalert2-react-content": "^1.1.0",
     "twilio": "^3.33.2",
     "typeface-libre-franklin": "0.0.75"
