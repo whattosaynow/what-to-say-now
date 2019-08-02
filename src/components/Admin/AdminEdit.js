@@ -9,6 +9,10 @@ class AdminDetails extends Component {
     week: ''
   }
 
+  componentDidMount(){
+    this.props.dispatch({type: 'SET_EDIT_CONTENT'})
+  }
+
   handleClick = (propertyName) => (event) => {
     console.log('event.target.value:', event.target.value)
     this.setState({
