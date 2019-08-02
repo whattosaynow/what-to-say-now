@@ -19,7 +19,7 @@ class AdminEditTable extends Component {
     if (updateLength < 8) {
       alert('no')
     } else {
-      // this.props.dispatch({ type: 'UPDATE_CONTENT', payload: this.state })
+      this.props.dispatch({ type: 'UPDATE_CONTENT', payload: this.state })
       alert('yes')
     }
   }
