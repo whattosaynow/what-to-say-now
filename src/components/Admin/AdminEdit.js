@@ -53,7 +53,7 @@ class AdminDetails extends Component {
               <>
                 {this.props.reduxState.adminReducer.editContentReducer.map(content => {
                   if ((Number(this.state.role) === Number(content.role_id)) && (Number(this.state.age) === Number(content.ageGroup_id)) && (Number(this.state.week) === Number(content.week))) {
-                    return <AdminEditTable content={content}/>
+                    return <AdminEditTable content={content} key={content.id}/>
                   }
                 }
                 )}
