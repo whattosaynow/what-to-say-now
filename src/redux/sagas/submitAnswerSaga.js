@@ -15,7 +15,7 @@ function* submitSignUpAnswers(action) {
 
 function* submitThreeMonthAnswer(action) {
     try {
-        console.log('submitResponse saga hit')
+        console.log('submitThreeMonthAnswer saga hit')
         // const getResponse = yield put({type: "SET_SIGNUP_ANSWERS", payload: action.payload});
         
         yield axios.post('/api/answer/threeMonth', action.payload);
