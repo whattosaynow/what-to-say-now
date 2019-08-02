@@ -10,7 +10,7 @@ class AdminDetails extends Component {
   }
 
   componentDidMount(){
-    this.props.dispatch({type: 'SET_EDIT_CONTENT'})
+    this.props.dispatch({type: 'GET_EDIT_CONTENT'})
   }
 
   handleClick = (propertyName) => (event) => {
@@ -36,7 +36,9 @@ class AdminDetails extends Component {
             <li><button onClick={this.handleClick('week')} value="5">Week 5</button></li>
           </ul>
         </div>
-        <div></div>
+        <div>
+          
+        </div>
         <pre>
           {JSON.stringify(this.state, null, 2)}
         </pre><br /><br />

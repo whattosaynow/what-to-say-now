@@ -7,9 +7,18 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
     console.log('admin router get hit')
-    res.sendStatus(200);
-    
-});
+    pool.query(`
+    SELECT * FROM "content";
+    `).then((result) => {
+        // console.log(result.rows)
+        res.send(result.rows)
+    })
+        .catch((error) => {
+            console.log('error with INSERT INTO, error:', error)
+            res.sendStatus(500)
+
+        });
+})
 
 /**
  * POST route template
