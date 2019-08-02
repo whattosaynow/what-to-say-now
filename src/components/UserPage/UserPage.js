@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import mountain from './mountain.svg';
+import { connect } from "react-redux";
 
 class UserPage extends Component {
+  handleClick = () => {
+     this.props.history.push("/user-preferences");
+  }
   render() {
     return (
       <center>
@@ -25,4 +29,8 @@ class UserPage extends Component {
   }
 }
 
-export default UserPage;
+const mapStateToProps = reduxState => ({
+  reduxState
+});
+
+export default connect(mapStateToProps)(UserPage);
