@@ -44,9 +44,10 @@ class AdminDetails extends Component {
             <li><button onClick={this.handleClick('week')} value="5">Week 5</button></li>
           </ul>
         </div>
-        <pre>
+        {/* <pre>
           {JSON.stringify(this.state, null, 2)}
-        </pre><br /><br />
+        </pre> */}
+        <br /><br />
         <div>
           <ul>
             {this.state.role && this.state.age && this.state.week ?
@@ -60,14 +61,15 @@ class AdminDetails extends Component {
               </>
               :
               <>
+              <AdminEditTable />
               </>
             }
           </ul>
         </div>
 
-        <pre>
+        {/* <pre>
           {JSON.stringify(this.props.reduxState.adminReducer.editContentReducer, null, 2)}
-        </pre>
+        </pre> */}
       </>
     );
   }
