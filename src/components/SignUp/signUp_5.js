@@ -4,9 +4,14 @@ import { connect } from 'react-redux';
 
 import Header from './signUp_header';
 
+//sweetAlert
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
 
 class signUp_5 extends Component {
   state = {}
+
 
   handleChange = (propertyName) => (event) => {
     this.setState({
@@ -27,8 +32,24 @@ class signUp_5 extends Component {
     if (survey2.length < 2) {
       alert("Please Answer All Questions")
     } else {
-      this.props.dispatch({ type: `SUBMIT_SIGNUP_ANSWERS`, payload: this.state })
-      this.props.history.push('/home');
+      this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
+      MySwal.fire({
+        title: '',
+        text: `Are you done filling out the form?`,
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Submit'
+      }).then((result) => {
+        if (result.value) {
+          this.props.dispatch({ type: 'SUBMIT_SIGNUP_ANSWERS', payload: this.props.reduxState.answersReducer.signupReducer })
+          //console.log('true')
+          this.props.history.push('/home');
+
+        }
+      }
+      )
 
     }
 
@@ -42,23 +63,23 @@ class signUp_5 extends Component {
         <div>
           <h2>Personal Information Continued</h2><br />
           <pre>
-            {/* {JSON.stringify(this.props.reduxState, null, 2)} */}
+            {JSON.stringify(this.props.reduxState.answersReducer.signupReducer, null, 2)}
           </pre>
-            #. Why are you particpating in the "What to say" Coaches Challenge?<br /><br />
-            <label>Choose One</label><br />
-            <input onChange={this.handleChange('why_are_you_participating')} type="radio" name="q1" value="I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image." />I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image.<br />
-            <input onChange={this.handleChange('why_are_you_participating')} type="radio" name="q1" value="I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something." />I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something.<br />
-            <input onChange={this.handleChange('why_are_you_participating')} type="radio" name="q1" value="This is not a priority issue for me as a coach, but I’m doing this because I was asked to participate." />This is not a priority issue for me as a coach, but I’m doing this because I was asked to participate.<br />
-            <input onChange={this.handleChange('why_are_you_participating')} type="radio" name="q1" value="other"/>I have other reasons for participating. They are:<br />
-            <textarea rows="4" cols="100"></textarea>
+          #. Why are you particpating in the "What to say" Coaches Challenge?<br /><br />
+          <label>Choose One</label><br />
+          <input onChange={this.handleChange('why_are_you_participating')} type="radio" name="q1" value="I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image." />I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image.<br />
+          <input onChange={this.handleChange('why_are_you_participating')} type="radio" name="q1" value="I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something." />I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something.<br />
+          <input onChange={this.handleChange('why_are_you_participating')} type="radio" name="q1" value="This is not a priority issue for me as a coach, but I’m doing this because I was asked to participate." />This is not a priority issue for me as a coach, but I’m doing this because I was asked to participate.<br />
+          <input onChange={this.handleChange('why_are_you_participating')} type="radio" name="q1" value="other" />I have other reasons for participating. They are:<br />
+          <textarea rows="4" cols="100"></textarea>
 
-            <br />
-            #. Can we call you at the completion of the Challenge for more information about your experience? 
+          <br />
+          #. Can we call you at the completion of the Challenge for more information about your experience?
             <label>Choose One</label><br />
-            <input onChange={this.handleChange('can_we_call_after_completion')} type="radio" name="q2" value="yes" />yes<br />
-            <input onChange={this.handleChange('can_we_call_after_completion')} type="radio" name="q2" value="no" />no<br />
+          <input onChange={this.handleChange('can_we_call_after_completion')} type="radio" name="q2" value="yes" />yes<br />
+          <input onChange={this.handleChange('can_we_call_after_completion')} type="radio" name="q2" value="no" />no<br />
 
-            <br />
+          <br />
         </div>
         <br />
         <div className="bottom-signup">
