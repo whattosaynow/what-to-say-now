@@ -24,10 +24,19 @@ function* submitThreeMonthAnswer(action) {
         console.log('error with submitting threeMonth answers,', error);
     }
 }
+function* submitPostAnswers(action) {
+  try {
+    console.log("submitResponse saga hit");
+    yield axios.post("/api/answer/postSurvey", action.payload);
+  } catch (error) {
+    console.log("error with submitting answers,", error);
+  }
+}
 
 function* submitAnswerSaga(){
     yield takeLatest(`SUBMIT_SIGNUP_ANSWERS`, submitSignUpAnswers);
     yield takeLatest(`SUBMIT_THREE_MONTH_ANSWERS`, submitThreeMonthAnswer)
+    yield takeLatest(`SUBMIT_POST_ANSWERS`, submitPostAnswers)
 }
 
 export default submitAnswerSaga;

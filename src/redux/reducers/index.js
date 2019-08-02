@@ -4,6 +4,7 @@ import loginMode from './loginModeReducer';
 import user from './userReducer';
 import numbersReducer from './numbersReducer';
 import answersReducer from './answersReducer';
+import adminReducer from './adminReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user,
   numbersReducer,
-  answersReducer // will have an id and username if someone is logged in
+  answersReducer, // will have an id and username if someone is logged in
+  adminReducer, 
 });
 
 export default rootReducer;
