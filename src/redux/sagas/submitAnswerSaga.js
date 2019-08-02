@@ -6,7 +6,7 @@ function* submitSignUpAnswers(action) {
         console.log('submitResponse saga hit')
         // const getResponse = yield put({type: "SET_SIGNUP_ANSWERS", payload: action.payload});
         
-        yield axios.post('/api/answer', action.payload);
+        yield axios.post('/api/answer/signup', action.payload);
         // console.log('getResponse saga:', getResponse)
     } catch(error) {
         console.log('error with submitting answers,', error);
