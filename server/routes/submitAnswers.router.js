@@ -2,6 +2,7 @@ const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
 const encryptLib = require("../modules/encryption");
+const {rejectUnauthenticated} = require("../modules/authentication-middleware");
 
 //router for posting Sign Up Survey answers
 router.post("/signup", (req, res) => {
@@ -61,7 +62,7 @@ router.post("/signup", (req, res) => {
         res.sendStatus(500)
 })});
 
-router.post("/postSurvey", (req, res) => {
+router.post("/postSurvey", rejectUnauthenticated, (req, res) => {
     console.log(req.body);
     console.log(req.user);
     pool
@@ -108,7 +109,7 @@ router.post("/postSurvey", (req, res) => {
 
 
 
-router.post('/threeMonth', (req, res) => {
+router.post('/threeMonth', rejectUnauthenticated, (req, res) => {
     console.log('req.user.id', req.user.id);
     
     console.log('submit threeMonth answer route hit', req.body);

@@ -4,11 +4,12 @@ const router = express.Router();
 const accountSid = process.env.TWILIO_ACCOUNT_SID
 const authToken = process.env.TWILIO_AUTH_TOKEN
 const client = require('twilio')(accountSid, authToken);
+const {rejectUnauthenticated} = require("../modules/authentication-middleware");
 
 /**
  * GET route template
  */
-router.get('/numbers', (req, res) => {
+router.get('/numbers', rejectUnauthenticated, (req, res) => {
     console.log('number router hit');
     pool.query(`SELECT "numbers" from "dummy_numbers";`).then(response => {
         console.log('response.rows:', response.rows);
@@ -19,7 +20,7 @@ router.get('/numbers', (req, res) => {
     })
 });
 
-router.get('/messages/:id', (req, res) => {
+router.get('/messages/:id', rejectUnauthenticated, (req, res) => {
     console.log('messages router hit', req.params.id);
     client.messages.create({
         body: 'Testing',
