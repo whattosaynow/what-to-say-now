@@ -5,7 +5,7 @@ class AdminDetails extends Component {
     return (
       <div>
         <p>
-          Info Page
+          Admin Details
         </p>
       </div>
     );
