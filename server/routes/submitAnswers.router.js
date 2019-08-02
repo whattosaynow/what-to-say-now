@@ -5,7 +5,7 @@ const encryptLib = require("../modules/encryption");
 /**
  * POST route template
  */
-router.post("/", (req, res) => {
+router.post("/signup", (req, res) => {
     console.log('submit answer route hit', req.body);
     const password = encryptLib.encryptPassword(req.body.password);
     pool.query(`
