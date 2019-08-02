@@ -57,6 +57,9 @@ class App extends Component {
           {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
           <ProtectedRoute exact path="/info" component={InfoPage} />
+
+          <Route exact path='/user-profile' component={UserPage}/>
+          
           <Route exact path="/signup1" component={signUp_1} />
           
           <Route exact path="/signup2" component={signUp_2} />
