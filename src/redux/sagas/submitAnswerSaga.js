@@ -13,8 +13,18 @@ function* submitSignUpAnswers(action) {
     }
 }
 
+function* submitPostAnswers(action) {
+  try {
+    console.log("submitResponse saga hit");
+    yield axios.post("/api/answer/postSurvey", action.payload);
+  } catch (error) {
+    console.log("error with submitting answers,", error);
+  }
+}
+
 function* submitAnswerSaga(){
     yield takeLatest(`SUBMIT_SIGNUP_ANSWERS`, submitSignUpAnswers);
+    yield takeLatest(`SUBMIT_POST_ANSWERS`, submitPostAnswers)
 }
 
 export default submitAnswerSaga;

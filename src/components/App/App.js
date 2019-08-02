@@ -58,7 +58,7 @@ class App extends Component {
             they will see the info page instead. */}
           <ProtectedRoute exact path="/info" component={InfoPage} />
           <Route exact path="/signup1" component={signUp_1} />
-          
+
           <Route exact path="/signup2" component={signUp_2} />
 
           <Route exact path="/signup3" component={signUp_3} />
@@ -67,10 +67,10 @@ class App extends Component {
 
           <Route exact path="/signup5" component={signUp_5} />
 
-          <Route 
-          exact
-          path="/three-month-survey"
-          component={ThreeMonthSurvey}
+          <Route
+            exact
+            path="/three-month-survey"
+            component={ThreeMonthSurvey}
           />
           {/* post survey routes */}
           <Route exact path="/postsurvey1" component={postSurvey_1} />
@@ -81,9 +81,14 @@ class App extends Component {
           <Route render={() => <h1>404</h1>} />
         </Switch>
         {/* <Footer /> */}
+        {JSON.stringify(this.props.reduxState.user, null, 2)}
       </Router>
     );
   }
 }
 
-export default connect()(App);
+const mapStateToProps = reduxState => ({
+  reduxState
+});
+
+export default connect(mapStateToProps)(App);
