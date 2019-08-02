@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import AdminEditTable from './AdminEditTable';
 
 class AdminDetails extends Component {
   state = {
-    role: '',
-    age: '',
-    week: ''
   }
 
-  componentDidMount(){
-    this.props.dispatch({type: 'GET_EDIT_CONTENT'})
+  componentDidMount() {
+    this.props.dispatch({ type: 'GET_EDIT_CONTENT' })
   }
 
   handleClick = (propertyName) => (event) => {
@@ -20,10 +18,20 @@ class AdminDetails extends Component {
     })
   }
 
+  // handleSubmit = () => {
+  //   if(this.state.role && this.state.age && this.state.week){
+  //     this.setState({
+  //       ...this.state,
+  //       truth: 'true'
+  //     })
+  //   }
+  // }
+
   render() {
     return (
       <>
         <header>
+          {/* <button onClick={this.handleSubmit}>Submit</button> */}
           <center><button onClick={this.handleClick('role')} value="1">Coach</button><button onClick={this.handleClick('role')} value="2">Pediatrician</button><button onClick={this.handleClick('role')} value="3">Parents</button></center><br />
           <center><button onClick={this.handleClick('age')} value="1">Ages 6-9</button><button onClick={this.handleClick('age')} value="2">Ages 10-13</button><button onClick={this.handleClick('age')} value="3">Ages 14-18</button></center>
         </header>
@@ -36,14 +44,29 @@ class AdminDetails extends Component {
             <li><button onClick={this.handleClick('week')} value="5">Week 5</button></li>
           </ul>
         </div>
-        <div>
-          
-        </div>
         <pre>
           {JSON.stringify(this.state, null, 2)}
         </pre><br /><br />
+        <div>
+          <ul>
+            {this.state.role && this.state.age && this.state.week ?
+              <>
+                {this.props.reduxState.adminReducer.editContentReducer.map(content => {
+                  if ((Number(this.state.role) === Number(content.role_id)) && (Number(this.state.age) === Number(content.ageGroup_id)) && (Number(this.state.week) === Number(content.week))) {
+                    return <AdminEditTable content={content}/>
+                  }
+                }
+                )}
+              </>
+              :
+              <>
+              </>
+            }
+          </ul>
+        </div>
+
         <pre>
-          {JSON.stringify(this.props, null, 2)}
+          {JSON.stringify(this.props.reduxState.adminReducer.editContentReducer, null, 2)}
         </pre>
       </>
     );
