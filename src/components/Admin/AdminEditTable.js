@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 class AdminEditTable extends Component {
-  state={
+  state = {
     ...this.props.content
   }
 
@@ -10,13 +12,25 @@ class AdminEditTable extends Component {
       [properyName]: event.target.value
     })
   }
+
+  handleSubmit = () => {
+    let update = Object.keys(this.state)
+    let updateLength = update.length
+    if (updateLength < 8) {
+      alert('no')
+    } else {
+      this.props.dispatch({ type: 'UPDATE_CONTENT', payload: this.state })
+    }
+  }
+
   render() {
     return (
       <>
-      {/* <pre>
-        {JSON.stringify(this.state, null, 2)}
-      </pre> */}
+        <pre>
+          {JSON.stringify(this.state, null, 2)}
+        </pre>
         <li>Week {this.state.week}</li><br />
+        <button onClick={this.handleSubmit}>Submit</button><br />br />
         This week's "What to Say" phrase is:<br />
         <textarea rows="10" cols="200" onChange={this.handleChange('intro')} value={this.state.intro}></textarea><br />
         <br />
@@ -32,5 +46,8 @@ class AdminEditTable extends Component {
     );
   }
 }
+const mapStateToProps = (reduxState) => ({
+  reduxState,
+})
 
-export default AdminEditTable;
+export default withRouter(connect(mapStateToProps)(AdminEditTable));
