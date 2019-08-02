@@ -5,7 +5,7 @@ class PostSurvey_1 extends Component {
     return (
       <div>
         <p>
-          Info Page
+          Admin Charts
         </p>
       </div>
     );
