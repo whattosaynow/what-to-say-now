@@ -53,7 +53,7 @@ class signUp_5 extends Component {
 
     }
 
-  }
+  } // end handleClickNext 
 
   render() {
     return (
