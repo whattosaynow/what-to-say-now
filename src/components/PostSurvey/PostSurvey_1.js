@@ -38,7 +38,7 @@ class PostSurvey_1 extends Component {
         <label>2.Participating in  the Challenge was easy to do.</label><br/>
         <input onChange={this.handleChangeFor('participation_was_easy')}name='q2'type="radio" value="Agree"></input>Agree<br/>
         <input onChange={this.handleChangeFor('participation_was_easy')}name='q2'type="radio" value="Neutral"></input>Neutral<br/>
-        <input type="radio" value="Disagree"></input>Disagree<br/>
+        <input onChange={this.handleChangeFor('participation_was_easy')}name='q2'type="radio" value="Disagree"></input>Disagree<br/>
         <label>3.I learned something new from participating in the Challenge.</label><br/>
         <input onChange={this.handleChangeFor('learned_something_new')} name='q3'type="radio" value="Agree"></input>Agree<br/>
         <input onChange={this.handleChangeFor('learned_something_new')} name='q3'type="radio" value="Neutral"></input>Neutral<br/>
