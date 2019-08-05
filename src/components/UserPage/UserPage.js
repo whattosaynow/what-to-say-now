@@ -9,6 +9,7 @@ import Card4 from '../UserPage/Card4';
 import Card5 from '../UserPage/Card5';
 import withall from './WithAllLogo.png';
 import moment from 'moment';
+import CardTemplate from './CardTemplate';
 
 const margins = {
   margin: '20px'
@@ -62,39 +63,58 @@ class UserPage extends Component {
 
           <div style={margins} >
             <Card.Group centered stackable>
-                <Card1 />
-              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 7) ?
-                <Card2 />
+              {this.props ?
+                <>
+                  {this.props.reduxState.weeklyContentReducer.weeklyContentReducer.map((content) => {
+                    if (
+                      (Number(this.props.reduxState.user.role) === Number(content.role_id)) &&
+                      (Number(this.props.reduxState.user.S1_focus_ages) === Number(content.ageGroup_id)) &&
+                      (Number(1) === Number(content.week))) {
+                      return <CardTemplate content={content} key={content.id}/>
+                    }
+                  })}
+                </>
                 :
                 <>
                 </>
               }
-
-              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 14) ?
-                <Card3 />
-                :
-                <>
-                </>
+              {
+                (this.weeklyContentCompare(this.dateCreated, this.currentDate) > 7) ?
+                  <Card2 />
+                  :
+                  <>
+                  </>
               }
 
-              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 21) ?
-                <Card4 />
-                :
-                <>
-                </>
+              {
+                (this.weeklyContentCompare(this.dateCreated, this.currentDate) > 14) ?
+                  <Card3 />
+                  :
+                  <>
+                  </>
               }
 
-              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 28) ?
-                <Card5 />
-                :
-                <>
-                </>
+              {
+                (this.weeklyContentCompare(this.dateCreated, this.currentDate) > 21) ?
+                  <Card4 />
+                  :
+                  <>
+                  </>
+              }
+
+              {
+                (this.weeklyContentCompare(this.dateCreated, this.currentDate) > 28) ?
+                  <Card5 />
+                  :
+                  <>
+                  </>
               }
             </Card.Group>
           </div>
-            <pre>
-              {JSON.stringify(this.props.reduxState, null, 2)}
-            </pre>
+          <pre>
+            role :{JSON.stringify(this.props.reduxState.weeklyContentReducer.weeklyContentReducer, null, 2)}<br />
+            S1_focus_ages :{JSON.stringify(this.props.reduxState.user.S1_focus_ages, null, 2)}
+          </pre>
 
           <div className='bottomDiv'>
             <button onClick={this.handleClick}>Update My Accout Preferences</button>

@@ -18,15 +18,6 @@ class AdminDetails extends Component {
     })
   }
 
-  // handleSubmit = () => {
-  //   if(this.state.role && this.state.age && this.state.week){
-  //     this.setState({
-  //       ...this.state,
-  //       truth: 'true'
-  //     })
-  //   }
-  // }
-
   render() {
     return (
       <>
