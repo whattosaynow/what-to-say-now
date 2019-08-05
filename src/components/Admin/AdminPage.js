@@ -28,9 +28,6 @@ class Admin extends Component {
   render() {
     return (
       <>
-        <p>
-          Admin Page
-        </p>
         <div className="links">
           <h2>
             <ul className="nav-list">
