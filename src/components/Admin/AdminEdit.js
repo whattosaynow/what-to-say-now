@@ -12,7 +12,6 @@ class AdminDetails extends Component {
   }
 
   handleClick = (propertyName) => (event) => {
-    console.log('event.target.value:', event.target.value)
     this.setState({
       [propertyName]: event.target.value
     })

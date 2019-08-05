@@ -21,14 +21,11 @@ class signUp_5 extends Component {
   }
 
   handleClickBack = () => {
-    console.log('back button clicked!');
     this.props.history.push('/signup4');
   }
 
   handleClickNext = () => {
-    console.log('next button clicked!', this.state);
     let survey2 = Object.keys(this.state);
-    console.log(survey2.length);
     if (survey2.length < 2) {
       alert("Please Answer All Questions")
     } else {
@@ -44,7 +41,6 @@ class signUp_5 extends Component {
       }).then((result) => {
         if (result.value) {
           this.props.dispatch({ type: 'SUBMIT_SIGNUP_ANSWERS', payload: this.props.reduxState.answersReducer.signupReducer })
-          //console.log('true')
           this.props.history.push('/home');
 
         }

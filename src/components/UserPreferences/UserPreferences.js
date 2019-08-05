@@ -18,7 +18,6 @@ class UserPreferences extends Component {
   };
   
   handleChangeFor = propertyName => event => {
-    console.log(this.state);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value
@@ -26,7 +25,6 @@ class UserPreferences extends Component {
   };
 
   handleSubmit = () => {
-    console.log('submit button clicked');
       //dispatch to saga
     this.props.dispatch({
       type: "UPDATE_USER_PREFERENCES",

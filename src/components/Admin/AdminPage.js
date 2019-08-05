@@ -14,7 +14,6 @@ class Admin extends Component {
   }
 
   handleClick = (string) => {
-    console.log('hello')
     this.setState({
       display: string
     })

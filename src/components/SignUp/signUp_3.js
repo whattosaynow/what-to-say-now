@@ -17,14 +17,11 @@ class signUp_3 extends Component {
   }
 
   handleClickBack = () => {
-    console.log('back button clicked!');
     this.props.history.push('/signup2');
   }
 
   handleClickNext = () => {
-    console.log('next button clicked!', this.state);
     let survey2 = Object.keys(this.state);
-    console.log(survey2.length);
     if (survey2.length < 3) {
       alert("Please Answer All Questions")
     } else {
