@@ -18,7 +18,6 @@ class UserPreferences extends Component {
   };
   
   handleChangeFor = propertyName => event => {
-    console.log(this.state);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value
@@ -26,7 +25,6 @@ class UserPreferences extends Component {
   };
 
   handleSubmit = () => {
-    console.log('submit button clicked');
       //dispatch to saga
     this.props.dispatch({
       type: "UPDATE_USER_PREFERENCES",
@@ -68,7 +66,6 @@ class UserPreferences extends Component {
   render() {
     return (
       <div>
-        {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
         <center>
           <h1>Update Preferences</h1>
           {this.state.enabled ? (
@@ -128,7 +125,6 @@ class UserPreferences extends Component {
           <br />
           <Button onClick={this.handleDelete}>Delete My Account</Button>
         </center>
-        {/* <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre> */}
       </div>
     );
   }

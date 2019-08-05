@@ -6,11 +6,9 @@ const {rejectUnauthenticated} = require("../modules/authentication-middleware");
  * GET route template
  */
 router.get('/', rejectUnauthenticated, (req, res) => {
-    // console.log('admin router get hit')
     pool.query(`
     SELECT * FROM "content";
     `).then((result) => {
-        // console.log(result.rows)
         res.send(result.rows)
     })
         .catch((error) => {
@@ -24,7 +22,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
  * POST route template
  */
 router.put('/', (req, res) => {
-    console.log('admin PUT router hit', req.body)
     pool.query(`
     UPDATE "content" SET
         "intro" = $1,
@@ -40,8 +37,6 @@ router.put('/', (req, res) => {
             req.body.id
         ]
     ).then((result) => {
-        console.log('admin update router result.rows', result.rows)
-        // res.send(result.rows)
         res.sendStatus(200)
     })
         .catch((error) => {

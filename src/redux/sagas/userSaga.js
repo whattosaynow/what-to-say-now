@@ -26,10 +26,8 @@ function* fetchUser() {
 
 function* setUserContent(action) {
   try {
-      console.log('setUserContent saga hit')
       const response = yield axios.get('/api/user/content');
       yield put ({type: 'SET_WEEKLY_CONTENT', payload: response.data})
-      console.log('setUserContent response.data:', response.data)
   } catch (error) {
       console.log('error with setAdminEdit saga,', error);
   }

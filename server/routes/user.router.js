@@ -13,11 +13,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/content', (req, res) => {
-  console.log('api/user/content router get hit')
   pool.query(`
   SELECT * FROM "content";
   `).then((result) => {
-      // console.log(result.rows)
       res.send(result.rows)
   })
       .catch((error) => {
