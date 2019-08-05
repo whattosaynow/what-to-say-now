@@ -70,16 +70,16 @@ class App extends Component {
           <ProtectedRoute exact path="/home" component={UserPage} />
           <ProtectedRoute exact path='/user-profile' component={UserPage}/>
           <ProtectedRoute exact path='/user-preferences' component={UserPreferences}/>
-          <ProtectedRoute exact path="/signup1" component={signUp_1} />
-          <ProtectedRoute exact path="/signup2" component={signUp_2} />
-          <ProtectedRoute exact path="/signup3" component={signUp_3} />
-          <ProtectedRoute exact path="/signup4" component={signUp_4} />
-          <ProtectedRoute exact path="/signup5" component={signUp_5} />
+          <Route exact path="/signup1" component={signUp_1} />
+          <Route exact path="/signup2" component={signUp_2} />
+          <Route exact path="/signup3" component={signUp_3} />
+          <Route exact path="/signup4" component={signUp_4} />
+          <Route exact path="/signup5" component={signUp_5} />
           <ProtectedRoute exact path="/three-month-survey" component={ThreeMonthSurvey} />
           {/* post survey routes */}
-          <Route exact path="/postsurvey1" component={postSurvey_1} />
-          <Route exact path="/postsurvey2" component={postSurvey_2} />
-          <Route exact path="/postsurvey3" component={postSurvey_3} />
+          <ProtectedRoute exact path="/postsurvey1" component={postSurvey_1} />
+          <ProtectedRoute exact path="/postsurvey2" component={postSurvey_2} />
+          <ProtectedRoute exact path="/postsurvey3" component={postSurvey_3} />
           </>)}
           {/* If none of the other routes matched, we will show a 404. */}
           <Route render={() => <h1>404</h1>} />
