@@ -5,6 +5,7 @@ import userSaga from './userSaga';
 import numbersSaga from './numbersSaga';
 import submitAnswerSaga from './submitAnswerSaga';
 import adminSaga from './adminSaga';
+import updateUserPrefsSaga from './updateUserPrefsSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -20,6 +21,7 @@ export default function* rootSaga() {
     userSaga(),
     numbersSaga(),
     submitAnswerSaga(),
-    adminSaga()
+    adminSaga(),
+    updateUserPrefsSaga(),
   ]);
 }

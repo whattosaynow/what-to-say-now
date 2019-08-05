@@ -12,7 +12,8 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const numbersRouter = require('./routes/numbers.router');
 const submitAnswersRouter = require('./routes/submitAnswers.router');
-const adminRouter = require('./routes/admin.router')
+const adminRouter = require('./routes/admin.router');
+const updateUserPrefsRouter = require('./routes/updateUserPrefs.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,7 +30,8 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/numbers', numbersRouter);
 app.use('/api/answer', submitAnswersRouter);
-app.use('/api/admin', adminRouter)
+app.use('/api/admin', adminRouter);
+app.use("/api/update-user-prefs", updateUserPrefsRouter);
 
 // Serve static files
 app.use(express.static('build'));
