@@ -5,6 +5,7 @@ import user from './userReducer';
 import numbersReducer from './numbersReducer';
 import answersReducer from './answersReducer';
 import adminReducer from './adminReducer';
+import weeklyContentReducer from './weeklyContentReducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   numbersReducer,
   answersReducer, // will have an id and username if someone is logged in
   adminReducer, 
+  weeklyContentReducer, 
 });
 
 export default rootReducer;
