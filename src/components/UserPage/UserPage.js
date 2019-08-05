@@ -27,6 +27,9 @@ class UserPage extends Component {
           </header>
           
       </div>
+      <div>
+        Comparing date created to current date<br />
+      </div>
       
 
     <div style={margins} >
