@@ -15,6 +15,9 @@ const margins = {
 }
 
 class UserPage extends Component {
+  componentDidMount() {
+    this.props.dispatch({ type: 'GET_CONTENT' })
+  }
 
   handleClick = () => {
     this.props.history.push("/user-preferences");
@@ -59,35 +62,35 @@ class UserPage extends Component {
 
           <div style={margins} >
             <Card.Group centered stackable>
-              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 0 ) ?
-                <Card1/>
+              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 0) ?
+                <Card1 />
                 :
                 <>
                 </>
               }
               {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 7) ?
-                <Card2/>
+                <Card2 />
                 :
                 <>
                 </>
               }
 
               {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 14) ?
-                <Card3/>
+                <Card3 />
                 :
                 <>
                 </>
               }
 
               {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 21) ?
-                <Card4/>
+                <Card4 />
                 :
                 <>
                 </>
               }
 
               {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 28) ?
-                <Card5/>
+                <Card5 />
                 :
                 <>
                 </>
