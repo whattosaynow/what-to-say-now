@@ -46,9 +46,9 @@ class signUp_4 extends Component {
           </pre>
           #. Age(s) you coach and want to focus on with during the Challenge:<br /><br />
           <label>Choose One</label><br />
-          <input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="6-10 years old" />6-10 years old<br />
-          <input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="11-13 years old" />11-13 years old<br />
-          <input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="14-18 years old" />14-18 years old<br />
+          <input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="1" />6-10 years old<br />
+          <input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="2" />11-13 years old<br />
+          <input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="3" />14-18 years old<br />
           <br />
           #. How did you find us?
             <label>Choose One</label><br />
