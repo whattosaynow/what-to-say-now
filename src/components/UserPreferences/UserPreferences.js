@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import { Input } from "semantic-ui-react";
 import { Button } from "semantic-ui-react";
 import { thisExpression } from "@babel/types";
+//sweetAlert
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
 
 class UserPreferences extends Component {
   state = {
@@ -28,11 +32,32 @@ class UserPreferences extends Component {
       type: "UPDATE_USER_PREFERENCES",
       payload: this.state
     });
+    this.props.history.push("/home");
   }
 
   handleDelete = () => {
-    console.log('delete button clicked');
-  }
+    // alert('delete button clicked');
+    // this.props.dispatch({
+    //   type: "DELETE_ACCOUNT",
+    //   payload: this.props.reduxState.user.id
+    // });
+    MySwal.fire({
+      title: "",
+      text: `Are you sure you want to delete your account?`,
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Submit"
+    }).then((result) => {
+      if(result.value) {
+        this.props.dispatch({
+          type: "DELETE_ACCOUNT",
+          payload: this.props.reduxState.user
+        });
+        this.props.history.push("/home");
+      };
+  })};
 
   handleEnable = () => {
     this.setState({
