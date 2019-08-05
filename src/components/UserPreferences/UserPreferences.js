@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 //semantic-ui
 import { Input } from "semantic-ui-react";
 import { Button } from "semantic-ui-react";
+import { thisExpression } from "@babel/types";
 
 class UserPreferences extends Component {
   state = {
     choose_receive: this.props.reduxState.user.S1_choose_receive,
-    email: this.props.reduxState.user.email
+    email: this.props.reduxState.user.email,
+    enabled: false
   };
   
   handleChangeFor = propertyName => event => {
@@ -31,18 +33,40 @@ class UserPreferences extends Component {
   handleDelete = () => {
     console.log('delete button clicked');
   }
+
+  handleEnable = () => {
+    this.setState({
+      ...this.state,
+      enabled: !this.state.enabled
+    })
+  }
   render() {
     return (
       <div>
         {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
         <center>
           <h1>Update Preferences</h1>
-          <Input
-            onChange={this.handleChangeFor("email")}
-            label="Email"
-            placeholder={this.state.email}
-            value={this.state.email}
-          />
+          {this.state.enabled ? (
+            <Input
+              onChange={this.handleChangeFor("email")}
+              label="Email"
+              placeholder={this.state.email}
+              value={this.state.email}
+            />
+          ) : (
+            <div>
+              <Button onClick={this.handleEnable}>
+                Click to change email
+              </Button>
+              <Input
+                disabled
+                onChange={this.handleChangeFor("email")}
+                label="Email"
+                placeholder={this.state.email}
+                value={this.state.email}
+              />
+            </div>
+          )}
           <br />
           <br />
           <label>Update how you want to receive the Challenges:</label>
