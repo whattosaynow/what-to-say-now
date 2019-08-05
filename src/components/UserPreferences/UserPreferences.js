@@ -34,7 +34,7 @@ class UserPreferences extends Component {
   render() {
     return (
       <div>
-        <pre>{JSON.stringify(this.state, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
         <center>
           <h1>Update Preferences</h1>
           <Input
@@ -79,7 +79,7 @@ class UserPreferences extends Component {
           <br />
           <Button onClick={this.handleDelete}>Delete My Account</Button>
         </center>
-        <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre> */}
       </div>
     );
   }
