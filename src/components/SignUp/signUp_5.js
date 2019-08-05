@@ -62,9 +62,6 @@ class signUp_5 extends Component {
 
         <div>
           <h2>Personal Information Continued</h2><br />
-          <pre>
-            {JSON.stringify(this.props.reduxState.answersReducer.signupReducer, null, 2)}
-          </pre>
           #. Why are you particpating in the "What to say" Coaches Challenge?<br /><br />
           <label>Choose One</label><br />
           <input onChange={this.handleChange('why_are_you_participating')} type="radio" name="q1" value="I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image." />I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image.<br />

@@ -43,9 +43,6 @@ class signUp_1 extends Component {
     return (
       <center>
         <Header width={'20%'} /><br />
-        <pre>
-          {JSON.stringify(this.state, null, 2)}
-        </pre>
         <div>
           <h2>Personal Information</h2>
           <form id="signUp1" style={{backgroundColor: "white"}}>

@@ -41,9 +41,6 @@ class signUp_4 extends Component {
 
         <div>
           <h2>Personal Information Continued</h2><br />
-          <pre>
-            {JSON.stringify(this.state, null, 2)}
-          </pre>
           #. Age(s) you coach and want to focus on with during the Challenge:<br /><br />
           <label>Choose One</label><br />
           <input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="1" />6-10 years old<br />

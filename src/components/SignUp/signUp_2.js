@@ -63,10 +63,7 @@ class signUp_2 extends Component {
           </div>
 
         </div>
-        <pre>
-          {JSON.stringify(this.props.reduxState, null, 2)}
-        </pre>
-      </center>
+        </center>
     );
   }
 }

@@ -104,9 +104,6 @@ class PostSurvey_3 extends Component {
           <button onClick={this.handleClickBack}>Go Back</button>
           <button onClick={this.handleClickNext}>Submit</button>
         </div>
-        <pre>
-          {JSON.stringify(this.props.reduxState.answersReducer, null, 2)}
-        </pre>
       </center>
     );
   }

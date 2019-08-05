@@ -42,9 +42,6 @@ class signUp_3 extends Component {
 
         <div>
           <h2>Personal Information Continued</h2><br />
-          <pre>
-            {JSON.stringify(this.state, null, 2)}
-          </pre>
           #. Number of years you have been coach?<br /><br />
           <label>Choose One</label><br />
           <input onChange={this.handleChange('years_coaching')} type="radio" name="q1" value="Less than 5 years" />Less than 5 years<br />

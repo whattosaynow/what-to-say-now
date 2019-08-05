@@ -27,9 +27,6 @@ class AdminEditTable extends Component {
   render() {
     return (
       <>
-        <pre>
-          {JSON.stringify(this.state, null, 2)}
-        </pre>
         <li>Week {this.state.week}</li><br />
         <button onClick={this.handleSubmit}>Submit</button><br />br />
         This week's "What to Say" phrase is:<br />
