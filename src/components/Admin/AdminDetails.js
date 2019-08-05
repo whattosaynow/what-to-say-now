@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 class AdminDetails extends Component {
   render() {
     return (
       <div>
         <p>
-          Admin Details
+          <button>Click here to download CSV of user data</button>
         </p>
       </div>
     );
   }
 }
 
-export default AdminDetails;
+const mapStateToProps = (reduxState) => ({
+  reduxState,
+})
+
+export default withRouter(connect(mapStateToProps)(AdminDetails));
