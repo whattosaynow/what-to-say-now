@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 //css styling
 import './Admin.css';
@@ -9,6 +11,10 @@ import AdminDetails from './AdminDetails';
 import AdminEdit from './AdminEdit';
 
 class Admin extends Component {
+  componentDidMount() {
+    this.props.dispatch({ type: 'GET_CSV' })
+  }
+
   state = {
     display: 'Charts'
   }
@@ -62,4 +68,8 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+const mapStateToProps = (reduxState) => ({
+  reduxState,
+})
+
+export default withRouter(connect(mapStateToProps)(Admin));
