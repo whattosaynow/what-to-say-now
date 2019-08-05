@@ -21,6 +21,11 @@ class UserPreferences extends Component {
 
   handleSubmit = () => {
     console.log('submit button clicked');
+      //dispatch to saga
+    this.props.dispatch({
+      type: "UPDATE_USER_PREFERENCES",
+      payload: this.state
+    });
   }
 
   handleDelete = () => {
