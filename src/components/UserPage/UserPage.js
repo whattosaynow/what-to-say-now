@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import mountain from './mountain.svg';
 import { connect } from "react-redux";
-=======
 import { Card, Icon, Image } from 'semantic-ui-react'
 import withall from './WithAllLogo.png';
 
 const margins = {
   margin:'20px'
 }
->>>>>>> master
 
 class UserPage extends Component {
   handleClick = () => {
