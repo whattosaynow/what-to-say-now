@@ -21,7 +21,7 @@ class UserPage extends Component {
 
 
   weeklyContentCompare = (created, current) => {
-    const answer = moment(current).diff(created, 'days');
+    const answer = moment(created).diff(current, 'days');
     return answer
   }
 
@@ -77,7 +77,7 @@ class UserPage extends Component {
                 <>
                 </>
               }
-              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 6) ?
+              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 7) ?
                 <Card style={{ width: "250px" }}>
                   <Image src={withall} alt='mountain' wrapped ui={false} />
                   <Card.Content>
@@ -101,7 +101,7 @@ class UserPage extends Component {
                 </>
               }
 
-              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 13) ?
+              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 14) ?
                 <Card style={{ width: "250px" }}>
                   <Image src={withall} alt='mountain' wrapped ui={false} />
                   <Card.Content>
@@ -125,7 +125,7 @@ class UserPage extends Component {
                 </>
               }
 
-              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 20) ?
+              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 21) ?
                 <Card style={{ width: "250px" }}>
                   <Image src={withall} alt='mountain' wrapped ui={false} />
                   <Card.Content>
@@ -149,7 +149,7 @@ class UserPage extends Component {
                 </>
               }
 
-              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 27) ?
+              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 28) ?
                 <Card style={{ width: "250px" }}>
                   <Image src={withall} alt='mountain' wrapped ui={false} />
                   <Card.Content>
