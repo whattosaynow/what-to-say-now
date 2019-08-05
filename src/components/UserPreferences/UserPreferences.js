@@ -18,7 +18,6 @@ class UserPreferences extends Component {
   };
   
   handleChangeFor = propertyName => event => {
-    console.log(this.state);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value
@@ -26,7 +25,6 @@ class UserPreferences extends Component {
   };
 
   handleSubmit = () => {
-    console.log('submit button clicked');
       //dispatch to saga
     this.props.dispatch({
       type: "UPDATE_USER_PREFERENCES",
@@ -35,12 +33,12 @@ class UserPreferences extends Component {
     this.props.history.push("/home");
   }
 
+  handleBack = () => {
+    this.props.history.push('/home');
+  }
+
   handleDelete = () => {
-    // alert('delete button clicked');
-    // this.props.dispatch({
-    //   type: "DELETE_ACCOUNT",
-    //   payload: this.props.reduxState.user.id
-    // });
+    //sweetalert to confirm user wants to delete account
     MySwal.fire({
       title: "",
       text: `Are you sure you want to delete your account?`,
@@ -60,6 +58,7 @@ class UserPreferences extends Component {
   })};
 
   handleEnable = () => {
+    //enables user to change email address or cancel change email address
     this.setState({
       ...this.state,
       enabled: !this.state.enabled
@@ -72,12 +71,17 @@ class UserPreferences extends Component {
         <center>
           <h1>Update Preferences</h1>
           {this.state.enabled ? (
-            <Input
-              onChange={this.handleChangeFor("email")}
-              label="Email"
-              placeholder={this.state.email}
-              value={this.state.email}
-            />
+            <div>
+              <Button onClick={this.handleEnable} color="red">
+                Cancel
+              </Button>
+              <Input
+                onChange={this.handleChangeFor("email")}
+                label="Email"
+                placeholder={this.state.email}
+                value={this.state.email}
+              />
+            </div>
           ) : (
             <div>
               <Button onClick={this.handleEnable}>
@@ -123,10 +127,11 @@ class UserPreferences extends Component {
           <br />
           <br />
           <br />
+          <Button onClick={this.handleBack}>Back</Button>
           <Button onClick={this.handleSubmit}>Save Changes</Button>
           <br />
           <br />
-          <Button onClick={this.handleDelete}>Delete My Account</Button>
+          <Button onClick={this.handleDelete} color='red'>Delete My Account</Button>
         </center>
         {/* <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre> */}
       </div>
