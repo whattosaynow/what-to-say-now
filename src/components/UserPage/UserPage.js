@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
-import mountain from './mountain.svg';
 import { connect } from "react-redux";
-import { Card, Icon, Image } from 'semantic-ui-react'
-import Card1 from '../UserPage/Card1';
-import Card2 from '../UserPage/Card2';
-import Card3 from '../UserPage/Card3';
-import Card4 from '../UserPage/Card4';
-import Card5 from '../UserPage/Card5';
-import withall from './WithAllLogo.png';
+import { Card } from 'semantic-ui-react'
 import moment from 'moment';
 import CardTemplate from './CardTemplate';
 
@@ -26,8 +19,6 @@ class UserPage extends Component {
 
   dateCreated = moment(this.props.reduxState.user.date_created).format('YYYY MM DD');
   currentDate = moment().format('YYYY MM DD');
-
-
 
   weeklyContentCompare = (created, current) => {
     const answer = moment(current).diff(created, 'days');
@@ -60,75 +51,74 @@ class UserPage extends Component {
             {JSON.stringify(this.props.reduxState.user.date_created, null, 2)}
           </pre>
 
-
           <div style={margins} >
             <Card.Group centered stackable>
-                  {this.props.reduxState.weeklyContentReducer.weeklyContentReducer.map((content) => {
+              {this.props.reduxState.weeklyContentReducer.weeklyContentReducer.map((content) => {
+                if (
+                  (Number(this.props.reduxState.user.role) === Number(content.role_id)) &&
+                  (Number(this.props.reduxState.user.S1_focus_ages) === Number(content.ageGroup_id)) &&
+                  (Number(1) === Number(content.week))) {
+                  return <CardTemplate content={content} key={content.id} />
+                }
+              })}
+              {
+                (this.weeklyContentCompare(this.dateCreated, this.currentDate) > 7) ?
+                  this.props.reduxState.weeklyContentReducer.weeklyContentReducer.map((content) => {
                     if (
                       (Number(this.props.reduxState.user.role) === Number(content.role_id)) &&
                       (Number(this.props.reduxState.user.S1_focus_ages) === Number(content.ageGroup_id)) &&
-                      (Number(1) === Number(content.week))) {
-                      return <CardTemplate content={content} key={content.id}/>
+                      (Number(2) === Number(content.week))) {
+                      return <CardTemplate content={content} key={content.id} />
                     }
-                  })}
-              {
-                (this.weeklyContentCompare(this.dateCreated, this.currentDate) > 7) ?
-                this.props.reduxState.weeklyContentReducer.weeklyContentReducer.map((content) => {
-                  if (
-                    (Number(this.props.reduxState.user.role) === Number(content.role_id)) &&
-                    (Number(this.props.reduxState.user.S1_focus_ages) === Number(content.ageGroup_id)) &&
-                    (Number(2) === Number(content.week))) {
-                    return <CardTemplate content={content} key={content.id}/>
-                  }
-                })
-                :
-                <>
-                </>
+                  })
+                  :
+                  <>
+                  </>
               }
 
               {
                 (this.weeklyContentCompare(this.dateCreated, this.currentDate) > 14) ?
-                this.props.reduxState.weeklyContentReducer.weeklyContentReducer.map((content) => {
-                  if (
-                    (Number(this.props.reduxState.user.role) === Number(content.role_id)) &&
-                    (Number(this.props.reduxState.user.S1_focus_ages) === Number(content.ageGroup_id)) &&
-                    (Number(3) === Number(content.week))) {
-                    return <CardTemplate content={content} key={content.id}/>
-                  }
-                })
-                :
-                <>
-                </>
+                  this.props.reduxState.weeklyContentReducer.weeklyContentReducer.map((content) => {
+                    if (
+                      (Number(this.props.reduxState.user.role) === Number(content.role_id)) &&
+                      (Number(this.props.reduxState.user.S1_focus_ages) === Number(content.ageGroup_id)) &&
+                      (Number(3) === Number(content.week))) {
+                      return <CardTemplate content={content} key={content.id} />
+                    }
+                  })
+                  :
+                  <>
+                  </>
               }
 
               {
                 (this.weeklyContentCompare(this.dateCreated, this.currentDate) > 21) ?
-                this.props.reduxState.weeklyContentReducer.weeklyContentReducer.map((content) => {
-                  if (
-                    (Number(this.props.reduxState.user.role) === Number(content.role_id)) &&
-                    (Number(this.props.reduxState.user.S1_focus_ages) === Number(content.ageGroup_id)) &&
-                    (Number(4) === Number(content.week))) {
-                    return <CardTemplate content={content} key={content.id}/>
-                  }
-                })
-                :
-                <>
-                </>
+                  this.props.reduxState.weeklyContentReducer.weeklyContentReducer.map((content) => {
+                    if (
+                      (Number(this.props.reduxState.user.role) === Number(content.role_id)) &&
+                      (Number(this.props.reduxState.user.S1_focus_ages) === Number(content.ageGroup_id)) &&
+                      (Number(4) === Number(content.week))) {
+                      return <CardTemplate content={content} key={content.id} />
+                    }
+                  })
+                  :
+                  <>
+                  </>
               }
 
               {
                 (this.weeklyContentCompare(this.dateCreated, this.currentDate) > 28) ?
-                this.props.reduxState.weeklyContentReducer.weeklyContentReducer.map((content) => {
-                  if (
-                    (Number(this.props.reduxState.user.role) === Number(content.role_id)) &&
-                    (Number(this.props.reduxState.user.S1_focus_ages) === Number(content.ageGroup_id)) &&
-                    (Number(5) === Number(content.week))) {
-                    return <CardTemplate content={content} key={content.id}/>
-                  }
-                })
-                :
-                <>
-                </>
+                  this.props.reduxState.weeklyContentReducer.weeklyContentReducer.map((content) => {
+                    if (
+                      (Number(this.props.reduxState.user.role) === Number(content.role_id)) &&
+                      (Number(this.props.reduxState.user.S1_focus_ages) === Number(content.ageGroup_id)) &&
+                      (Number(5) === Number(content.week))) {
+                      return <CardTemplate content={content} key={content.id} />
+                    }
+                  })
+                  :
+                  <>
+                  </>
               }
             </Card.Group>
           </div>
