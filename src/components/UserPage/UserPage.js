@@ -3,6 +3,7 @@ import mountain from './mountain.svg';
 import { connect } from "react-redux";
 import { Card, Icon, Image } from 'semantic-ui-react'
 import withall from './WithAllLogo.png';
+import moment from 'moment';
 
 const margins = {
   margin:'20px'
@@ -12,6 +13,9 @@ class UserPage extends Component {
   handleClick = () => {
      this.props.history.push("/user-preferences");
   }
+
+  dateCreated = moment(this.props.reduxState.user.date_created).format('YYYY MM DD')
+
   render() {
     return (
     <>
@@ -29,7 +33,12 @@ class UserPage extends Component {
       </div>
       <div>
         Comparing date created to current date<br />
+        Moment.js: {moment(this.dateCreated).fromNow(true)}<br />
+        Const dateCreated: {this.dateCreated}
       </div>
+      <pre>
+        {JSON.stringify(this.props.reduxState.user.date_created, null, 2)}
+      </pre>
       
 
     <div style={margins} >
