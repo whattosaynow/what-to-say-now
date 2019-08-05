@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import mountain from './mountain.svg';
 import { connect } from "react-redux";
 import { Card, Icon, Image } from 'semantic-ui-react'
+import Card1 from '../UserPage/Card1';
+import Card2 from '../UserPage/Card2';
+import Card3 from '../UserPage/Card3';
+import Card4 from '../UserPage/Card4';
+import Card5 from '../UserPage/Card5';
 import withall from './WithAllLogo.png';
 import moment from 'moment';
 
@@ -38,8 +43,8 @@ class UserPage extends Component {
               </div>
               <br />
             </header>
-
           </div>
+
           <div>
             Comparing date created to current date<br />
             Moment.js fromNow: {moment(this.dateCreated).fromNow(true)}<br />
@@ -55,119 +60,34 @@ class UserPage extends Component {
           <div style={margins} >
             <Card.Group centered stackable>
               {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 0 ) ?
-                <Card style={{ width: "250px" }} >
-                  <Image src={withall} alt='mountain' wrapped ui={false} />
-                  <Card.Content>
-                    <Card.Header>Week 1</Card.Header>
-                    <Card.Meta>
-                      <span className='date'>Challenge:</span>
-                    </Card.Meta>
-                    <Card.Description>
-                      “Healthy, athletic bodies come in all shapes and sizes.”
-            </Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <a>
-                      <Icon name='user' />
-                      Link to Content
-            </a>
-                  </Card.Content>
-                </Card>
+                <Card1/>
                 :
                 <>
                 </>
               }
               {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 7) ?
-                <Card style={{ width: "250px" }}>
-                  <Image src={withall} alt='mountain' wrapped ui={false} />
-                  <Card.Content>
-                    <Card.Header>Week 2</Card.Header>
-                    <Card.Meta>
-                      <span className='date'>Challenge:</span>
-                    </Card.Meta>
-                    <Card.Description>
-                      “Food is the fuel that powers your mind and body to perform at their best.”
-            </Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <a>
-                      <Icon name='user' />
-                      Link to Content
-            </a>
-                  </Card.Content>
-                </Card>
+                <Card2/>
                 :
                 <>
                 </>
               }
 
               {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 14) ?
-                <Card style={{ width: "250px" }}>
-                  <Image src={withall} alt='mountain' wrapped ui={false} />
-                  <Card.Content>
-                    <Card.Header>Week 3</Card.Header>
-                    <Card.Meta>
-                      <span className='date'>Challenge:</span>
-                    </Card.Meta>
-                    <Card.Description>
-                      "Your brain and body need a variety of activities to be strong.”
-            </Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <a>
-                      <Icon name='user' />
-                      Link to Content
-            </a>
-                  </Card.Content>
-                </Card>
+                <Card3/>
                 :
                 <>
                 </>
               }
 
               {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 21) ?
-                <Card style={{ width: "250px" }}>
-                  <Image src={withall} alt='mountain' wrapped ui={false} />
-                  <Card.Content>
-                    <Card.Header>Week 4</Card.Header>
-                    <Card.Meta>
-                      <span className='date'>Challenge:</span>
-                    </Card.Meta>
-                    <Card.Description>
-                      “You are unique. Your ability to [insert specific attribute] makes us a better team.”
-            </Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <a>
-                      <Icon name='user' />
-                      Link to Content
-            </a>
-                  </Card.Content>
-                </Card>
+                <Card4/>
                 :
                 <>
                 </>
               }
 
               {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 28) ?
-                <Card style={{ width: "250px" }}>
-                  <Image src={withall} alt='mountain' wrapped ui={false} />
-                  <Card.Content>
-                    <Card.Header>Week 5</Card.Header>
-                    <Card.Meta>
-                      <span className='date'>Challenge:</span>
-                    </Card.Meta>
-                    <Card.Description>
-                      “Different types of food are important for your mind and body to work well each day.”
-            </Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <a>
-                      <Icon name='user' />
-                      Link to Content
-            </a>
-                  </Card.Content>
-                </Card>
+                <Card5/>
                 :
                 <>
                 </>
@@ -180,8 +100,6 @@ class UserPage extends Component {
             <button onClick={this.handleClick}>Update My Accout Preferences</button>
           </div>
         </center>
-
-
       </>
 
     );
