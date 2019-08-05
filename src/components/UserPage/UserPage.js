@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import mountain from './mountain.svg';
 import { connect } from "react-redux";
 import { Card, Icon, Image } from 'semantic-ui-react'
 import withall from './WithAllLogo.png';
