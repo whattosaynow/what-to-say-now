@@ -61,7 +61,8 @@ class UserPreferences extends Component {
     //enables user to change email address or cancel change email address
     this.setState({
       ...this.state,
-      enabled: !this.state.enabled
+      enabled: !this.state.enabled,
+      email: this.props.reduxState.user.email,
     })
   }
   render() {
