@@ -1,20 +1,23 @@
-
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
-
--- CREATE TABLE "user" (
---     "id" SERIAL PRIMARY KEY,
---     "username" VARCHAR (80) UNIQUE,
---     "password" VARCHAR (1000)
--- );
-
+--Step 1: Create role table and then insert the values into the table
 CREATE TABLE "role" (
 "id" SERIAL PRIMARY KEY,
 "role_title" VARCHAR
 );
+INSERT INTO "role" ("role_title") VALUES ('Coach');
 
+--Step 2: Create ageGroup table and then insert values into the table
+CREATE TABLE "ageGroup" (
+"id" SERIAL PRIMARY KEY,
+"ages" VARCHAR 
+);
+INSERT INTO "ageGroup"("id", "ages") VALUES (1, '6-9'), (2, '10-13'), (3, '14-18');
+
+--Step 3: Create user table
+--Info from each survey a user does is a part of their profile.
+--For clarity on which survey, a pre-fix for each question was added.
+--S1: Signup survey
+--S2: Post Survey
+--S3: Three month survey
 CREATE TABLE "user" (
 "id" SERIAL PRIMARY KEY,
 "first_name" VARCHAR (80), 
@@ -30,7 +33,6 @@ CREATE TABLE "user" (
 "zip" INT,
 "is_admin" BOOLEAN DEFAULT 'f',
 "date_created" DATE DEFAULT CURRENT_DATE,
-
 "S1_choose_receive" VARCHAR (256),
 "S1_your_gender" VARCHAR (140),
 "S1_your_age" VARCHAR,
@@ -41,7 +43,6 @@ CREATE TABLE "user" (
 "S1_how_did_you_find_us" VARCHAR,
 "S1_why_are_you_participating" VARCHAR,
 "S1_can_we_call_after_completion" VARCHAR,
-
 "S2_challenge_completed" VARCHAR,
 "S2_participating_was_easy" VARCHAR,
 "S2_learned_something_new" VARCHAR,
@@ -52,7 +53,6 @@ CREATE TABLE "user" (
 "S2_affected_ability_interact" VARCHAR,
 "S2_favorite_thing" VARCHAR,
 "S2_call_more_information" VARCHAR,
-
 "S3_continued_impact" VARCHAR,
 "S3_how_impact" VARCHAR,
 "S3_continued_affected_ability_interact" VARCHAR,
@@ -60,11 +60,7 @@ CREATE TABLE "user" (
 "S3_call_more_information" VARCHAR
 );
 
-CREATE TABLE "ageGroup" (
-"id" SERIAL PRIMARY KEY,
-"ages" VARCHAR 
-);
-
+--Step 4: Create the content table
 CREATE TABLE "content" (
 "id" SERIAL PRIMARY KEY,
 "role_id" INT, 
@@ -77,20 +73,7 @@ CREATE TABLE "content" (
 );
 
 
-CREATE TABLE "user_content" (
-"id" SERIAL PRIMARY KEY,
-"user_id" INT REFERENCES "user"(id),
-"content_id" INT REFERENCES "content"(id)
-);
-
-INSERT INTO "public"."ageGroup"("id", "ages") VALUES(1, '6-9') RETURNING "id", "ages";
-INSERT INTO "public"."ageGroup"("id", "ages") VALUES(2, '10-13') RETURNING "id", "ages";
-INSERT INTO "public"."ageGroup"("id", "ages") VALUES(3, '14-18') RETURNING "id", "ages";
-
-INSERT INTO "role" ("role_title")
-VALUES ('Coach');
-
--- entire content table
+--Step 5: Insert all the age group and weekly content for the coaches role
 INSERT INTO "public"."content"("id","role_id","ageGroup_id","week","intro","phrase","why_matters","reflection","action_steps","image")
 VALUES
 (1,1,1,1,E'Thanks for taking the time to be an even better coach by helping your athletes develop healthy relationships with food and their body. You are improving their mental and physical health.',E'"Healthy, athletic bodies come in all shapes and sizes.”',E'"At this age, young athletes are quietly comparing themselves to those around them, forming their own self image. Comparison is natural, but when it happens, kids stop focusing on their own strengths and abilities and risk internalizing unhealthy body images. As a coach, you have a powerful voice at this early stage of the young child developing self-concept when among peers. Your influence right now is really important, so remind them that they don’t have to look a certain way to be a great athlete. Their shape and size is exactly how they should be."',E'Take a moment to think about how well you accept the shape and size of your own body and its abilities. Research has shown that the way adults talk about their own appearance, weight and body shape can strongly influence a child’s feelings about their own body. How might you be communicating your own beliefs with your athletes?',E'Below are suggested action steps you can take with your athletes as you coach them this week. Try one, try them all – it’s up to you. Do what feels right for you and feels relatable to the ages you coach.\n•       Model positive self-talk with your athletes. Avoid saying negative things about your own body, your appearance, or others’ bodies in front of your athletes. \n•    Listen for comments your athletes may make about their bodies, such as negative comments about their own size or shape, or teasing others (even as “good-natured” fun). Step in to say “healthy bodies come in all shapes and sizes; think of ways your body helps you play [your sport] well.” (Depending on the setting and the athletes involved, you may decide to say it to a group, or more quietly to an individual.)\n•    At the beginning or the end of practice, bring your athletes together and tell them that you want them to know appreciating their own bodies is an important part of being a good athlete. You could start by saying how you value that they each are unique, and that healthy athletes come in all shapes and sizes. You could acknowledge that maybe they’ve seen images of athletes or watched a professional sporting event and compared themselves to an athlete that they think is “perfect.” Encourage them to focus on appreciating their own bodies, and invite them to think about or share how their body helps them play their sport well. You can remind them that overemphasizing appearance or trying to change their body shape/size ultimately will detract from their performance.\n\nGood luck with this challenge! Let us know if you have any questions.',E'https://images.unsplash.com/photo-1553519561-0a483bff7e93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80'),
