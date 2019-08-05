@@ -16,6 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 //Pages
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
+import UserPreferences from '../UserPreferences/UserPreferences';
 import InfoPage from '../InfoPage/InfoPage';
 //sign-up survey pages
 import signUp_1 from '../SignUp/signUp_1';
@@ -68,6 +69,7 @@ class App extends Component {
           <>
           <ProtectedRoute exact path="/home" component={UserPage} />
           <ProtectedRoute exact path='/user-profile' component={UserPage}/>
+          <ProtectedRoute exact path='/user-preferences' component={UserPreferences}/>
           <ProtectedRoute exact path="/signup1" component={signUp_1} />
           <ProtectedRoute exact path="/signup2" component={signUp_2} />
           <ProtectedRoute exact path="/signup3" component={signUp_3} />
