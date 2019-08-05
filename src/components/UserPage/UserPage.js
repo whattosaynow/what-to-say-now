@@ -26,7 +26,7 @@ class UserPage extends Component {
 
 
   weeklyContentCompare = (created, current) => {
-    const answer = moment(created).diff(current, 'days');
+    const answer = moment(current).diff(created, 'days');
     return answer
   }
 
