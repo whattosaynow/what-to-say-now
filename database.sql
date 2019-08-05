@@ -37,7 +37,7 @@ CREATE TABLE "user" (
 "S1_years_coaching" VARCHAR,
 "S1_genders_of_athletes" VARCHAR,
 "S1_numbers_of_athletes" VARCHAR,
-"S1_focus_ages" VARCHAR,
+"S1_focus_ages" INT REFERENCES "ageGroup"(id),
 "S1_how_did_you_find_us" VARCHAR,
 "S1_why_are_you_participating" VARCHAR,
 "S1_can_we_call_after_completion" VARCHAR,

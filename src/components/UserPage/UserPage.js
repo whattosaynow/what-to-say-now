@@ -62,12 +62,7 @@ class UserPage extends Component {
 
           <div style={margins} >
             <Card.Group centered stackable>
-              {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 0) ?
                 <Card1 />
-                :
-                <>
-                </>
-              }
               {(this.weeklyContentCompare(this.dateCreated, this.currentDate) > 7) ?
                 <Card2 />
                 :
@@ -97,7 +92,9 @@ class UserPage extends Component {
               }
             </Card.Group>
           </div>
-
+            <pre>
+              {JSON.stringify(this.props.reduxState, null, 2)}
+            </pre>
 
           <div className='bottomDiv'>
             <button onClick={this.handleClick}>Update My Accout Preferences</button>
