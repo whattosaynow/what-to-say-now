@@ -66,12 +66,12 @@ CREATE TABLE "content" (
 "role_id" INT, 
 "ageGroup_id" INT REFERENCES "ageGroup"(id),
 "week" INT, 
-"intro" VARCHAR,
-"phrase" VARCHAR, 
+"intro" VARCHAR, 
+"phrase" VARCHAR,
 "why_matters" VARCHAR, 
 "reflection" VARCHAR,
 "action_steps" VARCHAR,
-"image" VARCHAR,
+"image" VARCHAR
 );
 
 

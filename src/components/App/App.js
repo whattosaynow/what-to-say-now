@@ -5,18 +5,15 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import { connect } from 'react-redux';
-
 import Nav from '../Nav/Nav';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-
 //Pages
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import UserPreferences from '../UserPreferences/UserPreferences';
 import InfoPage from '../InfoPage/InfoPage';
+import ChallengeContent from '../UserPage/ChallengeContent';
 //sign-up survey pages
 import signUp_1 from '../SignUp/signUp_1';
 import signUp_2 from '../SignUp/signUp_2';
@@ -29,12 +26,8 @@ import postSurvey_2 from '../PostSurvey/PostSurvey_2';
 import postSurvey_3 from "../PostSurvey/PostSurvey_3";
 //Admin page
 import Admin from '../Admin/AdminPage';
-
-
 import './App.css';
 import ThreeMonthSurvey from '../ThreeMonthSurvey/ThreeMonthSurvey';
-
-
 
 class App extends Component {
   componentDidMount() {
@@ -51,35 +44,36 @@ class App extends Component {
           {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
           <Route exact path="/about" component={AboutPage} />
-      
+
           {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
           <ProtectedRoute exact path="/info" component={InfoPage} />
 
           {/* Conditionally render which pages are available based on whether user is an admin */}
           {this.props.reduxState.user.is_admin ? (
-          <>
-          {/* routes available to admin */}
-          {/* Admin page */}
-          <ProtectedRoute exact path="/home" component={Admin} />
-          </> 
-          ):(
-          // routes available to user
-          <>
-          <ProtectedRoute exact path="/home" component={UserPage} />
-          <ProtectedRoute exact path='/user-profile' component={UserPage}/>
-          <ProtectedRoute exact path='/user-preferences' component={UserPreferences}/>
-          <Route exact path="/signup1" component={signUp_1} />
-          <Route exact path="/signup2" component={signUp_2} />
-          <Route exact path="/signup3" component={signUp_3} />
-          <Route exact path="/signup4" component={signUp_4} />
-          <Route exact path="/signup5" component={signUp_5} />
-          <ProtectedRoute exact path="/three-month-survey" component={ThreeMonthSurvey} />
-          {/* post survey routes */}
-          <ProtectedRoute exact path="/postsurvey1" component={postSurvey_1} />
-          <ProtectedRoute exact path="/postsurvey2" component={postSurvey_2} />
-          <ProtectedRoute exact path="/postsurvey3" component={postSurvey_3} />
-          </>)}
+            <>
+              {/* routes available to admin */}
+              {/* Admin page */}
+              <ProtectedRoute exact path="/home" component={Admin} />
+            </>
+          ) : (
+              // routes available to user
+              <>
+                <ProtectedRoute exact path="/home" component={UserPage} />
+                <ProtectedRoute exact path='/user-profile' component={UserPage} />
+                <ProtectedRoute exact path='/user-preferences' component={UserPreferences} />
+                <ProtectedRoute exact path='/challenge/:role/:week/:age' component={ChallengeContent} />
+                <Route exact path="/signup1" component={signUp_1} />
+                <Route exact path="/signup2" component={signUp_2} />
+                <Route exact path="/signup3" component={signUp_3} />
+                <Route exact path="/signup4" component={signUp_4} />
+                <Route exact path="/signup5" component={signUp_5} />
+                <ProtectedRoute exact path="/three-month-survey" component={ThreeMonthSurvey} />
+                {/* post survey routes */}
+                <ProtectedRoute exact path="/postsurvey1" component={postSurvey_1} />
+                <ProtectedRoute exact path="/postsurvey2" component={postSurvey_2} />
+                <ProtectedRoute exact path="/postsurvey3" component={postSurvey_3} />
+              </>)}
           {/* If none of the other routes matched, we will show a 404. */}
           <Route render={() => <h1>404</h1>} />
         </Switch>

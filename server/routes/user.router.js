@@ -4,6 +4,7 @@ const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
 
+
 const router = express.Router();
 
 // Handles Axios request for user information if user is authenticated
@@ -12,7 +13,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
-router.get('/content', (req, res) => {
+router.get('/content', rejectUnauthenticated, (req, res) => {
   pool.query(`
   SELECT * FROM "content";
   `).then((result) => {
@@ -20,6 +21,20 @@ router.get('/content', (req, res) => {
   })
       .catch((error) => {
           console.log('error with admin get, error:', error)
+          res.sendStatus(500)
+
+      });
+});
+
+router.get('/weekly/:role/:week/:age', rejectUnauthenticated, (req, res) => {
+  console.log(req.params);
+  pool.query(`
+  SELECT * FROM "content" WHERE ("role_id"=$1 AND "week" = $2 AND "ageGroup_id"=$3);
+  `,[req.params.role, req.params.week, req.params.age]).then((result) => {
+      res.send(result.rows)
+  })
+      .catch((error) => {
+          console.log('error with WEEKLY get, error:', error)
           res.sendStatus(500)
 
       });

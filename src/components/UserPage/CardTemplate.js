@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image } from 'semantic-ui-react';
+import { connect } from "react-redux";
+import { withRouter } from 'react-router';
 
 class CardTemplate extends Component {
+
+    handleClickLink = () => {
+        this.props.history.push(`/challenge/${this.props.content.role_id}/${this.props.content.week}/${this.props.content.ageGroup_id}`);
+    }
 
 
     render() {
@@ -19,7 +25,8 @@ class CardTemplate extends Component {
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                    <a>
+                    {/* change this a a react Link instead of an a tag */}
+                    <a onClick={this.handleClickLink}>
                         <Icon name='user' />
                         Link to Content
                     </a>
@@ -32,5 +39,9 @@ class CardTemplate extends Component {
     }
 }
 
-export default CardTemplate;
 
+const mapStateToProps = reduxState => ({
+    reduxState
+  });
+  
+  export default withRouter(connect(mapStateToProps)(CardTemplate));

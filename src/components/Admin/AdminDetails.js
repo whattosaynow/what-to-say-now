@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
+//semantic-ui
+import { Button } from "semantic-ui-react";
+
 class AdminDetails extends Component {
 
   objectToCsv = (data) => {
@@ -39,10 +42,20 @@ class AdminDetails extends Component {
 
   render() {
     return (
-      <div>
-        <p>
-          <button onClick={() => this.objectToCsv(this.props.reduxState.adminReducer.csvReducer)}>Click here to download CSV of user data</button>
-        </p>
+      <div className="csvDiv">
+        <center>
+          <p className="csvInner">
+            <Button
+              onClick={() =>
+                this.objectToCsv(
+                  this.props.reduxState.adminReducer.csvReducer
+                )
+              }
+            >
+              Click here to download CSV of user data
+            </Button>
+          </p>
+        </center>
       </div>
     );
   }

@@ -16,3 +16,26 @@
     display: flex;
     justify-content: space-around;
 }
+
+/* styling for AdminCharts.js */
+.chartDiv {
+    width: 80%;
+    margin: auto;
+    overflow-y: scroll;
+    height: 500px;
+}
+
+.chartDiv h2 {
+    text-align: center;
+    
+}
+
+/* styling for AdminDetails.js */
+.csvDiv {
+    width: 80%;
+    margin: auto;
+}
+
+.csvInner {
+    padding: 20px 20px;
+}
