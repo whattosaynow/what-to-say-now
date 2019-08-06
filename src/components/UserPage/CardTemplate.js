@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 class CardTemplate extends Component {
 
     handleClickLink = () => {
-        this.props.history.push('/challenge');
+        this.props.history.push(`/challenge/${this.props.content.role_id}/${this.props.content.week}/${this.props.content.ageGroup_id}`);
     }
 
 
