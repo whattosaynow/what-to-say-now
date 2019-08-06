@@ -62,7 +62,7 @@ class App extends Component {
                 <ProtectedRoute exact path="/home" component={UserPage} />
                 <ProtectedRoute exact path='/user-profile' component={UserPage} />
                 <ProtectedRoute exact path='/user-preferences' component={UserPreferences} />
-                <ProtectedRoute exact path='/challenge' component={ChallengeContent} />
+                <ProtectedRoute exact path='/challenge/:role/:week/:age' component={ChallengeContent} />
                 <Route exact path="/signup1" component={signUp_1} />
                 <Route exact path="/signup2" component={signUp_2} />
                 <Route exact path="/signup3" component={signUp_3} />
@@ -77,8 +77,6 @@ class App extends Component {
           {/* If none of the other routes matched, we will show a 404. */}
           <Route render={() => <h1>404</h1>} />
         </Switch>
-        {/* <Footer /> */}
-        {/* {JSON.stringify(this.props.reduxState.user, null, 2)} */}
       </Router>
     );
   }

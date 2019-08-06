@@ -28,7 +28,7 @@ class CardTemplate extends Component {
                     <a onClick={this.handleClickLink}>
                         <Icon name='user' />
                         Link to Content
-            </a>
+                    </a>
                 </Card.Content>
             </Card>
 

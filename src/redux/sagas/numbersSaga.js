@@ -4,7 +4,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* getNumbers() {
     try {
         const response = yield axios.get('/api/numbers/numbers');
-        console.log('response', response.data);
         yield put({ type: `SET_NUMBERS`, payload: response.data });
     } catch (error) {
         console.log('numbers request failed', error);

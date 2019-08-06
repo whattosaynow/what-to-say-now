@@ -1,5 +1,4 @@
 const numbersReducer = (state = [], action) => {
-    // console.log('set numbers', action.payload);
 
     switch (action.type) {
         case `SET_NUMBERS`:

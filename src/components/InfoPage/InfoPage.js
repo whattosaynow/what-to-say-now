@@ -17,9 +17,6 @@ handleClick = () => {
           Info Page
         </p>
         <button onClick={this.handleClick}>Send Messages</button>
-        <pre>
-          {JSON.stringify(this.props.state.numbersReducer, null, 2)}
-        </pre>
       </div>
     );
   }

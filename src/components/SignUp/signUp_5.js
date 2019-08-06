@@ -21,14 +21,11 @@ class signUp_5 extends Component {
   }
 
   handleClickBack = () => {
-    console.log('back button clicked!');
     this.props.history.push('/signup4');
   }
 
   handleClickNext = () => {
-    console.log('next button clicked!', this.state);
     let survey2 = Object.keys(this.state);
-    console.log(survey2.length);
     if (survey2.length < 2) {
       alert("Please Answer All Questions")
     } else {
@@ -44,7 +41,6 @@ class signUp_5 extends Component {
       }).then((result) => {
         if (result.value) {
           this.props.dispatch({ type: 'SUBMIT_SIGNUP_ANSWERS', payload: this.props.reduxState.answersReducer.signupReducer })
-          //console.log('true')
           this.props.history.push('/home');
 
         }
@@ -62,9 +58,6 @@ class signUp_5 extends Component {
 
         <div>
           <h2>Personal Information Continued</h2><br />
-          <pre>
-            {JSON.stringify(this.props.reduxState.answersReducer.signupReducer, null, 2)}
-          </pre>
           #. Why are you particpating in the "What to say" Coaches Challenge?<br /><br />
           <label>Choose One</label><br />
           <input onChange={this.handleChange('why_are_you_participating')} type="radio" name="q1" value="I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image." />I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image.<br />

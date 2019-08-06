@@ -7,7 +7,6 @@ class PostSurvey_1 extends Component {
   state = {}
 
   handleChangeFor = (propertyName) => (event) => {
-    console.log(this.state);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value
@@ -15,9 +14,7 @@ class PostSurvey_1 extends Component {
   }
 
   handleClick = () => {
-    console.log('next button clicked!', this.state);
     let survey2 = Object.keys(this.state);
-    console.log(survey2.length);
     if (survey2.length < 4) {
       alert("Please Answer All Questions")
     } else {

@@ -20,14 +20,12 @@ class signUp_1 extends Component {
   }
 
   handleClick = () => {
-    console.log('next is clicked')
     let answers = Object.keys(this.state.newUser)
     let answersLength = answers.length
     if (answersLength < 11) {
       alert('Please complete every answer')
     } else {
       this.props.dispatch({type: 'SET_SIGNUP_ANSWERS', payload: this.state.newUser});
-      console.log('this.state.newUser:', this.state.newUser)
       this.setState({
         newUser: {
           role: 1,
@@ -43,9 +41,6 @@ class signUp_1 extends Component {
     return (
       <center>
         <Header width={'20%'} /><br />
-        <pre>
-          {JSON.stringify(this.state, null, 2)}
-        </pre>
         <div>
           <h2>Personal Information</h2>
           <form id="signUp1" style={{backgroundColor: "white"}}>

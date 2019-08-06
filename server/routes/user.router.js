@@ -13,15 +13,27 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/content', (req, res) => {
-  console.log('api/user/content router get hit')
   pool.query(`
   SELECT * FROM "content";
   `).then((result) => {
-      // console.log(result.rows)
       res.send(result.rows)
   })
       .catch((error) => {
           console.log('error with admin get, error:', error)
+          res.sendStatus(500)
+
+      });
+});
+
+router.get('/weekly/:role/:week/:age', (req, res) => {
+  console.log(req.params);
+  pool.query(`
+  SELECT * FROM "content" WHERE ("role_id"=$1 AND "week" = $2 AND "ageGroup_id"=$3);
+  `,[req.params.role, req.params.week, req.params.age]).then((result) => {
+      res.send(result.rows)
+  })
+      .catch((error) => {
+          console.log('error with WEEKLY get, error:', error)
           res.sendStatus(500)
 
       });

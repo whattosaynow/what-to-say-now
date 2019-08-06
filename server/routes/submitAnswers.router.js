@@ -6,7 +6,6 @@ const {rejectUnauthenticated} = require("../modules/authentication-middleware");
 
 //router for posting Sign Up Survey answers
 router.post("/signup", (req, res) => {
-    console.log('submit answer route hit', req.body);
     const password = encryptLib.encryptPassword(req.body.password);
     pool.query(`
         INSERT INTO "user" (
@@ -55,7 +54,6 @@ router.post("/signup", (req, res) => {
          req.body.can_we_call_after_completion,
          req.body.role
         ]).then((result) => {
-        console.log(result)
         res.sendStatus(201)})
         .catch((error) => {
         console.log('error with INSERT INTO, error:', error)
@@ -63,10 +61,7 @@ router.post("/signup", (req, res) => {
 })});
 
 router.post("/postSurvey", rejectUnauthenticated, (req, res) => {
-    console.log(req.body);
-    console.log(req.user);
-    pool
-      .query(
+    pool.query(
         `
       UPDATE "user" SET 
                             "S2_challenge_completed" = $1,
@@ -96,7 +91,6 @@ router.post("/postSurvey", rejectUnauthenticated, (req, res) => {
         ]
       )
       .then(result => {
-        console.log(result);
         res.sendStatus(201);
       })
       .catch(error => {
@@ -110,11 +104,7 @@ router.post("/postSurvey", rejectUnauthenticated, (req, res) => {
 
 
 router.post('/threeMonth', rejectUnauthenticated, (req, res) => {
-    console.log('req.user.id', req.user.id);
-    
-    console.log('submit threeMonth answer route hit', req.body);
-    pool
-    .query(
+    pool.query(
       `
     UPDATE "user" SET 
                           "S3_continued_impact" = $1, 
@@ -135,7 +125,6 @@ router.post('/threeMonth', rejectUnauthenticated, (req, res) => {
       ]
     )
     .then(result => {
-      console.log(result);
       res.sendStatus(201);
     })
     .catch(error => {

@@ -10,9 +10,7 @@ const {rejectUnauthenticated} = require("../modules/authentication-middleware");
  * GET route template
  */
 router.get('/numbers', rejectUnauthenticated, (req, res) => {
-    console.log('number router hit');
     pool.query(`SELECT "numbers" from "dummy_numbers";`).then(response => {
-        console.log('response.rows:', response.rows);
         res.send(response.rows)
     }).catch(error => {
         console.log('error with numbers get router', error);
@@ -21,7 +19,6 @@ router.get('/numbers', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/messages/:id', rejectUnauthenticated, (req, res) => {
-    console.log('messages router hit', req.params.id);
     client.messages.create({
         body: 'Testing',
         from: '+16512731912',

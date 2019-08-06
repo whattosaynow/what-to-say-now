@@ -3,9 +3,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 router.put("/", (req, res) => {
-  console.log("update prefs route hit with:", req.body);
-  pool
-    .query(
+  pool.query(
       `
      UPDATE "user"
         SET "email"=$2,
@@ -18,7 +16,6 @@ router.put("/", (req, res) => {
       ]
     )
     .then(result => {
-      console.log(result);
       res.sendStatus(201);
     })
     .catch(error => {

@@ -12,7 +12,6 @@ class AdminDetails extends Component {
   }
 
   handleClick = (propertyName) => (event) => {
-    console.log('event.target.value:', event.target.value)
     this.setState({
       [propertyName]: event.target.value
     })
@@ -35,32 +34,28 @@ class AdminDetails extends Component {
             <li><button onClick={this.handleClick('week')} value="5">Week 5</button></li>
           </ul>
         </div>
-        {/* <pre>
-          {JSON.stringify(this.state, null, 2)}
-        </pre> */}
         <br /><br />
         <div>
           <ul>
             {this.state.role && this.state.age && this.state.week ?
               <>
                 {this.props.reduxState.adminReducer.editContentReducer.map(content => {
-                  if ((Number(this.state.role) === Number(content.role_id)) && (Number(this.state.age) === Number(content.ageGroup_id)) && (Number(this.state.week) === Number(content.week))) {
-                    return <AdminEditTable content={content} key={content.id}/>
-                  }
+                  return (
+                    (Number(this.state.role) === Number(content.role_id)) &&
+                    (Number(this.state.age) === Number(content.ageGroup_id)) &&
+                    (Number(this.state.week) === Number(content.week)) &&
+                    <AdminEditTable content={content} key={content.id} />
+                  )
                 }
                 )}
               </>
               :
               <>
-              <AdminEditTable />
+                <AdminEditTable />
               </>
             }
           </ul>
         </div>
-
-        {/* <pre>
-          {JSON.stringify(this.props.reduxState.adminReducer.editContentReducer, null, 2)}
-        </pre> */}
       </>
     );
   }
