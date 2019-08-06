@@ -2,7 +2,11 @@
     margin-top: 10px;
 }
 
-.bottomDiv{
+.bottomDiv {
     height: 170px;
     background-color: #FAF0E8;
+}
+
+#signUp1 {
+    margin-bottom: 150px;
 }
