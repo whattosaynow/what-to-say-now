@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const { rejectUnauthenticated } = require("../modules/authentication-middleware");
+const { rejectUnauthenticated, rejectNonAdmin } = require("../modules/authentication-middleware");
 /**
  * GET route template
  */
@@ -21,7 +21,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 /**
  * POST route template
  */
-router.put('/', (req, res) => {
+router.put('/', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`
     UPDATE "content" SET
         "intro" = $1,
@@ -46,7 +46,7 @@ router.put('/', (req, res) => {
         });
 });
 
-router.get('/csv', (req, res) => {
+router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     // console.log('api/csv route hit')
     pool.query(`
     SELECT 
