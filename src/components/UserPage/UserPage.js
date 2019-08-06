@@ -20,8 +20,6 @@ class UserPage extends Component {
   dateCreated = moment(this.props.reduxState.user.date_created).format('YYYY MM DD');
   currentDate = moment().format('YYYY MM DD');
 
-
-
   weeklyContentCompare = (created, current) => {
     const answer = moment(current).diff(created, 'days');
     return answer
