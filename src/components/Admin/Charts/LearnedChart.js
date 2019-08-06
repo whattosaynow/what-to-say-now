@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 //chart-js
 import { Doughnut } from "react-chartjs-2";
 
@@ -16,6 +17,11 @@ class LearnedChart extends Component {
       ]
     }
   };
+
+  componentDidMount() {
+    this.props.dispatch({ type: "GET_LEARNED_DATA" });
+  }
+  
   render() {
     return (
       <div>
@@ -25,4 +31,4 @@ class LearnedChart extends Component {
   }
 }
 
-export default LearnedChart;
+export default connect()(LearnedChart);

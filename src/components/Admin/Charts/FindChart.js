@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 //chart-js
 import { Doughnut } from "react-chartjs-2";
@@ -35,6 +36,11 @@ class FindChart extends Component {
       ]
     }
   };
+
+  componentDidMount() {
+    this.props.dispatch({ type: "GET_FIND_DATA" });
+  }
+
   render() {
     return (
       <div>
@@ -44,4 +50,4 @@ class FindChart extends Component {
   }
 }
 
-export default FindChart;
+export default connect()(FindChart);

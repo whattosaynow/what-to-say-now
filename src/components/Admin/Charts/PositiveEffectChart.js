@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 //chart-js
 import { Doughnut } from "react-chartjs-2";
@@ -18,6 +19,11 @@ class PositiveEffectChart extends Component {
       ]
     }
   };
+
+  componentDidMount() {
+    this.props.dispatch({ type: "GET_POSITIVE_EFFECT_DATA" });
+  }
+
   render() {
     return (
       <div>
@@ -27,4 +33,4 @@ class PositiveEffectChart extends Component {
   }
 }
 
-export default PositiveEffectChart;
+export default connect()(PositiveEffectChart);

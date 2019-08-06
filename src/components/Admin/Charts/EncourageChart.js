@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 //chart-js
 import { Doughnut } from "react-chartjs-2";
@@ -17,6 +18,10 @@ class EncourageChart extends Component {
       ]
     }
   };
+
+  componentDidMount() {
+    this.props.dispatch({ type: "GET_ENCOURAGE_DATA" });
+  }
   render() {
     return (
       <div>
@@ -26,4 +31,4 @@ class EncourageChart extends Component {
   }
 }
 
-export default EncourageChart;
+export default connect()(EncourageChart);
