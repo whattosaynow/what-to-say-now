@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Icon } from 'semantic-ui-react';
-import moment from 'moment';
 
 
 const name = {
-  fontSize: '50px'
+  fontSize: '45px',
+  height: '55px'
 }
 
 const welcomeDiv = {
@@ -64,13 +64,13 @@ class ChallengeContent extends Component {
     return (
 
       <center >
-        <pre>
-        {JSON.stringify(this.state, null, 2)}
+        {/* <pre>
+        {/* {JSON.stringify(this.state, null, 2)} */}
           {/* {JSON.stringify(this.props, null, 2)} */}
           {/* {JSON.stringify(this.props.reduxState.weeklyContentReducer.weeklyChallengeReducer, null, 2)} */}
-        </pre>
+        {/* </pre> */} 
         <header style={name} className="sign-up-header">
-          Hello {this.props.reduxState.user.first_name}<br />
+          Hello {this.props.reduxState.user.first_name}! <br />
           <div className="outerBar" style={this.outerBar}>
             <div className="innerBar" style={this.innerBar}></div>
           </div>
