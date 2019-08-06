@@ -46,7 +46,7 @@ router.put('/', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
         });
 });
 
-router.get('/csv', (req, res) => {
+router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     // console.log('api/csv route hit')
     pool.query(`
     SELECT 
