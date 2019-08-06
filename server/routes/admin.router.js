@@ -2,9 +2,8 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated, rejectNonAdmin } = require("../modules/authentication-middleware");
-/**
- * GET route template
- */
+
+//this route will get all the content(info for each role, week, and ageGroup) from the content table
 router.get('/', rejectUnauthenticated, (req, res) => {
     pool.query(`
     SELECT * FROM "content";
@@ -18,9 +17,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         });
 })
 
-/**
- * POST route template
- */
+//this route will update the content table's intro/phrase/etc. columns based on changes from the admin edit page.
+//it uses the id to target the specific row to change since every different combination of role/week/ageGroup have their own unique ID
 router.put('/', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`
     UPDATE "content" SET
@@ -46,6 +44,7 @@ router.put('/', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
         });
 });
 
+//this route will get of the information from the user table EXCEPT passwords so it can be used to create a CSV for the admin
 router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     // console.log('api/csv route hit')
     pool.query(`

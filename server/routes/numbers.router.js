@@ -6,9 +6,6 @@ const authToken = process.env.TWILIO_AUTH_TOKEN
 const client = require('twilio')(accountSid, authToken);
 const {rejectUnauthenticated} = require("../modules/authentication-middleware");
 
-/**
- * GET route template
- */
 router.get('/numbers', rejectUnauthenticated, (req, res) => {
     pool.query(`SELECT "numbers" from "dummy_numbers";`).then(response => {
         res.send(response.rows)

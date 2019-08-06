@@ -3,8 +3,6 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
-
-
 const router = express.Router();
 
 // Handles Ajax request for user information if user is authenticated
@@ -13,6 +11,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
+//this route gets all the content from the content table to map over based on user info
 router.get('/content', rejectUnauthenticated, (req, res) => {
   pool.query(`
   SELECT * FROM "content";
