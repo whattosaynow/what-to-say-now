@@ -1,5 +1,5 @@
 import axios from "axios";
-import { put, takeEvery, takeLatest } from "redux-saga/effects";
+import { put, takeLatest } from "redux-saga/effects";
 
 function* setAdminEdit(action) {
     try {
@@ -20,9 +20,19 @@ function* updateUserContent(action){
     }
 }
 
+function* getCsv() {
+    try {
+      const response = yield axios.get('/api/admin/csv');
+      yield put({ type: 'SET_CSV', payload: response.data });
+    } catch (error) {
+      console.log('csv get request failed', error);
+    }
+  }
+
 function* adminSaga() {
     yield takeLatest(`GET_EDIT_CONTENT`, setAdminEdit);
-    yield takeLatest(`UPDATE_CONTENT`, updateUserContent)
+    yield takeLatest(`UPDATE_CONTENT`, updateUserContent);
+    yield takeLatest('GET_CSV', getCsv);
 }
 
 export default adminSaga;

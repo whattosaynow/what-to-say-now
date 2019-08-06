@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 //semantic-ui
 import { Input } from "semantic-ui-react";
 import { Button } from "semantic-ui-react";
-import { thisExpression } from "@babel/types";
 //sweetAlert
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
