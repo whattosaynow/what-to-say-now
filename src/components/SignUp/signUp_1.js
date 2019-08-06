@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './signUp.css';
 
 //component
 import Header from './signUp_header';
+
+//semantic-ui
+import { Input, Button } from "semantic-ui-react";
 
 
 class signUp_1 extends Component {
@@ -44,20 +48,21 @@ class signUp_1 extends Component {
         <div>
           <h2>Personal Information</h2>
           <form id="signUp1" style={{backgroundColor: "white"}}>
-            <input onChange={this.handleChange('first_name')} label="First Name" placeholder="First Name" value={this.state.value}></input><br />
-            <input onChange={this.handleChange('last_name')} label="Last Name" placeholder="Last Name" value={this.state.value}></input><br />
-            <input onChange={this.handleChange('username')} label="Username" placeholder="Username" value={this.state.value}></input><br />
-            <input onChange={this.handleChange('email')} label="Email" placeholder="Email" value={this.state.value}></input><br />
-            <input onChange={this.handleChange('password')} type="password" label="Password" placeholder="Password" value={this.state.value}></input><br />
-            <input onChange={this.handleChange('phone_number')} label="Phone Number" placeholder="Phone Number" value={this.state.value}></input><br />
-            <input onChange={this.handleChange('street_address')} label="Street Address" placeholder="Street Address" value={this.state.value}></input><br />
-            <input onChange={this.handleChange('city')} label="City" placeholder="City" value={this.state.value}></input><br />
-            <input onChange={this.handleChange('state')} label="State" placeholder="State" value={this.state.value}></input><br />
-            <input onChange={this.handleChange('zip')} label="Zip" placeholder="Zip" value={this.state.value}></input><br />
+            <Input onChange={this.handleChange('first_name')}  placeholder="First Name" value={this.state.value}></Input><br />
+            <Input onChange={this.handleChange('last_name')}  placeholder="Last Name" value={this.state.value}></Input><br />
+            <Input onChange={this.handleChange('username')} placeholder="Username" value={this.state.value}></Input><br />
+            <Input onChange={this.handleChange('email')} placeholder="Email" value={this.state.value}></Input><br />
+            <Input onChange={this.handleChange('password')} type="password" placeholder="Password" value={this.state.value}></Input><br />
+            <Input onChange={this.handleChange('phone_number')}  placeholder="Phone Number" value={this.state.value}></Input><br />
+            <Input onChange={this.handleChange('street_address')}  placeholder="Street Address" value={this.state.value}></Input><br />
+            <Input onChange={this.handleChange('city')}  placeholder="City" value={this.state.value}></Input><br />
+            <Input onChange={this.handleChange('state')}  placeholder="State" value={this.state.value}></Input><br />
+            <Input onChange={this.handleChange('zip')}  placeholder="Zip" value={this.state.value}></Input><br />
           </form>
         </div><br /><br /><br />
-        <div className="bottom-signup">
-          <button onClick={this.handleClick}>Next</button>
+
+        <div className="bottomDiv">
+          <Button onClick={this.handleClick} className="next-button">Next</Button>
         </div>
 
       </center>
