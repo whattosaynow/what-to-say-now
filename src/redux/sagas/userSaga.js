@@ -27,13 +27,25 @@ function* fetchUser() {
 function* setUserContent(action) {
   try {
       const response = yield axios.get('/api/user/content');
-      yield put ({type: 'SET_WEEKLY_CONTENT', payload: response.data})
+      yield put ({type: 'SET_USER_CONTENT', payload: response.data})
   } catch (error) {
       console.log('error with setAdminEdit saga,', error);
   }
 }
 
+function* getWeeklyContent(action) {
+  try {
+    const response = yield axios.get(`/api/user/weekly/${action.payload.role}/${action.payload.week}/${action.payload.age}`);
+    yield put ({type: 'SET_WEEKLY_CONTENT', payload: response.data})
+    console.log(response.data);
+    
+  } catch (error) {
+    console.log('error with setAdminEdit saga,', error);
+}
+}
+
 function* userSaga() {
+  yield takeLatest('GET_WEEKLY', getWeeklyContent)
   yield takeLatest('FETCH_USER', fetchUser);
   yield takeLatest('GET_CONTENT', setUserContent)
 }

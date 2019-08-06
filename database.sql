@@ -67,9 +67,11 @@ CREATE TABLE "content" (
 "ageGroup_id" INT REFERENCES "ageGroup"(id),
 "week" INT, 
 "intro" VARCHAR, 
+"phrase" VARCHAR,
 "why_matters" VARCHAR, 
 "reflection" VARCHAR,
-"action_steps" VARCHAR
+"action_steps" VARCHAR,
+"image" VARCHAR
 );
 
 

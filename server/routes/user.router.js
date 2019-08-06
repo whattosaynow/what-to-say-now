@@ -25,6 +25,20 @@ router.get('/content', (req, res) => {
       });
 });
 
+router.get('/weekly/:role/:week/:age', (req, res) => {
+  console.log(req.params);
+  pool.query(`
+  SELECT * FROM "content" WHERE ("role_id"=$1 AND "week" = $2 AND "ageGroup_id"=$3);
+  `,[req.params.role, req.params.week, req.params.age]).then((result) => {
+      res.send(result.rows)
+  })
+      .catch((error) => {
+          console.log('error with WEEKLY get, error:', error)
+          res.sendStatus(500)
+
+      });
+});
+
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
