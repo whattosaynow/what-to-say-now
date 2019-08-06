@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { whileStatement } from '@babel/types';
+import { connect } from "react-redux";
+import { Icon } from 'semantic-ui-react';
+import moment from 'moment';
 
 const name = {
   fontSize: '50px'
@@ -12,8 +14,7 @@ const welcomeDiv = {
 const matter = {
   backgroundColor:'#35297f',
   color: 'white',
-  margin: 0,
-  padding: 0
+  margin: '0',
 }
 
 const dropDownDiv = {
@@ -29,7 +30,12 @@ const quote = {
 }
 
 
-class ChallegeContent extends Component {
+class ChallengeContent extends Component {
+
+  componentDidMount() {
+    this.props.dispatch({ type: 'GET_CONTENT' })
+  }
+
   render() {
     return (
       <center >
@@ -50,14 +56,15 @@ class ChallegeContent extends Component {
               You are improving their mental and physical health.
              </p>
             <h2>This week's "What to Say" phrase is : </h2>
+            
             <p>{/* Use prop here*/}</p>
           </div>
-          <div  className='dropDownDiv'>
-            <h2 style={matter}>Why does this phrase matter?</h2>
+          <div className='dropDownDiv'>
+            <h2 style={matter}>Why does this phrase matter? <Icon name='chevron down'/></h2>
             <p style={dropDownDiv} >{/* Use conditional prop here*/}</p>
-            <h2 style={matter}>For your own reflection</h2>
+            <h2 style={matter}>For your own reflection <Icon name='chevron down'/></h2>
             <p style={dropDownDiv} >{/* Use conditional prop here*/}</p>
-            <h2 style={matter}>Action steps options</h2>
+            <h2 style={matter}>Action steps options <Icon name='chevron down'/></h2>
             <p style={dropDownDiv} >{/* Use conditional prop here*/}</p>
           </div>
           <div className="postDiv">
@@ -73,4 +80,8 @@ class ChallegeContent extends Component {
   }
 }
 
-export default ChallegeContent;
+const mapStateToProps = (reduxState) => ({
+  reduxState,
+});
+
+export default connect(mapStateToProps)(ChallengeContent);
