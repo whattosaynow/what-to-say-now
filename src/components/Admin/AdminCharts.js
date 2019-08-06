@@ -5,7 +5,17 @@ import { Doughnut, Bar } from "react-chartjs-2";
 //semantic-ui
 import { Grid } from "semantic-ui-react";
 
-class PostSurvey_1 extends Component {
+class AdminCharts extends Component {
+
+  componentDidMount() {
+    this.getChartData();
+  }
+
+
+  getChartData = () => {
+    this.props.dispatch({type: 'GET_CHART_DATA'})
+  }
+
   state = {
     //this is an example of how data must be formatted
     ageData: {
@@ -141,4 +151,4 @@ class PostSurvey_1 extends Component {
   }
 }
 
-export default PostSurvey_1;
+export default AdminCharts;

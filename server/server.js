@@ -15,6 +15,7 @@ const submitAnswersRouter = require('./routes/submitAnswers.router');
 const adminRouter = require('./routes/admin.router');
 const updateUserPrefsRouter = require('./routes/updateUserPrefs.router');
 const deleteAccountRouter = require('./routes/deleteAccount.router');
+const chartsRouter = require('./routes/charts.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -34,6 +35,7 @@ app.use('/api/answer', submitAnswersRouter);
 app.use('/api/admin', adminRouter);
 app.use("/api/update-user-prefs", updateUserPrefsRouter);
 app.use('/api/delete-account', deleteAccountRouter);
+app.use('/api/charts', chartsRouter);
 
 // Serve static files
 app.use(express.static('build'));
