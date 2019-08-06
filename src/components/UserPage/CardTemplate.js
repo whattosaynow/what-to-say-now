@@ -25,6 +25,7 @@ class CardTemplate extends Component {
                     </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
+                    {/* change this a a react Link instead of an a tag */}
                     <a onClick={this.handleClickLink}>
                         <Icon name='user' />
                         Link to Content

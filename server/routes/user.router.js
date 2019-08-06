@@ -4,6 +4,7 @@ const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
 
+
 const router = express.Router();
 
 // Handles Ajax request for user information if user is authenticated
@@ -12,7 +13,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
-router.get('/content', (req, res) => {
+router.get('/content', rejectUnauthenticated, (req, res) => {
   pool.query(`
   SELECT * FROM "content";
   `).then((result) => {
@@ -25,7 +26,7 @@ router.get('/content', (req, res) => {
       });
 });
 
-router.get('/weekly/:role/:week/:age', (req, res) => {
+router.get('/weekly/:role/:week/:age', rejectUnauthenticated, (req, res) => {
   console.log(req.params);
   pool.query(`
   SELECT * FROM "content" WHERE ("role_id"=$1 AND "week" = $2 AND "ageGroup_id"=$3);

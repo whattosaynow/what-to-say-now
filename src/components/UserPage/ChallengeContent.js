@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Icon } from 'semantic-ui-react';
-import moment from 'moment';
-
 
 const name = {
   fontSize: '50px'
@@ -44,21 +42,12 @@ class ChallengeContent extends Component {
     this.props.dispatch({ type: 'GET_WEEKLY', payload: this.props.match.params })
   }
 
-  handleWhy = (propertyName) => {
+  handleDrop = (propertyName) => {
     this.setState({
-      [propertyName]: !this.state.why_matters
+      [propertyName]: !this.state[propertyName]
     })
   }
-  handleReflect = (propertyName) => {
-    this.setState({
-      [propertyName]: !this.state.reflection
-    })
-  }
-  handleAction = (propertyName) => {
-    this.setState({
-      [propertyName]: !this.state.action_steps
-    })
-  }
+  
 
   render() {
     return (
@@ -87,30 +76,30 @@ class ChallengeContent extends Component {
                 <div className='dropDownDiv'>
 
                   {this.state.why_matters ?
-                    <><h2 onClick={() => { this.handleWhy('why_matters') }} style={matter}>Why does this phrase matter? <Icon name='chevron right' /></h2>
+                    <><h2 onClick={() => { this.handleDrop('why_matters') }} style={matter}>Why does this phrase matter? <Icon name='chevron right' /></h2>
 
                       <p style={dropDownDiv} >{info.why_matters}</p></>
                     :
                     <>
-                      <h2 onClick={() => { this.handleWhy('why_matters') }} style={matter}>Why does this phrase matter? <Icon name='chevron down' /></h2>
+                      <h2 onClick={() => { this.handleDrop('why_matters') }} style={matter}>Why does this phrase matter? <Icon name='chevron down' /></h2>
                     </>}
                   {this.state.reflection ?
                     <>
-                      <h2 onClick={() => { this.handleReflect('reflection') }} style={matter}>For your own reflection <Icon name='chevron right' /></h2>
+                      <h2 onClick={() => { this.handleDrop('reflection') }} style={matter}>For your own reflection <Icon name='chevron right' /></h2>
                       <p style={dropDownDiv} >{info.reflection}</p>
                     </>
                     :
                     <>
-                      <h2 onClick={() => { this.handleReflect('reflection') }} style={matter}>For your own reflection <Icon name='chevron down' /></h2>
+                      <h2 onClick={() => { this.handleDrop('reflection') }} style={matter}>For your own reflection <Icon name='chevron down' /></h2>
                     </>}
                   {this.state.action_steps ?
                     <>
-                      <h2 onClick={() => { this.handleAction('action_steps') }} style={matter}>Action steps options <Icon name='chevron right' /></h2>
+                      <h2 onClick={() => { this.handleDrop('action_steps') }} style={matter}>Action steps options <Icon name='chevron right' /></h2>
                       <pre style={dropDownDiv} >{info.action_steps}</pre>
                     </>
                     :
                     <>
-                      <h2 onClick={() => { this.handleAction('action_steps') }} style={matter}>Action steps options <Icon name='chevron down' /></h2>
+                      <h2 onClick={() => { this.handleDrop('action_steps') }} style={matter}>Action steps options <Icon name='chevron down' /></h2>
                     </>}
                 </div>
                 <div className="postDiv">
