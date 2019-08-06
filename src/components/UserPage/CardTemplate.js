@@ -22,7 +22,7 @@ class CardTemplate extends Component {
                     <a>
                         <Icon name='user' />
                         Link to Content
-            </a>
+                    </a>
                 </Card.Content>
             </Card>
 
