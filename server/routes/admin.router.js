@@ -100,4 +100,18 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     })
 });
 
+
+// router.get('/charts', (req, res) => {
+//     pool.query(`SELECT "S1_focus_ages", "S1_how_did_you_find_us" from "user", "S2_focus_ages", 
+//     "S2_would_encourage", "S2_affected_ability_interact" from "user";`
+//                 ).then(response => {
+//                     console.log('response.rows:', response.rows)
+//                     res.send(response.rows)
+//                 }
+//                 ).catch(error => {
+//                     console.log('error with csv get router,', error)
+//                     res.sendStatus(500);
+//                 })
+// }); 
+
 module.exports = router;
