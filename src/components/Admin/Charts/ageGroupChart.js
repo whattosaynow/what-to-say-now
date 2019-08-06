@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 //chart-js
 import { Doughnut } from "react-chartjs-2";
@@ -26,13 +27,18 @@ class AgeGroupChart extends Component {
       ]
     }
   };
+
+  componentDidMount() {
+    this.props.dispatch({ type: "GET_AGE_GROUP_DATA" });
+  }
+
   render() {
     return (
       <div>
-        <Doughnut data={this.state.ageData}/>
+        <Doughnut data={this.state.ageData} />
       </div>
     );
   }
 }
 
-export default AgeGroupChart;
+export default connect()(AgeGroupChart);
