@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+
+//chart-js
 import { Doughnut, Bar } from "react-chartjs-2";
+//semantic-ui
+import { Grid } from "semantic-ui-react";
 
 class PostSurvey_1 extends Component {
   state = {
@@ -94,21 +98,44 @@ class PostSurvey_1 extends Component {
   };
   render() {
     return (
-      <div>
-        {/* this is how to create a chart.js component and source in the data */}
-        <h2>Age Groups Targeted</h2>
-        <Bar data={this.state.ageData} />
-        <h2>How users found the challenge</h2>
-        <Doughnut data={this.state.findData} />
-        <h2>I learned something new from participating in the Challenge</h2>
-        <Doughnut data={this.state.learnedData} />
-        <h2>I would encourage another coach I know to do the Challenge</h2>
-        <Doughnut data={this.state.encourageData} />
-        <h2>
-          The Challenge tools have positively affected my ability to
-          interact with my team about body and food
-        </h2>
-        <Doughnut data={this.state.positiveEffectData} />
+      <div className="chartDiv">
+        <Grid columns={2}>
+          <Grid.Row>
+            <Grid.Column>
+              <h2>Age Groups Targeted</h2>
+              <Bar data={this.state.ageData} />
+            </Grid.Column>
+            <Grid.Column>
+              <h2>How users found the challenge</h2>
+              <Doughnut data={this.state.findData} />
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row>
+            <Grid.Column>
+              <h2>
+                I learned something new from participating in the Challenge
+              </h2>
+              <Doughnut data={this.state.learnedData} />
+            </Grid.Column>
+            <Grid.Column>
+              <h2>
+                I would encourage another coach I know to do the Challenge
+              </h2>
+              <Doughnut data={this.state.encourageData} />
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row>
+            <Grid.Column>
+              <h2>
+                The Challenge tools have positively affected my ability to
+                interact with my team about body and food
+              </h2>
+              <Doughnut data={this.state.positiveEffectData} />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </div>
     );
   }
