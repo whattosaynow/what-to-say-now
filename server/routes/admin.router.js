@@ -49,7 +49,7 @@ router.put('/', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
 });
 
 //this route will get of the information from the user table EXCEPT passwords so it can be used to create a CSV for the admin
-router.get('/csv', (req, res) => {
+router.get('/csv', rejectUnauthenticated, rejectNonAdminm, (req, res) => {
     // console.log('api/csv route hit')
     pool.query(`
     SELECT 
