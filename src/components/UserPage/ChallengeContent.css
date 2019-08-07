@@ -1,0 +1,41 @@
+html {
+    font-family: Poppins, Libre Franklin, Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 15px;
+    padding: 0px;
+}
+
+pre {
+    font-family: Libre Franklin;
+    max-width: 1400px;
+}
+
+#phrase {
+    color:#ff6624;
+    margin-bottom: 10px;
+    margin-top: -10px;
+    font-size: 20px;
+    font-style: italic; 
+}
+
+#intro{
+    font-size: 18px;
+    max-width: 1000px;
+}
+
+.dropdowns {
+    font-size: 18px;
+    padding: 15px 15px 15px 15px;
+
+  
+}
+
+.backgroundDiv{
+    background-color:  #faf0e8;
+}
+
+.sign-up-header {
+    font-size: '45px';
+    height: '55px';
+
+}
+

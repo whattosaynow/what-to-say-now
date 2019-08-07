@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
+
 class AdminEditTable extends Component {
   state = {
-    ...this.props.content
+    ...this.props.content,
   }
 
   handleChange = (properyName) => (event) => {
@@ -27,7 +28,7 @@ class AdminEditTable extends Component {
   render() {
     return (
       <>
-        <li>Week {this.state.week}</li><br />
+        <li>Week {this.state.week}</li><br /><br />
         <button onClick={this.handleSubmit}>Submit</button><br />br />
         This week's "What to Say" phrase is:<br />
         <textarea rows="10" cols="200" onChange={this.handleChange('intro')} value={this.state.intro}></textarea><br />

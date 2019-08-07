@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Icon } from 'semantic-ui-react';
+import './ChallengeContent.css'
+
 
 const name = {
-  fontSize: '50px'
+  fontSize: '45px',
+  height: '55px',
 }
 
 const welcomeDiv = {
@@ -47,14 +50,14 @@ class ChallengeContent extends Component {
       [propertyName]: !this.state[propertyName]
     })
   }
-  
+
 
   render() {
     return (
 
       <center >
         <header style={name} className="sign-up-header">
-          Hello {this.props.reduxState.user.first_name}<br />
+          Hello {this.props.reduxState.user.first_name}! <br />
           <div className="outerBar" style={this.outerBar}>
             <div className="innerBar" style={this.innerBar}></div>
           </div>
@@ -67,50 +70,47 @@ class ChallengeContent extends Component {
                 <div style={welcomeDiv} className='welcomeDiv'>
                   <h2 className='welcomeWeek'>Welcome to Week
             <span className='weekNumber'> {info.week} </span>
-                    of the "What to Say" Coaches Challenge!</h2>
-                  <p>{info.intro}</p>
-                  <h2>This week's "What to Say" phrase is : </h2>
+              of the "What to Say" Coaches Challenge!</h2>
+            <p id='intro'>{info.intro}</p>
+            <h2 >This week's "What to Say" phrase is : </h2>
 
-                  <p> {info.phrase} </p>
-                </div>
-                <div className='dropDownDiv'>
+            <p id='phrase'> {info.phrase} </p>
+          </div>
+          <div className='dropDownDiv'>
 
-                  {this.state.why_matters ?
-                    <><h2 onClick={() => { this.handleDrop('why_matters') }} style={matter}>Why does this phrase matter? <Icon name='chevron right' /></h2>
-
-                      <p style={dropDownDiv} >{info.why_matters}</p></>
-                    :
-                    <>
-                      <h2 onClick={() => { this.handleDrop('why_matters') }} style={matter}>Why does this phrase matter? <Icon name='chevron down' /></h2>
-                    </>}
-                  {this.state.reflection ?
-                    <>
-                      <h2 onClick={() => { this.handleDrop('reflection') }} style={matter}>For your own reflection <Icon name='chevron right' /></h2>
-                      <p style={dropDownDiv} >{info.reflection}</p>
-                    </>
-                    :
-                    <>
-                      <h2 onClick={() => { this.handleDrop('reflection') }} style={matter}>For your own reflection <Icon name='chevron down' /></h2>
-                    </>}
-                  {this.state.action_steps ?
-                    <>
-                      <h2 onClick={() => { this.handleDrop('action_steps') }} style={matter}>Action steps options <Icon name='chevron right' /></h2>
-                      <pre style={dropDownDiv} >{info.action_steps}</pre>
-                    </>
-                    :
-                    <>
-                      <h2 onClick={() => { this.handleDrop('action_steps') }} style={matter}>Action steps options <Icon name='chevron down' /></h2>
-                    </>}
-                </div>
-                <div className="postDiv">
-                  <h2 style={goodLuck} >Good luck with this challenge!  Email any questions or suggestions to us</h2>
-                  <h2 style={quote}>"A good coach can change a game.  A great coach can change a life."
-                    -John Wooden
+            <h2 style={matter}>Why does this phrase matter? <Icon onClick={() => { this.handleWhy('why_matters')}} name='chevron down' /></h2>
+            {this.state.why_matters ?
+            <div className='backgroundDiv'>
+            <p className='dropdowns' style={dropDownDiv} >{info.why_matters}</p>
+            </div>
+            :
+            <>
+            </>}
+            <h2 style={matter}>For your own reflection <Icon onClick={() => {this.handleReflect('reflection')}} name='chevron down' /></h2>
+            {this.state.reflection ? 
+            <div className='backgroundDiv'>
+            <p className='dropdowns' style={dropDownDiv} >{info.reflection}</p>
+            </div>
+            :
+            <>
+            </>}
+            <h2 style={matter}>Action steps options <Icon onClick={() => {this.handleAction('action_steps')}} name='chevron down' /></h2>
+            {this.state.action_steps ?
+            <div className='backgroundDiv'>
+            <pre className='dropdowns'  >{info.action_steps}</pre>
+            </div>
+            :
+            <>
+            </> }
+          </div>
+          <div className="postDiv">
+            <h2 style={goodLuck} >Good luck with this challenge!  Email any questions or suggestions to us</h2>
+            <h2 style={quote}>"A good coach can change a game.  A great coach can change a life."
+              -John Wooden
             </h2>
-                </div>
-              </div>
-            )
-          })}
+          </div>
+          </div>
+           ) })}
 
         </main>
       </center>
