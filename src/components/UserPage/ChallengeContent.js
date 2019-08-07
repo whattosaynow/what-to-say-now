@@ -70,47 +70,56 @@ class ChallengeContent extends Component {
                 <div style={welcomeDiv} className='welcomeDiv'>
                   <h2 className='welcomeWeek'>Welcome to Week
             <span className='weekNumber'> {info.week} </span>
-              of the "What to Say" Coaches Challenge!</h2>
-            <p id='intro'>{info.intro}</p>
-            <h2 >This week's "What to Say" phrase is : </h2>
+                    of the "What to Say" Coaches Challenge!</h2>
+                  <p id='intro'>{info.intro}</p>
+                  <h2 >This week's "What to Say" phrase is : </h2>
 
-            <p id='phrase'> {info.phrase} </p>
-          </div>
-          <div className='dropDownDiv'>
-
-            <h2 style={matter}>Why does this phrase matter? <Icon onClick={() => { this.handleWhy('why_matters')}} name='chevron down' /></h2>
-            {this.state.why_matters ?
-            <div className='backgroundDiv'>
-            <p className='dropdowns' style={dropDownDiv} >{info.why_matters}</p>
-            </div>
-            :
-            <>
-            </>}
-            <h2 style={matter}>For your own reflection <Icon onClick={() => {this.handleReflect('reflection')}} name='chevron down' /></h2>
-            {this.state.reflection ? 
-            <div className='backgroundDiv'>
-            <p className='dropdowns' style={dropDownDiv} >{info.reflection}</p>
-            </div>
-            :
-            <>
-            </>}
-            <h2 style={matter}>Action steps options <Icon onClick={() => {this.handleAction('action_steps')}} name='chevron down' /></h2>
-            {this.state.action_steps ?
-            <div className='backgroundDiv'>
-            <pre className='dropdowns'  >{info.action_steps}</pre>
-            </div>
-            :
-            <>
-            </> }
-          </div>
-          <div className="postDiv">
-            <h2 style={goodLuck} >Good luck with this challenge!  Email any questions or suggestions to us</h2>
-            <h2 style={quote}>"A good coach can change a game.  A great coach can change a life."
-              -John Wooden
+                  <p id='phrase'> {info.phrase} </p>
+                </div>
+                <div className='dropDownDiv'>
+                  {this.state.why_matters ?
+                    <>
+                      <h2 onClick={() => { this.handleDrop('why_matters') }} style={matter}>Why does this phrase matter? <Icon name='chevron up' /></h2>
+                      <div className='backgroundDiv'>
+                        <p className='dropdowns' style={dropDownDiv} >{info.why_matters}</p>
+                      </div>
+                    </>
+                    :
+                    <>
+                      <h2 onClick={() => { this.handleDrop('why_matters') }} style={matter}>Why does this phrase matter? <Icon name='chevron down' /></h2>
+                    </>}
+                  {this.state.reflection ?
+                    <>
+                      <h2 onClick={() => { this.handleDrop('reflection') }} style={matter}>For your own reflection <Icon name='chevron up' /></h2>
+                      <div className='backgroundDiv'>
+                        <p className='dropdowns' style={dropDownDiv} >{info.reflection}</p>
+                      </div>
+                    </>
+                    :
+                    <>
+                      <h2 onClick={() => { this.handleDrop('reflection') }} style={matter}>For your own reflection <Icon name='chevron down' /></h2>
+                    </>}
+                  {this.state.action_steps ?
+                    <>
+                      <h2 onClick={() => { this.handleDrop('action_steps') }} style={matter}>Action steps options <Icon name='chevron up' /></h2>
+                      <div className='backgroundDiv'>
+                        <pre>{info.action_steps}</pre>
+                      </div>
+                    </>
+                    :
+                    <>
+                      <h2 onClick={() => { this.handleDrop('action_steps') }} style={matter}>Action steps options <Icon name='chevron down' /></h2>
+                    </>}
+                </div>
+                <div className="postDiv">
+                  <h2 style={goodLuck} >Good luck with this challenge!  Email any questions or suggestions to us</h2>
+                  <h2 style={quote}>"A good coach can change a game.  A great coach can change a life."
+                    -John Wooden
             </h2>
-          </div>
-          </div>
-           ) })}
+                </div>
+              </div>
+            )
+          })}
 
         </main>
       </center>

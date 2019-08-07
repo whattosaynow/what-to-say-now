@@ -39,3 +39,15 @@ pre {
 
 }
 
+
+pre {
+    width: inherit;
+    font-family: inherit;
+    white-space: pre-wrap;
+    margin: 0;
+
+    font-size: 18px;
+    padding: 15px 15px 15px 15px;
+
+  }
+
