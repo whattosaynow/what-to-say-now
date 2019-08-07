@@ -7,6 +7,7 @@ import { Button } from "semantic-ui-react";
 
 class AdminDetails extends Component {
 
+  //this function takes in the array and converts it to a csv file
   objectToCsv = (data) => {
     const csvRows = [];
 
@@ -27,6 +28,7 @@ class AdminDetails extends Component {
     return this.download(csvRows.join('\n'));
   }
 
+  //this function takes in the csv and allows you to download. this is called in objectToCsv
   download = (data) => {
     const blob = new Blob([data], {type: 'text/csv'});
     const url = window.URL.createObjectURL(blob);

@@ -10,6 +10,9 @@ const rejectUnauthenticated = (req, res, next) => {
   }
 };
 
+//this middleware checks the user's cookie to see if they are an admin
+//if true, then they can do what's next()
+//if not, then send a 403
 const rejectNonAdmin = (req, res, next) => {
   // check if logged in
   if (req.user.is_admin) {

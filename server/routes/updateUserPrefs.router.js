@@ -2,6 +2,7 @@ const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
 
+//this route will update a users email and their preference on how they want to receive the challenge content link
 router.put("/", (req, res) => {
   pool.query(
       `

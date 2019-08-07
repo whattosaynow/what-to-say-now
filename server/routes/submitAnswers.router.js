@@ -60,6 +60,8 @@ router.post("/signup", (req, res) => {
         res.sendStatus(500)
 })});
 
+
+//this route will update the user table with a users answers for the post survey based on the user ID
 router.post("/postSurvey", rejectUnauthenticated, (req, res) => {
     pool.query(
         `
@@ -102,7 +104,7 @@ router.post("/postSurvey", rejectUnauthenticated, (req, res) => {
 
 
 
-
+//this route will update the user table with a users answers for the three month survey based on the user ID
 router.post('/threeMonth', rejectUnauthenticated, (req, res) => {
     pool.query(
       `
