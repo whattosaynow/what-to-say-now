@@ -28,8 +28,22 @@ class AgeGroupChart extends Component {
     }
   };
 
+  
   componentDidMount() {
     this.props.dispatch({ type: "GET_AGE_GROUP_DATA" });
+    // let ageGroup1 = 0;
+    // let ageGroup2 = 0; 
+    // let ageGroup3 = 0; 
+    // this.props.reduxState.chartReducer.ageGroupReducer.map(object => {
+    //   if (object.S1_focus_ages === 1) {
+    //     ageGroup1 = object.count;
+    //   } else if (object.S1_focus_ages === 2) {
+    //     ageGroup2 = object.count;
+    //   } else if (object.S1_focus_ages === 3) {
+    //     ageGroup3 = object.count;
+    //   }
+    //   console.log(ageGroup1, ageGroup2, ageGroup3);
+    // })
   }
 
   render() {
@@ -41,4 +55,8 @@ class AgeGroupChart extends Component {
   }
 }
 
-export default connect()(AgeGroupChart);
+const mapStateToProps = reduxState => ({
+  reduxState
+});
+
+export default connect(mapStateToProps)(AgeGroupChart);

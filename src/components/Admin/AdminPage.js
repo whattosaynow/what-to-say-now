@@ -31,6 +31,7 @@ class Admin extends Component {
   render() {
     return (
       <>
+      <pre>{JSON.stringify(this.props.reduxState.chartReducer, null, 2)}</pre> 
         <div className="links">
           <h2>
             <ul className="nav-list">

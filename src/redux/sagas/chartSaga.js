@@ -3,7 +3,10 @@ import { put, takeLatest } from "redux-saga/effects";
 
 
 function* getAgeGroupData(){
-    console.log('getAgeGroupData saga hit');
+    // console.log('getAgeGroupData saga hit');
+    const getResponse = yield axios.get('/api/charts/ageGroups');
+    // console.log(getResponse.data);
+    yield put({type: `SET_AGE_GROUP_DATA`, payload: getResponse.data})
 }
 
 function* getEncourageData(){
