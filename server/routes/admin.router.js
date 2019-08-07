@@ -124,17 +124,7 @@ function someFunction() {
     SELECT * FROM "user";
 `).then(response => {
         response.rows.forEach(user => {
-            let dateCreated = moment(user.date_created, 'YYYY MM DD');
-            // console.log('dateCreated:', dateCreated)
-            let currentDate = moment();
-            // console.log('currentDate:', currentDate)
-            let answer = moment(currentDate).diff(dateCreated, 'days');
-            // console.log('answer:', answer)
-            if (answer > 7) {
-                console.log(user.username, 'is old')
-            } else {
-                console.log(user.username, 'is new')
-            }
+           receiveChallenge(user)
         })
     }).catch(error => {
         console.log('error with some test function get router,', error)
@@ -142,8 +132,33 @@ function someFunction() {
     })
 }
 
+function receiveChallenge(user){
+    // console.log('receive content hit; user:', user)
+    if(user.S1_choose_receive === 'email'){
+        console.log(user.username, 'email')
+    }else if(user.S1_choose_receive === 'text'){
+        console.log(user.username, 'text')
+    }else{
+        console.log(user.username, 'both')
+    }
+}
 cron.schedule('*/2 * * * * *', () => {
     someFunction();
 })
 
 module.exports = router;
+
+
+//this checks how old the user is
+
+// let dateCreated = moment(user.date_created, 'YYYY MM DD');
+// // console.log('dateCreated:', dateCreated)
+// let currentDate = moment();
+// // console.log('currentDate:', currentDate)
+// let answer = moment(currentDate).diff(dateCreated, 'days');
+// // console.log('answer:', answer)
+// if (answer > 7) {
+//     console.log(user.username, 'is old')
+// } else {
+//     console.log(user.username, 'is new')
+// }
