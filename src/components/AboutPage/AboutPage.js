@@ -9,7 +9,7 @@ const AboutPage = () => (
   <div>
     <div>
       <p>
-        This about page is for anyone to read!
+        This page is here if anyone wants to make a funciton component
       </p>
     </div>
   </div>

@@ -6,6 +6,7 @@ import numbersSaga from './numbersSaga';
 import submitAnswerSaga from './submitAnswerSaga';
 import adminSaga from './adminSaga';
 import updateUserPrefsSaga from './updateUserPrefsSaga';
+import chartSaga from './chartSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     submitAnswerSaga(),
     adminSaga(),
     updateUserPrefsSaga(),
+    chartSaga(), //deals with information related to charts visualized at admin /home
   ]);
 }

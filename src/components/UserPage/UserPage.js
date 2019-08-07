@@ -39,14 +39,6 @@ class UserPage extends Component {
               <br />
             </header>
           </div>
-
-          {/* <div>
-            Comparing date created to current date<br />
-            Moment.js fromNow: {moment(this.dateCreated).fromNow(true)}<br />
-            Const dateCreated: {this.dateCreated}<br />
-            Const currentDate: {this.currentDate} <br />
-            Compare: {this.weeklyContentCompare(this.dateCreated, this.currentDate)}
-          </div> */}
           <div style={margins} >
             <Card.Group centered stackable>
               {this.props.reduxState.weeklyContentReducer.weeklyContentReducer.map((content) => {

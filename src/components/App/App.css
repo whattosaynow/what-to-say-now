@@ -54,8 +54,13 @@ input {
     color: #35297f;
 }
 
-.bottom-signup{
-    background-color: #faf0e8;
-    overflow: auto;
-    height: 350px;
-}
+pre {
+    width: inherit;
+    font-family: inherit;
+    white-space: pre-wrap;
+    margin: 1em 0;
+  }
+
+
+
+

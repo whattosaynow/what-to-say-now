@@ -1,10 +1,9 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const { rejectUnauthenticated } = require("../modules/authentication-middleware");
-/**
- * GET route template
- */
+const { rejectUnauthenticated, rejectNonAdmin } = require("../modules/authentication-middleware");
+
+//this route will get all the content(info for each role, week, and ageGroup) from the content table
 router.get('/', rejectUnauthenticated, (req, res) => {
     pool.query(`
     SELECT * FROM "content";
@@ -18,10 +17,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         });
 })
 
-/**
- * POST route template
- */
-router.put('/', (req, res) => {
+//this route will update the content table's intro/phrase/etc. columns based on changes from the admin edit page.
+//it uses the id to target the specific row to change since every different combination of role/week/ageGroup have their own unique ID
+router.put('/', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`
     UPDATE "content" SET
         "intro" = $1,
@@ -46,7 +44,8 @@ router.put('/', (req, res) => {
         });
 });
 
-router.get('/csv', (req, res) => {
+//this route will get of the information from the user table EXCEPT passwords so it can be used to create a CSV for the admin
+router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     // console.log('api/csv route hit')
     pool.query(`
     SELECT 
@@ -99,5 +98,19 @@ router.get('/csv', (req, res) => {
         res.sendStatus(500);
     })
 });
+
+
+// router.get('/charts', (req, res) => {
+//     pool.query(`SELECT "S1_focus_ages", "S1_how_did_you_find_us" from "user", "S2_focus_ages", 
+//     "S2_would_encourage", "S2_affected_ability_interact" from "user";`
+//                 ).then(response => {
+//                     console.log('response.rows:', response.rows)
+//                     res.send(response.rows)
+//                 }
+//                 ).catch(error => {
+//                     console.log('error with csv get router,', error)
+//                     res.sendStatus(500);
+//                 })
+// }); 
 
 module.exports = router;

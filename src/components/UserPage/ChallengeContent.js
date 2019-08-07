@@ -33,10 +33,10 @@ const quote = {
 
 
 class ChallengeContent extends Component {
- 
+
   state = {
     why_matters: false,
-    reflection: false, 
+    reflection: false,
     action_steps: false,
   }
 
@@ -45,31 +45,17 @@ class ChallengeContent extends Component {
     this.props.dispatch({ type: 'GET_WEEKLY', payload: this.props.match.params })
   }
 
-  handleWhy = (propertyName) => {
+  handleDrop = (propertyName) => {
     this.setState({
-      [propertyName]: !this.state.why_matters
+      [propertyName]: !this.state[propertyName]
     })
   }
-  handleReflect = (propertyName) => {
-    this.setState({
-      [propertyName]: !this.state.reflection
-    })
-  }
-  handleAction = (propertyName) => {
-    this.setState({
-      [propertyName]: !this.state.action_steps
-    })
-  }
+
 
   render() {
     return (
 
       <center >
-        {/* <pre>
-        {/* {JSON.stringify(this.state, null, 2)} */}
-          {/* {JSON.stringify(this.props, null, 2)} */}
-          {/* {JSON.stringify(this.props.reduxState.weeklyContentReducer.weeklyChallengeReducer, null, 2)} */}
-        {/* </pre> */} 
         <header style={name} className="sign-up-header">
           Hello {this.props.reduxState.user.first_name}! <br />
           <div className="outerBar" style={this.outerBar}>
@@ -78,11 +64,11 @@ class ChallengeContent extends Component {
           <br />
         </header>
         <main>
-          {this.props.reduxState.weeklyContentReducer.weeklyChallengeReducer.map((info,i) => {
+          {this.props.reduxState.weeklyContentReducer.weeklyChallengeReducer.map((info, i) => {
             return (
-          <div key={i}>
-          <div style={welcomeDiv} className='welcomeDiv'>
-            <h2 className='welcomeWeek'>Welcome to Week
+              <div key={i}>
+                <div style={welcomeDiv} className='welcomeDiv'>
+                  <h2 className='welcomeWeek'>Welcome to Week
             <span className='weekNumber'> {info.week} </span>
               of the "What to Say" Coaches Challenge!</h2>
             <p id='intro'>{info.intro}</p>

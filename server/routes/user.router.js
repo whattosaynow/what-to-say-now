@@ -3,16 +3,16 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
-
 const router = express.Router();
 
-// Handles Ajax request for user information if user is authenticated
+// Handles Axios request for user information if user is authenticated
 router.get('/', rejectUnauthenticated, (req, res) => {
   // Send back user object from the session (previously queried from the database)
   res.send(req.user);
 });
 
-router.get('/content', (req, res) => {
+//this route gets all the content from the content table to map over based on user info
+router.get('/content', rejectUnauthenticated, (req, res) => {
   pool.query(`
   SELECT * FROM "content";
   `).then((result) => {
@@ -25,7 +25,9 @@ router.get('/content', (req, res) => {
       });
 });
 
-router.get('/weekly/:role/:week/:age', (req, res) => {
+
+//this route will get the info from content table based on the params passed to it
+router.get('/weekly/:role/:week/:age', rejectUnauthenticated, (req, res) => {
   console.log(req.params);
   pool.query(`
   SELECT * FROM "content" WHERE ("role_id"=$1 AND "week" = $2 AND "ageGroup_id"=$3);
