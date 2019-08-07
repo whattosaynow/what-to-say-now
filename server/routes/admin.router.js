@@ -4,6 +4,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated, rejectNonAdmin } = require("../modules/authentication-middleware");
 const cron = require('node-cron');
+const moment = require('moment');
 
 
 
@@ -120,17 +121,28 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
 function someFunction() {
     console.log(`running node cron every 5 seconds`); // in the terminal\
     pool.query(`
-    SELECT "email" FROM "user";
+    SELECT * FROM "user";
 `).then(response => {
-        console.log('response.rows:', response.rows)
-    }
-    ).catch(error => {
+        response.rows.forEach(user => {
+            let dateCreated = moment(user.date_created, 'YYYY MM DD');
+            // console.log('dateCreated:', dateCreated)
+            let currentDate = moment();
+            // console.log('currentDate:', currentDate)
+            let answer = moment(currentDate).diff(dateCreated, 'days');
+            // console.log('answer:', answer)
+            if (answer > 7) {
+                console.log(user.username, 'is old')
+            } else {
+                console.log(user.username, 'is new')
+            }
+        })
+    }).catch(error => {
         console.log('error with some test function get router,', error)
         res.sendStatus(500);
     })
 }
 
-cron.schedule('*/5 * * * * *', () => {
+cron.schedule('*/2 * * * * *', () => {
     someFunction();
 })
 
