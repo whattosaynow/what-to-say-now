@@ -8,10 +8,10 @@
 
 .nav {
   /* overflow: hidden; */
-  max-height: 41px;
+  max-height: 43px;
   background-color: #35297f;
   font-family: Poppins, Libre Franklin;
-  border-bottom: 60px solid #faf0e8;
+  /* border-bottom: 60px solid #faf0e8; */
 }
 
 .nav-link{
