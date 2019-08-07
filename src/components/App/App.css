@@ -54,6 +54,13 @@ input {
     color: #35297f;
 }
 
+pre {
+    width: inherit;
+    font-family: inherit;
+    white-space: pre-wrap;
+    margin: 1em 0;
+  }
+
 
 
 
