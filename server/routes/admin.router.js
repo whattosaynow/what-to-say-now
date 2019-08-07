@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated, rejectNonAdmin } = require("../modules/authentication-middleware");
@@ -48,7 +49,7 @@ router.put('/', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
 });
 
 //this route will get of the information from the user table EXCEPT passwords so it can be used to create a CSV for the admin
-router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
+router.get('/csv', (req, res) => {
     // console.log('api/csv route hit')
     pool.query(`
     SELECT 
@@ -116,8 +117,21 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
 //                 })
 // }); 
 
+function someFunction() {
+    console.log(`running node cron every 5 seconds`); // in the terminal\
+    pool.query(`
+    SELECT "email" FROM "user";
+`).then(response => {
+        console.log('response.rows:', response.rows)
+    }
+    ).catch(error => {
+        console.log('error with some test function get router,', error)
+        res.sendStatus(500);
+    })
+}
+
 cron.schedule('*/5 * * * * *', () => {
-    console.log(`running node cron every 5 seconds`); // in the terminal
+    someFunction();
 })
 
 module.exports = router;
