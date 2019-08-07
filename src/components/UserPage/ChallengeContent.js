@@ -47,7 +47,7 @@ class ChallengeContent extends Component {
       [propertyName]: !this.state[propertyName]
     })
   }
-  
+
 
   render() {
     return (
@@ -105,8 +105,7 @@ class ChallengeContent extends Component {
                 <div className="postDiv">
                   <h2 style={goodLuck} >Good luck with this challenge!  Email any questions or suggestions to us</h2>
                   <h2 style={quote}>"A good coach can change a game.  A great coach can change a life."
-                    -John Wooden
-            </h2>
+                    -John Wooden</h2>
                 </div>
               </div>
             )
