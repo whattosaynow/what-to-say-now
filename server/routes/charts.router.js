@@ -12,7 +12,7 @@ router.get('/ageGroups', rejectUnauthenticated, (req, res) => {
     FROM "user"
     GROUP BY "S1_focus_ages";`)
     .then(response => {
-        console.log('response.rows:', response.rows)
+        // console.log('response.rows:', response.rows)
         res.send(response.rows)
     }
     ).catch(error => {
