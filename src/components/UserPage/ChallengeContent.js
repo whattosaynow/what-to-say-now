@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Icon } from 'semantic-ui-react';
+import './ChallengeContent.css'
 
 
 const name = {
   fontSize: '45px',
-  height: '55px'
+  height: '55px',
 }
 
 const welcomeDiv = {
@@ -84,28 +85,34 @@ class ChallengeContent extends Component {
             <h2 className='welcomeWeek'>Welcome to Week
             <span className='weekNumber'> {info.week} </span>
               of the "What to Say" Coaches Challenge!</h2>
-            <p>{info.intro}</p>
-            <h2>This week's "What to Say" phrase is : </h2>
+            <p id='intro'>{info.intro}</p>
+            <h2 >This week's "What to Say" phrase is : </h2>
 
-            <p> {info.phrase} </p>
+            <p id='phrase'> {info.phrase} </p>
           </div>
           <div className='dropDownDiv'>
 
             <h2 style={matter}>Why does this phrase matter? <Icon onClick={() => { this.handleWhy('why_matters')}} name='chevron down' /></h2>
             {this.state.why_matters ?
-            <p style={dropDownDiv} >{info.why_matters}</p>
+            <div className='backgroundDiv'>
+            <p className='dropdowns' style={dropDownDiv} >{info.why_matters}</p>
+            </div>
             :
             <>
             </>}
             <h2 style={matter}>For your own reflection <Icon onClick={() => {this.handleReflect('reflection')}} name='chevron down' /></h2>
             {this.state.reflection ? 
-            <p style={dropDownDiv} >{info.reflection}</p>
+            <div className='backgroundDiv'>
+            <p className='dropdowns' style={dropDownDiv} >{info.reflection}</p>
+            </div>
             :
             <>
             </>}
             <h2 style={matter}>Action steps options <Icon onClick={() => {this.handleAction('action_steps')}} name='chevron down' /></h2>
             {this.state.action_steps ?
-            <pre style={dropDownDiv} >{info.action_steps}</pre>
+            <div className='backgroundDiv'>
+            <pre className='dropdowns'  >{info.action_steps}</pre>
+            </div>
             :
             <>
             </> }
