@@ -2,6 +2,9 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated, rejectNonAdmin } = require("../modules/authentication-middleware");
+const cron = require('node-cron');
+
+
 
 //this route will get all the content(info for each role, week, and ageGroup) from the content table
 router.get('/', rejectUnauthenticated, (req, res) => {
@@ -112,5 +115,9 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
 //                     res.sendStatus(500);
 //                 })
 // }); 
+
+cron.schedule('*/5 * * * * *', () => {
+    console.log(`running node cron every 5 seconds`); // in the terminal
+})
 
 module.exports = router;
