@@ -6,6 +6,10 @@ const { rejectUnauthenticated, rejectNonAdmin } = require("../modules/authentica
 const cron = require('node-cron');
 const moment = require('moment');
 
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
+
 
 
 //this route will get all the content(info for each role, week, and ageGroup) from the content table
@@ -118,13 +122,17 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
 //                 })
 // }); 
 
+cron.schedule('*/10 * * * * *', () => {
+    someFunction();
+})
+
 function someFunction() {
-    console.log(`running node cron every 5 seconds`); // in the terminal\
+    console.log(`running node cron every 5 seconds`); // in the terminal
     pool.query(`
     SELECT * FROM "user";
 `).then(response => {
         response.rows.forEach(user => {
-           receiveChallenge(user)
+            receiveChallenge(user)
         })
     }).catch(error => {
         console.log('error with some test function get router,', error)
@@ -132,33 +140,71 @@ function someFunction() {
     })
 }
 
-function receiveChallenge(user){
-    // console.log('receive content hit; user:', user)
-    if(user.S1_choose_receive === 'email'){
-        console.log(user.username, 'email')
-    }else if(user.S1_choose_receive === 'text'){
-        console.log(user.username, 'text')
-    }else{
-        console.log(user.username, 'both')
+function receiveChallenge(user) {
+    if (user.S1_choose_receive === 'email') {
+        receiveEmail(user);
+    } else if (user.S1_choose_receive === 'text') {
+        receiveText(user);
+    } else {
+        receiveBoth(user);
     }
 }
-cron.schedule('*/2 * * * * *', () => {
-    someFunction();
-})
+
+function receiveEmail(user) {
+    console.log(user.username, 'wants an email')
+
+    let dateCreated = moment(user.date_created, 'YYYY MM DD');
+    let currentDate = moment();
+    let answer = moment(currentDate).diff(dateCreated, 'days');
+
+    if (answer > 7) {
+        console.log(user.username, 'is old')
+    } else {
+        console.log(user.username, 'is new')
+    }
+}
+
+function receiveText(user) {
+    console.log(user.username, 'wants an Text')
+
+    let dateCreated = moment(user.date_created, 'YYYY MM DD');
+    let currentDate = moment();
+    let answer = moment(currentDate).diff(dateCreated, 'days');
+
+    if (answer > 7) {
+        sendText(user)
+    } else {
+        console.log(user.username, 'is new')
+    }
+
+}
+
+function sendText(user) {
+    console.log('attempting to text username:', user.username)
+    client.messages.create({
+        body: `Hi ${user.username}! Your role_id: ${user.role}, week 2, ageGroup: ${user.S1_focus_ages}`,
+        from: '+16512731912',
+        to: user.phone_number
+    }).then(message => console.log(message.status))
+        .done();
+    // console.log('text challenge hit with username:', user.username)
+}
+
+function receiveBoth(user) {
+    console.log(user.username, 'wants both')
+
+    let dateCreated = moment(user.date_created, 'YYYY MM DD');
+    let currentDate = moment();
+    let answer = moment(currentDate).diff(dateCreated, 'days');
+
+    if (answer > 7) {
+        console.log(user.username, 'is old')
+    } else {
+        console.log(user.username, 'is new')
+    }
+
+}
+
+
 
 module.exports = router;
-
-
-//this checks how old the user is
-
-// let dateCreated = moment(user.date_created, 'YYYY MM DD');
-// // console.log('dateCreated:', dateCreated)
-// let currentDate = moment();
-// // console.log('currentDate:', currentDate)
-// let answer = moment(currentDate).diff(dateCreated, 'days');
-// // console.log('answer:', answer)
-// if (answer > 7) {
-//     console.log(user.username, 'is old')
-// } else {
-//     console.log(user.username, 'is new')
-// }
