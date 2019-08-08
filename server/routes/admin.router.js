@@ -55,7 +55,7 @@ router.put('/', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
         });
 });
 
-//this route will get of the information from the user table EXCEPT passwords so it can be used to create a CSV for the admin
+//this route will get all of the information from the user table EXCEPT passwords so it can be used to create a CSV for the admin
 router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     // console.log('api/csv route hit')
     pool.query(`
@@ -129,7 +129,7 @@ cron.schedule('0 10 * * Monday', () => {
 })
 
 //this functions does a pool query to the database to select all users
-//then with the response, forEach user it will run the receive challenege function
+//then with the response, forEach user it will run the receive challenge function
 function automatedContact() {
     pool.query(`
     SELECT * FROM "user";
