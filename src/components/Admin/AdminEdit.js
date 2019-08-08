@@ -94,97 +94,102 @@ class AdminDetails extends Component {
   }};
 
   render() {
-    const { activeRole } = this.state.activeRole;
-    const { activeAge } = this.state.activeAge;
-    const { activeWeek } = this.state.activeWeek;
     return (
-      <>
-        <pre>{JSON.stringify(this.state, null, 2)}</pre>
-
-        <header>
-          {/* <button onClick={this.handleSubmit}>Submit</button> */}
-          <Menu>
-            <Menu.Item
-              name="role1"
-              active={activeRole === "role1"}
-              onClick={this.handleRole}
-            >
-              Coach
-            </Menu.Item>
-            <Menu.Item
-              name="role2"
-              active={activeRole === "role2"}
-              onClick={this.handleRole}
-            >
-              Pediatrician
-            </Menu.Item>
-            <Menu.Item
-              name="role3"
-              active={activeRole === "role3"}
-              onClick={this.handleRole}
-            >
-              Parents
-            </Menu.Item>
-          </Menu>
-          
-
-          <Menu>
-            <Menu.Item
-              name="age1"
-              active={activeAge === "age1"}
-              onClick={this.handleAge}
-            >
-              Ages 6-9
-            </Menu.Item>
-            <Menu.Item
-              name="age2"
-              active={activeAge === "age2"}
-              onClick={this.handleAge}
-            >
-              Ages 10-13
-            </Menu.Item>
-            <Menu.Item
-              name="age3"
-              active={activeAge === "age3"}
-              onClick={this.handleAge}
-            >
-              Ages 14-18
-            </Menu.Item>
-          </Menu>
-        </header>
-
-        <div>
-          <Menu vertical>
-            <Menu.Item 
-              name="week1"
-              active={activeWeek === "week1"}
-              onClick={this.handleWeek}
+      <div className="editParentDiv">
+        {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
+        <h3>
+          Select a role, age group, and week to view and edit content.
+        </h3>
+        <div className="role-age-menu-div">
+          <div classname="roleMenu">
+            <Menu fluid widths={3}>
+              <Menu.Item
+                name="role1"
+                active={this.state.activeRole === "role1"}
+                onClick={this.handleRole}
               >
-                Week 1
+                Coach
+              </Menu.Item>
+              <Menu.Item
+                name="role2"
+                active={this.state.activeRole === "role2"}
+                onClick={this.handleRole}
+              >
+                Pediatrician
+              </Menu.Item>
+              <Menu.Item
+                name="role3"
+                active={this.state.activeRole === "role3"}
+                onClick={this.handleRole}
+              >
+                Parents
+              </Menu.Item>
+            </Menu>
+          </div>
+
+          <div className="ageMenu">
+            <Menu fluid widths={3}>
+              <Menu.Item
+                name="age1"
+                active={this.state.activeAge === "age1"}
+                onClick={this.handleAge}
+              >
+                Ages 6-9
+              </Menu.Item>
+              <Menu.Item
+                name="age2"
+                active={this.state.activeAge === "age2"}
+                onClick={this.handleAge}
+              >
+                Ages 10-13
+              </Menu.Item>
+              <Menu.Item
+                name="age3"
+                active={this.state.activeAge === "age3"}
+                onClick={this.handleAge}
+              >
+                Ages 14-18
+              </Menu.Item>
+            </Menu>
+          </div>
+        </div>
+
+        <div className="weekMenu">
+          <Menu fluid widths={5} tabular>
+            <Menu.Item
+              name="week1"
+              active={this.state.activeWeek === "week1"}
+              onClick={this.handleWeek}
+            >
+              Week 1
             </Menu.Item>
-            <Menu.Item  
+            <Menu.Item
               name="week2"
-              active={activeWeek === "week2"}
-              onClick={this.handleWeek}>
-                Week 2
+              active={this.state.activeWeek === "week2"}
+              onClick={this.handleWeek}
+            >
+              Week 2
             </Menu.Item>
-            <Menu.Item  
+            <Menu.Item
               name="week3"
-              active={activeWeek === "week3"}
-              onClick={this.handleWeek}>
-                Week 3
+              active={this.state.activeWeek === "week3"}
+              onClick={this.handleWeek}
+            >
+              Week 3
             </Menu.Item>
             <Menu.Item
               name="week4"
-              active={activeWeek === "week4"}
-              onClick={this.handleWeek}>
-                Week 4
+              active={this.state.activeWeek === "week4"}
+              onClick={this.handleWeek}
+            >
+              Week 4
             </Menu.Item>
-            <Menu.Item  
+            <Menu.Item
               name="week5"
-              active={activeWeek === "week5"}
-              onClick={this.handleWeek}>
-                Week 5
+              active={this.state.activeWeek === "week5"}
+              onClick={this.handleWeek}
+            >
+              Week 5
             </Menu.Item>
           </Menu>
         </div>
@@ -203,9 +208,13 @@ class AdminDetails extends Component {
                   content => {
                     return (
                       Number(this.state.role) === Number(content.role_id) &&
-                      Number(this.state.age) === Number(content.ageGroup_id) &&
+                      Number(this.state.age) ===
+                        Number(content.ageGroup_id) &&
                       Number(this.state.week) === Number(content.week) && (
-                        <AdminEditTable content={content} key={content.id} />
+                        <AdminEditTable
+                          content={content}
+                          key={content.id}
+                        />
                       )
                     );
                   }
@@ -218,7 +227,7 @@ class AdminDetails extends Component {
             )}
           </ul>
         </div>
-      </>
+      </div>
     );
   }
 }
