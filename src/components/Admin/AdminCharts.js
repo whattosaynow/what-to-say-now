@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 //chart-js
 import { Doughnut, Bar } from "react-chartjs-2";
 //semantic-ui
 import { Grid } from "semantic-ui-react";
 //charts
-import AgeGroupChart from './Charts/ageGroupChart';
+import AgeGroupChart from './Charts/AgeGroupChart';
 import LearnedChart from './Charts/LearnedChart';
 import FindChart from './Charts/FindChart';
 import EncourageChart from './Charts/EncourageChart';
@@ -15,6 +17,10 @@ class AdminCharts extends Component {
   state = {
 
   };
+
+  componentDidMount(){
+    // this.props.dispatch({ type: "GET_AGE_GROUP_DATA" }) // this will dispatch an action to store the ageGroup chart data
+  }
   
   render() {
 
@@ -24,7 +30,7 @@ class AdminCharts extends Component {
           <Grid.Row>
             <Grid.Column>
               <h2>Age Groups Targeted</h2>
-              <AgeGroupChart />
+              <AgeGroupChart ages={this.props.chartData.ageGroupReducer}/>
             </Grid.Column>
             <Grid.Column>
               <h2>How users found the challenge</h2>
@@ -62,4 +68,10 @@ class AdminCharts extends Component {
   }
 }
 
-export default AdminCharts;
+const mapStateToProps = reduxState => ({
+  reduxState,
+});
+
+export default withRouter(connect(mapStateToProps)(AdminCharts));
+
+

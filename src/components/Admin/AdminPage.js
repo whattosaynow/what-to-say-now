@@ -14,8 +14,10 @@ class Admin extends Component {
   //on page load
   componentDidMount() {
     this.props.dispatch({ type: 'GET_CSV' }) // this will dispatch an action to store all of the user table info in a reducer to download as csv
+    this.props.dispatch({ type: "GET_AGE_GROUP_DATA" }) // this will dispatch an action to store the ageGroup chart data
   }
 
+  
   //the initial stat is charts, as on page load that is what we want to display
   state = {
     display: 'Charts'
@@ -28,10 +30,12 @@ class Admin extends Component {
     })
   }
 
+  
+
   render() {
     return (
       <>
-      <pre>{JSON.stringify(this.props.reduxState.chartReducer, null, 2)}</pre> 
+      {/* <pre>{JSON.stringify(this.props.reduxState.chartReducer, null, 2)}</pre>  */}
         <div className="links">
           <h2>
             <ul className="nav-list">
@@ -45,7 +49,7 @@ class Admin extends Component {
         <div>
           {this.state.display === 'Charts' ?
           <>
-          <AdminCharts /> {/* This is the AdminCharts component. If this.state.display is charts, it will show on the admin homepage */}
+          <AdminCharts chartData={this.props.reduxState.chartReducer} /> {/* This is the AdminCharts component. If this.state.display is charts, it will show on the admin homepage */}
           </>
           :
           <>

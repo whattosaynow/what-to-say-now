@@ -20,7 +20,7 @@ class EncourageChart extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch({ type: "GET_ENCOURAGE_DATA" });
+    
   }
   render() {
     return (
