@@ -28,11 +28,6 @@ class AdminEditTable extends Component {
   render() {
     return (
       <>
-        <center>
-          <h3>Week: {this.state.week}</h3>
-          
-          <Button onClick={this.handleSubmit}>Submit</Button>
-        </center>
         <Form>
           <Form.Field>
             <label>This week's "What to Say" phrase is:</label>
@@ -72,6 +67,11 @@ class AdminEditTable extends Component {
             />
           </Form.Field>
         </Form>
+        <center>
+          <h3>Week: {this.state.week}</h3>
+
+          <Button onClick={this.handleSubmit}>Submit</Button>
+        </center>
       </>
     );
   }
