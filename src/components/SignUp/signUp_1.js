@@ -59,8 +59,7 @@ class signUp_1 extends Component {
             <Input onChange={this.handleChange('state')}  placeholder="State" value={this.state.value}></Input><br />
             <Input onChange={this.handleChange('zip')}  placeholder="Zip" value={this.state.value}></Input><br />
           </form>
-        </div><br /><br /><br />
-
+        </div>
         <div className="bottomDiv">
           <Button onClick={this.handleClick} className="next-button">Next</Button>
         </div>
