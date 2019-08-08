@@ -55,7 +55,7 @@ router.put('/', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
         });
 });
 
-//this route will get of the information from the user table EXCEPT passwords so it can be used to create a CSV for the admin
+//this route will get all of the information from the user table EXCEPT passwords so it can be used to create a CSV for the admin
 router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     // console.log('api/csv route hit')
     pool.query(`
@@ -124,12 +124,13 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
 //                 })
 // }); 
 
-cron.schedule('*/10 * * * * *', () => {
-    someFunction();
+cron.schedule('0 10 * * Monday', () => {
+    automatedContact(); //this function will run every Monday at 10:00am
 })
 
-function someFunction() {
-    console.log(`running node cron every 5 seconds`); // in the terminal
+//this functions does a pool query to the database to select all users
+//then with the response, forEach user it will run the receive challenge function
+function automatedContact() {
     pool.query(`
     SELECT * FROM "user";
 `).then(response => {
@@ -142,6 +143,10 @@ function someFunction() {
     })
 }
 
+//the receiveChallenge function checks each user to see their preference on how they receive the weekly info
+//if they prefer email, we run the receiveEmail function with that user
+//if they prefer Text, we run the receiveText function with that user
+//if they want both, we run both with that user
 function receiveChallenge(user) {
     if (user.S1_choose_receive === 'email') {
         receiveEmail(user);
@@ -153,6 +158,8 @@ function receiveChallenge(user) {
     }
 }
 
+//the receiveEmail function compares the current date to the user's date created
+//depending on the result, they will receive weekly challenge, post, or three month survey via the sendEmail function
 function receiveEmail(user) {
     console.log(user.username, 'wants an email')
 
@@ -160,14 +167,25 @@ function receiveEmail(user) {
     let currentDate = moment();
     let answer = moment(currentDate).diff(dateCreated, 'days');
 
-    if (answer > 7) {
-        sendEmail(user);
-    } else {
-        console.log(user.username, 'is new')
+    if (answer < 7 && answer >= 0) {
+        sendEmail(user, 1) //week 1
+    } else if (answer < 15 && answer > 7) {
+        sendEmail(user, 2) //week 2
+    } else if (answer < 22 && answer > 15) {
+        sendEmail(user, 3) //week 3
+    } else if (answer < 29 && answer > 22) {
+        sendEmail(user, 4) //week 4
+    } else if (answer < 36 && answer > 29) {
+        sendEmail(user, 5) //week 5
+    } else if (answer < 42 && answer > 36) {
+        sendEmail(user, 6) //post survey
+    } else if (answer < 91 && answer > 84) {
+        sendEmail(user, 7) //3month survey
     }
 }
 
-function sendEmail(user) {
+//the sendEmail function takes the user and the week, and sends them specific info depending on the week 
+function sendEmail(user, week) {
 
     let transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -176,22 +194,56 @@ function sendEmail(user) {
             pass: process.env.PASSWORD
         }
     });
-
-    let mailOptions = {
-        from: 'WhatToSayNowChallenge@gmail.com ',
-        to: user.email,
-        subject: 'Sent from NodeCron',
-        text: `Hi ${user.username}! Your role_id: ${user.role}, week 2, ageGroup: ${user.S1_focus_ages}`
-    };
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
+//if the user is less than or equal to 5 weeks, they receive the weekly challenge info based on their role, the week, and their age group
+    if (week <= 5) {
+        let mailOptions = {
+            from: 'WhatToSayNowChallenge@gmail.com ',
+            to: user.email,
+            subject: 'Sent from NodeCron',
+            text: `Hi ${user.username}! Here is the link for your weekly challenge: localhost:3000/${user.role}/${week}/${user.S1_focus_ages}`
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+//if the user is 6 weeks old, they receive the post program survey link
+    } else if (week === 6) {
+        let mailOptions = {
+            from: 'WhatToSayNowChallenge@gmail.com ',
+            to: user.email,
+            subject: 'Sent from NodeCron',
+            text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to our Post Program Survey: localhost:/#/postsurvey1`
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+//if the user is 3 months old, they receive the three month survey
+    } else if (week === 7) {
+        let mailOptions = {
+            from: 'WhatToSayNowChallenge@gmail.com ',
+            to: user.email,
+            subject: 'Sent from NodeCron',
+            text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to Three Month Followup Survey: localhost:/#/three-month-survey`
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+    }
 }
 
+//the receiveText function compares the current date to the user's date created
+//depending on the result, they will receive weekly challenge, post, or three month survey via the sendText function
 function receiveText(user) {
     console.log(user.username, 'wants an Text')
 
@@ -199,23 +251,50 @@ function receiveText(user) {
     let currentDate = moment();
     let answer = moment(currentDate).diff(dateCreated, 'days');
 
-    if (answer > 7) {
-        sendText(user)
-    } else {
-        console.log(user.username, 'is new')
+    if (answer < 7 && answer >= 0) {
+        sendText(user, 1) //week 1
+    } else if (answer < 15 && answer > 7) {
+        sendText(user, 2) //week 2
+    } else if (answer < 22 && answer > 15) {
+        sendText(user, 3) //week 3
+    } else if (answer < 29 && answer > 22) {
+        sendText(user, 4) //week 4
+    } else if (answer < 36 && answer > 29) {
+        sendText(user, 5) //week 5
+    } else if (answer < 42 && answer > 36) {
+        sendText(user, 6) //post survey
+    } else if (answer < 91 && answer > 84) {
+        sendText(user, 7) //3month survey
     }
-
 }
 
-function sendText(user) {
+function sendText(user, week) {
     console.log('attempting to text username:', user.username)
-    client.messages.create({
-        body: `Hi ${user.username}! Your role_id: ${user.role}, week 2, ageGroup: ${user.S1_focus_ages}`,
-        from: '+16512731912',
-        to: user.phone_number
-    }).then(message => console.log(message.status))
-        .done();
-    // console.log('text challenge hit with username:', user.username)
+//if the user is less than or equal to 5 weeks, they receive the weekly challenge info based on their role, the week, and their age group
+    if (week <= 5) {
+        client.messages.create({
+            body: `Hi ${user.username}! Your role_id: ${user.role}, week ${week}, ageGroup: ${user.S1_focus_ages}`,
+            from: '+16512731912',
+            to: user.phone_number
+        }).then(message => console.log(message.status))
+            .done();
+//if the user is 6 weeks old, they receive the post program survey link
+    } else if (week = 6) {
+        client.messages.create({
+            body: `Hi ${user.username}! Thank you for participating in the What To Say Now Challenge. Here is a link to our Post Program Survey: localhost:/#/postsurvey1`,
+            from: '+16512731912',
+            to: user.phone_number
+        }).then(message => console.log(message.status))
+            .done();
+//if the user is 3 months old, they receive the three month survey
+    } else if (week = 7) {
+        client.messages.create({
+            body: `Hi ${user.username}! Thank you for participating in the What To Say Now Challenge. Here is a link to our Three Month Followup Survey: localhost:/#/three-month-survey`,
+            from: '+16512731912',
+            to: user.phone_number
+        }).then(message => console.log(message.status))
+            .done();
+    }
 }
 
 module.exports = router;
