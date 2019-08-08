@@ -1,6 +1,6 @@
 .links {
     width: 80%;
-    background-color: black;
+    /* background-color: black; */
     overflow: auto;   
     color: white;
     border-radius: 10px;
@@ -21,8 +21,8 @@
 .chartDiv {
     width: 80%;
     margin: auto;
-    overflow-y: scroll;
-    height: 500px;
+    /* overflow-y: scroll; */
+    /* height: 500px; */
 }
 
 .chartDiv h2 {
@@ -38,4 +38,31 @@
 
 .csvInner {
     padding: 20px 20px;
+}
+
+/* styling for AdminEdit.js */
+.editParentDiv {
+    width: 80%;
+    margin: auto;
+}
+
+.role-age-menu-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+
+}
+
+.roleMenu {
+    margin: 0;
+}
+
+.editParentDiv h3 {
+    margin: 15px;
+    text-align: center;
+}
+
+.editParentDiv div {
+  margin: 15px;
 }
