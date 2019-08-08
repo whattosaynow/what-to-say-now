@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { Button } from "semantic-ui-react";
 
 //css styling
 import './Admin.css';
@@ -34,12 +35,12 @@ class Admin extends Component {
       
         <div className="links">
           <h2>
-            <ul className="nav-list">
-              <li onClick={() => { this.handleClick('Charts') }}><u>Charts</u></li> 
-              <li onClick={() => { this.handleClick('Details') }}><u>Details</u></li>
-              <li onClick={() => { this.handleClick('Edit') }}><u>Edit</u></li>
+            <Button.Group fluid className="nav-list">
+              <Button onClick={() => { this.handleClick('Charts') }}><u>Charts</u></Button> 
+              <Button onClick={() => { this.handleClick('Details') }}><u>Details</u></Button>
+              <Button onClick={() => { this.handleClick('Edit') }}><u>Edit</u></Button>
               {/* onClick of each word changes the state which updates what is displayed */}
-            </ul>
+            </Button.Group>
           </h2>
         </div>
         <div>
