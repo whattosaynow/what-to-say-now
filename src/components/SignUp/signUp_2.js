@@ -41,23 +41,26 @@ class signUp_2 extends Component {
             Personal Information (cont.)
         </h2>
           <br />
-          <label> 1. Choose to receive the Challenges via email, text, or both: (choose one)</label><br />
-          <Input onChange={this.handleChangeFor('choose_receive')} className='question' type='radio' name='receive' value='email'></Input>Email<br />
-          <Input onChange={this.handleChangeFor('choose_receive')} type='radio' name='receive' value='text'></Input>Text<br />
-          <Input onChange={this.handleChangeFor('choose_receive')} type='radio' name='receive' value='both'></Input>Both<br />
+          1. Choose to receive the Challenges via email, text, or both:<br /><br />
+          <label>Choose One</label><br />
+          <Input onChange={this.handleChangeFor('choose_receive')} className='question' type='radio' className="semantic-radio" name='receive' value='email'></Input>Email<br />
+          <Input onChange={this.handleChangeFor('choose_receive')} type='radio' className="semantic-radio" name='receive' value='text'></Input>Text<br />
+          <Input onChange={this.handleChangeFor('choose_receive')} type='radio' className="semantic-radio" name='receive' value='both'></Input>Both<br />
           <br />
           
-          <label> 2. Your gender: (choose one)</label><br />
-          <Input onChange={this.handleChangeFor('your_gender')} className='question' type='radio' name='gender' value='female'></Input>Female<br />
-          <Input onChange={this.handleChangeFor('your_gender')} type='radio' name='gender' value='male'></Input>Male<br />
-          <Input onChange={this.handleChangeFor('your_gender')} type='radio' name='gender' value='non-binary'></Input>Non-binary<br />
+          2. Your gender:<br /><br />
+          <label>Choose One</label><br />
+          <Input onChange={this.handleChangeFor('your_gender')} className='question' type='radio' className="semantic-radio" name='gender' value='female'></Input>Female<br />
+          <Input onChange={this.handleChangeFor('your_gender')} type='radio' className="semantic-radio" name='gender' value='male'></Input>Male<br />
+          <Input onChange={this.handleChangeFor('your_gender')} type='radio' className="semantic-radio" name='gender' value='non-binary'></Input>Non-binary<br />
           <br />
           
-          <label> 3. Your age: (choose one)</label><br />
-          <Input onChange={this.handleChangeFor('your_age')} className='question' type='radio' name='age' value='Less than twenty years old'></Input>Less than 20 years old.<br />
-          <Input onChange={this.handleChangeFor('your_age')} type='radio' name='age' value='21-36 years old'></Input>21-36 years old.<br />
-          <Input onChange={this.handleChangeFor('your_age')} type='radio' name='age' value='36-51 years old'></Input>36-51 years old.<br />
-          <Input onChange={this.handleChangeFor('your_age')} type='radio' name='age' value='52+ years old'></Input>52+ years old.<br />
+          3. Your age:<br /><br />
+          <label>Choose One</label><br />
+          <Input onChange={this.handleChangeFor('your_age')} className='question' type='radio' className="semantic-radio" name='age' value='Less than twenty years old'></Input>Less than 20 years old.<br />
+          <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" name='age' value='21-36 years old'></Input>21-36 years old.<br />
+          <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" name='age' value='36-51 years old'></Input>36-51 years old.<br />
+          <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" name='age' value='52+ years old'></Input>52+ years old.<br />
           
           <div className='bottomDiv'>
             <Button onClick={this.handleClickBack}>Back</Button><Button onClick={this.handleClickNext}>Next</Button>

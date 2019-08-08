@@ -43,9 +43,9 @@ class signUp_4 extends Component {
           <h2>Personal Information Continued</h2><br />
           7. Age(s) you coach and want to focus on with during the Challenge:<br /><br />
           <label>Choose One</label><br />
-          <Input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="1" />6-10 years old<br />
-          <Input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="2" />11-13 years old<br />
-          <Input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="3" />14-18 years old<br />
+          <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" name="q1" value="1" />6-10 years old<br />
+          <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" name="q1" value="2" />11-13 years old<br />
+          <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" name="q1" value="3" />14-18 years old<br />
           <br />
           8. How did you find us?<br /><br />
             <label>Choose One</label><br />
