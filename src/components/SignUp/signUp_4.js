@@ -35,7 +35,6 @@ class signUp_4 extends Component {
     return (
       <center>
         <Header width={'80%'} /><br />
-        {JSON.stringify(this.state, null, 2)}
         <div>
           <h2>Personal Information Continued</h2><br />
           #. Age(s) you coach and want to focus on with during the Challenge:<br /><br />
