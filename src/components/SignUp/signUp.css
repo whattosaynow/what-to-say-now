@@ -3,6 +3,9 @@
 }
 
 .bottomDiv {
+    display: flex;
+    align-items: center;
+  justify-content: center;
     height: 170px;
     background-color: #FAF0E8;
 }

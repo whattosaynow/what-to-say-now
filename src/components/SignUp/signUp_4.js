@@ -35,7 +35,6 @@ class signUp_4 extends Component {
     return (
       <center>
         <Header width={'80%'} /><br />
-
         <div>
           <h2>Personal Information Continued</h2><br />
           #. Age(s) you coach and want to focus on with during the Challenge:<br /><br />
@@ -44,7 +43,7 @@ class signUp_4 extends Component {
           <input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="2" />11-13 years old<br />
           <input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="3" />14-18 years old<br />
           <br />
-          #. How did you find us?
+          #. How did you find us?<br /><br />
             <label>Choose One</label><br />
           <select onChange={this.handleChange('how_did_you_find_us')} >
             <option>--Choose One--</option>
@@ -55,9 +54,9 @@ class signUp_4 extends Component {
             <option value="Tia Russell Dance Studio">Tia Russell Dance Studio</option>
             <option value="Internet search">Internet search</option>
             <option value="Referral">Referral</option>
-            <option value="Other">Other (fill in the blank)</option>
           </select><br />
-          <textarea rows="4" cols="50"></textarea>
+          Or fill in the blank:<br />
+          <textarea onChange={this.handleChange('how_did_you_find_us')} value={this.state.value} rows="4" cols="50"></textarea>
           <br />
         </div>
         <br />

@@ -122,9 +122,9 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
 //                 })
 // }); 
 
-cron.schedule('*/10 * * * * *', () => {
-    someFunction();
-})
+// cron.schedule('*/10 * * * * *', () => {
+//     someFunction();
+// })
 
 function someFunction() {
     console.log(`running node cron every 5 seconds`); // in the terminal
