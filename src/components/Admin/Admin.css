@@ -39,3 +39,32 @@
 .csvInner {
     padding: 20px 20px;
 }
+
+/* styling for AdminEdit.js */
+.editParentDiv {
+    width: 80%;
+    margin: auto;
+    overflow-y: scroll;
+    height: 500px;
+}
+
+.role-age-menu-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+
+}
+
+.roleMenu {
+    margin: 0;
+}
+
+.editParentDiv h3 {
+    margin: 15px;
+    text-align: center;
+}
+
+.editParentDiv div {
+  margin: 15px;
+}

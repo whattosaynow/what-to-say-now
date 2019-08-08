@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-
+import { Button, TextArea, Form } from "semantic-ui-react";
 
 class AdminEditTable extends Component {
   state = {
@@ -28,19 +28,50 @@ class AdminEditTable extends Component {
   render() {
     return (
       <>
-        <li>Week {this.state.week}</li><br /><br />
-        <button onClick={this.handleSubmit}>Submit</button><br />br />
-        This week's "What to Say" phrase is:<br />
-        <textarea rows="10" cols="200" onChange={this.handleChange('intro')} value={this.state.intro}></textarea><br />
-        <br />
-        Why does this phrase matter?<br />
-        <textarea rows="10" cols="200" onChange={this.handleChange('why_matters')} value={this.state.why_matters}></textarea><br />
-        <br />
-        For Your Own Reflection<br />
-        <textarea rows="10" cols="200" onChange={this.handleChange('reflection')} value={this.state.reflection}></textarea><br />
-        <br />
-        Action Step Options<br />
-        <textarea rows="10" cols="200" onChange={this.handleChange('action_steps')} value={this.state.action_steps}></textarea><br />
+        <center>
+          <h3>Week: {this.state.week}</h3>
+          
+          <Button onClick={this.handleSubmit}>Submit</Button>
+        </center>
+        <Form>
+          <Form.Field>
+            <label>This week's "What to Say" phrase is:</label>
+            <TextArea
+              rows="10"
+              cols="200"
+              onChange={this.handleChange("intro")}
+              value={this.state.intro}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Why does this phrase matter?</label>
+            <TextArea
+              rows="10"
+              cols="200"
+              onChange={this.handleChange("why_matters")}
+              value={this.state.why_matters}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>For Your Own Reflection</label>
+            <TextArea
+              rows="10"
+              cols="200"
+              onChange={this.handleChange("reflection")}
+              value={this.state.reflection}
+            />
+          </Form.Field>
+
+          <Form.Field>
+            <label>Action Step Options</label>
+            <TextArea
+              rows="10"
+              cols="200"
+              onChange={this.handleChange("action_steps")}
+              value={this.state.action_steps}
+            />
+          </Form.Field>
+        </Form>
       </>
     );
   }
