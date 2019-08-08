@@ -5,6 +5,8 @@ const router = express.Router();
 const { rejectUnauthenticated, rejectNonAdmin } = require("../modules/authentication-middleware");
 const cron = require('node-cron');
 const moment = require('moment');
+const nodemailer = require('nodemailer');
+
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
@@ -122,9 +124,9 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
 //                 })
 // }); 
 
-// cron.schedule('*/10 * * * * *', () => {
-//     someFunction();
-// })
+cron.schedule('*/10 * * * * *', () => {
+    someFunction();
+})
 
 function someFunction() {
     console.log(`running node cron every 5 seconds`); // in the terminal
@@ -146,7 +148,8 @@ function receiveChallenge(user) {
     } else if (user.S1_choose_receive === 'text') {
         receiveText(user);
     } else {
-        receiveBoth(user);
+        receiveEmail(user);
+        receiveText(user);
     }
 }
 
@@ -158,10 +161,35 @@ function receiveEmail(user) {
     let answer = moment(currentDate).diff(dateCreated, 'days');
 
     if (answer > 7) {
-        console.log(user.username, 'is old')
+        sendEmail(user);
     } else {
         console.log(user.username, 'is new')
     }
+}
+
+function sendEmail(user) {
+
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD
+        }
+    });
+
+    let mailOptions = {
+        from: 'WhatToSayNowChallenge@gmail.com ',
+        to: user.email,
+        subject: 'Sent from NodeCron',
+        text: `Hi ${user.username}! Your role_id: ${user.role}, week 2, ageGroup: ${user.S1_focus_ages}`
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
 }
 
 function receiveText(user) {
@@ -189,22 +217,5 @@ function sendText(user) {
         .done();
     // console.log('text challenge hit with username:', user.username)
 }
-
-function receiveBoth(user) {
-    console.log(user.username, 'wants both')
-
-    let dateCreated = moment(user.date_created, 'YYYY MM DD');
-    let currentDate = moment();
-    let answer = moment(currentDate).diff(dateCreated, 'days');
-
-    if (answer > 7) {
-        console.log(user.username, 'is old')
-    } else {
-        console.log(user.username, 'is new')
-    }
-
-}
-
-
 
 module.exports = router;
