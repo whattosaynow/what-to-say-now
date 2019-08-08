@@ -1,7 +1,18 @@
 const express = require('express');
+const axios = require('axios');
 const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated, rejectNonAdmin } = require("../modules/authentication-middleware");
+const cron = require('node-cron');
+const moment = require('moment');
+const nodemailer = require('nodemailer');
+
+
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
+
+
 
 //this route will get all the content(info for each role, week, and ageGroup) from the content table
 router.get('/', rejectUnauthenticated, (req, res) => {
@@ -112,5 +123,99 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
 //                     res.sendStatus(500);
 //                 })
 // }); 
+
+cron.schedule('*/10 * * * * *', () => {
+    someFunction();
+})
+
+function someFunction() {
+    console.log(`running node cron every 5 seconds`); // in the terminal
+    pool.query(`
+    SELECT * FROM "user";
+`).then(response => {
+        response.rows.forEach(user => {
+            receiveChallenge(user)
+        })
+    }).catch(error => {
+        console.log('error with some test function get router,', error)
+        res.sendStatus(500);
+    })
+}
+
+function receiveChallenge(user) {
+    if (user.S1_choose_receive === 'email') {
+        receiveEmail(user);
+    } else if (user.S1_choose_receive === 'text') {
+        receiveText(user);
+    } else {
+        receiveEmail(user);
+        receiveText(user);
+    }
+}
+
+function receiveEmail(user) {
+    console.log(user.username, 'wants an email')
+
+    let dateCreated = moment(user.date_created, 'YYYY MM DD');
+    let currentDate = moment();
+    let answer = moment(currentDate).diff(dateCreated, 'days');
+
+    if (answer > 7) {
+        sendEmail(user);
+    } else {
+        console.log(user.username, 'is new')
+    }
+}
+
+function sendEmail(user) {
+
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD
+        }
+    });
+
+    let mailOptions = {
+        from: 'WhatToSayNowChallenge@gmail.com ',
+        to: user.email,
+        subject: 'Sent from NodeCron',
+        text: `Hi ${user.username}! Your role_id: ${user.role}, week 2, ageGroup: ${user.S1_focus_ages}`
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+}
+
+function receiveText(user) {
+    console.log(user.username, 'wants an Text')
+
+    let dateCreated = moment(user.date_created, 'YYYY MM DD');
+    let currentDate = moment();
+    let answer = moment(currentDate).diff(dateCreated, 'days');
+
+    if (answer > 7) {
+        sendText(user)
+    } else {
+        console.log(user.username, 'is new')
+    }
+
+}
+
+function sendText(user) {
+    console.log('attempting to text username:', user.username)
+    client.messages.create({
+        body: `Hi ${user.username}! Your role_id: ${user.role}, week 2, ageGroup: ${user.S1_focus_ages}`,
+        from: '+16512731912',
+        to: user.phone_number
+    }).then(message => console.log(message.status))
+        .done();
+    // console.log('text challenge hit with username:', user.username)
+}
 
 module.exports = router;

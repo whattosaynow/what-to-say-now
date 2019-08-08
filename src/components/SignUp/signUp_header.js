@@ -12,10 +12,10 @@ class signUp_header extends Component {
     innerBar = {
         backgroundColor: "green",
         width: this.props.width,
-        height: '30px',
+        height: '28px',
         overflow: 'hidden',
         float: 'left',
-        borderRadius: '10px',
+        borderRadius: '9px',
     }
 
     render() {
