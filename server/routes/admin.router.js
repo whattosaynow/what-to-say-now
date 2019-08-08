@@ -57,7 +57,6 @@ router.put('/', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
 
 //this route will get all of the information from the user table EXCEPT passwords so it can be used to create a CSV for the admin
 router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
-    // console.log('api/csv route hit')
     pool.query(`
     SELECT 
         "first_name", 
@@ -101,7 +100,6 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
         "S3_call_more_information"
          FROM "user";
 `).then(response => {
-        console.log('response.rows:', response.rows)
         res.send(response.rows)
     }
     ).catch(error => {
@@ -161,8 +159,6 @@ function receiveChallenge(user) {
 //the receiveEmail function compares the current date to the user's date created
 //depending on the result, they will receive weekly challenge, post, or three month survey via the sendEmail function
 function receiveEmail(user) {
-    console.log(user.username, 'wants an email')
-
     let dateCreated = moment(user.date_created, 'YYYY MM DD');
     let currentDate = moment();
     let answer = moment(currentDate).diff(dateCreated, 'days');
@@ -245,8 +241,6 @@ function sendEmail(user, week) {
 //the receiveText function compares the current date to the user's date created
 //depending on the result, they will receive weekly challenge, post, or three month survey via the sendText function
 function receiveText(user) {
-    console.log(user.username, 'wants an Text')
-
     let dateCreated = moment(user.date_created, 'YYYY MM DD');
     let currentDate = moment();
     let answer = moment(currentDate).diff(dateCreated, 'days');
@@ -269,7 +263,6 @@ function receiveText(user) {
 }
 
 function sendText(user, week) {
-    console.log('attempting to text username:', user.username)
 //if the user is less than or equal to 5 weeks, they receive the weekly challenge info based on their role, the week, and their age group
     if (week <= 5) {
         client.messages.create({
