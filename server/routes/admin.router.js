@@ -124,8 +124,8 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
 //                 })
 // }); 
 
-cron.schedule('*/10 * * * * *', () => {
-    someFunction();
+cron.schedule('25 11 * * Thursday', () => {
+    someFunction(); //this function will run every Monday at 10:00am
 })
 
 function someFunction() {
@@ -160,14 +160,24 @@ function receiveEmail(user) {
     let currentDate = moment();
     let answer = moment(currentDate).diff(dateCreated, 'days');
 
-    if (answer > 7) {
-        sendEmail(user);
-    } else {
-        console.log(user.username, 'is new')
+    if (answer < 7 && answer >= 0) {
+        sendEmail(user, 1) //week 1
+    } else if (answer < 15 && answer > 7) {
+        sendEmail(user, 2) //week 2
+    } else if (answer < 22 && answer > 15) {
+        sendEmail(user, 3) //week 3
+    } else if (answer < 29 && answer > 22) {
+        sendEmail(user, 4) //week 4
+    } else if (answer < 36 && answer > 29) {
+        sendEmail(user, 5) //week 5
+    } else if (answer < 42 && answer > 36) {
+        sendEmail(user, 6) //post survey
+    } else if (answer < 91 && answer > 84) {
+        sendEmail(user, 7) //3month survey
     }
 }
 
-function sendEmail(user) {
+function sendEmail(user, week) {
 
     let transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -176,20 +186,50 @@ function sendEmail(user) {
             pass: process.env.PASSWORD
         }
     });
+    if (week <= 5) {
+        let mailOptions = {
+            from: 'WhatToSayNowChallenge@gmail.com ',
+            to: user.email,
+            subject: 'Sent from NodeCron',
+            text: `Hi ${user.username}! Your role_id: ${user.role}, it is week ${week}, ageGroup: ${user.S1_focus_ages}`
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+    } else if (week === 6) {
+        let mailOptions = {
+            from: 'WhatToSayNowChallenge@gmail.com ',
+            to: user.email,
+            subject: 'Sent from NodeCron',
+            text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to our Post Program Survey: localhost:/#/postsurvey1`
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
 
-    let mailOptions = {
-        from: 'WhatToSayNowChallenge@gmail.com ',
-        to: user.email,
-        subject: 'Sent from NodeCron',
-        text: `Hi ${user.username}! Your role_id: ${user.role}, week 2, ageGroup: ${user.S1_focus_ages}`
-    };
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
+    } else if (week === 7) {
+        let mailOptions = {
+            from: 'WhatToSayNowChallenge@gmail.com ',
+            to: user.email,
+            subject: 'Sent from NodeCron',
+            text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to Three Month Followup Survey: localhost:/#/three-month-survey`
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+    }
 }
 
 function receiveText(user) {
@@ -199,23 +239,47 @@ function receiveText(user) {
     let currentDate = moment();
     let answer = moment(currentDate).diff(dateCreated, 'days');
 
-    if (answer > 7) {
-        sendText(user)
-    } else {
-        console.log(user.username, 'is new')
+    if (answer < 7 && answer >= 0) {
+        sendText(user, 1) //week 1
+    } else if (answer < 15 && answer > 7) {
+        sendText(user, 2) //week 2
+    } else if (answer < 22 && answer > 15) {
+        sendText(user, 3) //week 3
+    } else if (answer < 29 && answer > 22) {
+        sendText(user, 4) //week 4
+    } else if (answer < 36 && answer > 29) {
+        sendText(user, 5) //week 5
+    } else if (answer < 42 && answer > 36) {
+        sendText(user, 6) //post survey
+    } else if (answer < 91 && answer > 84) {
+        sendText(user, 7) //3month survey
     }
-
 }
 
-function sendText(user) {
+function sendText(user, week) {
     console.log('attempting to text username:', user.username)
-    client.messages.create({
-        body: `Hi ${user.username}! Your role_id: ${user.role}, week 2, ageGroup: ${user.S1_focus_ages}`,
-        from: '+16512731912',
-        to: user.phone_number
-    }).then(message => console.log(message.status))
-        .done();
-    // console.log('text challenge hit with username:', user.username)
+    if (week <= 5) {
+        client.messages.create({
+            body: `Hi ${user.username}! Your role_id: ${user.role}, week ${week}, ageGroup: ${user.S1_focus_ages}`,
+            from: '+16512731912',
+            to: user.phone_number
+        }).then(message => console.log(message.status))
+            .done();
+    } else if (week = 6) {
+        client.messages.create({
+            body: `Hi ${user.username}! Thank you for participating in the What To Say Now Challenge. Here is a link to our Post Program Survey: localhost:/#/postsurvey1`,
+            from: '+16512731912',
+            to: user.phone_number
+        }).then(message => console.log(message.status))
+            .done();
+    } else if (week = 7) {
+        client.messages.create({
+            body: `Hi ${user.username}! Thank you for participating in the What To Say Now Challenge. Here is a link to our Three Month Followup Survey: localhost:/#/three-month-survey`,
+            from: '+16512731912',
+            to: user.phone_number
+        }).then(message => console.log(message.status))
+            .done();
+    }
 }
 
 module.exports = router;
