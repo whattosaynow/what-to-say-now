@@ -70,8 +70,9 @@ class UserPreferences extends Component {
       <div className='userPreferencesMainDiv'>
         
           <h1>Update Preferences</h1>
+
           {this.state.enabled ? (
-            <div>
+            <div className="buttonDiv">
               <Button onClick={this.handleEnable} color="red">
                 Cancel
               </Button>
@@ -83,7 +84,7 @@ class UserPreferences extends Component {
               />
             </div>
           ) : (
-            <div>
+            <div className="buttonDiv">
               <Button onClick={this.handleEnable}>
                 Click to change email
               </Button>
