@@ -1,13 +1,14 @@
 .question {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .bottomDiv {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
   justify-content: center;
-    height: 170px;
-    background-color: #FAF0E8;
+  height: 250px;
+  background-color: #FAF0E8;
+  overflow: hidden;
 }
 
 .semantic-radio{
