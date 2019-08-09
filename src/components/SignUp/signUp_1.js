@@ -111,6 +111,7 @@ class signUp_1 extends Component {
             />
             <br />
           </form>
+          <br />
         </div>
         <div className="bottomDiv">
           <Button onClick={this.handleClick} className="next-button">
