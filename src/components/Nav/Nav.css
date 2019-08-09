@@ -1,9 +1,9 @@
 .nav-title {
-    font-size: 24px;
-    font-weight: 700;
-    display: inline-block;
-    color: #f2f2f2;
-    padding-left: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  display: inline-block;
+  color: #f2f2f2;
+  padding-left: 10px;
 }
 
 .nav {
@@ -12,11 +12,10 @@
   background-color: #35297f;
   font-family: Poppins, Libre Franklin;
   border-bottom: 60px solid #faf0e8;
- margin-bottom: -10px;
-
+  margin-bottom: -10px;
 }
 
-.nav-link{
+.nav-link {
   float: left;
   color: white;
   background-color: #ff6624;
@@ -24,15 +23,14 @@
   padding: 12px 10px;
   text-decoration: none;
   font-size: 15px;
-
   /* these last two make the logout button in
   the nav bar look like another link */
-  border:none;
+  border: none;
   cursor: pointer;
-  outline:0;
+  outline: 0;
 }
 
-#donate{
+#donate {
   float: left;
   color: white;
   background-color: #35297f;
@@ -40,14 +38,12 @@
   padding: 12px 10px;
   text-decoration: none;
   font-size: 15px;
-
   /* these last two make the logout button in
   the nav bar look like another link */
-  border:none;
+  border: none;
   cursor: pointer;
-  outline:0;
+  outline: 0;
 }
-
 
 .nav-link:hover {
   background-color: #af3a11;
@@ -57,7 +53,18 @@
   float: right;
 }
 
-.logo{
+.logo {
   max-width: 195px;
 }
 
+/* mobile only settings */
+
+@media only screen and (max-width: 400px) {
+  .nav-right {
+    float: none;
+    display: flex;
+  }
+  .nav-link {
+    flex-grow: 1;
+  }
+}
