@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Card } from 'semantic-ui-react'
 import moment from 'moment';
 import CardTemplate from './CardTemplate';
+import { Button } from "semantic-ui-react";
 
 const margins = {
   margin: '20px'
@@ -111,9 +112,11 @@ class UserPage extends Component {
               }
             </Card.Group>
           </div>
+
           <div className='bottomDiv'>
-            <button onClick={this.handleClick}>Update My Accout Preferences</button>
+            <Button onClick={this.handleClick}>Update My Account Preferences</Button>
           </div>
+
         </center>
       </>
 
