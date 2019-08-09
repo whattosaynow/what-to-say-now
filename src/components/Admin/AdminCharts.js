@@ -7,7 +7,7 @@ import { Doughnut, Bar } from "react-chartjs-2";
 //semantic-ui
 import { Grid } from "semantic-ui-react";
 //charts
-import AgeGroupChart from './Charts/AgeGroupChart';
+import AgeGroupChart from './Charts/ageGroupChart';
 import LearnedChart from './Charts/LearnedChart';
 import FindChart from './Charts/FindChart';
 import EncourageChart from './Charts/EncourageChart';
