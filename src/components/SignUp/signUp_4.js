@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 
 //styling
 import Header from './signUp_header';
+import './signUp.css';
+
+//semantic-ui
+import { Input, Button } from "semantic-ui-react";
 
 class signUp_4 extends Component {
 
@@ -37,13 +41,13 @@ class signUp_4 extends Component {
         <Header width={'80%'} /><br />
         <div>
           <h2>Personal Information Continued</h2><br />
-          #. Age(s) you coach and want to focus on with during the Challenge:<br /><br />
+          7. Age(s) you coach and want to focus on with during the Challenge:<br /><br />
           <label>Choose One</label><br />
-          <input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="1" />6-10 years old<br />
-          <input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="2" />11-13 years old<br />
-          <input onChange={this.handleChange('focus_ages')} type="radio" name="q1" value="3" />14-18 years old<br />
+          <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" name="q1" value="1" />6-10 years old<br />
+          <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" name="q1" value="2" />11-13 years old<br />
+          <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" name="q1" value="3" />14-18 years old<br />
           <br />
-          #. How did you find us?<br /><br />
+          8. How did you find us?<br /><br />
             <label>Choose One</label><br />
           <select onChange={this.handleChange('how_did_you_find_us')} >
             <option>--Choose One--</option>
@@ -60,8 +64,8 @@ class signUp_4 extends Component {
           <br />
         </div>
         <br />
-        <div className="bottom-signup">
-          <button onClick={this.handleClickBack}>Back</button><button onClick={this.handleClickNext}>Next</button>
+        <div className="bottomDiv">
+          <Button onClick={this.handleClickBack}>Back</Button><Button onClick={this.handleClickNext}>Next</Button>
         </div>
       </center>
     );
