@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 
 import Header from './signUp_header';
+//semantic-ui
+import {Button} from "semantic-ui-react";
 
 //sweetAlert
 import Swal from 'sweetalert2'
@@ -57,7 +59,7 @@ class signUp_5 extends Component {
         <Header width={'100%'} /><br />
         <div>
           <h2>Personal Information Continued</h2><br />
-          #. Why are you particpating in the "What to say" Coaches Challenge?<br /><br />
+          9. Why are you particpating in the "What to say" Coaches Challenge?<br /><br />
           <label>Choose One</label><br />
           <input onChange={this.handleChange('why_are_you_participating')} type="radio" name="q1" value="I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image." />I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image.<br />
           <input onChange={this.handleChange('why_are_you_participating')} type="radio" name="q1" value="I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something." />I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something.<br />
@@ -66,7 +68,7 @@ class signUp_5 extends Component {
           <textarea onChange={this.handleChange('why_are_you_participating')}  value={this.state.value} rows="4" cols="100"></textarea>
 
           <br />
-          #. Can we call you at the completion of the Challenge for more information about your experience?
+          10. Can we call you at the completion of the Challenge for more information about your experience?
             <label>Choose One</label><br />
           <input onChange={this.handleChange('can_we_call_after_completion')} type="radio" name="q2" value="yes" />yes<br />
           <input onChange={this.handleChange('can_we_call_after_completion')} type="radio" name="q2" value="no" />no<br />
@@ -74,8 +76,9 @@ class signUp_5 extends Component {
           <br />
         </div>
         <br />
-        <div className="bottom-signup">
-          <button onClick={this.handleClickBack}>Back</button><button onClick={this.handleClickNext}>Next</button>
+        <div className="bottomDiv">
+          <Button onClick={this.handleClickBack}>Back</Button>
+          <Button onClick={this.handleClickNext}>Next</Button>
         </div>
       </center>
     );
