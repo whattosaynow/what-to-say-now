@@ -1,12 +1,12 @@
 const express = require('express');
-const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+const { rejectUnauthenticated, rejectNonAdmin } = require('../modules/authentication-middleware');
 const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
  * GET route template
  */
-router.get('/ageGroups', rejectUnauthenticated, (req, res) => {
+router.get('/ageGroups', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`SELECT "S1_focus_ages",
     Count ("S1_focus_ages")
     FROM "user"
@@ -21,7 +21,7 @@ router.get('/ageGroups', rejectUnauthenticated, (req, res) => {
     })
 });
 
-router.get('/findUs', rejectUnauthenticated, (req, res) => {
+router.get('/findUs', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`SELECT "S1_how_did_you_find_us",
     COUNT ("S1_how_did_you_find_us")
     FROM "user"
@@ -37,7 +37,7 @@ router.get('/findUs', rejectUnauthenticated, (req, res) => {
     })
 });
 
-router.get('/learnedSomething', rejectUnauthenticated, (req, res) => {
+router.get('/learnedSomething', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`SELECT "S2_learned_something_new",
     COUNT ("S2_learned_something_new")
     FROM "user"
@@ -52,7 +52,7 @@ router.get('/learnedSomething', rejectUnauthenticated, (req, res) => {
     })
 });
 
-router.get('/encourage', rejectUnauthenticated, (req, res) => {
+router.get('/encourage', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`SELECT "S2_would_encourage",
     COUNT ("S2_would_encourage")
     FROM "user"
@@ -67,7 +67,7 @@ router.get('/encourage', rejectUnauthenticated, (req, res) => {
     })
 });
 
-router.get('/impact', rejectUnauthenticated, (req, res) => {
+router.get('/impact', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`SELECT "S2_challenge_impacted_behavior",
     COUNT ("S2_challenge_impacted_behavior")
     FROM "user"
