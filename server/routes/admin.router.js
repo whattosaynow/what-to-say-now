@@ -34,6 +34,7 @@ router.put('/', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`
     UPDATE "content" SET
         "intro" = $1,
+        "phrase" = $6,
         "why_matters" = $2,
         "reflection" = $3,
         "action_steps" = $4
@@ -43,7 +44,8 @@ router.put('/', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
             req.body.why_matters,
             req.body.reflection,
             req.body.action_steps,
-            req.body.id
+            req.body.id,
+            req.body.phrase
         ]
     ).then((result) => {
         res.sendStatus(200)

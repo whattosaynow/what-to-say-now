@@ -30,18 +30,27 @@ class AdminEditTable extends Component {
       <>
         <Form>
           <Form.Field>
-            <label>This week's "What to Say" phrase is:</label>
+            <label>Welcome to Week {this.state.week} of the "What to Say" Coaches Challenge!</label>
             <TextArea
-              rows="10"
+              rows="5"
               cols="200"
               onChange={this.handleChange("intro")}
               value={this.state.intro}
             />
           </Form.Field>
           <Form.Field>
+            <label>This week's "What to Say" phrase is:</label>
+            <TextArea
+              rows="5"
+              cols="200"
+              onChange={this.handleChange("phrase")}
+              value={this.state.phrase}
+            />
+          </Form.Field>
+          <Form.Field>
             <label>Why does this phrase matter?</label>
             <TextArea
-              rows="10"
+              rows="5"
               cols="200"
               onChange={this.handleChange("why_matters")}
               value={this.state.why_matters}
@@ -50,7 +59,7 @@ class AdminEditTable extends Component {
           <Form.Field>
             <label>For Your Own Reflection</label>
             <TextArea
-              rows="10"
+              rows="5"
               cols="200"
               onChange={this.handleChange("reflection")}
               value={this.state.reflection}
