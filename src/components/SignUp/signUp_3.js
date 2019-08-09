@@ -66,7 +66,8 @@ class signUp_3 extends Component {
         </div>
         <br />
         <div className="bottomDiv">
-          <Button onClick={this.handleClickBack}>Back</Button><Button onClick={this.handleClickNext}>Next</Button>
+          <Button onClick={this.handleClickBack}>Back</Button>
+          <Button onClick={this.handleClickNext}>Next</Button>
         </div>
       </center>
     );

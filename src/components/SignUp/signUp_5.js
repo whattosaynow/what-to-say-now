@@ -68,7 +68,6 @@ class signUp_5 extends Component {
           <Input onChange={this.handleChange('why_are_you_participating')} type="radio" className="semantic-radio" name="q1" />I have other reasons for participating. They are:<br />
           <textarea onChange={this.handleChange('why_are_you_participating')}  value={this.state.value} rows="4" cols="100"></textarea>
           <br />
-          <br />
           10. Can we call you at the completion of the Challenge for more information about your experience?
             <label>Choose One</label><br />
           <Input onChange={this.handleChange('can_we_call_after_completion')} type="radio" className="semantic-radio" name="q2" value="yes" />yes<br />
@@ -78,7 +77,8 @@ class signUp_5 extends Component {
         </div>
         <br />
         <div className="bottomDiv">
-          <Button onClick={this.handleClickBack}>Back</Button><Button onClick={this.handleClickNext}>Next</Button>
+          <Button onClick={this.handleClickBack}>Back</Button>
+          <Button onClick={this.handleClickNext}>Next</Button>
         </div>
       </center>
     );

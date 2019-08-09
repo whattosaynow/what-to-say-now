@@ -6,7 +6,7 @@ import './signUp.css';
 import Header from './signUp_header';
 
 //semantic-ui
-import { Input, Button } from "semantic-ui-react";
+import { Input, Button, Form } from "semantic-ui-react";
 
 
 class signUp_1 extends Component {
@@ -43,28 +43,81 @@ class signUp_1 extends Component {
 
   render() {
     return (
-      <center>
-        <Header width={'20%'} /><br />
-        <div>
+      <>
+        <Header width={"20%"} />
+        <br />
+        <div className="signUp1Div">
           <h2>Personal Information</h2>
-          <form id="signUp1" style={{backgroundColor: "white"}}>
-            <Input onChange={this.handleChange('first_name')}  placeholder="First Name" value={this.state.value}></Input><br />
-            <Input onChange={this.handleChange('last_name')}  placeholder="Last Name" value={this.state.value}></Input><br />
-            <Input onChange={this.handleChange('username')} placeholder="Username" value={this.state.value}></Input><br />
-            <Input onChange={this.handleChange('email')} placeholder="Email" value={this.state.value}></Input><br />
-            <Input onChange={this.handleChange('password')} type="password" placeholder="Password" value={this.state.value}></Input><br />
-            <Input onChange={this.handleChange('phone_number')}  placeholder="Phone Number" value={this.state.value}></Input><br />
-            <Input onChange={this.handleChange('street_address')}  placeholder="Street Address" value={this.state.value}></Input><br />
-            <Input onChange={this.handleChange('city')}  placeholder="City" value={this.state.value}></Input><br />
-            <Input onChange={this.handleChange('state')}  placeholder="State" value={this.state.value}></Input><br />
-            <Input onChange={this.handleChange('zip')}  placeholder="Zip" value={this.state.value}></Input><br />
+          <form id="signUp1" style={{ backgroundColor: "white" }}>
+            <Input
+              onChange={this.handleChange("first_name")}
+              placeholder="First Name"
+              value={this.state.value}
+            />
+            <br />
+            <Input
+              onChange={this.handleChange("last_name")}
+              placeholder="Last Name"
+              value={this.state.value}
+            />
+            <br />
+            <Input
+              onChange={this.handleChange("username")}
+              placeholder="Username"
+              value={this.state.value}
+            />
+            <br />
+            <Input
+              onChange={this.handleChange("email")}
+              placeholder="Email"
+              value={this.state.value}
+            />
+            <br />
+            <Input
+              onChange={this.handleChange("password")}
+              type="password"
+              placeholder="Password"
+              value={this.state.value}
+            />
+            <br />
+            <Input
+              onChange={this.handleChange("phone_number")}
+              placeholder="Phone Number"
+              value={this.state.value}
+            />
+            <br />
+            <Input
+              onChange={this.handleChange("street_address")}
+              placeholder="Street Address"
+              value={this.state.value}
+            />
+            <br />
+            <Input
+              onChange={this.handleChange("city")}
+              placeholder="City"
+              value={this.state.value}
+            />
+            <br />
+            <Input
+              onChange={this.handleChange("state")}
+              placeholder="State"
+              value={this.state.value}
+            />
+            <br />
+            <Input
+              onChange={this.handleChange("zip")}
+              placeholder="Zip"
+              value={this.state.value}
+            />
+            <br />
           </form>
         </div>
         <div className="bottomDiv">
-          <Button onClick={this.handleClick} className="next-button">Next</Button>
+          <Button onClick={this.handleClick} className="next-button">
+            Next
+          </Button>
         </div>
-
-      </center>
+      </>
     );
   }
 }

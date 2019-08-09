@@ -20,15 +20,18 @@ class signUp_header extends Component {
 
     render() {
         return (
-            <header className="sign-up-header">
-                Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
-                Please fill out the following form to participate.<br />
-                <br />
-                <div className="outerBar" style={this.outerBar}>
-                    <div className="innerBar" style={this.innerBar}></div>
-                </div>
-                <br />
-            </header>
+          <header className="sign-up-header">
+            <p>
+              Thank you for participating in WithAll's "What To Say"
+              Coaches Challenge.
+            </p>
+            <p>Please fill out the following form to participate.</p>
+            
+            <div className="outerBar" style={this.outerBar}>
+              <div className="innerBar" style={this.innerBar} />
+            </div>
+            <br />
+          </header>
         );
     }
 }

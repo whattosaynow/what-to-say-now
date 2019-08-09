@@ -3,6 +3,40 @@
 }
 
 .bottomDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 170px;
+    background-color: #FAF0E8;
+}
+
+.sign-up-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styles for signUp_1.js */
+
+.signUp1Div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.signUp1Div h2 {
+    text-align: center;
+}
+
+#signUp1 {
+    /* margin-bottom: 50px; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#signUp1 Button {
+  align-content: center;
   display: flex;
   align-items: center;
   justify-content: center;
