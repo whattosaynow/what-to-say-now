@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-
+import './UserPreferences.css';
 //semantic-ui
 import { Input } from "semantic-ui-react";
 import { Button } from "semantic-ui-react";
@@ -64,10 +64,11 @@ class UserPreferences extends Component {
       email: this.props.reduxState.user.email,
     })
   }
+  
   render() {
     return (
-      <div>
-        <center>
+      <div className='userPreferencesMainDiv'>
+        
           <h1>Update Preferences</h1>
           {this.state.enabled ? (
             <div>
@@ -131,7 +132,7 @@ class UserPreferences extends Component {
           <br />
           <br />
           <Button onClick={this.handleDelete} color='red'>Delete My Account</Button>
-        </center>
+        
       </div>
     );
   }
