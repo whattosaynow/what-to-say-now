@@ -6,8 +6,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 170px;
+    height: 275px;
     background-color: #FAF0E8;
+}
+
+.bottomDiv .ui.button{
+  font-size: 30px;
+  padding: 0.5em 1.0em;
 }
 
 .sign-up-header {
@@ -23,6 +28,11 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 2px 4px 6px #b3b3b3;
+
 }
 
 .signUp1Div h2 {

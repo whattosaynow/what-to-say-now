@@ -46,9 +46,10 @@ class signUp_1 extends Component {
       <>
         <Header width={"20%"} />
         <br />
-        <div className="signUp1Div">
-          <h2>Personal Information</h2>
-          <form id="signUp1" style={{ backgroundColor: "white" }}>
+       
+          <center><h2>Personal Information</h2></center><br />
+          <div className="signUp1Div">
+          <form id="signUp1" style={{ backgroundColor: "white" }}><br />
             <Input
               onChange={this.handleChange("first_name")}
               placeholder="First Name"
@@ -110,9 +111,8 @@ class signUp_1 extends Component {
               value={this.state.value}
             />
             <br />
-          </form>
-          <br />
-        </div>
+          </form><br />
+        </div><br />
         <div className="bottomDiv">
           <Button onClick={this.handleClick} className="next-button">
             Next
