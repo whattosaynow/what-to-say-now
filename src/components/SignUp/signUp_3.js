@@ -37,25 +37,24 @@ class signUp_3 extends Component {
 
   render() {
     return (
-      <center>
-        <Header width={'60%'} /><br />
-
-        <div>
-          <h2>Personal Information Continued</h2><br />
-          4. Number of years you have been coach?<br /><br />
+      <>
+        <Header width={'60%'} />
+        <center><h2>Personal Information Continued</h2></center><br />
+        <div className="signup-questions"><br />
+          <span className="survey-questions">4. Number of years you have been coach?</span><br />
           <label>Choose One</label><br />
           <Input onChange={this.handleChange('years_coaching')} type="radio" className="semantic-radio" name="q1" value="Less than 5 years" />Less than 5 years<br />
           <Input onChange={this.handleChange('years_coaching')} type="radio" className="semantic-radio" name="q1" value="6-10 years" />6-10 years<br />
           <Input onChange={this.handleChange('years_coaching')} type="radio" className="semantic-radio" name="q1" value="11-20 years" />11-20 years<br />
           <Input onChange={this.handleChange('years_coaching')} type="radio" className="semantic-radio" name="q1" value="More than 21 years" />More than 21 years<br />
           <br />
-          5. Genders of the athletes you coach: <br /><br />
+          <span className="survey-questions">5. Genders of the athletes you coach:</span> <br />
           <label>Choose One</label><br />
           <Input onChange={this.handleChange('genders_of_athletes')} type="radio" className="semantic-radio" name="q2" value="Female" />Female<br />
           <Input onChange={this.handleChange('genders_of_athletes')} type="radio" className="semantic-radio" name="q2" value="Male" />Male<br />
           <Input onChange={this.handleChange('genders_of_athletes')} type="radio" className="semantic-radio" name="q2" value="Non-binary" />Non-binary<br />
           <br />
-          6. Number of athletes on the team you coach?<br /><br />
+          <span className="survey-questions">6. Number of athletes on the team you coach?</span><br />
           <label>Choose One</label><br />
           <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" name="q3" value="5-10" />5-10<br />
           <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" name="q3" value="11-15" />11-15<br />
@@ -69,7 +68,7 @@ class signUp_3 extends Component {
           <Button onClick={this.handleClickBack}>Back</Button>
           <Button onClick={this.handleClickNext}>Next</Button>
         </div>
-      </center>
+      </>
     );
   }
 }

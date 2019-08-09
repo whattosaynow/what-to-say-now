@@ -56,19 +56,19 @@ class signUp_5 extends Component {
 
   render() {
     return (
-      <center>
+      <>
         <Header width={'100%'} /><br />
-        <div>
-          <h2>Personal Information Continued</h2><br />
-          9. Why are you particpating in the "What to say" Coaches Challenge?<br /><br />
+        <center><h2>Personal Information Continued</h2></center><br />
+        <div className="signup-questions"><br />
+          <span className="survey-questions">9. Why are you particpating in the "What to say" Coaches Challenge?</span><br />
           <label>Choose One</label><br />
-          <Input onChange={this.handleChange('why_are_you_participating')} type="radio" className="semantic-radio" name="q1" value="I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image." />I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image.<br />
-          <Input onChange={this.handleChange('why_are_you_participating')} type="radio" className="semantic-radio" name="q1" value="I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something." />I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something.<br />
-          <Input onChange={this.handleChange('why_are_you_participating')} type="radio" className="semantic-radio" name="q1" value="This is not a priority issue for me as a coach, but I’m doing this because I was asked to participate." />This is not a priority issue for me as a coach, but I’m doing this because I was asked to participate.<br />
-          <Input onChange={this.handleChange('why_are_you_participating')} type="radio" className="semantic-radio" name="q1" />I have other reasons for participating. They are:<br />
-          <textarea onChange={this.handleChange('why_are_you_participating')}  value={this.state.value} rows="4" cols="100"></textarea>
+          <Input onChange={this.handleChange('why_are_you_participating')} type="radio" className="semantic-radio" name="q1" value="I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image." /><span className="radio-answer">I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image.</span><br />
+          <Input onChange={this.handleChange('why_are_you_participating')} type="radio" className="semantic-radio" name="q1" value="I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something." /><span className="radio-answer">I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something.</span><br />
+          <Input onChange={this.handleChange('why_are_you_participating')} type="radio" className="semantic-radio" name="q1" value="This is not a priority issue for me as a coach, but I’m doing this because I was asked to participate." /><span className="radio-answer">This is not a priority issue for me as a coach, but I’m doing this because I was asked to participate.</span><br />
+          <Input onChange={this.handleChange('why_are_you_participating')} type="radio" className="semantic-radio" name="q1" /><span className="radio-answer">I have other reasons for participating. They are:</span><br />
+          <textarea className="semantic-radio" onChange={this.handleChange('why_are_you_participating')} value={this.state.value} rows="4" cols="50"></textarea>
           <br />
-          10. Can we call you at the completion of the Challenge for more information about your experience?
+          <span className="survey-questions">10. Can we call you at the completion of the Challenge for more information about your experience?</span><br />
             <label>Choose One</label><br />
           <Input onChange={this.handleChange('can_we_call_after_completion')} type="radio" className="semantic-radio" name="q2" value="yes" />yes<br />
           <Input onChange={this.handleChange('can_we_call_after_completion')} type="radio" className="semantic-radio" name="q2" value="no" />no<br />
@@ -80,7 +80,7 @@ class signUp_5 extends Component {
           <Button onClick={this.handleClickBack}>Back</Button>
           <Button onClick={this.handleClickNext}>Next</Button>
         </div>
-      </center>
+      </>
     );
   }
 }
