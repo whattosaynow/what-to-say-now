@@ -1,5 +1,5 @@
 .question {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .bottomDiv {
@@ -36,5 +36,15 @@
 }
 
 #signUp1 Button {
-    align-content: center;
+  align-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  background-color: #FAF0E8;
+  overflow: hidden;
+}
+
+.semantic-radio{
+  padding: 10px;
 }
