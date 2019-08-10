@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import './postSurvey.css';
+//semantic-ui
+import { Input, Button } from "semantic-ui-react";
 
 class PostSurvey_1 extends Component {
 
@@ -26,28 +28,148 @@ class PostSurvey_1 extends Component {
 
   render() {
     return (
+      <>
+      <div className="questions-wrapper">
+        <span className="survey-questions">
+          1. How much of the Challenge did you complete?
+        </span>
+        <br />
+        <Input
+          onChange={this.handleChangeFor("challenge_completed")}
+          className="semantic-radio"
+          name="q1"
+          type="radio"
+          value="All"
+        />
+        All
+        <br />
+        <Input
+          onChange={this.handleChangeFor("challenge_completed")}
+          className="semantic-radio"
+          name="q1"
+          type="radio"
+          value="3-4 weeks"
+        />
+        3-4 weeks
+        <br />
+        <Input
+          onChange={this.handleChangeFor("challenge_completed")}
+          className="semantic-radio"
+          name="q1"
+          type="radio"
+          value="1-2 weeks"
+        />
+        1-2 weeks
+        <br />
+        <span className="survey-questions">
+          2. Participating in the Challenge was easy to do.
+        </span>
+        <br />
+        <Input
+          onChange={this.handleChangeFor("participation_was_easy")}
+          className="semantic-radio"
+          name="q2"
+          type="radio"
+          value="Agree"
+        />
+        Agree
+        <br />
+        <Input
+          onChange={this.handleChangeFor("participation_was_easy")}
+          className="semantic-radio"
+          name="q2"
+          type="radio"
+          value="Neutral"
+        />
+        Neutral
+        <br />
+        <Input
+          onChange={this.handleChangeFor("participation_was_easy")}
+          className="semantic-radio"
+          name="q2"
+          type="radio"
+          value="Disagree"
+        />
+        Disagree
+        <br />
+        <span className="survey-questions">
+          3. I learned something new from participating in the Challenge.
+        </span>
+        <br />
+        <Input
+          onChange={this.handleChangeFor("learned_something_new")}
+          className="semantic-radio"
+          name="q3"
+          type="radio"
+          value="Agree"
+        />
+        Agree
+        <br />
+        <Input
+          onChange={this.handleChangeFor("learned_something_new")}
+          className="semantic-radio"
+          name="q3"
+          type="radio"
+          value="Neutral"
+        />
+        Neutral
+        <br />
+        <Input
+          onChange={this.handleChangeFor("learned_something_new")}
+          className="semantic-radio"
+          name="q3"
+          type="radio"
+          value="Disagree"
+        />
+        Disagree
+        <br />
+        <span className="survey-questions">
+          4.I would encourage another coach I know to do the Challenge.
+        </span>
+        <br />
+        <Input
+          onChange={this.handleChangeFor("would_encourage")}
+          className="semantic-radio"
+          name="q4"
+          type="radio"
+          value="Agree"
+        />
+        Agree
+        <br />
+        <Input
+          onChange={this.handleChangeFor("would_encourage")}
+          className="semantic-radio"
+          name="q4"
+          type="radio"
+          value="Agree"
+        />
+        Agree
+        <br />
+        <Input
+          onChange={this.handleChangeFor("would_encourage")}
+          className="semantic-radio"
+          name="q4"
+          type="radio"
+          value="Neutral"
+        />
+        Neutral
+        <br />
+        <Input
+          onChange={this.handleChangeFor("would_encourage")}
+          className="semantic-radio"
+          name="q4"
+          type="radio"
+          value="Disagree"
+        />
+        Disagree
+        <br />
+        
+      </div>
 
-      <center>
-        <label>1.How much of the Challenge did you complete?</label><br/>
-        <input onChange={this.handleChangeFor('challenge_completed')} name='q1'type="radio" value="All"></input>All<br/>
-        <input onChange={this.handleChangeFor('challenge_completed')}name='q1'type="radio" value="3-4 weeks"></input>3-4 weeks<br/>
-        <input onChange={this.handleChangeFor('challenge_completed')}name='q1'type="radio" value="1-2 weeks"></input>1-2 weeks<br/>
-        <label>2.Participating in  the Challenge was easy to do.</label><br/>
-        <input onChange={this.handleChangeFor('participation_was_easy')}name='q2'type="radio" value="Agree"></input>Agree<br/>
-        <input onChange={this.handleChangeFor('participation_was_easy')}name='q2'type="radio" value="Neutral"></input>Neutral<br/>
-        <input onChange={this.handleChangeFor('participation_was_easy')}name='q2'type="radio" value="Disagree"></input>Disagree<br/>
-        <label>3.I learned something new from participating in the Challenge.</label><br/>
-        <input onChange={this.handleChangeFor('learned_something_new')} name='q3'type="radio" value="Agree"></input>Agree<br/>
-        <input onChange={this.handleChangeFor('learned_something_new')} name='q3'type="radio" value="Neutral"></input>Neutral<br/>
-        <input onChange={this.handleChangeFor('learned_something_new')} name='q3'type="radio" value="Disagree"></input>Disagree<br/>
-        <label>4.I would encourage another coach I know to do the Challenge.</label><br/>
-        <input onChange={this.handleChangeFor('would_encourage')} name='q4'type="radio" value="Agree"></input>Agree<br/>
-        <input onChange={this.handleChangeFor('would_encourage')} name='q4'type="radio" value="Agree"></input>Agree<br/>
-        <input onChange={this.handleChangeFor('would_encourage')} name='q4'type="radio" value="Neutral"></input>Neutral<br/>
-        <input onChange={this.handleChangeFor('would_encourage')} name='q4'type="radio" value="Disagree"></input>Disagree<br/>
-        <button onClick={this.handleClick}>Next</button>
-      </center>
-
+      <div className="bottomDiv">
+        <Button onClick={this.handleClick}>Next</Button>
+      </div>
+      </>
     );
   }
 }
