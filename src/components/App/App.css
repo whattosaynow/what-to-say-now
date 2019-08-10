@@ -74,18 +74,48 @@ input {
         padding: 25px;
         border-radius: 2px;
     }
-    
     .innerLogin {
         display: flex;
         flex-direction: column;
         align-items: center;
         align-content: space-between;
     }
-
     .innerLoginInput1 {
         margin-bottom: 10px;
     }
     .innerLoginInput2 {
         margin-bottom: 10px;
     }
+}
+
+.loginWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 45px;
+    padding-bottom: 160px;
+    align-items: center;
+}
+
+.loginForm {
+    background-color: #faf0e8;
+    align-self: center;
+    height: 250px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 2px;
+}
+
+.innerLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+}
+
+.innerLoginInput1 {
+    margin-bottom: 10px;
+}
+
+.innerLoginInput2 {
+    margin-bottom: 10px;
 }
