@@ -24,37 +24,68 @@ input {
 }
 
 .log-in, .register {
-  background-color: #00acb0;
-  border-radius: 4px;
-  color: #f8f8f8;
-  min-height: 50px;
-  min-width: 100px;
-  outline:0;
-  cursor: pointer;
+    background-color: #00acb0;
+    border-radius: 4px;
+    color: #f8f8f8;
+    min-height: 50px;
+    min-width: 100px;
+    outline: 0;
+    cursor: pointer;
 }
 
 .log-in:hover, .register:hover {
-  background-color: #008183;
+    background-color: #008183;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
+
 .link-button {
-    background:none;
-    color:inherit;
-    border:none;
-    padding:0;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
     font: inherit;
-    outline:0;
+    outline: 0;
     /* border-bottom:1px solid #444;  */
     cursor: pointer;
 }
 
-.sign-up-header{
+.sign-up-header {
     background-color: #faf0e8;
     color: #35297f;
 }
 
+/* mobile only settings for login page */
 
+@media only screen and (max-width: 400px) {
+    .loginWrapper {
+        display: flex;
+        flex-direction: column;
+        margin-top: 45px;
+        padding-bottom: 160px;
+        align-items: center;
+    }
+    .loginForm {
+        background-color: #faf0e8;
+        width: 80%;
+        align-self: center;
+        height: 250px;
+        margin: 20px auto;
+        padding: 25px;
+        border-radius: 2px;
+    }
+    
+    .innerLogin {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: space-between;
+    }
 
-
-
+    .innerLoginInput1 {
+        margin-bottom: 10px;
+    }
+    .innerLoginInput2 {
+        margin-bottom: 10px;
+    }
+}
