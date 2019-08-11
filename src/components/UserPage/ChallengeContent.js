@@ -58,7 +58,7 @@ class ChallengeContent extends Component {
       <div>
 
         <header style={name} className="content-header">
-          Hello, {this.props.reduxState.user.first_name}! 
+          Hello, {this.props.reduxState.user.first_name}!
         </header>
 
         <main>
@@ -81,8 +81,8 @@ class ChallengeContent extends Component {
                   {this.state.why_matters ?
 
                     <>
-                      <h2 onClick={() => { this.handleDrop('why_matters') }} 
-                          style={matter}>Why does this phrase matter? 
+                      <h2 onClick={() => { this.handleDrop('why_matters') }}
+                        style={matter}>Why does this phrase matter?
                           <Icon name='chevron up' />
                       </h2>
                       <div className='backgroundDiv'>
@@ -95,9 +95,9 @@ class ChallengeContent extends Component {
                     :
 
                     <>
-                      <h2 onClick={() => { this.handleDrop('why_matters') }} 
+                      <h2 onClick={() => { this.handleDrop('why_matters') }}
                         style={matter}>
-                        Why does this phrase matter? 
+                        Why does this phrase matter?
                         <Icon name='chevron down' />
                       </h2>
                     </>}
@@ -105,9 +105,9 @@ class ChallengeContent extends Component {
                   {this.state.reflection ?
 
                     <>
-                      <h2 onClick={() => { this.handleDrop('reflection') }} 
-                          style={matter}>
-                          For your own reflection 
+                      <h2 onClick={() => { this.handleDrop('reflection') }}
+                        style={matter}>
+                        For your own reflection
                           <Icon name='chevron up' />
                       </h2>
                       <div className='backgroundDiv'>
@@ -120,16 +120,16 @@ class ChallengeContent extends Component {
                     :
 
                     <>
-                      <h2 onClick={() => { this.handleDrop('reflection') }} 
-                          style={matter}>For your own reflection 
+                      <h2 onClick={() => { this.handleDrop('reflection') }}
+                        style={matter}>For your own reflection
                           <Icon name='chevron down' />
                       </h2>
                     </>}
 
                   {this.state.action_steps ?
                     <>
-                      <h2 onClick={() => { this.handleDrop('action_steps') }} 
-                          style={matter}>Action steps options 
+                      <h2 onClick={() => { this.handleDrop('action_steps') }}
+                        style={matter}>Action steps options
                           <Icon name='chevron up' />
                       </h2>
                       <div className='backgroundDiv'>
@@ -138,14 +138,14 @@ class ChallengeContent extends Component {
                     </>
                     :
                     <>
-                      <h2 onClick={() => { this.handleDrop('action_steps') }} 
-                          style={matter}>
-                          Action steps options 
+                      <h2 onClick={() => { this.handleDrop('action_steps') }}
+                        style={matter}>
+                        Action steps options
                           <Icon name='chevron down' />
                       </h2>
                     </>}
 
-                </div> 
+                </div>
 
                 <div className="postDiv">
                   <h2 style={goodLuck} >Good luck with this challenge!  Email any questions or suggestions to us.</h2>

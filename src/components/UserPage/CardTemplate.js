@@ -13,7 +13,7 @@ class CardTemplate extends Component {
     render() {
         return (
 
-            <Card style={{ width: "250px", maxHeight: "325px", overflow: "hidden" }} >
+            <Card style={{ width: "250px", maxHeight: "400px", overflow: "auto" }} >
                 <Image src={this.props.content.image} alt='image' wrapped ui={false} />
                 <Card.Content extra style={{ overflow: "auto", height: "117px" }}>
                     <Card.Header>Week {this.props.content.week}</Card.Header>

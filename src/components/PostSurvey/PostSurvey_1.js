@@ -29,7 +29,7 @@ class PostSurvey_1 extends Component {
   render() {
     return (
       <>
-      <div className="questions-wrapper">
+      <div className="questions-wrapper"><br />
         <span className="survey-questions">
           1. How much of the Challenge did you complete?
         </span>
@@ -162,8 +162,7 @@ class PostSurvey_1 extends Component {
           value="Disagree"
         />
         Disagree
-        <br />
-        
+        <br /><br />
       </div>
 
       <div className="bottomDiv">

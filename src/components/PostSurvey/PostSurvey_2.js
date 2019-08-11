@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import Header from './PostSurvey_Header';
 import { connect } from 'react-redux';
+
+import './postSurvey.css';
+//semantic-ui
+import { Input, Button } from "semantic-ui-react";
 
 class PostSurvey_2 extends Component {
 
@@ -21,52 +24,134 @@ class PostSurvey_2 extends Component {
       this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state })
       this.props.history.push('/postsurvey3');
     }
-    
-}
 
-handleClickBack = () => {
-  this.props.history.push('/postsurvey1');
-}
+  }
+
+  handleClickBack = () => {
+    this.props.history.push('/postsurvey1');
+  }
 
   render() {
     return (
-
-      <center>
-        <Header /><br />
-        <div>
-
-          <label>5.The Challenge felt relevant to the age I coach:</label><br />
-          <input onChange={this.handleChangeFor('challenge_felt_relavent')} name='q5'type="radio" value="Agree"></input>Agree<br />
-          <input onChange={this.handleChangeFor('challenge_felt_relavent')} name='q5'type="radio" value="Neutral"></input>Neutral<br />
-          <input onChange={this.handleChangeFor('challenge_felt_relavent')} name='q5'type="radio" value="Disagree"></input>Disagree<br />
-          <label>6.The Challenge impacted my behavior with the athletes I coach:</label><br />
-          <input onChange={this.handleChangeFor('challenge_impacted_behavior')} name='q6'type="radio" value="Agree"></input>Agree<br />
-          <input onChange={this.handleChangeFor('challenge_impacted_behavior')} name='q6'type="radio" value="Neutral"></input>Neutral<br />
-          <input onChange={this.handleChangeFor('challenge_impacted_behavior')} name='q6'type="radio" value="Disagree"></input>Disagree<br />
-          <label>7.My understanding of the importance of messages kids hear from
-            adults about food and body has changed:</label><br />
-          <input onChange={this.handleChangeFor('understanding_importance_changed')} name='q7'type="radio" value="Agree"></input>Agree<br />
-          <input onChange={this.handleChangeFor('understanding_importance_changed')} name='q7'type="radio" value="Neutral"></input>Neutral<br />
-          <input onChange={this.handleChangeFor('understanding_importance_changed')} name='q7'type="radio" value="Disagree"></input>Disagree<br />
-          <label>8.The Challenge tools have positively affected my ability to interact
-            with my team about body and food:</label><br />
-          <input onChange={this.handleChangeFor('affected_ability_interact')} name='q8'type="radio" value="Agree"></input>Agree<br />
-          <input onChange={this.handleChangeFor('affected_ability_interact')} name='q8' type="radio" value="Neutral"></input>Neutral<br />
-          <input onChange={this.handleChangeFor('affected_ability_interact')} name='q8' type="radio" value="Disagree"></input>Disagree<br />
-       
-
+      <>
+        <div className="questions-wrapper"><br />
+          <span className="survey-questions">5. The Challenge felt relevant to the age I coach:</span><br />
+          <Input
+            onChange={this.handleChangeFor('challenge_felt_relavent')}
+            className="semantic-radio"
+            name='q5'
+            type="radio"
+            value="Agree"
+          /> Agree
+          <br />
+          <Input
+            onChange={this.handleChangeFor('challenge_felt_relavent')}
+            className="semantic-radio"
+            name='q5'
+            type="radio"
+            value="Neutral"
+          /> Neutral
+          <br />
+          <Input
+            onChange={this.handleChangeFor('challenge_felt_relavent')}
+            className="semantic-radio"
+            name='q5'
+            type="radio"
+            value="Disagree"
+          /> Disagree
+          <br />
+          <span className="survey-questions">6. The Challenge impacted my behavior with the athletes I coach:</span>
+          <br />
+          <Input
+            onChange={this.handleChangeFor('challenge_impacted_behavior')}
+            className="semantic-radio"
+            name='q6'
+            type="radio"
+            value="Agree"
+          /> Agree
+          <br />
+          <Input
+            onChange={this.handleChangeFor('challenge_impacted_behavior')}
+            className="semantic-radio"
+            name='q6'
+            type="radio"
+            value="Neutral"
+          /> Neutral
+          <br />
+          <Input
+            onChange={this.handleChangeFor('challenge_impacted_behavior')}
+            className="semantic-radio"
+            name='q6'
+            type="radio"
+            value="Disagree"
+          /> Disagree
+          <br />
+          <span className="survey-questions">7. My understanding of the importance of messages kids hear from
+            adults about food and body has changed:</span>
+          <br />
+          <Input
+            onChange={this.handleChangeFor('understanding_importance_changed')}
+            className="semantic-radio"
+            name='q7'
+            type="radio"
+            value="Agree"
+          /> Agree
+          <br />
+          <Input
+            onChange={this.handleChangeFor('understanding_importance_changed')}
+            className="semantic-radio"
+            name='q7'
+            type="radio"
+            value="Neutral"
+          /> Neutral
+          <br />
+          <Input
+            onChange={this.handleChangeFor('understanding_importance_changed')}
+            className="semantic-radio"
+            name='q7'
+            type="radio"
+            value="Disagree"
+          /> Disagree
+          <br />
+          <span className="survey-questions">8. The Challenge tools have positively affected my ability to interact
+            with my team about body and food:</span>
+          <br />
+          <Input
+            onChange={this.handleChangeFor('affected_ability_interact')}
+            className="semantic-radio"
+            name='q8'
+            type="radio"
+            value="Agree"
+          /> Agree
+          <br />
+          <Input
+            onChange={this.handleChangeFor('affected_ability_interact')}
+            className="semantic-radio"
+            name='q8'
+            type="radio"
+            value="Neutral"
+          /> Neutral
+          <br />
+          <Input
+            onChange={this.handleChangeFor('affected_ability_interact')}
+            className="semantic-radio"
+            name='q8'
+            type="radio"
+            value="Disagree"
+          /> Disagree
+          <br /><br />
         </div>
         <br />
-        <div className="bottom-signup">
-          <button onClick={this.handleClickBack}>Previous Page</button><button onClick={this.handleClick}>Next</button>
+        <div className="bottomDiv">
+          <Button onClick={this.handleClickBack}>Previous Page</Button><Button onClick={this.handleClick}>Next</Button>
         </div>
-        </center>
-        );
-      }
-    }
-    
-    const mapStateToProps = (reduxState) => ({
-      reduxState,
-    })
-    
-    export default connect(mapStateToProps)(PostSurvey_2);
+      </>
+    );
+  }
+}
+
+const mapStateToProps = (reduxState) => ({
+  reduxState,
+})
+
+export default connect(mapStateToProps)(PostSurvey_2);
