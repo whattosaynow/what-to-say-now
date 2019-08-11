@@ -34,7 +34,7 @@ class PostSurvey_2 extends Component {
   render() {
     return (
       <>
-        <div className="questions-wrapper">
+        <div className="questions-wrapper"><br />
           <span className="survey-questions">5. The Challenge felt relevant to the age I coach:</span><br />
           <Input
             onChange={this.handleChangeFor('challenge_felt_relavent')}
@@ -139,9 +139,7 @@ class PostSurvey_2 extends Component {
             type="radio"
             value="Disagree"
           /> Disagree
-          <br />
-
-
+          <br /><br />
         </div>
         <br />
         <div className="bottomDiv">

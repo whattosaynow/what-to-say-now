@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+import './postSurvey.css';
+//semantic-ui
+import { Input, Button } from "semantic-ui-react";
+
 //sweetAlert
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -53,42 +58,48 @@ class PostSurvey_3 extends Component {
 
   render() {
     return (
-      <center>
-        <div>
-          <label> 9. What was your favorite thing about the Challenge?</label>
+      <>
+        <div className="questions-wrapper"><br />
+          <span className="survey-questions"> 9. What was your favorite thing about the Challenge?</span>
           <br />
           <textarea
             onChange={this.handleChangeFor("favorite_thing")}
             style={topMargin}
             rows="10"
             cols="100"
+            className="semantic-radio"
           />
           <br />
-          <label>
+          <span className="survey-questions">
             10.Can we call you for more information about your experience?
-          </label>
+          </span>
           <br />
-          <input
+          <Input
             onChange={this.handleChangeFor("call_more_information")}
             name="q10"
             style={topMargin}
             type="radio"
             value="Yes"
+            className="semantic-radio"
           />
           Yes
           <br />
-          <input
+          <Input
             onChange={this.handleChangeFor("call_more_information")}
             name="q10"
             type="radio"
             value="No"
+            className="semantic-radio"
           />
           No
-          <br />
-          <button onClick={this.handleClickBack}>Go Back</button>
-          <button onClick={this.handleClickNext}>Submit</button>
+          <br /><br />
         </div>
-      </center>
+        <div className="bottomDiv">
+          <Button onClick={this.handleClickBack}>Go Back</Button>
+          <Button onClick={this.handleClickNext}>Submit</Button>
+        </div>
+
+      </>
     );
   }
 }

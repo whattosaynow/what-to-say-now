@@ -119,3 +119,7 @@ input {
 .innerLoginInput2 {
     margin-bottom: 10px;
 }
+
+textarea {
+    max-width: 90%;
+}
