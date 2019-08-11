@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Input, Button } from "semantic-ui-react";
+
 class LoginPage extends Component {
   state = {
     username: '',
@@ -31,56 +33,58 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="loginWrapper">
+        {/* displays error if there is a login error */}
         {this.props.errors.loginMessage && (
-          <h2
-            className="alert"
-            role="alert"
-          >
+          <h2 className="alert" role="alert">
             {this.props.errors.loginMessage}
           </h2>
         )}
+
+        {/* begin login form */}
         <form className="loginForm" onSubmit={this.login}>
-          <h1>Login</h1>
-          <div>
-            <label htmlFor="username">
-              Username:
-              <input
+          <div className="innerLogin">
+            <h1>Login</h1>
+            <div className="innerLoginInput1">
+              <Input
                 type="text"
                 name="username"
+                placeholder="Username"
                 value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
+                onChange={this.handleInputChangeFor("username")}
               />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
-              <input
+            </div>
+            <div className="innerLoginInput2">
+              <Input
                 type="password"
                 name="password"
+                placeholder="Password"
                 value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
+                onChange={this.handleInputChangeFor("password")}
               />
-            </label>
-          </div>
-          <div>
-            <input
-              className="log-in"
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
+            </div>
+            <div>
+              <Button
+                className="log-in"
+                type="submit"
+                name="submit"
+                value="Log In"
+              >
+                Log In
+              </Button>
+            </div>
           </div>
         </form>
         <center>
-          <button
+          <Button
             type="button"
             className="link-button"
-            onClick={() => {this.props.history.push('/signup1')}}
+            onClick={() => {
+              this.props.history.push("/signup1");
+            }}
           >
             Register
-          </button>
+          </Button>
         </center>
       </div>
     );
