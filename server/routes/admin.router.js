@@ -122,16 +122,22 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
 //                 })
 // }); 
 
-cron.schedule('0 10 * * Monday', () => {
-    automatedContact(); //this function will run every Monday at 10:00am
+cron.schedule('0 10 * * *', () => {
+    automatedContact(); //this function will run every day at 10:00am
 })
 
 //this functions does a pool query to the database to select all users
 //then with the response, forEach user it will run the receive challenge function
 function automatedContact() {
     pool.query(`
-    SELECT * FROM "user";
-`).then(response => {
+    SELECT * FROM "user"
+    WHERE "date_created" = (CURRENT_DATE - 7) 
+    OR "date_created" = (CURRENT_DATE - 14) 
+    OR "date_created" = (CURRENT_DATE - 21) 
+    OR "date_created" = (CURRENT_DATE - 28) 	
+    OR "date_created" = (CURRENT_DATE - 35) 
+    OR "date_created" = (CURRENT_DATE - 84)`
+    ).then(response => {
         response.rows.forEach(user => {
             receiveChallenge(user)
         })
@@ -163,7 +169,7 @@ function receiveEmail(user) {
     let currentDate = moment();
     let answer = moment(currentDate).diff(dateCreated, 'days');
 
-    if (answer < 7 && answer >= 0) {
+    if (answer <= 7 && answer >= 0) {
         sendEmail(user, 1) //week 1
     } else if (answer < 15 && answer > 7) {
         sendEmail(user, 2) //week 2
@@ -190,7 +196,7 @@ function sendEmail(user, week) {
             pass: process.env.PASSWORD
         }
     });
-//if the user is less than or equal to 5 weeks, they receive the weekly challenge info based on their role, the week, and their age group
+    //if the user is less than or equal to 5 weeks, they receive the weekly challenge info based on their role, the week, and their age group
     if (week <= 5) {
         let mailOptions = {
             from: 'WhatToSayNowChallenge@gmail.com ',
@@ -205,7 +211,7 @@ function sendEmail(user, week) {
                 console.log('Email sent: ' + info.response);
             }
         });
-//if the user is 6 weeks old, they receive the post program survey link
+        //if the user is 6 weeks old, they receive the post program survey link
     } else if (week === 6) {
         let mailOptions = {
             from: 'WhatToSayNowChallenge@gmail.com ',
@@ -220,7 +226,7 @@ function sendEmail(user, week) {
                 console.log('Email sent: ' + info.response);
             }
         });
-//if the user is 3 months old, they receive the three month survey
+        //if the user is 3 months old, they receive the three month survey
     } else if (week === 7) {
         let mailOptions = {
             from: 'WhatToSayNowChallenge@gmail.com ',
@@ -263,7 +269,7 @@ function receiveText(user) {
 }
 
 function sendText(user, week) {
-//if the user is less than or equal to 5 weeks, they receive the weekly challenge info based on their role, the week, and their age group
+    //if the user is less than or equal to 5 weeks, they receive the weekly challenge info based on their role, the week, and their age group
     if (week <= 5) {
         client.messages.create({
             body: `Hi ${user.username}! Your role_id: ${user.role}, week ${week}, ageGroup: ${user.S1_focus_ages}`,
@@ -271,7 +277,7 @@ function sendText(user, week) {
             to: user.phone_number
         }).then(message => console.log(message.status))
             .done();
-//if the user is 6 weeks old, they receive the post program survey link
+        //if the user is 6 weeks old, they receive the post program survey link
     } else if (week = 6) {
         client.messages.create({
             body: `Hi ${user.username}! Thank you for participating in the What To Say Now Challenge. Here is a link to our Post Program Survey: localhost:/#/postsurvey1`,
@@ -279,7 +285,7 @@ function sendText(user, week) {
             to: user.phone_number
         }).then(message => console.log(message.status))
             .done();
-//if the user is 3 months old, they receive the three month survey
+        //if the user is 3 months old, they receive the three month survey
     } else if (week = 7) {
         client.messages.create({
             body: `Hi ${user.username}! Thank you for participating in the What To Say Now Challenge. Here is a link to our Three Month Followup Survey: localhost:/#/three-month-survey`,
