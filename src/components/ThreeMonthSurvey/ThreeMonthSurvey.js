@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+//semantic-ui
+import { Input, Button } from "semantic-ui-react";
+
+import './ThreeMonthSurvey.css';
+
 
 const topMargin = {
   marginTop: '10px'
@@ -30,44 +35,100 @@ class ThreeMonthSurvey extends Component {
 
   render() {
     return (
-      <center>
-        <div>
+      <>
+        <center>
           <header className="sign-up-header">
             Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
             Please fill out this brief survey about your experience.<br />
             <br />
-            <div className="outerBar" style={this.outerBar}>
-              <div className="innerBar" style={this.innerBar}></div>
-            </div>
-            <br />
           </header>
-          <label> 1. The Challenge has continued to impact my behavior with the althletes I coach: (choose one)</label><br />
-          <input onChange={this.handleChangeFor('continued_impact')} className='question' type='radio' name='impact' value='agree'></input>Agree<br />
-          <input onChange={this.handleChangeFor('continued_impact')} type='radio' name='impact' value='Neutral'></input>Neutral<br />
-          <input onChange={this.handleChangeFor('continued_impact')} type='radio' name='impact' value='Disagree'></input>Disagree<br /><br />
-          <label> 2. How has the Challenge continued to impact your behavior.</label>
+        </center>
+        <div className="questions-wrapper"><br />
+          <span className="survey-questions"> 1. The Challenge has continued to impact my behavior with the althletes I coach: (choose one)</span><br />
+          <Input
+            onChange={this.handleChangeFor('continued_impact')}
+            className="semantic-radio"
+            type='radio'
+            name='impact'
+            value='agree' />
+          Agree<br />
+          <Input
+            onChange={this.handleChangeFor('continued_impact')}
+            className="semantic-radio"
+            type='radio'
+            name='impact'
+            value='Neutral' />
+          Neutral<br />
+          <Input
+            onChange={this.handleChangeFor('continued_impact')}
+            className="semantic-radio"
+            type='radio'
+            name='impact'
+            value='Disagree' />
+          Disagree<br /><br />
+          <span className="survey-questions"> 2. How has the Challenge continued to impact your behavior.</span>
           <br />
-          <textarea onChange={this.handleChangeFor('how_impact')} value={this.state.value} style={topMargin} rows='10' cols='100'></textarea>
+          <textarea
+            onChange={this.handleChangeFor('how_impact')}
+            className="semantic-radio"
+            value={this.state.value}
+            style={topMargin}
+            rows='10'
+            cols='100'>
+          </textarea>
           <br />
+          <span className="survey-questions"> 3. The Challenge tools have continued to positivley affect my ability to interact with my team about body and food: (choose one)</span><br />
+          <Input
+            onChange={this.handleChangeFor('continued_affected_ability_interact')}
+            className="semantic-radio"
+            type='radio'
+            name='impact'
+            value='agree' />
+          Agree<br />
+          <Input
+            onChange={this.handleChangeFor('continued_affected_ability_interact')}
+            className="semantic-radio"
+            type='radio'
+            name='impact'
+            value='Neutral' />
+          Neutral<br />
+          <Input
+            onChange={this.handleChangeFor('continued_affected_ability_interact')}
+            className="semantic-radio"
+            type='radio'
+            name='impact'
+            value='Disagree' />
+          Disagree<br />
           <br />
-          <label> 3. The Challenge tools have continued to positivley affect my ability to interact with my team about body and food: (choose one)</label><br />
-          <input onChange={this.handleChangeFor('continued_affected_ability_interact')} className='question' type='radio' name='impact' value='agree'></input>Agree<br />
-          <input onChange={this.handleChangeFor('continued_affected_ability_interact')} type='radio' name='impact' value='Neutral'></input>Neutral<br />
-          <input onChange={this.handleChangeFor('continued_affected_ability_interact')} type='radio' name='impact' value='Disagree'></input>Disagree<br />
+          <span className="survey-questions"> 4. Is there anything else you would like to share?</span>
           <br />
-          <label> 4. Is there anything else you would like to share?</label>
+          <textarea
+            onChange={this.handleChangeFor('anything_else')}
+            className="semantic-radio"
+            value={this.state.value}
+            style={topMargin}
+            rows='10' cols='100'>
+          </textarea>
           <br />
-          <textarea onChange={this.handleChangeFor('anything_else')} value={this.state.value} style={topMargin} rows='10' cols='100'></textarea>
+          <span className="survey-questions"> 5. Can we call you for more information about your experience? (choose one)</span><br />
+          <Input
+            onChange={this.handleChangeFor('call_more_information')}
+            className="semantic-radio"
+            type='radio'
+            value='Yes' />
+          Yes<br />
+          <Input
+            onChange={this.handleChangeFor('call_more_information')}
+            className="semantic-radio"
+            type='radio'
+            value='No' />
+          No<br />
           <br />
-          <br />
-          <label> 5. Can we call you for more information about your experience? (choose one)</label><br />
-          <input onChange={this.handleChangeFor('call_more_information')} className='question' type='radio' value='Yes'></input>Yes<br />
-          <input onChange={this.handleChangeFor('call_more_information')} type='radio' value='No'></input>No<br />
-          <div className='bottomDiv'>
-            <button onClick={this.handleClick}>Submit</button>
-          </div>
         </div>
-      </center>
+        <div className='bottomDiv'>
+          <Button onClick={this.handleClick}>Submit</Button>
+        </div>
+      </>
     );
   }
 }
