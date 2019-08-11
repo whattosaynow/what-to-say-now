@@ -93,7 +93,7 @@ function welcomeEmail(user) {
     subject: 'Thank You For Signing Up!',
     text: `Hi ${user.username}! 
       Here is the link for the first weekly challenge: 
-      localhost:3000/${user.role}/1/${user.focus_ages}!`
+      localhost:3000/#/${user.role}/1/${user.focus_ages}`
   };
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
