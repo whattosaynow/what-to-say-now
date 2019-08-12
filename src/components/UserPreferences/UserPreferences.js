@@ -30,7 +30,13 @@ class UserPreferences extends Component {
       payload: this.state
     });
     this.props.history.push("/home");
-  }
+    MySwal.fire({
+      title: 'Updated',
+      text: `Your email is now: ${this.state.email} and you are receiving the content via ${this.state.choose_receive}`,
+      type: 'Success',
+      confirmButtonText: 'Ok'
+    })
+  }x
 
   handleBack = () => {
     this.props.history.push('/home');
@@ -70,7 +76,7 @@ class UserPreferences extends Component {
       <div className='userPreferencesMainDiv'><br />
         <div className="signup-questions"><br />
           <h1>Update Preferences</h1>
-
+      <pre>{JSON.stringify(this.state, null, 2)}</pre>
           {this.state.enabled ? (
             <div className="buttonDiv">
               <Button onClick={this.handleEnable} color="red">
