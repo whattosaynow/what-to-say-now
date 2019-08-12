@@ -67,8 +67,8 @@ class UserPreferences extends Component {
   
   render() {
     return (
-      <div className='userPreferencesMainDiv'>
-        
+      <div className='userPreferencesMainDiv'><br />
+        <div className="signup-questions"><br />
           <h1>Update Preferences</h1>
 
           {this.state.enabled ? (
@@ -99,7 +99,7 @@ class UserPreferences extends Component {
           )}
           <br />
           <br />
-          <label>Update how you want to receive the Challenges:</label>
+          <h2>Update how you want to receive the Challenges:</h2>
           <br />
           <Input
             onChange={this.handleChangeFor("choose_receive")}
@@ -107,6 +107,8 @@ class UserPreferences extends Component {
             type="radio"
             name="receive"
             value="email"
+            className="update-radio"
+
           />
           Email
           <br />
@@ -115,6 +117,8 @@ class UserPreferences extends Component {
             type="radio"
             name="receive"
             value="text"
+            className="update-radio"
+
           />
           Text
           <br />
@@ -123,6 +127,8 @@ class UserPreferences extends Component {
             type="radio"
             name="receive"
             value="both"
+            className="update-radio"
+
           />
           Both
           <br />
@@ -133,7 +139,7 @@ class UserPreferences extends Component {
           <br />
           <br />
           <Button onClick={this.handleDelete} color='red'>Delete My Account</Button>
-        
+        <br /><br /></div>
       </div>
     );
   }
