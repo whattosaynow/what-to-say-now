@@ -16,6 +16,10 @@ class Admin extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'GET_CSV' }) // this will dispatch an action to store all of the user table info in a reducer to download as csv
     this.props.dispatch({ type: "GET_AGE_GROUP_DATA" }) // this will dispatch an action to store the ageGroup chart data
+    this.props.dispatch({ type: "GET_ENCOURAGE_DATA" })
+    this.props.dispatch({ type: "GET_FIND_DATA" })
+    this.props.dispatch({ type: "GET_LEARNED_DATA" })
+    this.props.dispatch({ type: "GET_POSITIVE_EFFECT_DATA" })
   }
 
   
