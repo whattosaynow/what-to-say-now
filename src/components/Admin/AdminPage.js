@@ -8,7 +8,6 @@ import './Admin.css';
 
 //components
 import AdminCharts from './AdminCharts';
-import AdminDetails from './AdminDetails';
 import AdminEdit from './AdminEdit';
 
 class Admin extends Component {
@@ -45,7 +44,6 @@ class Admin extends Component {
           <h2>
             <Button.Group fluid className="nav-list">
               <Button onClick={() => { this.handleClick('Charts') }}><u>Charts</u></Button> 
-              <Button onClick={() => { this.handleClick('Details') }}><u>Details</u></Button>
               <Button onClick={() => { this.handleClick('Edit') }}><u>Edit</u></Button>
               {/* onClick of each word changes the state which updates what is displayed */}
             </Button.Group>
@@ -55,14 +53,6 @@ class Admin extends Component {
           {this.state.display === 'Charts' ?
           <>
           <AdminCharts chartData={this.props.reduxState.chartReducer} /> {/* This is the AdminCharts component. If this.state.display is charts, it will show on the admin homepage */}
-          </>
-          :
-          <>
-          </>  
-        }
-        {this.state.display === 'Details' ?
-          <>
-          <AdminDetails /> {/* This is the AdminDetails component. If this.state.display is Details, it will show on the admin homepage */}
           </>
           :
           <>
