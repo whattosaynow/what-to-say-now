@@ -36,7 +36,7 @@ class UserPreferences extends Component {
       type: 'Success',
       confirmButtonText: 'Ok'
     })
-  }x
+  }
 
   handleBack = () => {
     this.props.history.push('/home');
@@ -76,7 +76,6 @@ class UserPreferences extends Component {
       <div className='userPreferencesMainDiv'><br />
         <div className="signup-questions"><br />
           <h1>Update Preferences</h1>
-      <pre>{JSON.stringify(this.state, null, 2)}</pre>
           {this.state.enabled ? (
             <div className="buttonDiv">
               <Button onClick={this.handleEnable} color="red">
