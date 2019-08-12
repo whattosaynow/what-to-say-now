@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Button, TextArea, Form } from "semantic-ui-react";
 
+//sweetAlert
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
+
 class AdminEditTable extends Component {
   state = {
     ...this.props.content,
@@ -18,10 +23,20 @@ class AdminEditTable extends Component {
     let update = Object.keys(this.state)
     let updateLength = update.length
     if (updateLength < 8) {
-      alert('no')
+      MySwal.fire({
+        title: 'Error',
+        text: `Please select a role, age group, and week`,
+        type: 'Error',
+        confirmButtonText: 'Ok'
+      })
     } else {
       this.props.dispatch({ type: 'UPDATE_CONTENT', payload: this.state })
-      alert('yes')
+      MySwal.fire({
+        title: 'Updated',
+        text: `Your changes have been saved to the database`,
+        type: 'Success',
+        confirmButtonText: 'Ok'
+      })
     }
   }
 
