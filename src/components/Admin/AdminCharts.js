@@ -26,7 +26,6 @@ class AdminCharts extends Component {
 
     return (
       <div className="chartDiv">
-        <pre>{JSON.stringify(this.props.chartData, null, 2)}</pre>
         <Grid columns={2}>
           <Grid.Row>
             <Grid.Column>
