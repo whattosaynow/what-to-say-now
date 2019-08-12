@@ -141,15 +141,6 @@ class PostSurvey_1 extends Component {
           className="semantic-radio"
           name="q4"
           type="radio"
-          value="Agree"
-        />
-        Agree
-        <br />
-        <Input
-          onChange={this.handleChangeFor("would_encourage")}
-          className="semantic-radio"
-          name="q4"
-          type="radio"
           value="Neutral"
         />
         Neutral

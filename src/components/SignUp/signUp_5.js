@@ -6,6 +6,7 @@ import './signUp.css';
 import Header from './signUp_header';
 import { Input, Button } from "semantic-ui-react";
 
+import nodemailer from 'nodemailer';
 
 //sweetAlert
 import Swal from 'sweetalert2'
@@ -45,7 +46,6 @@ class signUp_5 extends Component {
         if (result.value) {
           this.props.dispatch({ type: 'SUBMIT_SIGNUP_ANSWERS', payload: this.props.reduxState.answersReducer.signupReducer })
           this.props.history.push('/home');
-
         }
       }
       )
@@ -69,7 +69,7 @@ class signUp_5 extends Component {
           <textarea className="semantic-radio" onChange={this.handleChange('why_are_you_participating')} value={this.state.value} rows="4" cols="50"></textarea>
           <br />
           <span className="survey-questions">10. Can we call you at the completion of the Challenge for more information about your experience?</span><br />
-            <label>Choose One</label><br />
+          <label>Choose One</label><br />
           <Input onChange={this.handleChange('can_we_call_after_completion')} type="radio" className="semantic-radio" name="q2" value="yes" />yes<br />
           <Input onChange={this.handleChange('can_we_call_after_completion')} type="radio" className="semantic-radio" name="q2" value="no" />no<br />
 

@@ -108,9 +108,9 @@ ageChartData = () => {
         <Doughnut 
             data={this.ageChartData} 
           />
-        <pre>
+        {/* <pre>
           {JSON.stringify(this.props.ageGroupReducer, null, 2)}
-        </pre>
+        </pre> */}
       </div>
     
     );
