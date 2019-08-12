@@ -67,10 +67,15 @@ pre {
 @media only screen and (max-width: 400px) {
     .content-header {
         margin-top: 46px;
+        margin-bottom: 46px;
     }
     .welcomeDiv, .postDiv {
         margin-left: 7px;
         margin-right: 7px;
+    }
+    .user-page{
+        margin-top: 100px;
+
     }
 
 }

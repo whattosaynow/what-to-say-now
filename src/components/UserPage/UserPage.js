@@ -6,7 +6,7 @@ import CardTemplate from './CardTemplate';
 import { Button } from "semantic-ui-react";
 
 const margins = {
-  margin: '20px'
+  margin: '20px',
 }
 
 class UserPage extends Component {
@@ -29,17 +29,7 @@ class UserPage extends Component {
   render() {
     return (
       <>
-        <center>
-          <div>
-            <header className="sign-up-header">
-              View your weekly Challenges.<br />
-              <br />
-              <div className="outerBar" style={this.outerBar}>
-                <div className="innerBar" style={this.innerBar}></div>
-              </div>
-              <br />
-            </header>
-          </div>
+        <center className="user-page">
           <div style={margins} >
             <Card.Group centered stackable>
               {this.props.reduxState.weeklyContentReducer.weeklyContentReducer.map((content) => {
