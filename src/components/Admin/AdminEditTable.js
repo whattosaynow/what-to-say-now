@@ -19,6 +19,13 @@ class AdminEditTable extends Component {
     })
   }
 
+  handleSecret = () => {
+    this.setState({
+      ...this.state,
+      intro: "Thank you so much for being a part of the “What to Say” initiative. Your help is very appreciated!\n\nWe hope you have enjoyed the program and are seeing great succes and we look forward to hearing back from you next week!"
+    })
+  }
+
   handleSubmit = () => {
     let update = Object.keys(this.state)
     let updateLength = update.length
@@ -45,7 +52,7 @@ class AdminEditTable extends Component {
       <>
         <Form>
           <Form.Field>
-            <label>Welcome to Week {this.state.week} of the "What to Say" Coaches Challenge!</label>
+            <label onClick={this.handleSecret}>Welcome to Week {this.state.week} of the "What to Say" Coaches Challenge!</label>
             <TextArea
               rows="5"
               cols="200"
