@@ -9,6 +9,8 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
+require('dotenv').config();
+
 
 
 
@@ -93,7 +95,7 @@ function welcomeEmail(user) {
     subject: 'Thank You For Signing Up!',
     text: `Hi ${user.username}! 
       Here is the link for the first weekly challenge: 
-      localhost:3000/#/${user.role}/1/${user.focus_ages}`
+      ${process.env.API_URL}${user.role}challenge/1/${user.focus_ages}`
   };
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
@@ -106,8 +108,7 @@ function welcomeEmail(user) {
 
 function welcomeText(user) {
   client.messages.create({
-    body: `Hi ${user.username}! Thank you for signing up for the challenge! Here is the first week's link: localhost
-    ://3000/#/${user.role}/1/${user.focus_ages}`,
+    body: `Hi ${user.username}! Thank you for signing up for the challenge! Here is the first week's link: ${process.env.API_URL}challenge/${user.role}/1/${user.focus_ages}`,
     from: '+16512731912',
     to: user.phone_number
   }).then(message => console.log(message.status))
