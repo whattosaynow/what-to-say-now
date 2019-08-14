@@ -90,12 +90,12 @@ function welcomeEmail(user) {
     }
   });
   let mailOptions = {
-    from: 'WhatToSayNowChallenge@gmail.com ',
+    from: "WhatToSayNowChallenge@gmail.com ",
     to: user.email,
-    subject: 'Thank You For Signing Up!',
+    subject: "Thank You For Signing Up!",
     text: `Hi ${user.username}! 
       Here is the link for the first weekly challenge: 
-      ${process.env.API_URL}${user.role}challenge/1/${user.focus_ages}`
+      ${process.env.API_URL}challenge/${user.role}/1/${user.focus_ages}`
   };
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
