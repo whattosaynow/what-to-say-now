@@ -5,27 +5,38 @@ import { connect } from "react-redux";
 import { Doughnut } from "react-chartjs-2";
 
 class EncourageChart extends Component {
-  state = {
-    encourageData: {
-      labels: ["Agree", "Neutral", "Disagree"],
-      datasets: [
-        {
-          label: "I would encourage another coach I know to do the Challenge",
-          data: [15, 14, 10],
-          backgroundColor: ["#5297ff", "#e65ac4", "#ff4040"],
-          borderWidth: 1
-        }
-      ]
-    }
-  };
+  encourageChartData = () => {
+    let encourageLabels = [];
+    let encourageArray = [];
+    this.props.encourage.forEach(object => {
+      encourageLabels.push(object.S2_would_encourage)
+      encourageArray.push(object.count)
+      console.log(encourageArray);
+      
 
-  componentDidMount() {
-    
+    })
+    const encourageData = {
+      labels: encourageLabels,
+      legend: {
+        display: false
+      },
+      datasets: [{
+        label: "Would you encourage another coach?",
+        backgroundColor: [
+          "#5297ff", "#e65ac4", "#ff4040"
+        ],
+        borderWidth: 1,
+        barPercentage: 0,
+        data: encourageArray
+      }]
+    }
+    return encourageData;
   }
+
   render() {
     return (
       <div>
-        <Doughnut data={this.state.encourageData} />
+        <Doughnut data={this.encourageChartData} />
       </div>
     );
   }

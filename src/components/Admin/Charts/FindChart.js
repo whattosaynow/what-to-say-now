@@ -2,49 +2,67 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 //chart-js
-import { Doughnut } from "react-chartjs-2";
+import { Bar, Pie } from "react-chartjs-2";
 
 class FindChart extends Component {
   state = {
     findData: {
-      labels: [
-        "Girls on the Run",
-        "Wayzata Girls Basketball Association",
-        "The Loppet Foundation",
-        "Fusion Soccer Club MN",
-        "Tia Russell Dance Studio",
-        "Internet search",
-        "Referral",
-        "Other"
-      ],
+      
+    }
+  };
+
+  findChartData = () => {
+    let findLabels = [];
+    let findChart=[];
+    this.props.find.forEach(referral => {
+     findLabels.push(referral.S1_how_did_you_find_us)
+     findChart.push(referral.count);
+     console.log(findChart);
+     
+    })
+    const findData = {
+      labels:findLabels,
+      
       datasets: [
         {
           label: "How did you find us?",
-          data: [12, 19, 3, 8, 17, 9, 2, 12],
           backgroundColor: [
-            "#003f5c",
-            "#2f4b7c",
-            "#665191",
+            "#5297ff",
+            "#e65ac4",
+            "#ff4040",
             "#a05195",
             "#d45087",
             "#f95d6a",
             "#ff7c43",
             "#ffa600"
           ],
-          borderWidth: 1
+          data: findChart,
+          borderWidth: 1,
+          scaleStartValue: 0,
+          
         }
+        
       ]
     }
-  };
-
-  componentDidMount() {
-    this.props.dispatch({ type: "GET_FIND_DATA" });
+    return findData;
   }
+options =  {
+  scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true,
+      }
+    }]
+  }
+}
+
+  
+    
 
   render() {
     return (
       <div>
-        <Doughnut data={this.state.findData} />
+        <Bar data={this.findChartData} options={this.options} />
       </div>
     );
   }

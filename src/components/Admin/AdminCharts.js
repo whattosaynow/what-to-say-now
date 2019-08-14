@@ -10,7 +10,7 @@ import { Doughnut, Bar } from "react-chartjs-2";
 //semantic-ui
 import { Grid } from "semantic-ui-react";
 //charts
-import AgeGroupChart from './Charts/ageGroupChart';
+import AgeGroupChart from './Charts/AgeGroupChart';
 import LearnedChart from './Charts/LearnedChart';
 import FindChart from './Charts/FindChart';
 import EncourageChart from './Charts/EncourageChart';
@@ -39,7 +39,7 @@ class AdminCharts extends Component {
             </Grid.Column>
             <Grid.Column>
               <h2>How users found the challenge</h2>
-              <FindChart />
+              <FindChart find={this.props.chartData.findReducer}/>
             </Grid.Column>
           </Grid.Row>
 
@@ -48,13 +48,13 @@ class AdminCharts extends Component {
               <h2>
                 I learned something new from participating in the Challenge
               </h2>
-              <LearnedChart />
+              <LearnedChart learned={this.props.chartData.learnedReducer} />
             </Grid.Column>
             <Grid.Column>
               <h2>
                 I would encourage another coach I know to do the Challenge
               </h2>
-              <EncourageChart />
+              <EncourageChart encourage={this.props.chartData.encourageReducer} />
             </Grid.Column>
           </Grid.Row>
 
@@ -64,7 +64,7 @@ class AdminCharts extends Component {
                 The Challenge tools have positively affected my ability to
                 interact with my team about body and food
               </h2>
-              <PositiveEffectChart />
+              <PositiveEffectChart impact={this.props.chartData.impactReducer} />
             </Grid.Column>
           </Grid.Row>
         </Grid><br />
