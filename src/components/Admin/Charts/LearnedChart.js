@@ -10,7 +10,7 @@ class LearnedChart extends Component {
       datasets: [
         {
           label: "I learned something new from participating in the Challenge",
-          data: [12, 19, 3],
+          data: [10, 13, 3],
           backgroundColor: ["#5297ff", "#e65ac4", "#ff4040"],
           borderWidth: 1
         }

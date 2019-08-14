@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
+import AdminDetails from './AdminDetails';
+
+
 //chart-js
 import { Doughnut, Bar } from "react-chartjs-2";
 //semantic-ui
@@ -26,6 +29,8 @@ class AdminCharts extends Component {
 
     return (
       <div className="chartDiv">
+        <br />
+        <AdminDetails /><br />
         <Grid columns={2}>
           <Grid.Row>
             <Grid.Column>
@@ -62,7 +67,7 @@ class AdminCharts extends Component {
               <PositiveEffectChart />
             </Grid.Column>
           </Grid.Row>
-        </Grid>
+        </Grid><br />
       </div>
     );
   }

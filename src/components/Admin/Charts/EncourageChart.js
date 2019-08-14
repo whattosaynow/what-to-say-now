@@ -11,7 +11,7 @@ class EncourageChart extends Component {
       datasets: [
         {
           label: "I would encourage another coach I know to do the Challenge",
-          data: [12, 19, 3],
+          data: [15, 14, 10],
           backgroundColor: ["#5297ff", "#e65ac4", "#ff4040"],
           borderWidth: 1
         }

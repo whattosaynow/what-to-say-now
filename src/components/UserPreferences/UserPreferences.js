@@ -30,6 +30,12 @@ class UserPreferences extends Component {
       payload: this.state
     });
     this.props.history.push("/home");
+    MySwal.fire({
+      title: 'Updated',
+      text: `Your email is now: ${this.state.email} and you are receiving the content via ${this.state.choose_receive}`,
+      type: 'Success',
+      confirmButtonText: 'Ok'
+    })
   }
 
   handleBack = () => {
@@ -67,10 +73,9 @@ class UserPreferences extends Component {
   
   render() {
     return (
-      <div className='userPreferencesMainDiv'>
-        
+      <div className='userPreferencesMainDiv'><br />
+        <div className="signup-questions"><br />
           <h1>Update Preferences</h1>
-
           {this.state.enabled ? (
             <div className="buttonDiv">
               <Button onClick={this.handleEnable} color="red">
@@ -99,7 +104,7 @@ class UserPreferences extends Component {
           )}
           <br />
           <br />
-          <label>Update how you want to receive the Challenges:</label>
+          <h2>Update how you want to receive the Challenges:</h2>
           <br />
           <Input
             onChange={this.handleChangeFor("choose_receive")}
@@ -107,6 +112,8 @@ class UserPreferences extends Component {
             type="radio"
             name="receive"
             value="email"
+            className="update-radio"
+
           />
           Email
           <br />
@@ -115,6 +122,8 @@ class UserPreferences extends Component {
             type="radio"
             name="receive"
             value="text"
+            className="update-radio"
+
           />
           Text
           <br />
@@ -123,6 +132,8 @@ class UserPreferences extends Component {
             type="radio"
             name="receive"
             value="both"
+            className="update-radio"
+
           />
           Both
           <br />
@@ -133,7 +144,7 @@ class UserPreferences extends Component {
           <br />
           <br />
           <Button onClick={this.handleDelete} color='red'>Delete My Account</Button>
-        
+        <br /><br /></div>
       </div>
     );
   }
