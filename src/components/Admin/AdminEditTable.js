@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Button, TextArea, Form } from "semantic-ui-react";
 
+//sweetAlert
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
+
 class AdminEditTable extends Component {
   state = {
     ...this.props.content,
@@ -14,14 +19,31 @@ class AdminEditTable extends Component {
     })
   }
 
+  handleSecret = () => {
+    this.setState({
+      ...this.state,
+      intro: "Thank you so much for being a part of the “What to Say” initiative. Your help is very appreciated!\n\nWe hope you have enjoyed the program and are seeing great succes and we look forward to hearing back from you next week!"
+    })
+  }
+
   handleSubmit = () => {
     let update = Object.keys(this.state)
     let updateLength = update.length
     if (updateLength < 8) {
-      alert('no')
+      MySwal.fire({
+        title: 'Error',
+        text: `Please select a role, age group, and week`,
+        type: 'Error',
+        confirmButtonText: 'Ok'
+      })
     } else {
       this.props.dispatch({ type: 'UPDATE_CONTENT', payload: this.state })
-      alert('yes')
+      MySwal.fire({
+        title: 'Updated',
+        text: `Your changes have been saved to the database`,
+        type: 'Success',
+        confirmButtonText: 'Ok'
+      })
     }
   }
 
@@ -30,7 +52,7 @@ class AdminEditTable extends Component {
       <>
         <Form>
           <Form.Field>
-            <label>Welcome to Week {this.state.week} of the "What to Say" Coaches Challenge!</label>
+            <label onClick={this.handleSecret}>Welcome to Week {this.state.week} of the "What to Say" Coaches Challenge!</label>
             <TextArea
               rows="5"
               cols="200"

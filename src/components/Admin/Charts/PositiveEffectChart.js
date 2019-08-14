@@ -12,7 +12,7 @@ class PositiveEffectChart extends Component {
         {
           label:
             "The Challenge tools have positively affected my ability to interact with my team about body and food",
-          data: [12, 19, 3],
+          data: [15, 10, 5],
           backgroundColor: ["#5297ff", "#e65ac4", "#ff4040"],
           borderWidth: 1
         }

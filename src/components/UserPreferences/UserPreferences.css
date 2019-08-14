@@ -9,6 +9,12 @@
     justify-content: center;
 }
 
+.update-radio{
+    padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
 /* mobile only settings */
 
 @media only screen and (max-width: 400px) {
