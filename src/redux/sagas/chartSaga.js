@@ -11,10 +11,15 @@ function* getAgeGroupData() {
 
 function* getEncourageData() {
   yield console.log('getEncourageData saga hit');
+  
 }
 
 function* getFindData() {
-  yield console.log('getFindData saga hit');
+  // yield console.log('getFindData saga hit');
+  const getResponse = yield axios.get('/api/charts/findUs');
+  // console.log('getFInd getResponse:', getResponse.data)
+  yield put({ type: `SET_FIND_DATA`, payload: getResponse.data })
+
 }
 
 function* getLearnedData() {
