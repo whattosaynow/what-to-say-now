@@ -9,6 +9,15 @@ const ageGroupReducer = (state = [], action) => {
     }
 }
 
+const findReducer = (state = [], action) => {
+    switch(action.type) {
+        case `SET_FIND_DATA`:
+            return action.payload;
+        default: 
+            return state;
+    }
+}
+
 
 
 
@@ -25,4 +34,5 @@ const ageGroupReducer = (state = [], action) => {
 
 export default combineReducers({
     ageGroupReducer,
+    findReducer
 });
