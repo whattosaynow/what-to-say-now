@@ -6,6 +6,7 @@ const { rejectUnauthenticated, rejectNonAdmin } = require("../modules/authentica
 const cron = require('node-cron');
 const moment = require('moment');
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
