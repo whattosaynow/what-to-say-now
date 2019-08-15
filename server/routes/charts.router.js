@@ -17,7 +17,7 @@ router.get('/ageGroups', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
         res.send(response.rows)
     }
     ).catch(error => {
-        console.log('error with age group get router', error)
+        // console.log('error with age group get router', error)
         res.sendStatus(500);
     })
 });
@@ -30,11 +30,11 @@ router.get('/findUs', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     GROUP BY "S1_how_did_you_find_us";
     `)
     .then(response => {
-        console.log('response.rows:', response.rows)
+        // console.log('response.rows:', response.rows)
         res.send(response.rows)
     }
     ).catch(error => {
-        console.log('error with findUs get router', error)
+        // console.log('error with findUs get router', error)
         res.sendStatus(500);
     })
 });
@@ -46,11 +46,11 @@ router.get('/learnedSomething', rejectUnauthenticated, rejectNonAdmin, (req, res
     WHERE "S2_learned_something_new" is not null
     GROUP BY "S2_learned_something_new";`)
     .then(response => {
-        console.log('response.rows:', response.rows)
+        // console.log('response.rows:', response.rows)
         res.send(response.rows)
     }
     ).catch(error => {
-        console.log('error with learned something get router', error)
+        // console.log('error with learned something get router', error)
         res.sendStatus(500);
     })
 });
@@ -62,7 +62,7 @@ router.get('/encourage', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     WHERE "S2_would_encourage" is not null
     GROUP BY "S2_would_encourage";`)
     .then(response => {
-        console.log('response.rows:', response.rows)
+        console.log('ENCOURAGE response.rows:', response.rows)
         res.send(response.rows)
     }
     ).catch(error => {
@@ -78,11 +78,11 @@ router.get('/impact', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     WHERE "S2_challenge_impacted_behavior" is not null
     GROUP BY "S2_challenge_impacted_behavior";`)
     .then(response => {
-        console.log('response.rows:', response.rows)
+        // console.log('response.rows:', response.rows)
         res.send(response.rows)
     }
     ).catch(error => {
-        console.log('error with impact get router', error)
+        // console.log('error with impact get router', error)
         res.sendStatus(500);
     })
 });
