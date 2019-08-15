@@ -5,29 +5,38 @@ import { connect } from "react-redux";
 import { Doughnut } from "react-chartjs-2";
 
 class PositiveEffectChart extends Component {
-  state = {
-    positiveEffectData: {
-      labels: ["Agree", "Neutral", "Disagree"],
-      datasets: [
-        {
-          label:
-            "The Challenge tools have positively affected my ability to interact with my team about body and food",
-          data: [15, 10, 5],
-          backgroundColor: ["#5297ff", "#e65ac4", "#ff4040"],
-          borderWidth: 1
-        }
-      ]
-    }
-  };
+  positiveEffectChartData = () => {
+    let positiveLabels = [];
+    let positiveEffectArray = [];
+    this.props.impact.forEach(object => {
+      positiveLabels.push(object.S2_challenge_impacted_behavior)
+      positiveEffectArray.push(object.count)
+      console.log(positiveEffectArray);
+      
 
-  componentDidMount() {
-    this.props.dispatch({ type: "GET_POSITIVE_EFFECT_DATA" });
+    })
+    const positiveData = {
+      labels: positiveLabels,
+      legend: {
+        display: false
+      },
+      datasets: [{
+        label: "The Challenge tools have positively affected my ability to interact with my team about body and food",
+        backgroundColor: [
+          "#5297ff", "#e65ac4", "#ff4040"
+        ],
+        borderWidth: 1,
+        barPercentage: 0,
+        data: positiveEffectArray
+      }]
+    }
+    return positiveData;
   }
 
   render() {
     return (
       <div>
-        <Doughnut data={this.state.positiveEffectData} />
+        <Doughnut data={this.positiveEffectChartData} />
       </div>
     );
   }
