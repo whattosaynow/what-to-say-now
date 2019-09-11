@@ -16,11 +16,22 @@ class signUp_1 extends Component {
     }
   }
 
+  timeout = 0;
+
   handleChange = (propertyName) => (event) => {
-    this.setState({
-      ...this.state,
-      newUser: {...this.state.newUser, [propertyName]: event.target.value}
-    })
+    if (propertyName === "username") {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => { console.log('username:', this.state.newUser.username) }, 800)
+      this.setState({
+        ...this.state,
+        newUser: { ...this.state.newUser, [propertyName]: event.target.value }
+      })
+    } else {
+      this.setState({
+        ...this.state,
+        newUser: { ...this.state.newUser, [propertyName]: event.target.value }
+      })
+    }
   }
 
   handleClick = () => {
@@ -35,7 +46,7 @@ class signUp_1 extends Component {
     ) {
       alert('Please complete required fields')
     } else {
-      this.props.dispatch({type: 'SET_SIGNUP_ANSWERS', payload: this.state.newUser});
+      this.props.dispatch({ type: 'SET_SIGNUP_ANSWERS', payload: this.state.newUser });
       this.setState({
         newUser: {
           role: 1,
@@ -51,9 +62,9 @@ class signUp_1 extends Component {
       <>
         <Header width={"20%"} />
         <br />
-       
-          <center><h2>Personal Information</h2></center><br />
-          <div className="signUp1Div">
+
+        <center><h2>Personal Information</h2></center><br />
+        <div className="signUp1Div">
           <form id="signUp1" style={{ backgroundColor: "white" }}><br />
             <Input
               onChange={this.handleChange("first_name")}
@@ -118,6 +129,9 @@ class signUp_1 extends Component {
             <br />
           </form><br />
         </div><br />
+        <pre>
+          {JSON.stringify(this.state.newUser, null, 2)}
+        </pre>
         <div className="bottomDiv">
           <Button onClick={this.handleClick} className="next-button">
             Next
