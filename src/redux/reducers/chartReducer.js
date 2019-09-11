@@ -18,8 +18,32 @@ const findReducer = (state = [], action) => {
     }
 }
 
+const learnedReducer = (state = [], action) => {
+    switch(action.type) {
+        case `SET_LEARNED_DATA`:
+            return action.payload;
+        default: 
+            return state;
+    }
+}
 
+const encourageReducer = (state = [], action) => {
+    switch(action.type) {
+        case `SET_ENCOURAGE_DATA`:
+            return action.payload;
+        default: 
+            return state;
+    }
+}
 
+const impactReducer = (state = [], action) => {
+    switch(action.type) {
+        case `SET_IMPACT_DATA`:
+            return action.payload;
+        default: 
+            return state;
+    }
+}
 
 
 
@@ -34,5 +58,8 @@ const findReducer = (state = [], action) => {
 
 export default combineReducers({
     ageGroupReducer,
-    findReducer
+    findReducer,
+    learnedReducer,
+    encourageReducer,
+    impactReducer,
 });

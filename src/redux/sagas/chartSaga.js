@@ -10,7 +10,9 @@ function* getAgeGroupData() {
 }
 
 function* getEncourageData() {
-  yield console.log('getEncourageData saga hit');
+  // yield console.log('getEncourageData saga hit');
+  const getResponse = yield axios.get('/api/charts/encourage');
+  yield put({ type: `SET_ENCOURAGE_DATA`, payload: getResponse.data})
   
 }
 
@@ -23,11 +25,17 @@ function* getFindData() {
 }
 
 function* getLearnedData() {
-  yield console.log("getLearnedData saga hit");
+  // yield console.log("getLearnedData saga hit");
+  const getResponse = yield axios.get('/api/charts/learnedSomething');
+  yield put({ type: `SET_LEARNED_DATA`, payload: getResponse.data})
+  
 }
 
 function* getPositiveEffectData() {
-  yield console.log("getPositiveEffectData saga hit");
+  // yield console.log("getPositiveEffectData saga hit");
+  const getResponse = yield axios.get('/api/charts/impact');
+  yield put({ type: `SET_IMPACT_DATA`, payload: getResponse.data})
+
 }
 
 

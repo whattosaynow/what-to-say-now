@@ -24,10 +24,16 @@ class signUp_1 extends Component {
   }
 
   handleClick = () => {
-    let answers = Object.keys(this.state.newUser)
-    let answersLength = answers.length
-    if (answersLength < 11) {
-      alert('Please complete every answer')
+    let survey = this.state.newUser;
+    if (
+      !survey.first_name ||
+      !survey.last_name ||
+      !survey.username ||
+      !survey.email ||
+      !survey.password ||
+      !survey.phone_number
+    ) {
+      alert('Please complete required fields')
     } else {
       this.props.dispatch({type: 'SET_SIGNUP_ANSWERS', payload: this.state.newUser});
       this.setState({
@@ -35,7 +41,6 @@ class signUp_1 extends Component {
           role: 1,
         }
       })
-      document.getElementById("signUp1").reset();
       this.props.history.push('/signup2');
     }
 
@@ -52,38 +57,38 @@ class signUp_1 extends Component {
           <form id="signUp1" style={{ backgroundColor: "white" }}><br />
             <Input
               onChange={this.handleChange("first_name")}
-              placeholder="First Name"
+              placeholder="First Name - Required"
               value={this.state.value}
             />
             <br />
             <Input
               onChange={this.handleChange("last_name")}
-              placeholder="Last Name"
+              placeholder="Last Name - Required"
               value={this.state.value}
             />
             <br />
             <Input
               onChange={this.handleChange("username")}
-              placeholder="Username"
+              placeholder="Username - Required"
               value={this.state.value}
             />
             <br />
             <Input
               onChange={this.handleChange("email")}
-              placeholder="Email"
+              placeholder="Email - Required"
               value={this.state.value}
             />
             <br />
             <Input
               onChange={this.handleChange("password")}
               type="password"
-              placeholder="Password"
+              placeholder="Password - Required"
               value={this.state.value}
             />
             <br />
             <Input
               onChange={this.handleChange("phone_number")}
-              placeholder="Phone Number"
+              placeholder="Phone Number - Required"
               value={this.state.value}
             />
             <br />
