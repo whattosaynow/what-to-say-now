@@ -21,7 +21,10 @@ class signUp_1 extends Component {
   handleChange = (propertyName) => (event) => {
     if (propertyName === "username") {
       clearTimeout(this.timeout);
-      this.timeout = setTimeout(() => { console.log('username:', this.state.newUser.username) }, 800)
+      this.timeout = setTimeout(() => {
+        this.props.dispatch({type: "USERNAME_CHECK", payload: this.state.newUser.username})
+      }, 800
+      )
       this.setState({
         ...this.state,
         newUser: { ...this.state.newUser, [propertyName]: event.target.value }

@@ -29,10 +29,20 @@ function* submitPostAnswers(action) {
     }
 }
 
+function* usernameCheck(action){
+    try{
+        // yield console.log('usernameCheck action:', action)
+        yield axios.get(`/api/answer/usernameCheck/${action.payload}`);
+    }catch (error) {
+        console.log("error with username check,", error);
+    }
+}
+
 function* submitAnswerSaga() {
     yield takeLatest(`SUBMIT_SIGNUP_ANSWERS`, submitSignUpAnswers);
     yield takeLatest(`SUBMIT_THREE_MONTH_ANSWERS`, submitThreeMonthAnswer)
     yield takeLatest(`SUBMIT_POST_ANSWERS`, submitPostAnswers)
+    yield takeLatest(`USERNAME_CHECK`, usernameCheck)
 }
 
 export default submitAnswerSaga;

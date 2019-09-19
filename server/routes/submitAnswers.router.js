@@ -189,4 +189,20 @@ router.post('/threeMonth', rejectUnauthenticated, (req, res) => {
     });
 })
 
+
+router.get('/usernameCheck/:id', (req, res) => {
+  console.log("usernameCheck route hit:", req.params.id)
+  pool.query(`
+  SELECT * FROM "user" WHERE "username" ILIKE $1;`, [req.params.id]
+  ).then(result => {
+    console.log('result from query', result.rows)
+  })
+    .catch(error => {
+      console.log("error with usernameCheck,", error);
+      res.sendStatus(500);
+    })
+})
+
+
+
 module.exports = router;
