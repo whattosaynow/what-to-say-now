@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router';
 
 class CardTemplate extends Component {
 
     handleClickLink = () => {
-        this.props.history.push(`/challenge/${this.props.content.role_id}/${this.props.content.week}/${this.props.content.ageGroup_id}`);
+        this.props.history.push(``);
     }
 
 
@@ -26,10 +27,10 @@ class CardTemplate extends Component {
                 </Card.Content>
                 <Card.Content extra>
                     {/* change this a a react Link instead of an a tag */}
-                    <a onClick={this.handleClickLink}>
+                    <Link to={`/challenge/${this.props.content.role_id}/${this.props.content.week}/${this.props.content.ageGroup_id}`}>
                         <Icon name='user' />
                         Link to Content
-                    </a>
+                    </Link>
                 </Card.Content>
             </Card>
 
