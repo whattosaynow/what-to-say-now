@@ -85,7 +85,7 @@ class signUp_1 extends Component {
               onChange={this.handleChange("username")}
               placeholder="Username - Required"
               value={this.state.value}
-            />
+            /> {this.props.reduxState.answersReducer.usernameCheckReducer ? <></> : <span style={{color: 'red'}}><br />ERROR: Username Taken </span>}
             <br />
             <Input
               onChange={this.handleChange("email")}

@@ -197,9 +197,9 @@ router.get('/usernameCheck/:id', (req, res) => {
   ).then(result => {
     // console.log('usernameCheck result.rows', result.rows[0].username)
     if (result.rows && result.rows[0] && result.rows[0].username) {
-      res.send('taken')
+      res.send(false)
     } else {
-      res.send('good')
+      res.send(true)
     }
   })
     .catch(error => {
