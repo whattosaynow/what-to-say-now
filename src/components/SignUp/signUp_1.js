@@ -6,7 +6,7 @@ import './signUp.css';
 import Header from './signUp_header';
 
 //semantic-ui
-import { Input, Button, Form } from "semantic-ui-react";
+import { Input, Button } from "semantic-ui-react";
 
 
 class signUp_1 extends Component {

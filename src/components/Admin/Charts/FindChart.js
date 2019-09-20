@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 //chart-js
-import { Bar, Pie } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 class FindChart extends Component {
   state = {
