@@ -4,9 +4,6 @@ import { withRouter } from 'react-router';
 
 import AdminDetails from './AdminDetails';
 
-
-//chart-js
-import { Doughnut, Bar } from "react-chartjs-2";
 //semantic-ui
 import { Grid } from "semantic-ui-react";
 //charts

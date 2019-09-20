@@ -108,7 +108,6 @@ class UserPreferences extends Component {
           <br />
           <Input
             onChange={this.handleChangeFor("choose_receive")}
-            className="question"
             type="radio"
             name="receive"
             value="email"
