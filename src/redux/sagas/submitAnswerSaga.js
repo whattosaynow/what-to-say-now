@@ -32,7 +32,8 @@ function* submitPostAnswers(action) {
 function* usernameCheck(action){
     try{
         // yield console.log('usernameCheck action:', action)
-        yield axios.get(`/api/answer/usernameCheck/${action.payload}`);
+        const response = yield axios.get(`/api/answer/usernameCheck/${action.payload}`);
+        console.log("usernameCheck db response:", response.data)
     }catch (error) {
         console.log("error with username check,", error);
     }

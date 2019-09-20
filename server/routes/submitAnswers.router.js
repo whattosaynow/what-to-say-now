@@ -195,7 +195,12 @@ router.get('/usernameCheck/:id', (req, res) => {
   pool.query(`
   SELECT * FROM "user" WHERE "username" ILIKE $1;`, [req.params.id]
   ).then(result => {
-    console.log('result from query', result.rows)
+    // console.log('usernameCheck result.rows', result.rows[0].username)
+    if (result.rows && result.rows[0] && result.rows[0].username) {
+      res.send('taken')
+    } else {
+      res.send('good')
+    }
   })
     .catch(error => {
       console.log("error with usernameCheck,", error);
