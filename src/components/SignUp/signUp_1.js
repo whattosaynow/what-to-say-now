@@ -132,9 +132,6 @@ class signUp_1 extends Component {
             <br />
           </form><br />
         </div><br />
-        <pre>
-          {JSON.stringify(this.state.newUser, null, 2)}
-        </pre>
         <div className="bottomDiv">
           <Button onClick={this.handleClick} className="next-button">
             Next
