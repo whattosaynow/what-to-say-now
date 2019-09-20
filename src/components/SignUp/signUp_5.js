@@ -6,8 +6,6 @@ import './signUp.css';
 import Header from './signUp_header';
 import { Input, Button } from "semantic-ui-react";
 
-import nodemailer from 'nodemailer';
-
 //sweetAlert
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
