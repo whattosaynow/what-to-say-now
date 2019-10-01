@@ -10,7 +10,11 @@ import './signUp.css';
 
 class signUp_3 extends Component {
 
-  state = {}
+  state = {
+    genders_of_athletes_female: false,
+    genders_of_athletes_male: false,
+    genders_of_athletes_non_binary: false
+  }
 
   handleChange = (propertyName) => (event) => {
     this.setState({
@@ -19,13 +23,31 @@ class signUp_3 extends Component {
     })
   }
 
+  handleCheckBox = (propertyName) => (event) => {
+    if (this.state[propertyName]) {
+      this.setState({
+        ...this.state,
+        [propertyName]: false
+      })
+    } else {
+      this.setState({
+        ...this.state,
+        [propertyName]: event.target.value
+      })
+    }
+  }
+
   handleClickBack = () => {
     this.props.history.push('/signup2');
   }
 
   handleClickNext = () => {
     let survey2 = Object.keys(this.state);
-    if (survey2.length < 3) {
+    if (
+      !this.state.years_coaching ||
+      !this.state.number_of_athletes ||
+      (!this.state.genders_of_athletes_female && !this.state.genders_of_athletes_male && !this.state.genders_of_athletes_non_binary)
+    ) {
       alert("Please Answer All Questions")
     } else {
       this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
@@ -49,10 +71,10 @@ class signUp_3 extends Component {
           <Input onChange={this.handleChange('years_coaching')} type="radio" className="semantic-radio" name="q1" value="More than 21 years" />More than 21 years<br />
           <br />
           <span className="survey-questions">5. Genders of the athletes you coach:</span> <br />
-          <label>Choose One</label><br />
-          <Input onChange={this.handleChange('genders_of_athletes')} type="radio" className="semantic-radio" name="q2" value="Female" />Female<br />
-          <Input onChange={this.handleChange('genders_of_athletes')} type="radio" className="semantic-radio" name="q2" value="Male" />Male<br />
-          <Input onChange={this.handleChange('genders_of_athletes')} type="radio" className="semantic-radio" name="q2" value="Non-binary" />Non-binary<br />
+          <label>Select All That Apply</label><br />
+          <Input onChange={this.handleCheckBox('genders_of_athletes_female')} type="checkbox" className="semantic-radio" name="q2" value="true" />Female<br />
+          <Input onChange={this.handleCheckBox('genders_of_athletes_male')} type="checkbox" className="semantic-radio" name="q2" value="true" />Male<br />
+          <Input onChange={this.handleCheckBox('genders_of_athletes_non_binary')} type="checkbox" className="semantic-radio" name="q2" value="true" />Non-binary<br />
           <br />
           <span className="survey-questions">6. Number of athletes on the team you coach?</span><br />
           <label>Choose One</label><br />
