@@ -48,6 +48,7 @@ class signUp_2 extends Component {
             <Input onChange={this.handleChangeFor('choose_receive')} type='radio' className="semantic-radio" name='receive' value='email'></Input>Email<br />
             <Input onChange={this.handleChangeFor('choose_receive')} type='radio' className="semantic-radio" name='receive' value='text'></Input>Text<br />
             <Input onChange={this.handleChangeFor('choose_receive')} type='radio' className="semantic-radio" name='receive' value='both'></Input>Both<br />
+            <label>Links to challenges will be sent out Sunday at 6:00pm CST</label><br />
             <br />
 
             <span className="survey-questions">2. Your gender:</span><br />
