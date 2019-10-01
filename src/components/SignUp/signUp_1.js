@@ -6,7 +6,7 @@ import './signUp.css';
 import Header from './signUp_header';
 
 //semantic-ui
-import { Input, Button, Form } from "semantic-ui-react";
+import { Input, Button } from "semantic-ui-react";
 
 
 class signUp_1 extends Component {
@@ -16,26 +16,46 @@ class signUp_1 extends Component {
     }
   }
 
+  timeout = 0;
+
   handleChange = (propertyName) => (event) => {
-    this.setState({
-      ...this.state,
-      newUser: {...this.state.newUser, [propertyName]: event.target.value}
-    })
+    if (propertyName === "username") {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        this.props.dispatch({type: "USERNAME_CHECK", payload: this.state.newUser.username})
+      }, 800
+      )
+      this.setState({
+        ...this.state,
+        newUser: { ...this.state.newUser, [propertyName]: event.target.value }
+      })
+    } else {
+      this.setState({
+        ...this.state,
+        newUser: { ...this.state.newUser, [propertyName]: event.target.value }
+      })
+    }
   }
 
   handleClick = () => {
-    let answers = Object.keys(this.state.newUser)
-    let answersLength = answers.length
-    if (answersLength < 11) {
-      alert('Please complete every answer')
+    let survey = this.state.newUser;
+    if (
+      !survey.first_name ||
+      !survey.last_name ||
+      !survey.username ||
+      !survey.email ||
+      !survey.password ||
+      !survey.phone_number||
+      !survey.zip
+    ) {
+      alert('Please complete required fields')
     } else {
-      this.props.dispatch({type: 'SET_SIGNUP_ANSWERS', payload: this.state.newUser});
+      this.props.dispatch({ type: 'SET_SIGNUP_ANSWERS', payload: this.state.newUser });
       this.setState({
         newUser: {
           role: 1,
         }
       })
-      document.getElementById("signUp1").reset();
       this.props.history.push('/signup2');
     }
 
@@ -46,44 +66,45 @@ class signUp_1 extends Component {
       <>
         <Header width={"20%"} />
         <br />
-       
-          <center><h2>Personal Information</h2></center><br />
-          <div className="signUp1Div">
+
+        <center><h2>Personal Information</h2></center><br />
+        <div className="signUp1Div">
           <form id="signUp1" style={{ backgroundColor: "white" }}><br />
             <Input
               onChange={this.handleChange("first_name")}
-              placeholder="First Name"
+              placeholder="First Name - Required"
               value={this.state.value}
             />
             <br />
             <Input
               onChange={this.handleChange("last_name")}
-              placeholder="Last Name"
+              placeholder="Last Name - Required"
               value={this.state.value}
             />
             <br />
             <Input
               onChange={this.handleChange("username")}
-              placeholder="Username"
+              placeholder="Username - Required"
               value={this.state.value}
-            />
+            /> {this.props.reduxState.answersReducer.usernameCheckReducer ? <></> : <span style={{color: 'red'}}><br />ERROR: Username Taken </span>}
             <br />
             <Input
               onChange={this.handleChange("email")}
-              placeholder="Email"
+              type="email"
+              placeholder="Email - Required"
               value={this.state.value}
             />
             <br />
             <Input
               onChange={this.handleChange("password")}
               type="password"
-              placeholder="Password"
+              placeholder="Password - Required"
               value={this.state.value}
             />
             <br />
             <Input
               onChange={this.handleChange("phone_number")}
-              placeholder="Phone Number"
+              placeholder="Phone Number - Required"
               value={this.state.value}
             />
             <br />
@@ -107,7 +128,8 @@ class signUp_1 extends Component {
             <br />
             <Input
               onChange={this.handleChange("zip")}
-              placeholder="Zip"
+              type="number"
+              placeholder="Zip - Required"
               value={this.state.value}
             />
             <br />

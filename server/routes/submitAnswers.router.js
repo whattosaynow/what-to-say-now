@@ -24,6 +24,7 @@ router.post("/signup", (req, res) => {
     welcomeEmail(req.body)
     welcomeText(req.body)
   }
+  console.log('req.body:', req.body)
   const password = encryptLib.encryptPassword(req.body.password);
   pool.query(`
         INSERT INTO "user" (
@@ -42,13 +43,15 @@ router.post("/signup", (req, res) => {
                             "S1_your_gender",
                             "S1_your_age",
                             "S1_years_coaching",
-                            "S1_genders_of_athletes",
+                            "S1_genders_of_athletes_female",
+                            "S1_genders_of_athletes_male",
+                            "S1_genders_of_athletes_non_binary",
                             "S1_numbers_of_athletes",
                             "S1_focus_ages",
                             "S1_how_did_you_find_us",
                             "S1_why_are_you_participating",
                             "S1_can_we_call_after_completion")
-        VALUES ($1, $2, $3, $21, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20);
+        VALUES ($1, $2, $3, $23, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22);
         `,
     [req.body.first_name,
     req.body.last_name,
@@ -64,7 +67,9 @@ router.post("/signup", (req, res) => {
     req.body.your_gender,
     req.body.your_age,
     req.body.years_coaching,
-    req.body.genders_of_athletes,
+    req.body.genders_of_athletes_female,
+    req.body.genders_of_athletes_male,
+    req.body.genders_of_athletes_non_binary,
     req.body.number_of_athletes,
     req.body.focus_ages,
     req.body.how_did_you_find_us,
@@ -188,5 +193,26 @@ router.post('/threeMonth', rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 })
+
+
+router.get('/usernameCheck/:id', (req, res) => {
+  console.log("usernameCheck route hit:", req.params.id)
+  pool.query(`
+  SELECT * FROM "user" WHERE "username" ILIKE $1;`, [req.params.id]
+  ).then(result => {
+    // console.log('usernameCheck result.rows', result.rows[0].username)
+    if (result.rows && result.rows[0] && result.rows[0].username) {
+      res.send(false)
+    } else {
+      res.send(true)
+    }
+  })
+    .catch(error => {
+      console.log("error with usernameCheck,", error);
+      res.sendStatus(500);
+    })
+})
+
+
 
 module.exports = router;

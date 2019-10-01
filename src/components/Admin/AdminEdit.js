@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import AdminEditTable from './AdminEditTable';
 
-import { Menu, Button } from "semantic-ui-react";
+import { Menu } from "semantic-ui-react";
 
 class AdminDetails extends Component {
   state = {
