@@ -45,7 +45,8 @@ class signUp_1 extends Component {
       !survey.username ||
       !survey.email ||
       !survey.password ||
-      !survey.phone_number
+      !survey.phone_number||
+      !survey.zip
     ) {
       alert('Please complete required fields')
     } else {
@@ -126,7 +127,7 @@ class signUp_1 extends Component {
             <br />
             <Input
               onChange={this.handleChange("zip")}
-              placeholder="Zip"
+              placeholder="Zip - Required"
               value={this.state.value}
             />
             <br />

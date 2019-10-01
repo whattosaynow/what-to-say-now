@@ -42,7 +42,6 @@ class signUp_3 extends Component {
   }
 
   handleClickNext = () => {
-    let survey2 = Object.keys(this.state);
     if (
       !this.state.years_coaching ||
       !this.state.number_of_athletes ||

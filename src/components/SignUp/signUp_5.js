@@ -68,8 +68,8 @@ class signUp_5 extends Component {
           <br />
           <span className="survey-questions">10. Can we call you at the completion of the Challenge for more information about your experience?</span><br />
           <label>Choose One</label><br />
-          <Input onChange={this.handleChange('can_we_call_after_completion')} type="radio" className="semantic-radio" name="q2" value="yes" />yes<br />
-          <Input onChange={this.handleChange('can_we_call_after_completion')} type="radio" className="semantic-radio" name="q2" value="no" />no<br />
+          <Input onChange={this.handleChange('can_we_call_after_completion')} type="radio" className="semantic-radio" name="q2" value="yes" />Yes<br />
+          <Input onChange={this.handleChange('can_we_call_after_completion')} type="radio" className="semantic-radio" name="q2" value="no" />No<br />
 
           <br />
         </div>
