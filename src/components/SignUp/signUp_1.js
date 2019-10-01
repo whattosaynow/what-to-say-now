@@ -90,6 +90,7 @@ class signUp_1 extends Component {
             <br />
             <Input
               onChange={this.handleChange("email")}
+              type="email"
               placeholder="Email - Required"
               value={this.state.value}
             />
@@ -127,6 +128,7 @@ class signUp_1 extends Component {
             <br />
             <Input
               onChange={this.handleChange("zip")}
+              type="number"
               placeholder="Zip - Required"
               value={this.state.value}
             />
