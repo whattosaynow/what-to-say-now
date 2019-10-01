@@ -78,7 +78,9 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
         "S1_your_gender",
         "S1_your_age",
         "S1_years_coaching",
-        "S1_genders_of_athletes",
+        "S1_genders_of_athletes_female",
+        "S1_genders_of_athletes_male",
+        "S1_genders_of_athletes_non_binary",
         "S1_numbers_of_athletes",
         "S1_focus_ages",
         "S1_how_did_you_find_us",
@@ -111,21 +113,7 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     })
 });
 
-
-// router.get('/charts', (req, res) => {
-//     pool.query(`SELECT "S1_focus_ages", "S1_how_did_you_find_us" from "user", "S2_focus_ages", 
-//     "S2_would_encourage", "S2_affected_ability_interact" from "user";`
-//                 ).then(response => {
-//                     console.log('response.rows:', response.rows)
-//                     res.send(response.rows)
-//                 }
-//                 ).catch(error => {
-//                     console.log('error with csv get router,', error)
-//                     res.sendStatus(500);
-//                 })
-// }); 
-
-cron.schedule('0 10 * * *', () => {
+cron.schedule('0 18 * * sunday', () => {
     automatedContact(); //this function will run every day at 10:00am
 })
 
@@ -134,12 +122,9 @@ cron.schedule('0 10 * * *', () => {
 function automatedContact() {
     pool.query(`
     SELECT * FROM "user"
-    WHERE "date_created" = (CURRENT_DATE - 7) 
-    OR "date_created" = (CURRENT_DATE - 14) 
-    OR "date_created" = (CURRENT_DATE - 21) 
-    OR "date_created" = (CURRENT_DATE - 28) 	
-    OR "date_created" = (CURRENT_DATE - 35) 
-    OR "date_created" = (CURRENT_DATE - 84)`
+    WHERE "date_created" 
+    BETWEEN NOW() - INTERVAL '14 WEEK' AND NOW();
+    `
     ).then(response => {
         response.rows.forEach(user => {
             receiveChallenge(user)
@@ -176,15 +161,15 @@ function receiveEmail(user) {
         sendEmail(user, 1) //week 1
     } else if (answer < 15 && answer > 7) {
         sendEmail(user, 2) //week 2
-    } else if (answer < 22 && answer > 15) {
+    } else if (answer < 22 && answer >= 15) {
         sendEmail(user, 3) //week 3
-    } else if (answer < 29 && answer > 22) {
+    } else if (answer < 29 && answer >= 22) {
         sendEmail(user, 4) //week 4
-    } else if (answer < 36 && answer > 29) {
+    } else if (answer < 36 && answer >= 29) {
         sendEmail(user, 5) //week 5
-    } else if (answer < 42 && answer > 36) {
+    } else if (answer < 42 && answer >= 36) {
         sendEmail(user, 6) //post survey
-    } else if (answer < 91 && answer > 84) {
+    } else if (answer < 91 && answer >= 84) {
         sendEmail(user, 7) //3month survey
     }
 }
@@ -205,7 +190,7 @@ function sendEmail(user, week) {
             from: 'WhatToSayNowChallenge@gmail.com ',
             to: user.email,
             subject: 'Sent from NodeCron',
-            text: `Hi ${user.username}! Here is the link for your weekly challenge: localhost:3000/${user.role}/${week}/${user.S1_focus_ages}`
+            text: `Hi ${user.username}! Welcome to week ${week} of the challenge! Here is the link to this weeks info: ${process.env.API_URL}/${user.role}/${week}/${user.S1_focus_ages}`
         };
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
@@ -220,7 +205,7 @@ function sendEmail(user, week) {
             from: 'WhatToSayNowChallenge@gmail.com ',
             to: user.email,
             subject: 'Sent from NodeCron',
-            text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to our Post Program Survey: localhost:/#/postsurvey1`
+            text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to our Post Program Survey: ${process.env.API_URL}/postsurvey1`
         };
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
@@ -235,7 +220,7 @@ function sendEmail(user, week) {
             from: 'WhatToSayNowChallenge@gmail.com ',
             to: user.email,
             subject: 'Sent from NodeCron',
-            text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to Three Month Followup Survey: localhost:/#/three-month-survey`
+            text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to Three Month Followup Survey: ${process.env.API_URL}/three-month-survey`
         };
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
@@ -254,19 +239,21 @@ function receiveText(user) {
     let currentDate = moment();
     let answer = moment(currentDate).diff(dateCreated, 'days');
 
-    if (answer < 7 && answer >= 0) {
+    if (answer <= 7 && answer >= 0) {
         sendText(user, 1) //week 1
     } else if (answer < 15 && answer > 7) {
         sendText(user, 2) //week 2
-    } else if (answer < 22 && answer > 15) {
+    } else if (answer < 22 && answer >= 15) {
         sendText(user, 3) //week 3
-    } else if (answer < 29 && answer > 22) {
+    } else if (answer < 29 && answer >= 22) {
         sendText(user, 4) //week 4
-    } else if (answer < 36 && answer > 29) {
+    } else if (answer < 36 && answer >= 29) {
         sendText(user, 5) //week 5
-    } else if (answer < 42 && answer > 36) {
+    } else if (answer < 42 && answer >= 36) {
+        console.log(user.username, 'week 6');
         sendText(user, 6) //post survey
-    } else if (answer < 91 && answer > 84) {
+    } else if (answer < 91 && answer >= 84) {
+        console.log(user.username, 'week 7');
         sendText(user, 7) //3month survey
     }
 }
@@ -275,23 +262,25 @@ function sendText(user, week) {
     //if the user is less than or equal to 5 weeks, they receive the weekly challenge info based on their role, the week, and their age group
     if (week <= 5) {
         client.messages.create({
-            body: `Hi ${user.username}! Your role_id: ${user.role}, week ${week}, ageGroup: ${user.S1_focus_ages}`,
+            body: `Hi ${user.username}! Welcome to week ${week} of the challenge! Here is the link to this weeks info: ${process.env.API_URL}/${user.role}/${week}/${user.S1_focus_ages}`,
             from: '+16512731912',
             to: user.phone_number
         }).then(message => console.log(message.status))
             .done();
         //if the user is 6 weeks old, they receive the post program survey link
-    } else if (week = 6) {
+    } else if (week === 6) {
+        console.log('sendtext function, week 6, user:', user.username)
         client.messages.create({
-            body: `Hi ${user.username}! Thank you for participating in the What To Say Now Challenge. Here is a link to our Post Program Survey: localhost:/#/postsurvey1`,
+            body: `Hi ${user.username}! Thank you for participating in the What To Say Now Challenge. Here is a link to our Post Program Survey: ${process.env.API_URL}/postsurvey1`,
             from: '+16512731912',
             to: user.phone_number
         }).then(message => console.log(message.status))
             .done();
         //if the user is 3 months old, they receive the three month survey
-    } else if (week = 7) {
+    } else if (week === 7) {
+        console.log('sendtext function, week 12, user:', user.username)
         client.messages.create({
-            body: `Hi ${user.username}! Thank you for participating in the What To Say Now Challenge. Here is a link to our Three Month Followup Survey: localhost:/#/three-month-survey`,
+            body: `Hi ${user.username}! Thank you for participating in the What To Say Now Challenge. Here is a link to our Three Month Followup Survey: ${process.env.API_URL}/three-month-survey`,
             from: '+16512731912',
             to: user.phone_number
         }).then(message => console.log(message.status))
