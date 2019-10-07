@@ -9,8 +9,26 @@ function* forgotUsername(action) {
     }
 }
 
+function* forgotPassword(action) {
+    try {
+        yield console.log('forgotSaga - Password:', action.payload)
+    } catch (error) {
+        console.log('error with forgotSaga - Password', error);
+    }
+}
+
+function* forgotEmail(action) {
+    try {
+        yield console.log('forgotSaga - Email:', action.payload)
+    } catch (error) {
+        console.log('error with forgotSaga - Email', error);
+    }
+}
+
 function* forgotSaga() {
     yield takeLatest(`FORGOT_USERNAME`, forgotUsername);
+    yield takeLatest(`FORGOT_PASSWORD`, forgotPassword);
+    yield takeLatest(`FORGOT_EMAIL`, forgotEmail);
 }
 
 export default forgotSaga;
