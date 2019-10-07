@@ -25,6 +25,22 @@ class Forgot extends Component {
         )
     }
 
+    handleForgot = (event) => {
+        // console.log(this.state)
+        if (event.target.value === 'username') {
+            console.log('username')
+            // this.props.dispatch({ type: `FORGOT_USERNAME`, payload: this.state.username })
+        } else if (event.target.value === 'password') {
+            console.log('password')
+            // this.props.dispatch({ type: `FORGOT_USERNAME`, payload: this.state.username })
+        } else if (event.target.value === 'email') {
+            console.log('email')
+            // this.props.dispatch({ type: `FORGOT_USERNAME`, payload: this.state.username })
+        } else {
+            console.log('nah')
+        }
+    }
+
     render() {
         return (
             <>
@@ -52,40 +68,59 @@ class Forgot extends Component {
                 <br />
                 {this.state.display === 'username' ?
                     <>
-                    Please enter the email associated with your account: <br/> 
+                        Please enter the email associated with your account: <br />
                         <Input
                             onChange={this.handleChange("username")}
                             placeholder="Email"
                             value={this.state.value}
                         />&nbsp;
-                        <Button>Send Username</Button>
+                        <Button
+                            onClick={this.handleForgot}
+                            value="username"
+                        >
+                            Send Username
+                        </Button>
                     </> :
                     <></>
                 }
                 {this.state.display === 'password' ?
                     <>
-                    Please enter the email associated with your account: <br />
+                        Please enter the email associated with your account: <br />
                         <Input
                             onChange={this.handleChange("password")}
                             placeholder="Email"
                             value={this.state.value}
                         />&nbsp;
-                        <Button>Send Password Reset</Button>
+                        <Button
+                            onClick={this.handleForgot}
+                            value="password"
+                        >
+                            Send Password Reset
+                            </Button>
                     </> :
                     <></>
                 }
                 {this.state.display === 'email' ?
                     <>
-                    Please enter the username associated with your account: <br />
+                        Please enter the username associated with your account: <br />
                         <Input
                             onChange={this.handleChange("email")}
                             placeholder="Username"
                             value={this.state.value}
                         />&nbsp;
-                        <Button>Send Email</Button>
+                        <Button
+                            onClick={this.handleForgot}
+                            value="email"
+                        >
+                            Send Email
+                            </Button>
                     </> :
                     <></>
                 }
+                <br />
+                <pre>
+                    {JSON.stringify(this.state, null, 2)}
+                </pre>
             </>
         )
     }
