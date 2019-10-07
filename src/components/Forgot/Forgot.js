@@ -1,16 +1,98 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+//semantic-ui
+import { Input, Button } from "semantic-ui-react";
 
-class Forgot extends Component{
-    render(){
-        return(
-            <p>Forgot page</p>
+
+class Forgot extends Component {
+    state = {
+        display: ''
+    }
+
+    handleClick = (event) => {
+        this.setState({
+            ...this.state,
+            display: event.target.value
+        })
+    }
+
+    handleChange = (propertyName) => (event) => {
+        this.setState({
+            ...this.state,
+            [propertyName]: event.target.value
+        }
+        )
+    }
+
+    render() {
+        return (
+            <>
+                <br />
+                <p>Forgot page</p>
+                <br />
+                <Button
+                    onClick={this.handleClick}
+                    value="username"
+                >
+                    Forgot Username
+                </Button><br /><br />
+                <Button
+                    onClick={this.handleClick}
+                    value="password"
+                >
+                    Forgot Password
+                </Button><br /><br />
+                <Button
+                    onClick={this.handleClick}
+                    value="email"
+                >
+                    Forgot Email
+                </Button><br />
+                <br />
+                {this.state.display === 'username' ?
+                    <>
+                    Please enter the email associated with your account: <br/> 
+                        <Input
+                            onChange={this.handleChange("username")}
+                            placeholder="Email"
+                            value={this.state.value}
+                        />&nbsp;
+                        <Button>Send Username</Button>
+                    </> :
+                    <></>
+                }
+                {this.state.display === 'password' ?
+                    <>
+                    Please enter the email associated with your account: <br />
+                        <Input
+                            onChange={this.handleChange("password")}
+                            placeholder="Email"
+                            value={this.state.value}
+                        />&nbsp;
+                        <Button>Send Password Reset</Button>
+                    </> :
+                    <></>
+                }
+                {this.state.display === 'email' ?
+                    <>
+                    Please enter the username associated with your account: <br />
+                        <Input
+                            onChange={this.handleChange("email")}
+                            placeholder="Username"
+                            value={this.state.value}
+                        />&nbsp;
+                        <Button>Send Email</Button>
+                    </> :
+                    <></>
+                }
+            </>
         )
     }
 }
 
-export default Forgot;
+const mapStateToProps = (reduxState) => ({
+    reduxState,
+})
+
+export default connect(mapStateToProps)(Forgot);
