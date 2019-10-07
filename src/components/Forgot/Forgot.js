@@ -29,13 +29,13 @@ class Forgot extends Component {
         // console.log(this.state)
         if (event.target.value === 'username') {
             console.log('username')
-            // this.props.dispatch({ type: `FORGOT_USERNAME`, payload: this.state.username })
+            this.props.dispatch({ type: `FORGOT_USERNAME`, payload: this.state.username })
         } else if (event.target.value === 'password') {
             console.log('password')
-            // this.props.dispatch({ type: `FORGOT_USERNAME`, payload: this.state.username })
+            this.props.dispatch({ type: `FORGOT_PASSWORD`, payload: this.state.password })
         } else if (event.target.value === 'email') {
             console.log('email')
-            // this.props.dispatch({ type: `FORGOT_USERNAME`, payload: this.state.username })
+            this.props.dispatch({ type: `FORGOT_EMAIL`, payload: this.state.email })
         } else {
             console.log('nah')
         }
