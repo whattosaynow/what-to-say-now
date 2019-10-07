@@ -84,7 +84,8 @@ class LoginPage extends Component {
             }}
           >
             Register
-          </Button>
+          </Button><br />
+          <p>Forgot username/password/email</p>
         </center>
       </div>
     );
