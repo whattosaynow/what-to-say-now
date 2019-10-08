@@ -14,21 +14,51 @@ require('dotenv').config();
 router.get('/username/:email', (req, res) => {
     console.log('forgot username router hit, payload:', req.params.email)
     pool.query(
-        `SELECT "username" FROM "user" WHERE "email"=$1;
+        `SELECT * FROM "user" WHERE "email" ILIKE $1;
         `, [req.params.email]
-    ).then( res => {
+    ).then(res => {
         console.log('pool query response:', res.rows)
+        res.rows.forEach(user => {
+            forgotUsername(user);
+        })
     }).catch(error => {
         console.log('error with forgot username pool query:', error)
     })
 });
 
+function forgotUsername(user) {
+    console.log('user:', user)
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD
+        }
+    });
+    let mailOptions = {
+        from: "WhatToSayNowChallenge@gmail.com ",
+        to: user.email,
+        subject: "Forgot Username Request",
+        text: `Hi ${user.first_name}! 
+            Your username to login with is: ${user.username}
+            To login, visit:  ${process.env.API_URL}
+            `
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    })
+};
+
 router.get('/password/:email', (req, res) => {
-    
+
 });
 
 router.get('/email/:username', (req, res) => {
-    
+
 });
 
 
