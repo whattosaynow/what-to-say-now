@@ -23,6 +23,7 @@ function* forgotPassword(action) {
 function* forgotEmail(action) {
     try {
         yield console.log('forgotSaga - Email:', action.payload)
+        yield axios.get(`/api/forgot/email/${action.payload}`)
     } catch (error) {
         console.log('error with forgotSaga - Email', error);
     }

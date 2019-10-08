@@ -58,6 +58,7 @@ router.get('/password/:email', (req, res) => {
 });
 
 router.get('/email/:username', (req, res) => {
+    console.log('forgot username router hit, payload:', req.params.username)
 
 });
 
