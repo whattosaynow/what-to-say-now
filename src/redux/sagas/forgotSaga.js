@@ -10,11 +10,10 @@ function* forgotUsername(action) {
     }
 }
 
-//need to add :username to api route
-
 function* forgotPassword(action) {
     try {
         yield console.log('forgotSaga - Password:', action.payload)
+        yield axios.put(`/api/forgot/password/${action.payload}`)
     } catch (error) {
         console.log('error with forgotSaga - Password', error);
     }

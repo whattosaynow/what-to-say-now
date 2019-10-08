@@ -4,6 +4,8 @@ const router = express.Router();
 const encryptLib = require("../modules/encryption");
 const { rejectUnauthenticated } = require("../modules/authentication-middleware");
 const nodemailer = require('nodemailer');
+const moment = require('moment');
+const crypto = require('crypto')
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
@@ -53,8 +55,17 @@ function forgotUsername(user) {
     })
 };
 
-router.get('/password/:email', (req, res) => {
-
+router.put('/password/:email', (req, res) => {
+    let resetToken = crypto.randomBytes(20).toString('hex');
+    let resetTime = moment().format();
+    console.log('password router hit, email:', req.params.email, resetToken, resetTime);
+    let query = `UPDATE "user" SET "reset_token_code"=$1, "reset_token_time"=$2 WHERE "email" ILIKE $3;`;
+    pool.query(query, [resetToken, resetTime, req.params.email]
+    ).then(response => {
+        console.log('reset password pool query response:', response)
+    }).catch(error => {
+        console.log('error with forgot password pool query:', error)
+    })
 });
 
 router.get('/email/:username', (req, res) => {
