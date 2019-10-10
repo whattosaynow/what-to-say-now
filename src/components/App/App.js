@@ -29,6 +29,7 @@ import postSurvey_3 from "../PostSurvey/PostSurvey_3";
 import Admin from '../Admin/AdminPage';
 import './App.css';
 import ThreeMonthSurvey from '../ThreeMonthSurvey/ThreeMonthSurvey';
+import PasswordReset from '../PasswordReset/PasswordReset';
 
 class App extends Component {
   componentDidMount() {
@@ -64,6 +65,7 @@ class App extends Component {
                 <ProtectedRoute exact path='/user-profile' component={UserPage} />
                 <ProtectedRoute exact path='/user-preferences' component={UserPreferences} />
                 <ProtectedRoute exact path='/challenge/:role/:week/:age' component={ChallengeContent} />
+                <Route exact path='/reset/:token' component={PasswordReset} />
                 <Route exact path="/signup1" component={signUp_1} />
                 <Route exact path="/signup2" component={signUp_2} />
                 <Route exact path="/signup3" component={signUp_3} />
