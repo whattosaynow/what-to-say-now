@@ -1,14 +1,34 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+
 
 //semantic-ui
 import { Input, Button } from "semantic-ui-react";
 
 class PasswordReset extends Component {
     state = {
+        loading: true,
         newPassword: '',
-        confirmNewPassword: ''
+        confirmNewPassword: '',
+        tokenMatch: false,
     };
+
+    async componentDidMount() {
+        await this.props.dispatch({ type: `COMNPARE_TOKEN`, payload: this.props.match.params.token }).then(response => {
+            if (response === 'match') {
+                this.setState({
+                    ...this.state,
+                    loading: false,
+                    tokenMatch: true,
+                })
+            }
+        }
+        )
+    }
+
+    // figure out why this.props.dispatch.then is not a function
+    //might just need to use redux store
 
     handleChangeFor = (propertyName) => (event) => {
         this.setState({
@@ -19,7 +39,16 @@ class PasswordReset extends Component {
 
 
     render() {
-        if (this.props.match.params.token === 'apple') {
+        if (this.state.loading) {
+            return (
+                <>
+                    <br />
+                    <div>
+                        Comparing information, please wait
+                </div>
+                </>
+            )
+        } else if (this.props.match.params.token === 'apple') {
             return (
                 <div><br />
                     <div className="signup-questions"><br />
@@ -50,15 +79,15 @@ class PasswordReset extends Component {
         } else {
             return (
                 <>
-                <br />
-                <div>
-                    Error - INVALID TOKEN<br />
-                    Please request new  token
+                    <br />
+                    <div>
+                        Error - INVALID TOKEN<br />
+                        Please request new  token
                     {/* <pre>
                         {JSON.stringify(this.props.match.params.token, null, 2)}
                     </pre> */}
                     </div>
-            </>
+                </>
             )
         }
     }
@@ -68,4 +97,4 @@ const mapStateToProps = (reduxState) => ({
     reduxState,
 })
 
-export default connect(mapStateToProps)(PasswordReset);
+export default withRouter(connect(mapStateToProps)(PasswordReset));
