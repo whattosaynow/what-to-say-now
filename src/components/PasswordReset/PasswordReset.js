@@ -14,18 +14,18 @@ class PasswordReset extends Component {
         tokenMatch: false,
     };
 
-    async componentDidMount() {
-        await this.props.dispatch({ type: `COMNPARE_TOKEN`, payload: this.props.match.params.token }).then(response => {
-            if (response === 'match') {
-                this.setState({
-                    ...this.state,
-                    loading: false,
-                    tokenMatch: true,
-                })
-            }
-        }
-        )
-    }
+    // async componentDidMount() {
+    //     await this.props.dispatch({ type: `COMNPARE_TOKEN`, payload: this.props.match.params.token }).then(response => {
+    //         if (response === 'match') {
+    //             this.setState({
+    //                 ...this.state,
+    //                 loading: false,
+    //                 tokenMatch: true,
+    //             })
+    //         }
+    //     }
+    //     )
+    // }
 
     // figure out why this.props.dispatch.then is not a function
     //might just need to use redux store

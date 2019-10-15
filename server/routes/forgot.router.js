@@ -59,14 +59,44 @@ router.put('/password/:email', (req, res) => {
     let resetToken = crypto.randomBytes(20).toString('hex');
     let resetTime = moment().format();
     console.log('password router hit, email:', req.params.email, resetToken, resetTime);
-    let query = `UPDATE "user" SET "reset_token_code"=$1, "reset_token_time"=$2 WHERE "email" ILIKE $3;`;
+    let query = `UPDATE "user" SET "reset_token_code"=$1, "reset_token_time"=$2 WHERE "email" ILIKE $3 RETURNING *;`;
     pool.query(query, [resetToken, resetTime, req.params.email]
     ).then(response => {
-        console.log('reset password pool query response:', response)
+        console.log('reset password pool query response:', response.rows[0])
+        forgotPassword(response.rows[0])
     }).catch(error => {
         console.log('error with forgot password pool query:', error)
     })
 });
+
+function forgotPassword(user) {
+    console.log('forgot password router function; user:', user)
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD
+        }
+    });
+    let mailOptions = {
+        from: "WhatToSayNowChallenge@gmail.com ",
+        to: user.email,
+        subject: "Forgot Password Request",
+        text: `Hi ${user.first_name}! 
+            You are receiving this email because you requested it via the forgot email form.
+            Your username is ${user.username}
+            To login, visit:  ${process.env.API_URL}reset/${user.reset_token_code}
+            `
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    })
+};
+
 
 router.get('/email/:username', (req, res) => {
     console.log('forgot username router hit, payload:', req.params.username);
