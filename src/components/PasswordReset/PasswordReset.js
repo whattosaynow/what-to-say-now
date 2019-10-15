@@ -14,18 +14,13 @@ class PasswordReset extends Component {
         tokenMatch: false,
     };
 
-    // async componentDidMount() {
-    //     await this.props.dispatch({ type: `COMNPARE_TOKEN`, payload: this.props.match.params.token }).then(response => {
-    //         if (response === 'match') {
-    //             this.setState({
-    //                 ...this.state,
-    //                 loading: false,
-    //                 tokenMatch: true,
-    //             })
-    //         }
-    //     }
-    //     )
-    // }
+    async componentDidMount() {
+        this.compareTokenURL()
+    }
+
+    compareTokenURL = () => {
+        this.props.dispatch({ type: `COMPARE_TOKEN`, payload: this.props.match.params.token })
+    }
 
     // figure out why this.props.dispatch.then is not a function
     //might just need to use redux store
@@ -45,7 +40,10 @@ class PasswordReset extends Component {
                     <br />
                     <div>
                         Comparing information, please wait
-                </div>
+                    </div>
+                    <pre>
+                        {JSON.stringify(this.props.reduxState, null, 2)}
+                    </pre>
                 </>
             )
         } else if (this.props.match.params.token === 'apple') {

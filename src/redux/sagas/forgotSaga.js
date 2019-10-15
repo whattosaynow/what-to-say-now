@@ -31,6 +31,13 @@ function* forgotEmail(action) {
 function* compareToken(action){
     try{
         yield console.log('comparetoken saga hit:', action.payload)
+        const response = yield axios.get(`/api/forgot/reset/${action.payload}`)
+        console.log('pw reset forgotSaga api response:', response.data)
+        // if(response === true){
+        //     yield put ({type: })
+        // }else{
+        //     yield put 
+        // }
     } catch (error){
         console.log('error with compare token:', error)
     }
@@ -40,7 +47,7 @@ function* forgotSaga() {
     yield takeLatest(`FORGOT_USERNAME`, forgotUsername);
     yield takeLatest(`FORGOT_PASSWORD`, forgotPassword);
     yield takeLatest(`FORGOT_EMAIL`, forgotEmail);
-    yield takeLatest(`COMNPARE_TOKEN`, compareToken)
+    yield takeLatest(`COMPARE_TOKEN`, compareToken)
 }
 
 export default forgotSaga;

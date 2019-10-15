@@ -143,8 +143,26 @@ function forgotEmail(user) {
 
 
 
-router.post('/', (req, res) => {
-
+router.get('/reset/:token', (req, res) => {
+    console.log('password reset token router hit:', req.params.token)
+    pool.query(`
+    SELECT * FROM "user" WHERE "reset_token_code"=$1;`, [req.params.token]
+    ).then(response => {
+        console.log('response from password token reset db query', response)
+        if (response.rowCount === 0) {
+            res.send('ERROR - Token does not exist')
+        } else {
+            let currentDate = moment();
+            let tokenDate = response.rows[0].reset_token_time
+            let answer = moment(currentDate).diff(tokenDate, 'minutes')
+            console.log('answer:', answer)
+            if (answer <= 15) {
+                res.send(response.rows[0])
+            } else {
+                res.send('Token Expired')
+            }
+        }
+    })
 });
 
 module.exports = router;

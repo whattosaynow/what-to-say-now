@@ -7,6 +7,7 @@ import answersReducer from './answersReducer';
 import adminReducer from './adminReducer';
 import weeklyContentReducer from './weeklyContentReducer';
 import chartReducer from './chartReducer';
+import passwordResetReducer from './passwordResetReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,9 +21,10 @@ const rootReducer = combineReducers({
   user,
   numbersReducer,
   answersReducer, // will have an id and username if someone is logged in
-  adminReducer, 
-  weeklyContentReducer, 
+  adminReducer,
+  weeklyContentReducer,
   chartReducer, //handles data related to chart visualization 
+  passwordResetReducer,
 });
 
 export default rootReducer;
