@@ -42,7 +42,7 @@ class PasswordReset extends Component {
                         Comparing information, please wait
                     </div>
                     <pre>
-                        {JSON.stringify(this.props.reduxState, null, 2)}
+                        {JSON.stringify(this.props.reduxState.passwordResetReducer, null, 2)}
                     </pre>
                 </>
             )

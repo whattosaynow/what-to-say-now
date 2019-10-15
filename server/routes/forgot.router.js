@@ -162,6 +162,8 @@ router.get('/reset/:token', (req, res) => {
                 res.send('Token Expired')
             }
         }
+    }).catch(error => {
+        console.log('error with resewt token pool query:', error)
     })
 });
 
