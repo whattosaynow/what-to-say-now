@@ -7,7 +7,7 @@ import { Input, Button } from "semantic-ui-react";
 
 class Forgot extends Component {
     state = {
-        display: ''
+        display: 'select'
     }
 
     handleClick = (event) => {
@@ -45,82 +45,97 @@ class Forgot extends Component {
         return (
             <>
                 <br />
-                <p>Forgot page</p>
-                <br />
-                <Button
-                    onClick={this.handleClick}
-                    value="username"
-                >
-                    Forgot Username
-                </Button><br /><br />
-                <Button
-                    onClick={this.handleClick}
-                    value="password"
-                >
-                    Forgot Password
-                </Button><br /><br />
-                <Button
-                    onClick={this.handleClick}
-                    value="email"
-                >
-                    Forgot Email
-                </Button><br />
-                <br />
-                {this.state.display === 'username' ?
-                    <>
-                        Please enter the email associated with your account: <br />
-                        <Input
-                            onChange={this.handleChange("username")}
-                            placeholder="Email"
-                            value={this.state.value}
-                        />&nbsp;
+                <div className="signup-questions">
+                    <br />
+                    <center>
                         <Button
-                            onClick={this.handleForgot}
+                            onClick={this.handleClick}
                             value="username"
                         >
-                            Send Username
+                            Forgot Username
                         </Button>
-                    </> :
-                    <></>
-                }
-                {this.state.display === 'password' ?
-                    <>
-                        Please enter the email associated with your account: <br />
-                        <Input
-                            onChange={this.handleChange("password")}
-                            placeholder="Email"
-                            value={this.state.value}
-                        />&nbsp;
+                        <br /><br />
                         <Button
-                            onClick={this.handleForgot}
+                            onClick={this.handleClick}
                             value="password"
                         >
-                            Send Password Reset
-                            </Button>
-                    </> :
-                    <></>
-                }
-                {this.state.display === 'email' ?
-                    <>
-                        Please enter the username associated with your account: <br />
-                        <Input
-                            onChange={this.handleChange("email")}
-                            placeholder="Username"
-                            value={this.state.value}
-                        />&nbsp;
+                            Forgot Password
+                        </Button>
+                        <br /><br />
                         <Button
-                            onClick={this.handleForgot}
+                            onClick={this.handleClick}
                             value="email"
                         >
-                            Send Email
-                            </Button>
-                    </> :
-                    <></>
-                }
-                <br />
-                <pre>
-                    {JSON.stringify(this.state, null, 2)}
-                </pre>
+                            Forgot Email
+                        </Button>
+                        <br />
+                        <br />
+                        {this.state.display === 'select' ?
+                            <>
+                                <br />
+                                <p>Please select an option above</p>
+                                <br />
+                            </>
+                            :
+                            <></>
+                        }
+                        {this.state.display === 'username' ?
+                            <>
+                                Please enter the email associated with your account: <br />
+                                <Input
+                                    onChange={this.handleChange("username")}
+                                    placeholder="Email"
+                                    value={this.state.value}
+                                />&nbsp;
+                                <Button
+                                    onClick={this.handleForgot}
+                                    value="username"
+                                >
+                                    Send Username
+                                </Button>
+                                <br /><br />
+                            </> :
+                            <></>
+                        }
+                        {this.state.display === 'password' ?
+                            <>
+                                Please enter the email associated with your account: <br />
+                                <Input
+                                    onChange={this.handleChange("password")}
+                                    placeholder="Email"
+                                    value={this.state.value}
+                                />&nbsp;
+                                <Button
+                                    onClick={this.handleForgot}
+                                    value="password"
+                                >
+                                    Send Password Reset
+                                </Button>
+                                <br /><br />
+                            </> :
+                            <></>
+                        }
+                        {this.state.display === 'email' ?
+                            <>
+                                Please enter the username associated with your account: <br />
+                                <Input
+                                    onChange={this.handleChange("email")}
+                                    placeholder="Username"
+                                    value={this.state.value}
+                                />&nbsp;
+                                <Button
+                                    onClick={this.handleForgot}
+                                    value="email"
+                                >
+                                    Email Me
+                                </Button>
+                                <br /><br />
+                            </> :
+                            <></>
+                        }
+                        <br />
+                    </center>
+                </div>
             </>
         )
     }
