@@ -32,7 +32,7 @@ function* compareToken(action){
     try{
         // yield console.log('comparetoken saga hit:', action.payload)
         const response = yield axios.get(`/api/forgot/reset/${action.payload}`)
-        console.log('pw reset forgotSaga api response:', response.data)
+        // console.log('pw reset forgotSaga api response:', response.data)
         if(response.data === 'ERROR - Token does not exist'){
             yield put ({type: `ERROR_NOT_EXIST`})
         }else if(response.data === 'Token Expired'){

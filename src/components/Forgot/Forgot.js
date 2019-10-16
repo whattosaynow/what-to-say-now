@@ -33,18 +33,21 @@ class Forgot extends Component {
             alert('Please input your email')
         } else if (event.target.value === 'username' && this.state.username !== '') {
             this.props.dispatch({ type: `FORGOT_USERNAME`, payload: this.state.username })
+            alert(`We have sent an email to ${this.state.username}. Please check that email for your username`)
         }
 
         if (event.target.value === 'password' && this.state.password === '') {
             alert('Please input your email')
         } else if (event.target.value === 'password' && this.state.password !== '') {
             this.props.dispatch({ type: `FORGOT_PASSWORD`, payload: this.state.password })
+            alert(`We have sent an email to ${this.state.password}. Please check that email for instructions to reset your password`)
         }
 
         if (event.target.value === 'email' && this.state.email === '') {
             alert('Please input your username')
         } else if (event.target.value === 'email' && this.state.email !== '') {
             this.props.dispatch({ type: `FORGOT_EMAIL`, payload: this.state.email })
+            alert(`We have sent an email to the account registered under the ${this.state.email} username`)
         }
 
     }

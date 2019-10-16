@@ -125,7 +125,7 @@ function forgotEmail(user) {
     let mailOptions = {
         from: "WhatToSayNowChallenge@gmail.com ",
         to: user.email,
-        subject: "Forgot Username Request",
+        subject: "Forgot Email Request",
         text: `Hi ${user.first_name}! 
             You are receiving this email because you requested it via the forgot email form.
             Your username is ${user.username}

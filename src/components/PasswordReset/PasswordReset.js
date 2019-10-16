@@ -29,7 +29,6 @@ class PasswordReset extends Component {
     }
 
     handleSubmit = () => {
-        console.log('handle submit. state:', this.state)
         this.props.dispatch({type: `UPDATE_PASSWORD`, payload: {password: this.state.newPassword, resetToken: this.props.match.params.token }})
     }
 
