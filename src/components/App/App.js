@@ -14,6 +14,7 @@ import UserPage from '../UserPage/UserPage';
 import UserPreferences from '../UserPreferences/UserPreferences';
 import InfoPage from '../InfoPage/InfoPage';
 import ChallengeContent from '../UserPage/ChallengeContent';
+import Forgot from '../Forgot/Forgot'
 //sign-up survey pages
 import signUp_1 from '../SignUp/signUp_1';
 import signUp_2 from '../SignUp/signUp_2';
@@ -28,6 +29,7 @@ import postSurvey_3 from "../PostSurvey/PostSurvey_3";
 import Admin from '../Admin/AdminPage';
 import './App.css';
 import ThreeMonthSurvey from '../ThreeMonthSurvey/ThreeMonthSurvey';
+import PasswordReset from '../PasswordReset/PasswordReset';
 
 class App extends Component {
   componentDidMount() {
@@ -63,11 +65,13 @@ class App extends Component {
                 <ProtectedRoute exact path='/user-profile' component={UserPage} />
                 <ProtectedRoute exact path='/user-preferences' component={UserPreferences} />
                 <ProtectedRoute exact path='/challenge/:role/:week/:age' component={ChallengeContent} />
+                <Route exact path='/reset/:token' component={PasswordReset} />
                 <Route exact path="/signup1" component={signUp_1} />
                 <Route exact path="/signup2" component={signUp_2} />
                 <Route exact path="/signup3" component={signUp_3} />
                 <Route exact path="/signup4" component={signUp_4} />
                 <Route exact path="/signup5" component={signUp_5} />
+                <Route exact path="/forgot" component={Forgot} />
                 <ProtectedRoute exact path="/three-month-survey" component={ThreeMonthSurvey} />
                 {/* post survey routes */}
                 <ProtectedRoute exact path="/postsurvey1" component={postSurvey_1} />
