@@ -3,7 +3,7 @@ import { takeLatest, put } from "redux-saga/effects";
 
 function* forgotUsername(action) {
     try {
-        yield console.log('forgotSaga - username:', action.payload)
+        // yield console.log('forgotSaga - username:', action.payload)
         yield axios.get(`/api/forgot/username/${action.payload}`)
     } catch (error) {
         console.log('error with forgotSaga - username', error);
@@ -12,7 +12,7 @@ function* forgotUsername(action) {
 
 function* forgotPassword(action) {
     try {
-        yield console.log('forgotSaga - Password:', action.payload)
+        // yield console.log('forgotSaga - Password:', action.payload)
         yield axios.put(`/api/forgot/password/${action.payload}`)
     } catch (error) {
         console.log('error with forgotSaga - Password', error);
@@ -21,7 +21,7 @@ function* forgotPassword(action) {
 
 function* forgotEmail(action) {
     try {
-        yield console.log('forgotSaga - Email:', action.payload)
+        // yield console.log('forgotSaga - Email:', action.payload)
         yield axios.get(`/api/forgot/email/${action.payload}`)
     } catch (error) {
         console.log('error with forgotSaga - Email', error);
@@ -30,7 +30,7 @@ function* forgotEmail(action) {
 
 function* compareToken(action){
     try{
-        yield console.log('comparetoken saga hit:', action.payload)
+        // yield console.log('comparetoken saga hit:', action.payload)
         const response = yield axios.get(`/api/forgot/reset/${action.payload}`)
         console.log('pw reset forgotSaga api response:', response.data)
         if(response.data === 'ERROR - Token does not exist'){
@@ -47,7 +47,7 @@ function* compareToken(action){
 
 function* updatePassword(action){
     try{
-        yield console.log('update password saga hit,', action.payload)
+        // yield console.log('update password saga hit,', action.payload)
         yield axios.put(`/api/forgot/update/`, action.payload)
     }catch (error){
         console.log('error with update password saga token:', error)

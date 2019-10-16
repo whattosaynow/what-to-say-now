@@ -7,7 +7,10 @@ import { Input, Button } from "semantic-ui-react";
 
 class Forgot extends Component {
     state = {
-        display: 'select'
+        display: 'select',
+        username: '',
+        password: '',
+        email: '',
     }
 
     handleClick = (event) => {
@@ -26,19 +29,24 @@ class Forgot extends Component {
     }
 
     handleForgot = (event) => {
-        // console.log(this.state)
-        if (event.target.value === 'username') {
-            console.log('username')
+        if (event.target.value === 'username' && this.state.username === '') {
+            alert('Please input your email')
+        } else if (event.target.value === 'username' && this.state.username !== '') {
             this.props.dispatch({ type: `FORGOT_USERNAME`, payload: this.state.username })
-        } else if (event.target.value === 'password') {
-            console.log('password')
-            this.props.dispatch({ type: `FORGOT_PASSWORD`, payload: this.state.password })
-        } else if (event.target.value === 'email') {
-            console.log('email')
-            this.props.dispatch({ type: `FORGOT_EMAIL`, payload: this.state.email })
-        } else {
-            console.log('nah')
         }
+
+        if (event.target.value === 'password' && this.state.password === '') {
+            alert('Please input your email')
+        } else if (event.target.value === 'password' && this.state.password !== '') {
+            this.props.dispatch({ type: `FORGOT_PASSWORD`, payload: this.state.password })
+        }
+
+        if (event.target.value === 'email' && this.state.email === '') {
+            alert('Please input your username')
+        } else if (event.target.value === 'email' && this.state.email !== '') {
+            this.props.dispatch({ type: `FORGOT_EMAIL`, payload: this.state.email })
+        }
+
     }
 
     render() {

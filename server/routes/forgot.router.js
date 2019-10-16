@@ -14,12 +14,12 @@ const client = require('twilio')(accountSid, authToken);
 require('dotenv').config();
 
 router.get('/username/:email', (req, res) => {
-    console.log('forgot username router hit, payload:', req.params.email)
+    // console.log('forgot username router hit, payload:', req.params.email)
     pool.query(
         `SELECT * FROM "user" WHERE "email" ILIKE $1;
         `, [req.params.email]
     ).then(res => {
-        console.log('pool query response:', res.rows)
+        // console.log('pool query response:', res.rows)
         res.rows.forEach(user => {
             forgotUsername(user);
         })
@@ -29,7 +29,7 @@ router.get('/username/:email', (req, res) => {
 });
 
 function forgotUsername(user) {
-    console.log('user:', user)
+    // console.log('user:', user)
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -58,11 +58,11 @@ function forgotUsername(user) {
 router.put('/password/:email', (req, res) => {
     let resetToken = crypto.randomBytes(20).toString('hex');
     let resetTime = moment().format();
-    console.log('password router hit, email:', req.params.email, resetToken, resetTime);
+    // console.log('password router hit, email:', req.params.email, resetToken, resetTime);
     let query = `UPDATE "user" SET "reset_token_code"=$1, "reset_token_time"=$2 WHERE "email" ILIKE $3 RETURNING *;`;
     pool.query(query, [resetToken, resetTime, req.params.email]
     ).then(response => {
-        console.log('reset password pool query response:', response.rows[0])
+        // console.log('reset password pool query response:', response.rows[0])
         forgotPassword(response.rows[0])
     }).catch(error => {
         console.log('error with forgot password pool query:', error)
@@ -70,7 +70,7 @@ router.put('/password/:email', (req, res) => {
 });
 
 function forgotPassword(user) {
-    console.log('forgot password router function; user:', user)
+    // console.log('forgot password router function; user:', user)
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -99,12 +99,12 @@ function forgotPassword(user) {
 
 
 router.get('/email/:username', (req, res) => {
-    console.log('forgot username router hit, payload:', req.params.username);
+    // console.log('forgot username router hit, payload:', req.params.username);
     pool.query(
         `SELECT * FROM "user" WHERE "username" ILIKE $1;
         `, [req.params.username]
     ).then(res => {
-        console.log('pool query response:', res.rows)
+        // console.log('pool query response:', res.rows)
         res.rows.forEach(user => {
             forgotEmail(user);
         })
@@ -114,7 +114,7 @@ router.get('/email/:username', (req, res) => {
 });
 
 function forgotEmail(user) {
-    console.log('user:', user)
+    // console.log('user:', user)
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -144,18 +144,18 @@ function forgotEmail(user) {
 
 
 router.get('/reset/:token', (req, res) => {
-    console.log('password reset token router hit:', req.params.token)
+    // console.log('password reset token router hit:', req.params.token)
     pool.query(`
     SELECT * FROM "user" WHERE "reset_token_code"=$1;`, [req.params.token]
     ).then(response => {
-        console.log('response from password token reset db query', response)
+        // console.log('response from password token reset db query', response)
         if (response.rowCount === 0) {
             res.send('ERROR - Token does not exist')
         } else {
             let currentDate = moment();
             let tokenDate = response.rows[0].reset_token_time
             let answer = moment(currentDate).diff(tokenDate, 'minutes')
-            console.log('answer:', answer)
+            // console.log('answer:', answer)
             if (answer <= 15) {
                 res.send(response.rows[0])
             } else {
@@ -163,12 +163,12 @@ router.get('/reset/:token', (req, res) => {
             }
         }
     }).catch(error => {
-        console.log('error with resewt token pool query:', error)
+        console.log('error with reset token pool query:', error)
     })
 });
 
 router.put('/update/', (req, res) => {
-    console.log('update pw router hit,:', req.body)
+    // console.log('update pw router hit,:', req.body)
     const password = encryptLib.encryptPassword(req.body.password);
     pool.query(`
     UPDATE "user" SET "password"=$1 WHERE "reset_token_code"=$2;`, [password, req.body.resetToken]
