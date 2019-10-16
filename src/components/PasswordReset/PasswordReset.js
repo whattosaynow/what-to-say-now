@@ -8,39 +8,18 @@ import { Input, Button } from "semantic-ui-react";
 
 class PasswordReset extends Component {
     state = {
+        username: '',
         newPassword: '',
         confirmNewPassword: '',
-        tokenMatch: false,
     };
 
     componentDidMount() {
         this.compareTokenURL();
-        if (this.props.reduxState.passwordResetReducer === 'ERROR_NOT_EXIST') {
-            this.setState({
-                ...this.state,
-                loading: false,
-            })
-        } else if (this.props.reduxState.passwordResetReducer === 'TOKEN_EXPIRED') {
-            this.setState({
-                ...this.state,
-                loading: false,
-                tokenMatch: 'expired'
-            })
-        } else if (this.props.reduxState.passwordResetReducer === 'SET_PW_USER') {
-            this.setState({
-                ...this.state,
-                loading: false,
-                tokenMatch: true
-            })
-        }
     }
 
     compareTokenURL = () => {
         this.props.dispatch({ type: `COMPARE_TOKEN`, payload: this.props.match.params.token })
     }
-
-    // figure out why this.props.dispatch.then is not a function
-    //might just need to use redux store
 
     handleChangeFor = (propertyName) => (event) => {
         this.setState({
@@ -49,30 +28,39 @@ class PasswordReset extends Component {
         });
     }
 
+    handleSubmit = () => {
+        console.log('handle submit. state:', this.state)
+        this.props.dispatch({type: `UPDATE_PASSWORD`, payload: {password: this.state.newPassword, resetToken: this.props.match.params.token }})
+    }
 
     render() {
         if (this.props.reduxState.passwordResetReducer === 'ERROR_NOT_EXIST') {
             return (
                 <>
                     <br />
-                    <div>
-                        ERROR - Reset token does not exist. Pease make sure you copied the link correctly or try resetting again.
-                    </div>
-                    <pre>
+                    <center>
+                        <div>
+                            ERROR - Reset token does not exist. <br />
+                            Pease make sure you copied the link correctly or try resetting again.
+                        </div>
+                    </center>
+                    {/* <pre>
                         {JSON.stringify(this.props.reduxState.passwordResetReducer, null, 2)}
-                    </pre>
+                    </pre> */}
                 </>
             )
         } else if (this.props.reduxState.passwordResetReducer === 'TOKEN_EXPIRED') {
             return (
                 <>
                     <br />
-                    <div>
-                        ERROR - Token time limit has expired. Please request your password reset again.
-                    </div>
-                    <pre>
+                    <center>
+                        <div>
+                            ERROR - Token time limit has expired. Please request your password reset again.
+                        </div>
+                    </center>
+                    {/* <pre>
                         {JSON.stringify(this.props.reduxState.passwordResetReducer, null, 2)}
-                    </pre>
+                    </pre> */}
                 </>
             )
         } else if (this.props.reduxState.passwordResetReducer === 'SET_PW_USER') {
@@ -80,8 +68,11 @@ class PasswordReset extends Component {
                 <div><br />
                     <div className="signup-questions"><br />
                         <center>
-                            <h1>Update Preferences</h1>
+                            <h1>Update Password</h1>
                             <br />
+                            {/* <span>Current Username:</span> <br />
+                            <Input type="text" onChange={this.handleChangeFor('username')} ></Input><br />
+                            <br /> */}
                             <span>New Password:</span> <br />
                             <Input type="password" onChange={this.handleChangeFor('newPassword')} ></Input><br />
                             <br />
@@ -90,7 +81,7 @@ class PasswordReset extends Component {
                             <br />
                             {this.state.newPassword === this.state.confirmNewPassword ?
                                 <>
-                                    <Button>Submit</Button><br />
+                                    <Button onClick={this.handleSubmit}>Submit</Button><br />
                                 </>
                                 :
                                 <>

@@ -45,11 +45,21 @@ function* compareToken(action){
     }
 }
 
+function* updatePassword(action){
+    try{
+        yield console.log('update password saga hit,', action.payload)
+        yield axios.put(`/api/forgot/update/`, action.payload)
+    }catch (error){
+        console.log('error with update password saga token:', error)
+    }
+}
+
 function* forgotSaga() {
     yield takeLatest(`FORGOT_USERNAME`, forgotUsername);
     yield takeLatest(`FORGOT_PASSWORD`, forgotPassword);
     yield takeLatest(`FORGOT_EMAIL`, forgotEmail);
     yield takeLatest(`COMPARE_TOKEN`, compareToken)
+    yield takeLatest(`UPDATE_PASSWORD`, updatePassword)
 }
 
 export default forgotSaga;

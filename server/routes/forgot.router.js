@@ -167,4 +167,16 @@ router.get('/reset/:token', (req, res) => {
     })
 });
 
+router.put('/update/', (req, res) => {
+    console.log('update pw router hit,:', req.body)
+    const password = encryptLib.encryptPassword(req.body.password);
+    pool.query(`
+    UPDATE "user" SET "password"=$1 WHERE "reset_token_code"=$2;`, [password, req.body.resetToken]
+    ).then(response => {
+        res.sendStatus(200)
+    }).catch(error => {
+        console.log('error with updating password:', error)
+    })
+});
+
 module.exports = router;
