@@ -17,6 +17,7 @@ const updateUserPrefsRouter = require('./routes/updateUserPrefs.router');
 const deleteAccountRouter = require('./routes/deleteAccount.router');
 const chartsRouter = require('./routes/charts.router');
 const emailRouter = require('./routes/emails.router');
+const forgotRouter = require('./routes/forgot.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -38,6 +39,7 @@ app.use("/api/update-user-prefs", updateUserPrefsRouter);
 app.use('/api/delete-account', deleteAccountRouter);
 app.use('/api/charts', chartsRouter);
 app.use('/api/emails', emailRouter);
+app.use('/api/forgot', forgotRouter);
 
 // Serve static files
 app.use(express.static('build'));

@@ -84,6 +84,15 @@ class LoginPage extends Component {
             }}
           >
             Register
+          </Button><br /><br />
+          <Button
+            type="button"
+            className="link-button"
+            onClick={() => {
+              this.props.history.push("/forgot");
+            }}
+          >
+            Forgot username / password / email
           </Button>
         </center>
       </div>
