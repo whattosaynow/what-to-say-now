@@ -8,14 +8,31 @@ import { Input, Button } from "semantic-ui-react";
 
 class PasswordReset extends Component {
     state = {
-        loading: true,
         newPassword: '',
         confirmNewPassword: '',
         tokenMatch: false,
     };
 
-    async componentDidMount() {
-        this.compareTokenURL()
+    componentDidMount() {
+        this.compareTokenURL();
+        if (this.props.reduxState.passwordResetReducer === 'ERROR_NOT_EXIST') {
+            this.setState({
+                ...this.state,
+                loading: false,
+            })
+        } else if (this.props.reduxState.passwordResetReducer === 'TOKEN_EXPIRED') {
+            this.setState({
+                ...this.state,
+                loading: false,
+                tokenMatch: 'expired'
+            })
+        } else if (this.props.reduxState.passwordResetReducer === 'SET_PW_USER') {
+            this.setState({
+                ...this.state,
+                loading: false,
+                tokenMatch: true
+            })
+        }
     }
 
     compareTokenURL = () => {
@@ -34,19 +51,31 @@ class PasswordReset extends Component {
 
 
     render() {
-        if (this.state.loading) {
+        if (this.props.reduxState.passwordResetReducer === 'ERROR_NOT_EXIST') {
             return (
                 <>
                     <br />
                     <div>
-                        Comparing information, please wait
+                        ERROR - Reset token does not exist. Pease make sure you copied the link correctly or try resetting again.
                     </div>
                     <pre>
                         {JSON.stringify(this.props.reduxState.passwordResetReducer, null, 2)}
                     </pre>
                 </>
             )
-        } else if (this.props.match.params.token === 'apple') {
+        } else if (this.props.reduxState.passwordResetReducer === 'TOKEN_EXPIRED') {
+            return (
+                <>
+                    <br />
+                    <div>
+                        ERROR - Token time limit has expired. Please request your password reset again.
+                    </div>
+                    <pre>
+                        {JSON.stringify(this.props.reduxState.passwordResetReducer, null, 2)}
+                    </pre>
+                </>
+            )
+        } else if (this.props.reduxState.passwordResetReducer === 'SET_PW_USER') {
             return (
                 <div><br />
                     <div className="signup-questions"><br />
@@ -77,14 +106,6 @@ class PasswordReset extends Component {
         } else {
             return (
                 <>
-                    <br />
-                    <div>
-                        Error - INVALID TOKEN<br />
-                        Please request new  token
-                    {/* <pre>
-                        {JSON.stringify(this.props.match.params.token, null, 2)}
-                    </pre> */}
-                    </div>
                 </>
             )
         }
