@@ -174,6 +174,7 @@ function receiveEmail(user) {
     }
 }
 
+// https://www.youtube.com/watch?v=wevmV9iZswI
 //the sendEmail function takes the user and the week, and sends them specific info depending on the week 
 function sendEmail(user, week) {
 
