@@ -4,6 +4,8 @@ const router = express.Router();
 const encryptLib = require("../modules/encryption");
 const { rejectUnauthenticated } = require("../modules/authentication-middleware");
 const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
+
 const moment = require('moment');
 const crypto = require('crypto')
 
@@ -30,29 +32,41 @@ router.get('/username/:email', (req, res) => {
 
 function forgotUsername(user) {
     // console.log('user:', user)
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL,
-            pass: process.env.PASSWORD
-        }
-    });
-    let mailOptions = {
-        from: "WhatToSayNowChallenge@gmail.com ",
+    // let transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //         user: process.env.EMAIL,
+    //         pass: process.env.PASSWORD
+    //     }
+    // });
+    // let mailOptions = {
+    //     from: "WhatToSayNowChallenge@gmail.com ",
+    //     to: user.email,
+    //     subject: "Forgot Username Request",
+    //     text: `Hi ${user.first_name}! 
+    //         Your username to login with is: ${user.username}
+    //         To login, visit:  ${process.env.API_URL}
+    //         `
+    // };
+    // transporter.sendMail(mailOptions, function (error, info) {
+    //     if (error) {
+    //         console.log(error);
+    //     } else {
+    //         console.log('Email sent: ' + info.response);
+    //     }
+    // })
+
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    const msg = {
         to: user.email,
-        subject: "Forgot Username Request",
+        from: 'WhatToSayNowChallenge@gmail.com',
+        subject: 'Forgot Username Request',
         text: `Hi ${user.first_name}! 
-            Your username to login with is: ${user.username}
-            To login, visit:  ${process.env.API_URL}
-            `
+        Your username to login with is: ${user.username}
+        To login, visit:  ${process.env.API_URL}
+        `
     };
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    })
+    sgMail.send(msg);
 };
 
 router.put('/password/:email', (req, res) => {
@@ -71,30 +85,43 @@ router.put('/password/:email', (req, res) => {
 
 function forgotPassword(user) {
     // console.log('forgot password router function; user:', user)
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL,
-            pass: process.env.PASSWORD
-        }
-    });
-    let mailOptions = {
-        from: "WhatToSayNowChallenge@gmail.com ",
+    // let transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //         user: process.env.EMAIL,
+    //         pass: process.env.PASSWORD
+    //     }
+    // });
+    // let mailOptions = {
+    //     from: "WhatToSayNowChallenge@gmail.com ",
+    //     to: user.email,
+    //     subject: "Forgot Password Request",
+    //     text: `Hi ${user.first_name}! 
+    //         You are receiving this email because you requested it via the forgot email form.
+    //         Your username is ${user.username}
+    //         To login, visit:  ${process.env.API_URL}reset/${user.reset_token_code}
+    //         `
+    // };
+    // transporter.sendMail(mailOptions, function (error, info) {
+    //     if (error) {
+    //         console.log(error);
+    //     } else {
+    //         console.log('Email sent: ' + info.response);
+    //     }
+    // })
+
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    const msg = {
         to: user.email,
-        subject: "Forgot Password Request",
+        from: 'WhatToSayNowChallenge@gmail.com',
+        subject: 'Forgot Password Request',
         text: `Hi ${user.first_name}! 
-            You are receiving this email because you requested it via the forgot email form.
-            Your username is ${user.username}
-            To login, visit:  ${process.env.API_URL}reset/${user.reset_token_code}
-            `
+        You are receiving this email because you requested it via the forgot email form.
+        Your username is ${user.username}
+        To login, visit:  ${process.env.API_URL}reset/${user.reset_token_code}
+        `
     };
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    })
+    sgMail.send(msg);
 };
 
 
@@ -115,30 +142,44 @@ router.get('/email/:username', (req, res) => {
 
 function forgotEmail(user) {
     // console.log('user:', user)
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL,
-            pass: process.env.PASSWORD
-        }
-    });
-    let mailOptions = {
-        from: "WhatToSayNowChallenge@gmail.com ",
+    // let transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //         user: process.env.EMAIL,
+    //         pass: process.env.PASSWORD
+    //     }
+    // });
+    // let mailOptions = {
+    //     from: "WhatToSayNowChallenge@gmail.com ",
+    //     to: user.email,
+    //     subject: "Forgot Email Request",
+    //     text: `Hi ${user.first_name}! 
+    //         You are receiving this email because you requested it via the forgot email form.
+    //         Your username is ${user.username}
+    //         To login, visit:  ${process.env.API_URL}
+    //         `
+    // };
+    // transporter.sendMail(mailOptions, function (error, info) {
+    //     if (error) {
+    //         console.log(error);
+    //     } else {
+    //         console.log('Email sent: ' + info.response);
+    //     }
+    // })
+
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    const msg = {
         to: user.email,
-        subject: "Forgot Email Request",
+        from: 'WhatToSayNowChallenge@gmail.com',
+        subject: 'Forgot Email Request',
         text: `Hi ${user.first_name}! 
-            You are receiving this email because you requested it via the forgot email form.
-            Your username is ${user.username}
-            To login, visit:  ${process.env.API_URL}
-            `
+      You are receiving this email because you requested it via the forgot email form.
+      Your username is ${user.username}
+      To login, visit:  ${process.env.API_URL}
+      `
     };
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    })
+    sgMail.send(msg);
+
 };
 
 
