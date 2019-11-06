@@ -55,7 +55,6 @@ class signUp_4 extends Component {
             <option value="Wayzata Girls Basketball Association">Wayzata Girls Basketball Association</option>
             <option value="The Loppet Foundation">The Loppet Foundation</option>
             <option value="Fusion Soccer Club MN">Fusion Soccer Club MN</option>
-            <option value="Tia Russell Dance Studio">Tia Russell Dance Studio</option>
             <option value="Internet search">Internet search</option>
             <option value="Referral">Referral</option>
           </select><br />
