@@ -11,7 +11,7 @@ const client = require('twilio')(accountSid, authToken);
 
 require('dotenv').config();
 
-
+const sgMail = require('@sendgrid/mail');
 
 
 //router for posting Sign Up Survey answers
@@ -87,28 +87,50 @@ router.post("/signup", (req, res) => {
 
 function welcomeEmail(user) {
   console.log('welcomeEmail req.body:', user)
-  let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL,
-      pass: process.env.PASSWORD
-    }
-  });
-  let mailOptions = {
-    from: "WhatToSayNowChallenge@gmail.com ",
+  // let transporter = nodemailer.createTransport({
+  //   pool: true,
+  //   service: 'Gmail',
+  //   auth: {
+  //     type: 'oauth2',
+  //     user: process.env.EMAIL,
+  //     accessToken: process.env.gmailAccessToken,
+  //     expires: 1571199111639 + 60000,
+  //     refreshToken: process.env.gmailRefreshToken,
+  //     clientId: process.env.gmailClientID, 
+  //     clientSecret: process.env.gmailClientSecret,
+  //     accessUrl: process.env.gmailAccessURL, 
+  //   }
+  // });
+  // let mailOptions = {
+  //   from: "WhatToSayNowChallenge@gmail.com",
+  //   to: user.email,
+  //   subject: "Thank You For Signing Up!",
+  //   text: `Hi ${user.username}! 
+  //     Here is the link for the first weekly challenge: 
+  //     ${process.env.API_URL}challenge/${user.role}/1/${user.focus_ages}`
+  // };
+  // transporter.sendMail(mailOptions, function (error, info) {
+  //   if (error) {
+  //     console.log(error);
+  //   } else {
+  //     console.log('Email sent: ' + info.response);
+  //   }
+  // })
+
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const msg = {
     to: user.email,
-    subject: "Thank You For Signing Up!",
+    from: 'WhatToSayNowChallenge@gmail.com',
+    subject: 'Thank You For Signing Up!',
     text: `Hi ${user.username}! 
-      Here is the link for the first weekly challenge: 
-      ${process.env.API_URL}challenge/${user.role}/1/${user.focus_ages}`
+    Thank you for signing up for WithAll’s “What to Say” Coaches Challenge. You will receive your first Challenge on Sunday at 6 PM CST.
+
+    Sincerely,
+    
+    The WithAll Team`
   };
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
-  })
+  sgMail.send(msg);
+
 };
 
 function welcomeText(user) {

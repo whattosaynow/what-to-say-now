@@ -6,6 +6,12 @@ import { withRouter } from 'react-router';
 //semantic-ui
 import { Input, Button } from "semantic-ui-react";
 
+//sweetAlert
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
+
+
 class PasswordReset extends Component {
     state = {
         username: '',
@@ -29,7 +35,20 @@ class PasswordReset extends Component {
     }
 
     handleSubmit = () => {
-        this.props.dispatch({type: `UPDATE_PASSWORD`, payload: {password: this.state.newPassword, resetToken: this.props.match.params.token }})
+        this.props.dispatch({ type: `UPDATE_PASSWORD`, payload: { password: this.state.newPassword, resetToken: this.props.match.params.token } })
+        MySwal.fire({
+            title: 'Thank You',
+            text: `Your password has been updated. Please click continue to log in
+            `,
+            type: 'info',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Submit'
+        }).then((result) => {
+            if (result.value) {
+                this.props.history.push('/home');
+            }
+        }
+        )
     }
 
     render() {

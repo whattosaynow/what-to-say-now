@@ -6,6 +6,7 @@ const { rejectUnauthenticated, rejectNonAdmin } = require("../modules/authentica
 const cron = require('node-cron');
 const moment = require('moment');
 const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
 require('dotenv').config();
 
 
@@ -174,61 +175,86 @@ function receiveEmail(user) {
     }
 }
 
+// https://www.youtube.com/watch?v=wevmV9iZswI
 //the sendEmail function takes the user and the week, and sends them specific info depending on the week 
 function sendEmail(user, week) {
 
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL,
-            pass: process.env.PASSWORD
-        }
-    });
+    // let transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //         user: process.env.EMAIL,
+    //         pass: process.env.PASSWORD
+    //     }
+    // });
     //if the user is less than or equal to 5 weeks, they receive the weekly challenge info based on their role, the week, and their age group
     if (week <= 5) {
-        let mailOptions = {
-            from: 'WhatToSayNowChallenge@gmail.com ',
+        // let mailOptions = {
+        //     from: 'WhatToSayNowChallenge@gmail.com ',
+        //     to: user.email,
+        //     subject: `What To Say Now Coaches Challenge - Week ${week}`,
+        //     text: `Hi ${user.username}! Welcome to week ${week} of the challenge! Here is the link to this weeks info: ${process.env.API_URL}/${user.role}/${week}/${user.S1_focus_ages}`
+        // };
+        // transporter.sendMail(mailOptions, function (error, info) {
+        //     if (error) {
+        //         console.log(error);
+        //     } else {
+        //         console.log('Email sent: ' + info.response);
+        //     }
+        // });
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        const msg = {
             to: user.email,
-            subject: 'Sent from NodeCron',
+            from: 'WhatToSayNowChallenge@gmail.com',
+            subject: `What To Say Now Coaches Challenge - Week ${week}`,
             text: `Hi ${user.username}! Welcome to week ${week} of the challenge! Here is the link to this weeks info: ${process.env.API_URL}/${user.role}/${week}/${user.S1_focus_ages}`
         };
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('Email sent: ' + info.response);
-            }
-        });
+        sgMail.send(msg);
         //if the user is 6 weeks old, they receive the post program survey link
     } else if (week === 6) {
-        let mailOptions = {
-            from: 'WhatToSayNowChallenge@gmail.com ',
+        // let mailOptions = {
+        //     from: 'WhatToSayNowChallenge@gmail.com ',
+        //     to: user.email,
+        //     subject: 'Sent from NodeCron',
+            // text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to our Post Program Survey: ${process.env.API_URL}/postsurvey1`
+        // };
+        // transporter.sendMail(mailOptions, function (error, info) {
+        //     if (error) {
+        //         console.log(error);
+        //     } else {
+        //         console.log('Email sent: ' + info.response);
+        //     }
+        // });
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        const msg = {
             to: user.email,
-            subject: 'Sent from NodeCron',
+            from: 'WhatToSayNowChallenge@gmail.com',
+            subject: `What To Say Now Coaches Challenge - Post Survey`,
             text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to our Post Program Survey: ${process.env.API_URL}/postsurvey1`
         };
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('Email sent: ' + info.response);
-            }
-        });
+        sgMail.send(msg);
         //if the user is 3 months old, they receive the three month survey
     } else if (week === 7) {
-        let mailOptions = {
-            from: 'WhatToSayNowChallenge@gmail.com ',
+        // let mailOptions = {
+        //     from: 'WhatToSayNowChallenge@gmail.com ',
+        //     to: user.email,
+        //     subject: 'Sent from NodeCron',
+        //     text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to Three Month Followup Survey: ${process.env.API_URL}/three-month-survey`
+        // };
+        // transporter.sendMail(mailOptions, function (error, info) {
+        //     if (error) {
+        //         console.log(error);
+        //     } else {
+        //         console.log('Email sent: ' + info.response);
+        //     }
+        // });
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        const msg = {
             to: user.email,
-            subject: 'Sent from NodeCron',
-            text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to Three Month Followup Survey: ${process.env.API_URL}/three-month-survey`
+            from: 'WhatToSayNowChallenge@gmail.com',
+            subject: `What To Say Now Coaches Challenge - Followup Survey`,
+            text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to our Post Program Survey: ${process.env.API_URL}/postsurvey1`
         };
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('Email sent: ' + info.response);
-            }
-        });
+        sgMail.send(msg);
     }
 }
 

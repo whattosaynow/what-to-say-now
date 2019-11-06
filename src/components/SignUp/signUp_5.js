@@ -34,8 +34,10 @@ class signUp_5 extends Component {
       this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
       MySwal.fire({
         title: '',
-        text: `Are you done filling out the form?`,
-        type: 'warning',
+        text: `If you do not receive a confirmation email, please reach out to us.
+        Links to the challenge will be sent out Sunday at 6:00pm CST
+        `,
+        type: 'info',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
