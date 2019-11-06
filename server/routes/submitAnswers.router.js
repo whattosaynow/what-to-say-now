@@ -123,8 +123,11 @@ function welcomeEmail(user) {
     from: 'WhatToSayNowChallenge@gmail.com',
     subject: 'Thank You For Signing Up!',
     text: `Hi ${user.username}! 
-  Here is the link for the first weekly challenge: 
-  ${process.env.API_URL}challenge/${user.role}/1/${user.focus_ages}`
+    Thank you for signing up for WithAll’s “What to Say” Coaches Challenge. You will receive your first Challenge on Sunday at 6 PM CST.
+
+    Sincerely,
+    
+    The WithAll Team`
   };
   sgMail.send(msg);
 
