@@ -29,20 +29,10 @@ function* getCsv() {
     }
   }
 
-//   function* getChartData() {
-//     try {
-//         const response = yield axios.get('/api/admin/charts');
-//         yield put({ type: 'SET_CHARTS', payload: response.data });
-//       } catch (error) {
-//         console.log('chart get request failed', error);
-//       } 
-//   }
-
 function* adminSaga() {
     yield takeLatest(`GET_EDIT_CONTENT`, setAdminEdit);
     yield takeLatest(`UPDATE_CONTENT`, updateUserContent);
     yield takeLatest('GET_CSV', getCsv);
-    // yield takeLatest(`GET_CHART_DATA`, getChartData);
 }
 
 export default adminSaga;

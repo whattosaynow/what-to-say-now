@@ -11,9 +11,6 @@ class PositiveEffectChart extends Component {
     this.props.impact.forEach(object => {
       positiveLabels.push(object.S2_challenge_impacted_behavior)
       positiveEffectArray.push(object.count)
-      console.log(positiveEffectArray);
-      
-
     })
     const positiveData = {
       labels: positiveLabels,

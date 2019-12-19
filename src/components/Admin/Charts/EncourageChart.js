@@ -11,9 +11,6 @@ class EncourageChart extends Component {
     this.props.encourage.forEach(object => {
       encourageLabels.push(object.S2_would_encourage)
       encourageArray.push(object.count)
-      console.log(encourageArray);
-      
-
     })
     const encourageData = {
       labels: encourageLabels,
