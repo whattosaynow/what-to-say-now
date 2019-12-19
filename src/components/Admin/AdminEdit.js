@@ -22,8 +22,6 @@ class AdminDetails extends Component {
     });
   };
 
-  // handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-
   //handles updating state for selected Role
   handleRole = (e, { name }) => {
     if (name === "role1") {

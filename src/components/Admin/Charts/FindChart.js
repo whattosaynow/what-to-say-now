@@ -17,8 +17,6 @@ class FindChart extends Component {
     this.props.find.forEach(referral => {
      findLabels.push(referral.S1_how_did_you_find_us)
      findChart.push(referral.count);
-     console.log(findChart);
-     
     })
     const findData = {
       labels:findLabels,

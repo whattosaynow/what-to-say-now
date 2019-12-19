@@ -13,9 +13,6 @@ class AgeGroupChart extends Component {
     let agesArray = [];
     this.props.ages.forEach(object => {
       agesArray.push(object.count)
-      console.log(agesArray);
-      
-
     })
     const ageData = {
       labels: ["6-9", "10-13", "14-18"],

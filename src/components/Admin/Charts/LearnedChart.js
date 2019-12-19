@@ -10,9 +10,6 @@ class LearnedChart extends Component {
     this.props.learned.forEach(object => {
       learnedLabels.push(object.S2_learned_something_new)
       learnedArray.push(object.count)
-      console.log(learnedArray);
-      
-
     })
     const learnedData = {
       labels: learnedLabels,
@@ -32,7 +29,7 @@ class LearnedChart extends Component {
     return learnedData;
   }
 
-  
+
   render() {
     return (
       <div>

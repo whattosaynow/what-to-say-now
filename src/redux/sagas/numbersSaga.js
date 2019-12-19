@@ -15,9 +15,7 @@ function* sendMessages(action) {
 
         let numbersToMessage = action.payload;
         yield numbersToMessage.forEach(function textChallenge(number) {
-             axios.get(`/api/numbers/messages/${number.numbers}`);
-            console.log(`send message Saga`, number.numbers);
-            
+            axios.get(`/api/numbers/messages/${number.numbers}`);
         })
     } catch (error) {
         console.log('messages request failed', error);

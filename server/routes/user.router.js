@@ -28,7 +28,6 @@ router.get('/content', rejectUnauthenticated, (req, res) => {
 
 //this route will get the info from content table based on the params passed to it
 router.get('/weekly/:role/:week/:age', rejectUnauthenticated, (req, res) => {
-  console.log(req.params);
   pool.query(`
   SELECT * FROM "content" WHERE ("role_id"=$1 AND "week" = $2 AND "ageGroup_id"=$3);
   `,[req.params.role, req.params.week, req.params.age]).then((result) => {

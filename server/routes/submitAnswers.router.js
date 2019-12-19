@@ -24,7 +24,6 @@ router.post("/signup", (req, res) => {
     welcomeEmail(req.body)
     welcomeText(req.body)
   }
-  console.log('req.body:', req.body)
   const password = encryptLib.encryptPassword(req.body.password);
   pool.query(`
         INSERT INTO "user" (
@@ -86,37 +85,6 @@ router.post("/signup", (req, res) => {
 });
 
 function welcomeEmail(user) {
-  console.log('welcomeEmail req.body:', user)
-  // let transporter = nodemailer.createTransport({
-  //   pool: true,
-  //   service: 'Gmail',
-  //   auth: {
-  //     type: 'oauth2',
-  //     user: process.env.EMAIL,
-  //     accessToken: process.env.gmailAccessToken,
-  //     expires: 1571199111639 + 60000,
-  //     refreshToken: process.env.gmailRefreshToken,
-  //     clientId: process.env.gmailClientID, 
-  //     clientSecret: process.env.gmailClientSecret,
-  //     accessUrl: process.env.gmailAccessURL, 
-  //   }
-  // });
-  // let mailOptions = {
-  //   from: "WhatToSayNowChallenge@gmail.com",
-  //   to: user.email,
-  //   subject: "Thank You For Signing Up!",
-  //   text: `Hi ${user.username}! 
-  //     Here is the link for the first weekly challenge: 
-  //     ${process.env.API_URL}challenge/${user.role}/1/${user.focus_ages}`
-  // };
-  // transporter.sendMail(mailOptions, function (error, info) {
-  //   if (error) {
-  //     console.log(error);
-  //   } else {
-  //     console.log('Email sent: ' + info.response);
-  //   }
-  // })
-
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const msg = {
     to: user.email,
@@ -218,11 +186,9 @@ router.post('/threeMonth', rejectUnauthenticated, (req, res) => {
 
 
 router.get('/usernameCheck/:id', (req, res) => {
-  console.log("usernameCheck route hit:", req.params.id)
   pool.query(`
   SELECT * FROM "user" WHERE "username" ILIKE $1;`, [req.params.id]
   ).then(result => {
-    // console.log('usernameCheck result.rows', result.rows[0].username)
     if (result.rows && result.rows[0] && result.rows[0].username) {
       res.send(false)
     } else {

@@ -4,7 +4,6 @@ import { takeLatest, put } from "redux-saga/effects";
 function* submitSignUpAnswers(action) {
     try {
         yield axios.post('/api/answer/signup', action.payload);
-        console.log('action.payload:', action.payload)
         yield put({ type: 'LOGIN', payload: { username: action.payload.username, password: action.payload.password } });
         // set to 'login' mode so they see the login screen
         // after registration or after they log out
@@ -29,13 +28,11 @@ function* submitPostAnswers(action) {
     }
 }
 
-function* usernameCheck(action){
-    try{
-        // yield console.log('usernameCheck action:', action)
+function* usernameCheck(action) {
+    try {
         const response = yield axios.get(`/api/answer/usernameCheck/${action.payload}`);
-        // console.log("usernameCheck db response:", response.data)
-        yield put({type: "SET_USERNAME_CHECK", payload: response.data})
-    }catch (error) {
+        yield put({ type: "SET_USERNAME_CHECK", payload: response.data })
+    } catch (error) {
         console.log("error with username check,", error);
     }
 }
