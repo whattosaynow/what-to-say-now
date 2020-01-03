@@ -57,6 +57,7 @@ class App extends Component {
               {/* routes available to admin */}
               {/* Admin page */}
               <ProtectedRoute exact path="/home" component={Admin} />
+              <ProtectedRoute exact path='/challenge/:role/:week/:age' component={ChallengeContent} />
             </>
           ) : (
               // routes available to user

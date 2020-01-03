@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
+
+//styling
 import { Button, TextArea, Form } from "semantic-ui-react";
 
 //sweetAlert
@@ -99,9 +102,14 @@ class AdminEditTable extends Component {
           </Form.Field>
         </Form>
         <center>
-          <h3>Week: {this.state.week}</h3>
-
-          <Button onClick={this.handleSubmit}>Submit</Button>
+          {this.state.role_id &&
+            this.state.week &&
+            this.state.ageGroup_id &&
+            <>
+              <Link to={`challenge/${this.state.role_id}/${this.state.week}/${this.state.ageGroup_id}`}><h3>Link to view previous version of Week {this.state.week} content</h3></Link>
+              <Button onClick={this.handleSubmit}>Save Changes</Button>
+            </>
+          }
         </center>
       </>
     );

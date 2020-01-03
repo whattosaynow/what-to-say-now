@@ -206,9 +206,9 @@ class AdminDetails extends Component {
                   content => {
                     return (
                       Number(this.state.role) === Number(content.role_id) &&
-                      Number(this.state.age) ===
-                        Number(content.ageGroup_id) &&
-                      Number(this.state.week) === Number(content.week) && (
+                      Number(this.state.age) ===Number(content.ageGroup_id) &&
+                      Number(this.state.week) === Number(content.week) && 
+                      (
                         <AdminEditTable
                           content={content}
                           key={content.id}
