@@ -17,7 +17,12 @@ class EditMessages extends Component {
 
     //handles updating state for selected Week
     handleWeek = (e, { name }) => {
-        if (name === "week1") {
+        if (name === "week0") {
+            this.setState({
+                activeWeek: name,
+                week: 0
+            });
+        } else if (name === "week1") {
             this.setState({
                 activeWeek: name,
                 week: 1
@@ -63,7 +68,14 @@ class EditMessages extends Component {
                     Select week
         </h3>
                 <div className="weekMenu">
-                    <Menu fluid widths={7} tabular>
+                    <Menu fluid widths={8} tabular>
+                        <Menu.Item
+                            name="week0"
+                            active={this.state.activeWeek === "week0"}
+                            onClick={this.handleWeek}
+                        >
+                            Sign Up
+                        </Menu.Item>
                         <Menu.Item
                             name="week1"
                             active={this.state.activeWeek === "week1"}
@@ -115,15 +127,8 @@ class EditMessages extends Component {
                         </Menu.Item>
                     </Menu>
                 </div>
-                <br />
-                <br />
-
-                {/* content that is displayed renders conditionally based on 
-        local state. The local state must contain a value for 
-        role, age, and week; then the reducer is mapped to displaye
-        the selected content.  */}
-                <div>
-                   Change to edit box for message info
+                <div style={{ border: "1px solid black" }}>
+                    This div will display the message getting sent to a user on week {this.state.activeWeek}
                 </div>
             </div>
         );

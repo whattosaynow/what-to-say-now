@@ -8,6 +8,7 @@ import { Menu } from "semantic-ui-react";
 //components
 import EditWeeklyContent from './EditWeeklyContent'
 import EditMessages from './EditMessages'
+import EditSurveys from './EditSurveys'
 
 class AdminEdit extends Component {
 
@@ -26,6 +27,11 @@ class AdminEdit extends Component {
         activeRole: name,
         role: 2
       });
+    } else if (name === "surveys") {
+      this.setState({
+        activeRole: name,
+        role: 3
+      });
     }
   };
   render() {
@@ -33,7 +39,7 @@ class AdminEdit extends Component {
       <>
         <div className="edit-choice-div">
           <div classname="roleMenu">
-            <Menu fluid widths={2}>
+            <Menu fluid widths={3}>
               <Menu.Item
                 name="weekly"
                 active={this.state.activeRole === "weekly"}
@@ -48,6 +54,13 @@ class AdminEdit extends Component {
               >
                 Messages to Users
               </Menu.Item>
+              <Menu.Item
+                name="surveys"
+                active={this.state.activeRole === "surveys"}
+                onClick={this.handleRole}
+              >
+                Surveys
+              </Menu.Item>
             </Menu>
           </div>
         </div>
@@ -56,6 +69,9 @@ class AdminEdit extends Component {
         }
         {this.state.activeRole === "messages" &&
           <EditMessages />
+        }
+        {this.state.activeRole === "surveys" &&
+          <EditSurveys />
         }
       </>
     )
