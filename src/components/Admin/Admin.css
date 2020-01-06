@@ -30,6 +30,12 @@
     
 }
 
+/* styling for AdmintEdit.js */
+.edit-choice-div {
+    width: 60%;
+    margin: 10px auto;
+}
+
 /* styling for AdminDetails.js */
 .csvDiv {
     width: 80%;
@@ -40,7 +46,7 @@
     padding: 20px 20px;
 }
 
-/* styling for AdminEdit.js */
+/* styling for EditWeeklyContent.js */
 .editParentDiv {
     width: 80%;
     margin: auto;
