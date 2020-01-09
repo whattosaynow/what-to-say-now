@@ -39,8 +39,8 @@ class signUp_4 extends Component {
     return (
       <>
         <Header width={'80%'} /><br />
-          <center><h2>Personal Information Continued</h2></center><br />
-          <div className="signup-questions"><br />
+        <center><h2>Personal Information Continued</h2></center><br />
+        <div className="signup-questions"><br />
           <span className="survey-questions">7. Age(s) you coach and want to focus on with during the Challenge:</span><br />
           <label>choose one</label><br />
           <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" name="q1" value="1" />Elementary school youth (6-10 years old) <br />
@@ -48,7 +48,7 @@ class signUp_4 extends Component {
           <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" name="q1" value="3" />High school youth (14-18 years old)<br />
           <br />
           <span className="survey-questions">8. How did you find us?</span><br />
-            <label>choose one</label><br />
+          <label>choose one</label><br />
           <select className="semantic-radio" onChange={this.handleChange('how_did_you_find_us')} >
             <option>--choose one--</option>
             <option value="Girls on the Run">Girls on the Run</option>

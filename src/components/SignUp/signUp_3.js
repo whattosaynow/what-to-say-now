@@ -70,7 +70,7 @@ class signUp_3 extends Component {
           <Input onChange={this.handleChange('years_coaching')} type="radio" className="semantic-radio" name="q1" value="More than 21 years" />More than 21 years<br />
           <br />
           <span className="survey-questions">5. Genders of the athletes you coach:</span> <br />
-          <label>Select All That Apply</label><br />
+          <label>select all that apply</label><br />
           <Input onChange={this.handleCheckBox('genders_of_athletes_female')} type="checkbox" className="semantic-radio" name="q2" value="true" />Female<br />
           <Input onChange={this.handleCheckBox('genders_of_athletes_male')} type="checkbox" className="semantic-radio" name="q2" value="true" />Male<br />
           <Input onChange={this.handleCheckBox('genders_of_athletes_non_binary')} type="checkbox" className="semantic-radio" name="q2" value="true" />Non-binary<br />
