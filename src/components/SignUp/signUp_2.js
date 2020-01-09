@@ -44,7 +44,7 @@ class signUp_2 extends Component {
 
           <div className="signup-questions"><br />
             <span className="survey-questions">1. Choose to receive the Challenges via email, text, or both:</span><br />
-            <label>Choose One</label><br />
+            <label>choose one</label><br />
             <Input onChange={this.handleChangeFor('choose_receive')} type='radio' className="semantic-radio" name='receive' value='email'></Input>Email<br />
             <Input onChange={this.handleChangeFor('choose_receive')} type='radio' className="semantic-radio" name='receive' value='text'></Input>Text<br />
             <Input onChange={this.handleChangeFor('choose_receive')} type='radio' className="semantic-radio" name='receive' value='both'></Input>Both<br />
@@ -52,14 +52,14 @@ class signUp_2 extends Component {
             <br />
 
             <span className="survey-questions">2. Your gender:</span><br />
-            <label>Choose One</label><br />
+            <label>choose one</label><br />
             <Input onChange={this.handleChangeFor('your_gender')} type='radio' className="semantic-radio" name='gender' value='female'></Input>Female<br />
             <Input onChange={this.handleChangeFor('your_gender')} type='radio' className="semantic-radio" name='gender' value='male'></Input>Male<br />
             <Input onChange={this.handleChangeFor('your_gender')} type='radio' className="semantic-radio" name='gender' value='non-binary'></Input>Non-binary<br />
             <br />
 
             <span className="survey-questions">3. Your age:</span><br />
-            <label>Choose One</label><br />
+            <label>choose one</label><br />
             <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" name='age' value='Less than twenty years old'></Input>Less than 20 years old.<br />
             <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" name='age' value='21-36 years old'></Input>21-36 years old.<br />
             <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" name='age' value='36-51 years old'></Input>36-51 years old.<br />
