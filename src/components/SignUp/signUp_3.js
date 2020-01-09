@@ -89,9 +89,6 @@ class signUp_3 extends Component {
           <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" checked={this.state.number_of_athletes === 'More than 25' } name="q3" value="More than 25" />More than 25<br />
           <br />
         </div>
-        <pre>
-          {JSON.stringify(this.state, null, 2)}
-        </pre>
         <br />
         <div className="bottomDiv">
           <Button onClick={this.handleClickBack}>Back</Button>
