@@ -13,26 +13,36 @@ class signUp_1 extends Component {
   state = {
     newUser: {
       role: 1,
+      first_name: (this.props.reduxState.answersReducer.signupReducer.first_name) || '',
+      last_name: (this.props.reduxState.answersReducer.signupReducer.last_name) || '',
+      username: (this.props.reduxState.answersReducer.signupReducer.username) || '',
+      email: (this.props.reduxState.answersReducer.signupReducer.email) || '',
+      password: (this.props.reduxState.answersReducer.signupReducer.password) || '',
+      phone_number: (this.props.reduxState.answersReducer.signupReducer.phone_number) || '',
+      street_address: (this.props.reduxState.answersReducer.signupReducer.street_address) || '',
+      city: (this.props.reduxState.answersReducer.signupReducer.city) || '',
+      state: (this.props.reduxState.answersReducer.signupReducer.state) || '',
+      zip: (this.props.reduxState.answersReducer.signupReducer.zip) || '',
     }
   }
 
   timeout = 0;
 
-  handleChange = (propertyName) => (event) => {
-    if (propertyName === "username") {
+  handleChange = (event) => {
+    if (event.target.name === "username") {
       clearTimeout(this.timeout);
       this.timeout = setTimeout(() => {
-        this.props.dispatch({type: "USERNAME_CHECK", payload: this.state.newUser.username})
+        this.props.dispatch({ type: "USERNAME_CHECK", payload: this.state.newUser.username })
       }, 800
       )
       this.setState({
         ...this.state,
-        newUser: { ...this.state.newUser, [propertyName]: event.target.value }
+        newUser: { ...this.state.newUser, [event.target.name]: event.target.value }
       })
     } else {
       this.setState({
         ...this.state,
-        newUser: { ...this.state.newUser, [propertyName]: event.target.value }
+        newUser: { ...this.state.newUser, [event.target.name]: event.target.value }
       })
     }
   }
@@ -40,22 +50,17 @@ class signUp_1 extends Component {
   handleClick = () => {
     let survey = this.state.newUser;
     if (
-      !survey.first_name ||
-      !survey.last_name ||
-      !survey.username ||
-      !survey.email ||
-      !survey.password ||
-      !survey.phone_number||
-      !survey.zip
+      survey.first_name.trim() === '' ||
+      survey.last_name.trim() === '' ||
+      survey.username.trim() === '' ||
+      survey.email.trim() === '' ||
+      survey.password.trim() === '' ||
+      survey.phone_number.trim() === '' ||
+      survey.zip.trim() === ''
     ) {
       alert('Please complete required fields')
     } else {
       this.props.dispatch({ type: 'SET_SIGNUP_ANSWERS', payload: this.state.newUser });
-      this.setState({
-        newUser: {
-          role: 1,
-        }
-      })
       this.props.history.push('/signup2');
     }
 
@@ -71,66 +76,76 @@ class signUp_1 extends Component {
         <div className="signUp1Div">
           <form id="signUp1" style={{ backgroundColor: "white" }}><br />
             <Input
-              onChange={this.handleChange("first_name")}
+              name="first_name"
+              onChange={this.handleChange}
               placeholder="First Name - Required"
-              value={this.state.value}
+              value={this.state.newUser.first_name || ''}
             />
             <br />
             <Input
-              onChange={this.handleChange("last_name")}
+              name="last_name"
+              onChange={this.handleChange}
               placeholder="Last Name - Required"
-              value={this.state.value}
+              value={this.state.newUser.last_name || ''}
             />
             <br />
             <Input
-              onChange={this.handleChange("username")}
+              name="username"
+              onChange={this.handleChange}
               placeholder="Username - Required"
-              value={this.state.value}
-            /> {this.props.reduxState.answersReducer.usernameCheckReducer ? <></> : <span style={{color: 'red'}}><br />ERROR: Username Taken </span>}
+              value={this.state.newUser.username || ''}
+            /> {this.props.reduxState.answersReducer.usernameCheckReducer ? <></> : <span style={{ color: 'red' }}><br />ERROR: Username Taken </span>}
             <br />
             <Input
-              onChange={this.handleChange("email")}
+              name="email"
+              onChange={this.handleChange}
               type="email"
               placeholder="Email - Required"
-              value={this.state.value}
+              value={this.state.newUser.email || ''}
             />
             <br />
             <Input
-              onChange={this.handleChange("password")}
+              name="password"
+              onChange={this.handleChange}
               type="password"
               placeholder="Password - Required"
-              value={this.state.value}
+              value={this.state.newUser.password || ''}
             />
             <br />
             <Input
-              onChange={this.handleChange("phone_number")}
+              name="phone_number"
+              onChange={this.handleChange}
               placeholder="Phone Number - Required"
-              value={this.state.value}
+              value={this.state.newUser.phone_number || ''}
             />
             <br />
             <Input
-              onChange={this.handleChange("street_address")}
+              name="street_address"
+              onChange={this.handleChange}
               placeholder="Street Address"
-              value={this.state.value}
+              value={this.state.newUser.street_address || ''}
             />
             <br />
             <Input
-              onChange={this.handleChange("city")}
+              name="city"
+              onChange={this.handleChange}
               placeholder="City"
-              value={this.state.value}
+              value={this.state.newUser.city || ''}
             />
             <br />
             <Input
-              onChange={this.handleChange("state")}
+              name="state"
+              onChange={this.handleChange}
               placeholder="State"
-              value={this.state.value}
+              value={this.state.newUser.state || ''}
             />
             <br />
             <Input
-              onChange={this.handleChange("zip")}
+              name="zip"
+              onChange={this.handleChange}
               type="number"
               placeholder="Zip - Required"
-              value={this.state.value}
+              value={this.state.newUser.zip || ''}
             />
             <br />
           </form><br />

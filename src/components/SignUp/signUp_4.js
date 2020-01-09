@@ -10,7 +10,10 @@ import { Input, Button } from "semantic-ui-react";
 
 class signUp_4 extends Component {
 
-  state = {}
+  state = {
+    focus_ages: this.props.reduxState.answersReducer.signupReducer.focus_ages || '',
+    how_did_you_find_us: this.props.reduxState.answersReducer.signupReducer.how_did_you_find_us || '',
+  }
 
   handleChange = (propertyName) => (event) => {
     this.setState({
@@ -24,13 +27,15 @@ class signUp_4 extends Component {
   }
 
   handleClickNext = () => {
-    let survey2 = Object.keys(this.state);
-    if (survey2.length < 2) {
+    let survey = this.state
+    if (
+      survey.focus_ages.trim() === '' ||
+      survey.how_did_you_find_us.trim() === ''
+    ) {
       alert("Please Answer All Questions")
     } else {
       this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
       this.props.history.push('/signup5');
-
     }
 
   }
@@ -59,7 +64,7 @@ class signUp_4 extends Component {
             <option value="Referral">Referral</option>
           </select><br />
           <label>Or fill in the blank:</label><br />
-          <textarea className="semantic-radio" onChange={this.handleChange('how_did_you_find_us')} value={this.state.value} rows="4" cols="50"></textarea>
+          <textarea className="semantic-radio" onChange={this.handleChange('how_did_you_find_us')} value={"other " + this.state.value} rows="4" cols="50"></textarea>
           <br /><br />
         </div>
         <br />
