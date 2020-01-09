@@ -42,15 +42,15 @@ class signUp_4 extends Component {
           <center><h2>Personal Information Continued</h2></center><br />
           <div className="signup-questions"><br />
           <span className="survey-questions">7. Age(s) you coach and want to focus on with during the Challenge:</span><br />
-          <label>Choose One</label><br />
+          <label>choose one</label><br />
           <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" name="q1" value="1" />Elementary school youth (6-10 years old) <br />
           <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" name="q1" value="2" />Middle school youth (10-13 years old)<br />
           <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" name="q1" value="3" />High school youth (14-18 years old)<br />
           <br />
           <span className="survey-questions">8. How did you find us?</span><br />
-            <label>Choose One</label><br />
+            <label>choose one</label><br />
           <select className="semantic-radio" onChange={this.handleChange('how_did_you_find_us')} >
-            <option>--Choose One--</option>
+            <option>--choose one--</option>
             <option value="Girls on the Run">Girls on the Run</option>
             <option value="Wayzata Girls Basketball Association">Wayzata Girls Basketball Association</option>
             <option value="The Loppet Foundation">The Loppet Foundation</option>
