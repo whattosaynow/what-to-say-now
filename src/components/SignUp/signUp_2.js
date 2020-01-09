@@ -7,7 +7,11 @@ import { Input, Button } from "semantic-ui-react";
 
 class signUp_2 extends Component {
 
-  state = {}
+  state = {
+    choose_receive: '' || this.props.reduxState.answersReducer.signupReducer.choose_receive,
+    your_gender: '' || this.props.reduxState.answersReducer.signupReducer.your_gender,
+    your_age: '' || this.props.reduxState.answersReducer.signupReducer.your_age
+  }
 
   handleChangeFor = (propertyName) => (event) => {
     this.setState({
@@ -21,8 +25,12 @@ class signUp_2 extends Component {
   }
 
   handleClickNext = () => {
-    let survey2 = Object.keys(this.state);
-    if (survey2.length < 3) {
+    let survey = this.state
+    if (
+      survey.choose_receive.trim() === '' ||
+      survey.your_gender.trim() === '' ||
+      survey.your_age.trim() === ''
+    ) {
       alert("Please Answer All Questions")
     } else {
       this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
@@ -64,7 +72,9 @@ class signUp_2 extends Component {
             <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" name='age' value='21-36 years old'></Input>21-36 years old.<br />
             <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" name='age' value='36-51 years old'></Input>36-51 years old.<br />
             <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" name='age' value='52+ years old'></Input>52+ years old.<br />
-          <br /></div><br />
+            <br />
+          </div>
+          <br />
           <div className='bottomDiv'>
             <Button onClick={this.handleClickBack}>Back</Button><Button onClick={this.handleClickNext}>Next</Button>
           </div>

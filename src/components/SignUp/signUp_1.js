@@ -13,16 +13,16 @@ class signUp_1 extends Component {
   state = {
     newUser: {
       role: 1,
-      first_name: '' || (this.props.reduxState.answersReducer.signupReducer.first_name),
-      last_name: '' || (this.props.reduxState.answersReducer.signupReducer.last_name),
-      username: '' || (this.props.reduxState.answersReducer.signupReducer.username),
-      email: '' || (this.props.reduxState.answersReducer.signupReducer.email),
-      password: '' || (this.props.reduxState.answersReducer.signupReducer.password),
-      phone_number: '' || (this.props.reduxState.answersReducer.signupReducer.phone_number),
-      street_address: '' || (this.props.reduxState.answersReducer.signupReducer.street_address),
-      city: '' || (this.props.reduxState.answersReducer.signupReducer.city),
-      state: '' || (this.props.reduxState.answersReducer.signupReducer.state),
-      zip: '' || (this.props.reduxState.answersReducer.signupReducer.zip),
+      first_name: (this.props.reduxState.answersReducer.signupReducer.first_name) || '',
+      last_name: (this.props.reduxState.answersReducer.signupReducer.last_name) || '',
+      username: (this.props.reduxState.answersReducer.signupReducer.username) || '',
+      email: (this.props.reduxState.answersReducer.signupReducer.email) || '',
+      password: (this.props.reduxState.answersReducer.signupReducer.password) || '',
+      phone_number: (this.props.reduxState.answersReducer.signupReducer.phone_number) || '',
+      street_address: (this.props.reduxState.answersReducer.signupReducer.street_address) || '',
+      city: (this.props.reduxState.answersReducer.signupReducer.city) || '',
+      state: (this.props.reduxState.answersReducer.signupReducer.state) || '',
+      zip: (this.props.reduxState.answersReducer.signupReducer.zip) || '',
     }
   }
 
@@ -149,9 +149,6 @@ class signUp_1 extends Component {
             />
             <br />
           </form><br />
-          <pre>
-            {JSON.stringify(this.props.reduxState, null, 2)}
-          </pre>
         </div><br />
         <div className="bottomDiv">
           <Button onClick={this.handleClick} className="next-button">
