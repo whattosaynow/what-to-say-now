@@ -41,6 +41,7 @@ CREATE TABLE "user" (
 "S1_numbers_of_athletes" VARCHAR,
 "S1_focus_ages" INT REFERENCES "ageGroup"(id),
 "S1_how_did_you_find_us" VARCHAR,
+"S1_how_did_you_find_us_referral" VARCHAR CONSTANT 'NA',
 "S1_why_are_you_participating" VARCHAR,
 "S1_can_we_call_after_completion" VARCHAR,
 "S2_challenge_completed" VARCHAR,

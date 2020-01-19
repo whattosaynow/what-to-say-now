@@ -48,9 +48,10 @@ router.post("/signup", (req, res) => {
                             "S1_numbers_of_athletes",
                             "S1_focus_ages",
                             "S1_how_did_you_find_us",
+                            "S1_how_did_you_find_us_referral",
                             "S1_why_are_you_participating",
                             "S1_can_we_call_after_completion")
-        VALUES ($1, $2, $3, $23, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22);
+        VALUES ($1, $2, $3, $23, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $24, $21, $22);
         `,
     [req.body.first_name,
     req.body.last_name,
@@ -74,7 +75,9 @@ router.post("/signup", (req, res) => {
     req.body.how_did_you_find_us,
     req.body.why_are_you_participating,
     req.body.can_we_call_after_completion,
-    req.body.role
+    req.body.role,
+    req.body.how_did_you_find_us_referral,
+
     ]).then((result) => {
       res.sendStatus(201)
     })
