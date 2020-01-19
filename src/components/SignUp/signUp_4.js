@@ -24,6 +24,7 @@ class signUp_4 extends Component {
   }
 
   handleClickBack = () => {
+    this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
     this.props.history.push('/signup3');
   }
 
