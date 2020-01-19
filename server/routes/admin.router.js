@@ -85,7 +85,9 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
         "S1_numbers_of_athletes",
         "S1_focus_ages",
         "S1_how_did_you_find_us",
+        "S1_how_did_you_find_us_referral",
         "S1_why_are_you_participating",
+        "S1_why_are_you_participating_other",
         "S1_can_we_call_after_completion",
         
         "S2_challenge_completed",
