@@ -16,6 +16,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import ChallengeContent from '../UserPage/ChallengeContent';
 import Forgot from '../Forgot/Forgot'
 //sign-up survey pages
+import signUp_0 from '../SignUp/signUp_0';
 import signUp_1 from '../SignUp/signUp_1';
 import signUp_2 from '../SignUp/signUp_2';
 import signUp_3 from '../SignUp/signUp_3';
@@ -67,6 +68,7 @@ class App extends Component {
                 <ProtectedRoute exact path='/user-preferences' component={UserPreferences} />
                 <ProtectedRoute exact path='/challenge/:role/:week/:age' component={ChallengeContent} />
                 <Route exact path='/reset/:token' component={PasswordReset} />
+                <Route exact path="/signup" component={signUp_0} />
                 <Route exact path="/signup1" component={signUp_1} />
                 <Route exact path="/signup2" component={signUp_2} />
                 <Route exact path="/signup3" component={signUp_3} />

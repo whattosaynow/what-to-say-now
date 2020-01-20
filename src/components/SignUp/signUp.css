@@ -22,6 +22,16 @@
     align-items: center;
 }
 
+
+
+/* Styles for signUp_0.js */
+
+#signup-welcome {
+  margin: 5%;
+  display: inline-block;
+  line-height: 1.6;;
+}
+
 /* Styles for signUp_1.js */
 
 .signUp1Div {
