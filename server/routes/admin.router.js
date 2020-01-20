@@ -116,24 +116,26 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     })
 });
 
-cron.schedule('0 18 * * sunday', () => {
-    automatedContact(); //this function will run every day at 10:00am
+cron.schedule('0-59 * * * *', () => {
+    automatedContact(); //this function will run every sunday at 6:00pm
+}, {
+    timezone: "America/Chicago"
 })
 
 //this functions does a pool query to the database to select all users
 //then with the response, forEach user it will run the receive challenge function
 function automatedContact() {
+    //BETWEEN NOW() - INTERVAL '14 WEEK' AND NOW();
     pool.query(`
     SELECT * FROM "user"
-    WHERE "date_created" 
-    BETWEEN NOW() - INTERVAL '14 WEEK' AND NOW();
+    WHERE ("date_created" BETWEEN NOW() - INTERVAL '12h' AND NOW()) AND "is_admin" = false;
     `
     ).then(response => {
         response.rows.forEach(user => {
             receiveChallenge(user)
         })
     }).catch(error => {
-        console.log('error with some test function get router,', error)
+        console.log('error with node cron function,', error)
         res.sendStatus(500);
     })
 }
@@ -144,21 +146,22 @@ function automatedContact() {
 //if they want both, we run both with that user
 function receiveChallenge(user) {
     if (user.S1_choose_receive === 'email') {
-        receiveEmail(user);
+        receiveEmailTest(user);
     } else if (user.S1_choose_receive === 'text') {
-        receiveText(user);
+        receiveTextTest(user);
     } else {
-        receiveEmail(user);
-        receiveText(user);
+        receiveEmailTest(user);
+        receiveTextTest(user);
     }
 }
 
 //the receiveEmail function compares the current date to the user's date created
 //depending on the result, they will receive weekly challenge, post, or three month survey via the sendEmail function
 function receiveEmail(user) {
-    let dateCreated = moment(user.date_created, 'YYYY MM DD');
+    let dateCreated = moment(user.date_created);
     let currentDate = moment();
-    let answer = moment(currentDate).diff(dateCreated, 'days');
+    let answer = moment(currentDate).diff(dateCreated, 'dyas');
+    console.log('answer,', answer)
 
     if (answer <= 7 && answer >= 0) {
         sendEmail(user, 1) //week 1
@@ -173,6 +176,28 @@ function receiveEmail(user) {
     } else if (answer < 42 && answer >= 36) {
         sendEmail(user, 6) //post survey
     } else if (answer < 91 && answer >= 84) {
+        sendEmail(user, 7) //3month survey
+    }
+}
+
+function receiveEmailTest(user) {
+    let dateCreated = moment(user.date_created);
+    let currentDate = moment();
+    let answer = moment(currentDate).diff(dateCreated, 'minute');
+
+    if (answer === 30) {
+        sendEmail(user, 1) //week 1
+    } else if (answer === 60) {
+        sendEmail(user, 2) //week 2
+    } else if (answer === 90) {
+        sendEmail(user, 3) //week 3
+    } else if (answer === 120) {
+        sendEmail(user, 4) //week 4
+    } else if (answer === 150) {
+        sendEmail(user, 5) //week 5
+    } else if (answer === 180) {
+        sendEmail(user, 6) //post survey
+    } else if (answer === 210) {
         sendEmail(user, 7) //3month survey
     }
 }
@@ -232,6 +257,28 @@ function receiveText(user) {
     } else if (answer < 42 && answer >= 36) {
         sendText(user, 6) //post survey
     } else if (answer < 91 && answer >= 84) {
+        sendText(user, 7) //3month survey
+    }
+}
+
+function receiveTextTest(user) {
+    let dateCreated = moment(user.date_created);
+    let currentDate = moment();
+    let answer = moment(currentDate).diff(dateCreated, 'minute');
+
+    if (answer === 30) {
+        sendText(user, 1) //week 1
+    } else if (answer === 60) {
+        sendText(user, 2) //week 2
+    } else if (answer === 90) {
+        sendText(user, 3) //week 3
+    } else if (answer === 120) {
+        sendText(user, 4) //week 4
+    } else if (answer === 150) {
+        sendText(user, 5) //week 5
+    } else if (answer === 180) {
+        sendText(user, 6) //post survey
+    } else if (answer === 210) {
         sendText(user, 7) //3month survey
     }
 }
