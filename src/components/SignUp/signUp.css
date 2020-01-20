@@ -108,3 +108,14 @@ border-radius: 10px;
   vertical-align: top;
   padding: 5px
 }
+
+/* mobile only settings */
+@media only screen and (max-width: 400px) {
+  .signup-questions{
+    width: 95%;
+  }
+
+  .sign-up-header{
+    padding: 5%;
+  }
+}

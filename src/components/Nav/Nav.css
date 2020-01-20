@@ -67,4 +67,8 @@
   .nav-link {
     flex-grow: 1;
   }
+
+  .nav{
+    margin-bottom: 5%;
+  }
 }
