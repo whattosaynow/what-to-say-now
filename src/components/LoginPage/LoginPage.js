@@ -80,7 +80,7 @@ class LoginPage extends Component {
             type="button"
             className="link-button"
             onClick={() => {
-              this.props.history.push("/signup1");
+              this.props.history.push("/signup");
             }}
           >
             Register

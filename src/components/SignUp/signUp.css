@@ -22,6 +22,16 @@
     align-items: center;
 }
 
+
+
+/* Styles for signUp_0.js */
+
+#signup-welcome {
+  margin: 5%;
+  display: inline-block;
+  line-height: 1.6;;
+}
+
 /* Styles for signUp_1.js */
 
 .signUp1Div {
@@ -72,6 +82,7 @@
 box-shadow: 2px 4px 6px #b3b3b3;
 width: 50%;
 margin: auto;
+margin-bottom: 20px;
 border-radius: 10px;
 
 /* white-space: pre-wrap; */
@@ -96,4 +107,15 @@ border-radius: 10px;
   width: 80%;
   vertical-align: top;
   padding: 5px
+}
+
+/* mobile only settings */
+@media only screen and (max-width: 400px) {
+  .signup-questions{
+    width: 95%;
+  }
+
+  .sign-up-header{
+    padding: 5%;
+  }
 }
