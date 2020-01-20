@@ -7,6 +7,7 @@ html {
 pre {
     font-family: Libre Franklin;
     max-width: 1400px;
+    line-height: 1.6;
 }
 
 #phrase {
@@ -25,7 +26,7 @@ pre {
 
 .dropdowns {
     font-size: 18px;
-    padding: 15px 15px 15px 15px;
+    padding: 15px 30px 15px 30px;
 }
 
 .backgroundDiv {
@@ -47,7 +48,7 @@ pre {
     white-space: pre-wrap;
     margin: 0;
     font-size: 18px;
-    padding: 15px 15px 15px 15px;
+    padding: 15px 30px 15px 30px;
 }
 
 .welcomeDiv {
@@ -59,6 +60,8 @@ pre {
 .dropDownDiv h2 {
     text-align: center;
 }
+
+
 
 .postDiv h2 {
     text-align: center;
