@@ -17,7 +17,10 @@ const topMargin = {
 
 
 class PostSurvey_3 extends Component {
-  state = {};
+  state = {
+    favorite_thing: this.props.reduxState.answersReducer.postSurveyReducer.favorite_thing || '', 
+    call_more_information: this.props.reduxState.answersReducer.postSurveyReducer.call_more_information || ''
+  };
 
   handleChangeFor = propertyName => event => {
     this.setState({
@@ -53,6 +56,7 @@ class PostSurvey_3 extends Component {
   }; // end handleClickNext
 
   handleClickBack = () => {
+    this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state })
     this.props.history.push("/postsurvey2");
   };
 
@@ -68,6 +72,7 @@ class PostSurvey_3 extends Component {
             rows="10"
             cols="100"
             className="semantic-radio"
+            value={this.state.favorite_thing || ''}
           /><br />
           <br />
           <span className="survey-questions">
@@ -76,6 +81,7 @@ class PostSurvey_3 extends Component {
           <label>choose one</label><br />
           <Input
             onChange={this.handleChangeFor("call_more_information")}
+            checked={this.state.call_more_information === 'Yes'}
             name="q10"
             style={topMargin}
             type="radio"
@@ -86,6 +92,7 @@ class PostSurvey_3 extends Component {
           <br />
           <Input
             onChange={this.handleChangeFor("call_more_information")}
+            checked={this.state.call_more_information === 'No'}
             name="q10"
             type="radio"
             value="No"
