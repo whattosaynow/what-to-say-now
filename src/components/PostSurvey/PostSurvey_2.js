@@ -27,6 +27,7 @@ class PostSurvey_2 extends Component {
     if (
       survey.challenge_felt_relavent.trim() === '' || 
       survey.challenge_impacted_behavior.trim() === '' || 
+      (survey.challenge_impacted_behavior === 'Agree' && survey.how_impacted.trim() === '') || 
       survey.understanding_importance_changed.trim() === '' || 
       survey.affected_ability_interact.trim() === ''
     ) {
@@ -92,11 +93,11 @@ class PostSurvey_2 extends Component {
               <br />
               <label>What did you notice?</label><br />
               <Input
-                name="what_learned"
+                name="how_impacted"
                 className="semantic-radio"
-                onChange={this.handleChangeFor('what_learned')}
+                onChange={this.handleChangeFor('how_impacted')}
                 placeholder="I saw..."
-                value={this.state.what_learned || ''}
+                value={this.state.how_impacted || ''}
               />
             </>
           }

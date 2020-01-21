@@ -30,14 +30,17 @@ class PostSurvey_3 extends Component {
   };
 
   handleClickNext = () => {
-    let survey2 = Object.keys(this.state);
-    if (survey2.length < 2) {
+    let survey = this.state; 
+    if (
+      survey.favorite_thing.trim() === '' ||
+      survey.call_more_information.trim() === '' 
+    ) {
       alert("Please Answer All Questions");
     } else {
       this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state });
       MySwal.fire({
         title: "",
-        text: `Are you done filling out the form?`,
+        text: `Thank you for your time!`,
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
