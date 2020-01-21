@@ -68,7 +68,7 @@ class signUp_3 extends Component {
         <Header width={'60%'} />
         <center><h2>Personal Information Continued</h2></center><br />
         <div className="signup-questions"><br />
-          <span className="survey-questions">4. Number of years you have been coach?</span><br />
+          <span className="survey-questions">4. Number of years you’ve been coaching:</span><br />
           <label>choose one</label><br />
           <Input onChange={this.handleChange('years_coaching')} type="radio" className="semantic-radio" checked={this.state.years_coaching === 'Less than 5 years'} name="q1" value="Less than 5 years" />Less than 5 years<br />
           <Input onChange={this.handleChange('years_coaching')} type="radio" className="semantic-radio" checked={this.state.years_coaching === '6-10 years'} name="q1" value="6-10 years" />6-10 years<br />
