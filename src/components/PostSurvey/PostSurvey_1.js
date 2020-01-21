@@ -32,7 +32,8 @@ class PostSurvey_1 extends Component {
       <div className="questions-wrapper"><br />
         <span className="survey-questions">
           1. How much of the Challenge did you complete?
-        </span>
+        </span><br />
+        <label>choose one</label>
         <br />
         <Input
           onChange={this.handleChangeFor("challenge_completed")}
@@ -60,10 +61,11 @@ class PostSurvey_1 extends Component {
           value="1-2 weeks"
         />
         1-2 weeks
-        <br />
+        <br /><br />
         <span className="survey-questions">
           2. Participating in the Challenge was easy to do.
-        </span>
+        </span><br />
+        <label>choose one</label>
         <br />
         <Input
           onChange={this.handleChangeFor("participation_was_easy")}
@@ -91,10 +93,11 @@ class PostSurvey_1 extends Component {
           value="Disagree"
         />
         Disagree
-        <br />
+        <br /><br />
         <span className="survey-questions">
           3. I learned something new from participating in the Challenge.
-        </span>
+        </span><br />
+        <label>choose one</label>
         <br />
         <Input
           onChange={this.handleChangeFor("learned_something_new")}
@@ -122,10 +125,11 @@ class PostSurvey_1 extends Component {
           value="Disagree"
         />
         Disagree
-        <br />
+        <br /><br />
         <span className="survey-questions">
           4.I would encourage another coach I know to do the Challenge.
-        </span>
+        </span><br />
+        <label>choose one</label>
         <br />
         <Input
           onChange={this.handleChangeFor("would_encourage")}

@@ -68,12 +68,12 @@ class PostSurvey_3 extends Component {
             rows="10"
             cols="100"
             className="semantic-radio"
-          />
+          /><br />
           <br />
           <span className="survey-questions">
-            10.Can we call you for more information about your experience?
-          </span>
-          <br />
+            10. Can we call you for more information about your experience?
+          </span><br />
+          <label>choose one</label><br />
           <Input
             onChange={this.handleChangeFor("call_more_information")}
             name="q10"

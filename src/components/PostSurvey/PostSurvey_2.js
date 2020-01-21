@@ -35,7 +35,8 @@ class PostSurvey_2 extends Component {
     return (
       <>
         <div className="questions-wrapper"><br />
-          <span className="survey-questions">5. The Challenge felt relevant to the age I coach:</span><br />
+          <span className="survey-questions">5. The Challenge felt relevant to the age I coach:</span>
+          <label>choose one</label><br />
           <Input
             onChange={this.handleChangeFor('challenge_felt_relavent')}
             className="semantic-radio"
@@ -59,8 +60,9 @@ class PostSurvey_2 extends Component {
             type="radio"
             value="Disagree"
           /> Disagree
-          <br />
+          <br /><br />
           <span className="survey-questions">6. The Challenge impacted my behavior with the athletes I coach:</span>
+          <label>choose one</label>
           <br />
           <Input
             onChange={this.handleChangeFor('challenge_impacted_behavior')}
@@ -85,9 +87,10 @@ class PostSurvey_2 extends Component {
             type="radio"
             value="Disagree"
           /> Disagree
-          <br />
+          <br /><br />
           <span className="survey-questions">7. My understanding of the importance of messages kids hear from
             adults about food and body has changed:</span>
+            <label>choose one</label>
           <br />
           <Input
             onChange={this.handleChangeFor('understanding_importance_changed')}
@@ -112,9 +115,10 @@ class PostSurvey_2 extends Component {
             type="radio"
             value="Disagree"
           /> Disagree
-          <br />
+          <br /><br />
           <span className="survey-questions">8. The Challenge tools have positively affected my ability to interact
             with my team about body and food:</span>
+            <label>choose one</label>
           <br />
           <Input
             onChange={this.handleChangeFor('affected_ability_interact')}

@@ -29,3 +29,11 @@
     height: 275px;
     background-color: #FAF0E8;
 }
+
+label{
+    margin-left: 10%;
+    font-size: 10px;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: top;
+  }
