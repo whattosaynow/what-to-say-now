@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './postSurvey.css';
+
 //semantic-ui
 import { Input, Button } from "semantic-ui-react";
 
@@ -8,7 +9,7 @@ class PostSurvey_1 extends Component {
 
   state = {
     challenge_completed: this.props.reduxState.answersReducer.postSurveyReducer.challenge_completed || '',
-    participation_was_easy: this.props.reduxState.answersReducer.postSurveyReducer.participation_was_easy || '',
+    participating_was_easy: this.props.reduxState.answersReducer.postSurveyReducer.participating_was_easy || '',
     learned_something_new: this.props.reduxState.answersReducer.postSurveyReducer.learned_something_new || '',
     what_learned: this.props.reduxState.answersReducer.postSurveyReducer.what_learned || '',
     would_encourage: this.props.reduxState.answersReducer.postSurveyReducer.would_encourage || ''
@@ -25,7 +26,7 @@ class PostSurvey_1 extends Component {
     let survey = this.state
     if (
       survey.challenge_completed.trim() === '' ||
-      survey.participation_was_easy.trim() === '' ||
+      survey.participating_was_easy.trim() === '' ||
       survey.learned_something_new.trim() === '' ||
       (survey.learned_something_new === 'Agree' && survey.what_learned.trim() === '') ||
       survey.would_encourage.trim() === ''
@@ -41,6 +42,13 @@ class PostSurvey_1 extends Component {
   render() {
     return (
       <>
+        <center>
+          <header className="sign-up-header">
+            Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
+            Please fill out this brief survey about your experience.<br />
+            <br />
+          </header>
+        </center>
         <div className="questions-wrapper"><br />
           <span className="survey-questions">
             1. How much of the Challenge did you complete?
@@ -83,8 +91,8 @@ class PostSurvey_1 extends Component {
           <label>choose one</label>
           <br />
           <Input
-            onChange={this.handleChangeFor("participation_was_easy")}
-            checked={this.state.participation_was_easy === 'Agree'}
+            onChange={this.handleChangeFor("participating_was_easy")}
+            checked={this.state.participating_was_easy === 'Agree'}
             className="semantic-radio"
             name="q2"
             type="radio"
@@ -93,8 +101,8 @@ class PostSurvey_1 extends Component {
           Agree
         <br />
           <Input
-            onChange={this.handleChangeFor("participation_was_easy")}
-            checked={this.state.participation_was_easy === 'Neutral'}
+            onChange={this.handleChangeFor("participating_was_easy")}
+            checked={this.state.participating_was_easy === 'Neutral'}
             className="semantic-radio"
             name="q2"
             type="radio"
@@ -103,8 +111,8 @@ class PostSurvey_1 extends Component {
           Neutral
         <br />
           <Input
-            onChange={this.handleChangeFor("participation_was_easy")}
-            checked={this.state.participation_was_easy === 'Disagree'}
+            onChange={this.handleChangeFor("participating_was_easy")}
+            checked={this.state.participating_was_easy === 'Disagree'}
             className="semantic-radio"
             name="q2"
             type="radio"

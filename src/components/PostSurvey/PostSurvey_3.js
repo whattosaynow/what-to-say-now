@@ -66,6 +66,13 @@ class PostSurvey_3 extends Component {
   render() {
     return (
       <>
+       <center>
+          <header className="sign-up-header">
+            Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
+            Please fill out this brief survey about your experience.<br />
+            <br />
+          </header>
+        </center>
         <div className="questions-wrapper"><br />
           <span className="survey-questions"> 9. What was your favorite thing about the Challenge?</span>
           <br />

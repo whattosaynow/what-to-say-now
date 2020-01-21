@@ -47,6 +47,13 @@ class PostSurvey_2 extends Component {
   render() {
     return (
       <>
+       <center>
+          <header className="sign-up-header">
+            Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
+            Please fill out this brief survey about your experience.<br />
+            <br />
+          </header>
+        </center>
         <div className="questions-wrapper"><br />
           <span className="survey-questions">5. The Challenge felt relevant to the age I coach.</span>
           <label>choose one</label><br />
