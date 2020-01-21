@@ -90,6 +90,7 @@ class EditWeeklyContent extends Component {
         week: 5
       });
   }};
+  
 
   render() {
     return (
