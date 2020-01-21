@@ -10,6 +10,7 @@ class PostSurvey_2 extends Component {
   state = {
     challenge_felt_relavent: this.props.reduxState.answersReducer.postSurveyReducer.challenge_felt_relavent || '',
     challenge_impacted_behavior: this.props.reduxState.answersReducer.postSurveyReducer.challenge_impacted_behavior || '',
+    how_impacted: this.props.reduxState.answersReducer.postSurveyReducer.how_impacted || '', 
     understanding_importance_changed: this.props.reduxState.answersReducer.postSurveyReducer.understanding_importance_changed || '',
     affected_ability_interact: this.props.reduxState.answersReducer.postSurveyReducer.affected_ability_interact || '',
   }
@@ -46,7 +47,7 @@ class PostSurvey_2 extends Component {
     return (
       <>
         <div className="questions-wrapper"><br />
-          <span className="survey-questions">5. The Challenge felt relevant to the age I coach:</span>
+          <span className="survey-questions">5. The Challenge felt relevant to the age I coach.</span>
           <label>choose one</label><br />
           <Input
             onChange={this.handleChangeFor('challenge_felt_relavent')}
@@ -75,7 +76,7 @@ class PostSurvey_2 extends Component {
             value="Disagree"
           /> Disagree
           <br /><br />
-          <span className="survey-questions">6. The Challenge impacted my behavior with the athletes I coach:</span>
+          <span className="survey-questions">6. The Challenge impacted my behavior with the athletes I coach.</span>
           <label>choose one</label>
           <br />
           <Input
@@ -86,6 +87,19 @@ class PostSurvey_2 extends Component {
             type="radio"
             value="Agree"
           /> Agree
+          {this.state.challenge_impacted_behavior === 'Agree' &&
+            <>
+              <br />
+              <label>What did you notice?</label><br />
+              <Input
+                name="what_learned"
+                className="semantic-radio"
+                onChange={this.handleChangeFor('what_learned')}
+                placeholder="I saw..."
+                value={this.state.what_learned || ''}
+              />
+            </>
+          }
           <br />
           <Input
             onChange={this.handleChangeFor('challenge_impacted_behavior')}
@@ -106,7 +120,7 @@ class PostSurvey_2 extends Component {
           /> Disagree
           <br /><br />
           <span className="survey-questions">7. My understanding of the importance of messages kids hear from
-            adults about food and body has changed:</span>
+            adults about food and body has changed.</span>
             <label>choose one</label>
           <br />
           <Input
@@ -137,7 +151,7 @@ class PostSurvey_2 extends Component {
           /> Disagree
           <br /><br />
           <span className="survey-questions">8. The Challenge tools have positively affected my ability to interact
-            with my team about body and food:</span>
+            with my team about body and food.</span>
             <label>choose one</label>
           <br />
           <Input
