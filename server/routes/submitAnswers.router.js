@@ -100,13 +100,13 @@ function welcomeEmail(user) {
   const msg = {
     to: user.email,
     from: 'WhatToSayNowChallenge@gmail.com',
-    subject: 'Thank You For Signing Up!',
-    text: `Hi ${user.username}! 
-    Thank you for signing up for WithAll’s “What to Say” Coaches Challenge. You will receive your first Challenge on Sunday at 6 PM CST.
+    subject: 'Welcome!',
+    text: `Thank you for signing up for WithAll’s “What to Say” Coaches Challenge. You will receive your first Challenge on Sunday at 6 PM CST.
 
     Sincerely,
     
-    The WithAll Team`
+    The WithAll Team
+    `
   };
   sgMail.send(msg);
 
@@ -114,7 +114,11 @@ function welcomeEmail(user) {
 
 function welcomeText(user) {
   client.messages.create({
-    body: `Hi ${user.username}! Thank you for signing up for the challenge! Here is the first week's link: ${process.env.API_URL}challenge/${user.role}/1/${user.focus_ages}`,
+    body: `Thank you for signing up for WithAll’s “What to Say” Coaches Challenge. You will receive your first Challenge on Sunday at 6 PM CST.
+
+    Sincerely,
+    
+    The WithAll Team`,
     from: '+16512731912',
     to: user.phone_number
   }).then(message => console.log(message.status))

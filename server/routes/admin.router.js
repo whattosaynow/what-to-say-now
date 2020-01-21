@@ -115,7 +115,7 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     })
 });
 
-cron.schedule('0-59 * * * *', () => {
+cron.schedule('*/30 * * * *', () => {
     automatedContact(); //this function will run every sunday at 6:00pm
 }, {
     timezone: "America/Chicago"
@@ -124,15 +124,17 @@ cron.schedule('0-59 * * * *', () => {
 //this functions does a pool query to the database to select all users
 //then with the response, forEach user it will run the receive challenge function
 function automatedContact() {
+    console.log('auto')
     //BETWEEN NOW() - INTERVAL '14 WEEK' AND NOW();
     pool.query(`
     UPDATE "user"
-    SET "content_permission" = "content_permission" + 1
-    WHERE ("content_permission" < 9 AND "is_admin" = false) AND ("date_created" BETWEEN NOW() - INTERVAL '12h' AND NOW())
-    RETURNING *
+    SET "content_permission" = ("content_permission" + 1)
+    WHERE (("content_permission" < 9 AND "is_admin" = false) AND ("date_created" BETWEEN NOW() - INTERVAL '24h' AND NOW()))
+    RETURNING *;
     `
     ).then(response => {
         response.rows.forEach(user => {
+            console.log('updated username:', user.id)
             receiveChallenge(user)
         })
     }).catch(error => {
@@ -161,7 +163,7 @@ function receiveChallenge(user) {
 function receiveEmail(user) {
     let dateCreated = moment(user.date_created);
     let currentDate = moment();
-    let answer = moment(currentDate).diff(dateCreated, 'dyas');
+    let answer = moment(currentDate).diff(dateCreated, 'days');
     console.log('answer,', answer)
 
     if (answer <= 7 && answer >= 0) {
@@ -213,7 +215,7 @@ function sendEmail(user, week) {
         const msg = {
             to: user.email,
             from: 'WhatToSayNowChallenge@gmail.com',
-            subject: `What To Say Now Coaches Challenge - Week ${week}`,
+            subject: `WithAll's "What to Say" Coaches Challenge - Week ${week}`,
             text: `Hi ${user.username}! Welcome to week ${week} of the challenge! Here is the link to this weeks info: ${process.env.API_URL}/${user.role}/${week}/${user.S1_focus_ages}`
         };
         sgMail.send(msg);
@@ -223,8 +225,8 @@ function sendEmail(user, week) {
         const msg = {
             to: user.email,
             from: 'WhatToSayNowChallenge@gmail.com',
-            subject: `What To Say Now Coaches Challenge - Post Survey`,
-            text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to our Post Program Survey: ${process.env.API_URL}/postsurvey1`
+            subject: `WithAll's "What to Say" Coaches Challenge - post-survey`,
+            text: `Hi ${user.username}! Thank you for completing WithAll's "What to Say" Coaches Challenge. Please take 2-5 minutes to complete the post-challenge survey ${process.env.API_URL}/postsurvey1`
         };
         sgMail.send(msg);
         //if the user is 3 months old, they receive the three month survey
@@ -233,8 +235,8 @@ function sendEmail(user, week) {
         const msg = {
             to: user.email,
             from: 'WhatToSayNowChallenge@gmail.com',
-            subject: `What To Say Now Coaches Challenge - Followup Survey`,
-            text: `Hi ${user.username}! Thank you for completing the What to Say Now Challenge. Here is a link to our Post Program Survey: ${process.env.API_URL}/postsurvey1`
+            subject: `WithAll's "What to Say" Coaches Challenge - 3-month follow-up survey`,
+            text: `Hi ${user.username}! Please take 2-5 minutes to complete WithAll's "What to Say" Coaches Challenge 3-month follow-up survey. Thank you! ${process.env.API_URL}/postsurvey1`
         };
         sgMail.send(msg);
     }
@@ -277,13 +279,13 @@ function receiveTextTest(user) {
         sendText(user, 2) //week 2
     } else if (answer === 3) {
         sendText(user, 3) //week 3
-    } else if (answer === 120) {
+    } else if (answer === 4) {
         sendText(user, 4) //week 4
-    } else if (answer === 150) {
+    } else if (answer === 5) {
         sendText(user, 5) //week 5
-    } else if (answer === 180) {
+    } else if (answer === 6) {
         sendText(user, 6) //post survey
-    } else if (answer === 210) {
+    } else if (answer === 7) {
         sendText(user, 7) //3month survey
     }
 }
@@ -292,7 +294,7 @@ function sendText(user, week) {
     //if the user is less than or equal to 5 weeks, they receive the weekly challenge info based on their role, the week, and their age group
     if (week <= 5) {
         client.messages.create({
-            body: `Hi ${user.username}! Welcome to week ${week} of the challenge! Here is the link to this weeks info: ${process.env.API_URL}/${user.role}/${week}/${user.S1_focus_ages}`,
+            body: `Hi ${user.username}! Welcome to week {number} of the challenge! Here is the link to this weeks info: ${process.env.API_URL}/${user.role}/${week}/${user.S1_focus_ages}`,
             from: '+16512731912',
             to: user.phone_number
         }).then(message => console.log(message.status))
@@ -300,7 +302,7 @@ function sendText(user, week) {
         //if the user is 6 weeks old, they receive the post program survey link
     } else if (week === 6) {
         client.messages.create({
-            body: `Hi ${user.username}! Thank you for participating in the What To Say Now Challenge. Here is a link to our Post Program Survey: ${process.env.API_URL}/postsurvey1`,
+            body: `Hi ${user.username}! Thank you for completing WithAll's "What to Say" Coaches Challenge. Please take 2-5 minutes to complete the post-challenge survey: ${process.env.API_URL}/postsurvey1`,
             from: '+16512731912',
             to: user.phone_number
         }).then(message => console.log(message.status))
@@ -308,7 +310,7 @@ function sendText(user, week) {
         //if the user is 3 months old, they receive the three month survey
     } else if (week === 7) {
         client.messages.create({
-            body: `Hi ${user.username}! Thank you for participating in the What To Say Now Challenge. Here is a link to our Three Month Followup Survey: ${process.env.API_URL}/three-month-survey`,
+            body: `Hi ${user.username}! Please take 2-5 minutes to complete WithAll's "What to Say" Coaches Challenge 3-month follow-up survey. Thank you! : ${process.env.API_URL}/three-month-survey`,
             from: '+16512731912',
             to: user.phone_number
         }).then(message => console.log(message.status))
