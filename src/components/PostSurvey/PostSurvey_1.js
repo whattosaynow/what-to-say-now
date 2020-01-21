@@ -21,8 +21,13 @@ class PostSurvey_1 extends Component {
   }
 
   handleClick = () => {
-    let survey2 = Object.keys(this.state);
-    if (survey2.length < 4) {
+    let survey = this.state
+    if (
+      survey.challenge_completed.trim() === '' ||
+      survey.participation_was_easy.trim() === '' ||
+      survey.learned_something_new.trim() === '' ||
+      survey.would_encourage.trim() === ''
+    ) {
       alert("Please Answer All Questions")
     } else {
       this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state })
