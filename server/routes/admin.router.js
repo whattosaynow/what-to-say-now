@@ -126,8 +126,10 @@ cron.schedule('0-59 * * * *', () => {
 function automatedContact() {
     //BETWEEN NOW() - INTERVAL '14 WEEK' AND NOW();
     pool.query(`
-    SELECT * FROM "user"
-    WHERE ("date_created" BETWEEN NOW() - INTERVAL '12h' AND NOW()) AND "is_admin" = false;
+    UPDATE "user"
+    SET "content_permission" = "content_permission" + 1
+    WHERE ("content_permission" < 9 AND "is_admin" = false) AND ("date_created" BETWEEN NOW() - INTERVAL '12h' AND NOW())
+    RETURNING *
     `
     ).then(response => {
         response.rows.forEach(user => {
@@ -180,23 +182,25 @@ function receiveEmail(user) {
 }
 
 function receiveEmailTest(user) {
-    let dateCreated = moment(user.date_created);
-    let currentDate = moment();
-    let answer = moment(currentDate).diff(dateCreated, 'minute');
+    // let dateCreated = moment(user.date_created);
+    // let currentDate = moment();
+    // let answer = moment(currentDate).diff(dateCreated, 'minute');
 
-    if (answer === 30) {
+    let answer = user.content_permission;
+
+    if (answer === 1) {
         sendEmail(user, 1) //week 1
-    } else if (answer === 60) {
+    } else if (answer === 2) {
         sendEmail(user, 2) //week 2
-    } else if (answer === 90) {
+    } else if (answer === 3) {
         sendEmail(user, 3) //week 3
-    } else if (answer === 120) {
+    } else if (answer === 4) {
         sendEmail(user, 4) //week 4
-    } else if (answer === 150) {
+    } else if (answer === 5) {
         sendEmail(user, 5) //week 5
-    } else if (answer === 180) {
+    } else if (answer === 6) {
         sendEmail(user, 6) //post survey
-    } else if (answer === 210) {
+    } else if (answer === 7) {
         sendEmail(user, 7) //3month survey
     }
 }
@@ -261,15 +265,17 @@ function receiveText(user) {
 }
 
 function receiveTextTest(user) {
-    let dateCreated = moment(user.date_created);
-    let currentDate = moment();
-    let answer = moment(currentDate).diff(dateCreated, 'minute');
+    // let dateCreated = moment(user.date_created);
+    // let currentDate = moment();
+    // let answer = moment(currentDate).diff(dateCreated, 'minute');
 
-    if (answer === 30) {
+    let answer = user.content_permission;
+
+    if (answer === 1) {
         sendText(user, 1) //week 1
-    } else if (answer === 60) {
+    } else if (answer === 2) {
         sendText(user, 2) //week 2
-    } else if (answer === 90) {
+    } else if (answer === 3) {
         sendText(user, 3) //week 3
     } else if (answer === 120) {
         sendText(user, 4) //week 4

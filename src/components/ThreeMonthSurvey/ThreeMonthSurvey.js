@@ -11,7 +11,7 @@ import { Input, Button } from "semantic-ui-react";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
-
+   
 const topMargin = {
   marginTop: '10px'
 }

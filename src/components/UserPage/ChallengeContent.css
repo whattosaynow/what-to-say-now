@@ -46,7 +46,9 @@ pre {
     width: inherit;
     font-family: inherit;
     white-space: pre-wrap;
-    margin: 0;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 0;
     font-size: 18px;
     padding: 15px 30px 15px 30px;
 }
