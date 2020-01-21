@@ -44,7 +44,6 @@ CREATE TABLE "user" (
 "S1_how_did_you_find_us_referral" VARCHAR CONSTANT 'NA',
 "S1_why_are_you_participating" VARCHAR,
 "S1_why_are_you_participating_other" VARCHAR CONSTANT 'NA',
-"S1_can_we_call_after_completion" VARCHAR,
 "S2_challenge_completed" VARCHAR,
 "S2_participating_was_easy" VARCHAR,
 "S2_learned_something_new" VARCHAR,
