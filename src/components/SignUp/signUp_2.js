@@ -57,7 +57,7 @@ class signUp_2 extends Component {
             <Input onChange={this.handleChangeFor('choose_receive')} type='radio' className="semantic-radio" checked={this.state.choose_receive === 'email'} name='receive' value='email'></Input>Email<br />
             <Input onChange={this.handleChangeFor('choose_receive')} type='radio' className="semantic-radio" checked={this.state.choose_receive === 'text'} name='receive' value='text'></Input>Text<br />
             <Input onChange={this.handleChangeFor('choose_receive')} type='radio' className="semantic-radio" checked={this.state.choose_receive === 'both'} name='receive' value='both'></Input>Both<br />
-            <label>Links to challenges will be sent out Sunday at 6:00pm CST</label><br />
+            <label>You will receive links to Challenges on Sundays at 6:00pm CST</label><br />
             <br />
 
             <span className="survey-questions">2. Your gender:</span><br />
@@ -69,10 +69,9 @@ class signUp_2 extends Component {
 
             <span className="survey-questions">3. Your age:</span><br />
             <label>choose one</label><br />
-            <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" checked={this.state.your_age === 'Less than twenty years old'} name='age' value='Less than twenty years old'></Input>Less than 20 years old.<br />
-            <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" checked={this.state.your_age === '21-36 years old'} name='age' value='21-36 years old'></Input>21-36 years old.<br />
-            <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" checked={this.state.your_age === '36-51 years old'} name='age' value='36-51 years old'></Input>36-51 years old.<br />
-            <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" checked={this.state.your_age === '52+ years old'} name='age' value='52+ years old'></Input>52+ years old.<br />
+            <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" checked={this.state.your_age === '21-36 years old'} name='age' value='21-36 years old'></Input>21-35 years old<br />
+            <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" checked={this.state.your_age === '36-51 years old'} name='age' value='36-51 years old'></Input>36-51 years old<br />
+            <Input onChange={this.handleChangeFor('your_age')} type='radio' className="semantic-radio" checked={this.state.your_age === '52+ years old'} name='age' value='52+ years old'></Input>52+ years old<br />
             <br />
           </div>
           <br />

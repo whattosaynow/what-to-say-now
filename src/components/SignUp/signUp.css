@@ -98,7 +98,9 @@ border-radius: 10px;
 .signup-questions label{
   margin-left: 10%;
   font-size: 10px;
-  font-weight: bold
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .radio-answer{
@@ -111,8 +113,8 @@ border-radius: 10px;
 
 /* mobile only settings */
 @media only screen and (max-width: 400px) {
-  .signup-questions{
-    width: 95%;
+  div .signup-questions{
+    width: 90%;
   }
 
   .sign-up-header{

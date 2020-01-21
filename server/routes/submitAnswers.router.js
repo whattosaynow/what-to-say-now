@@ -47,12 +47,15 @@ router.post("/signup", (req, res) => {
                             "S1_genders_of_athletes_non_binary",
                             "S1_numbers_of_athletes",
                             "S1_focus_ages",
+                            "S1_parent_or_guardian",
+                            "S1_healthcare_professional",
+                            "S1_teacher",
+                            "S1_sports_org",
                             "S1_how_did_you_find_us",
                             "S1_how_did_you_find_us_referral",
                             "S1_why_are_you_participating",
-                            "S1_why_are_you_participating_other",
-                            "S1_can_we_call_after_completion")
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25);
+                            "S1_why_are_you_participating_other")
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28);
         `,
     [req.body.first_name,
     req.body.last_name,
@@ -74,11 +77,14 @@ router.post("/signup", (req, res) => {
     req.body.genders_of_athletes_non_binary,
     req.body.number_of_athletes,
     req.body.focus_ages,
+    req.body.parent_or_guardian,
+    req.body.healthcare_professional,
+    req.body.teacher,
+    req.body.sports_org,
     req.body.how_did_you_find_us,
     req.body.how_did_you_find_us_referral,
     req.body.why_are_you_participating,
     req.body.why_are_you_participating_other,
-    req.body.can_we_call_after_completion,
 
     ]).then((result) => {
       res.sendStatus(201)
@@ -123,22 +129,26 @@ router.post("/postSurvey", rejectUnauthenticated, (req, res) => {
                             "S2_challenge_completed" = $1,
                             "S2_participating_was_easy" = $2,
                             "S2_learned_something_new" = $3,
-                            "S2_would_encourage" = $4,
-                            "S2_challenge_felt_relavent" = $5,
-                            "S2_challenge_impacted_behavior" = $6,
-                            "S2_understanding_importance_changed"= $7,
-                            "S2_affected_ability_interact"= $8,
-                            "S2_favorite_thing"= $9,
-                            "S2_call_more_information"= $10
-        WHERE id = $11;
+                            "S2_what_learned" = $4, 
+                            "S2_would_encourage" = $5, 
+                            "S2_challenge_felt_relavent" = $6,
+                            "S2_challenge_impacted_behavior" = $7,
+                            "S2_how_impacted" = $8,
+                            "S2_understanding_importance_changed"= $9,
+                            "S2_affected_ability_interact" = $10,
+                            "S2_favorite_thing" = $11,
+                            "S2_call_more_information" = $12 
+        WHERE id = $13 ;
     `,
     [
       req.body.challenge_completed,
-      req.body.participation_was_easy,
+      req.body.participating_was_easy,
       req.body.learned_something_new,
+      req.body.what_learned,
       req.body.would_encourage,
       req.body.challenge_felt_relavent,
       req.body.challenge_impacted_behavior,
+      req.body.how_impacted,
       req.body.understanding_importance_changed,
       req.body.affected_ability_interact,
       req.body.favorite_thing,

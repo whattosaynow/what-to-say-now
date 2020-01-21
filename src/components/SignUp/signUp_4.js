@@ -12,8 +12,10 @@ class signUp_4 extends Component {
 
   state = {
     focus_ages: this.props.reduxState.answersReducer.signupReducer.focus_ages || '',
-    how_did_you_find_us: this.props.reduxState.answersReducer.signupReducer.how_did_you_find_us || '',
-    how_did_you_find_us_referral: this.props.reduxState.answersReducer.signupReducer.how_did_you_find_us_referral || ''
+    parent_or_guardian: this.props.reduxState.answersReducer.signupReducer.parent_or_guardian || false,
+    healthcare_professional: this.props.reduxState.answersReducer.signupReducer.healthcare_professional || false,
+    teacher: this.props.reduxState.answersReducer.signupReducer.teacher || false,
+    sports_org: this.props.reduxState.answersReducer.signupReducer.sports_org || '',
   }
 
   handleChange = (propertyName) => (event) => {
@@ -21,6 +23,20 @@ class signUp_4 extends Component {
       ...this.state,
       [propertyName]: event.target.value
     })
+  }
+
+  handleCheckBox = (propertyName) => (event) => {
+    if (this.state[propertyName]) {
+      this.setState({
+        ...this.state,
+        [propertyName]: false
+      })
+    } else {
+      this.setState({
+        ...this.state,
+        [propertyName]: event.target.value
+      })
+    }
   }
 
   handleClickBack = () => {
@@ -32,7 +48,7 @@ class signUp_4 extends Component {
     let survey = this.state
     if (
       survey.focus_ages.trim() === '' ||
-      survey.how_did_you_find_us.trim() === ''
+      survey.sports_org.trim() === ''
     ) {
       alert("Please Answer All Questions")
     } else {
@@ -49,30 +65,29 @@ class signUp_4 extends Component {
         <center><h2>Personal Information Continued</h2></center><br />
         <div className="signup-questions"><br />
           <span className="survey-questions">7. Age(s) you coach and want to focus on with during the Challenge:</span><br />
-          <label>choose one</label><br />
+          <label>choose one*</label><br />
           <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" checked={this.state.focus_ages === '1'} name="q1" value="1" />Elementary school youth (6-10 years old) <br />
           <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" checked={this.state.focus_ages === '2'} name="q1" value="2" />Middle school youth (10-13 years old)<br />
           <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" checked={this.state.focus_ages === '3'} name="q1" value="3" />High school youth (14-18 years old)<br />
+          <i><label>*We realize some of you may coach multiple age groups, however the Coaches Challenge is set up to focus on one age group at a time.
+            If you’d like to focus on different age group in the future, please take the challenge again.</label></i><br />
           <br />
-          <span className="survey-questions">8. How did you find us?</span><br />
-          <label>choose one</label><br />
-          <select className="semantic-radio" onChange={this.handleChange('how_did_you_find_us')} value={this.state.how_did_you_find_us} >
-            <option>--choose one--</option>
-            <option value="Girls on the Run">Girls on the Run</option>
-            <option value="Wayzata Girls Basketball Association">Wayzata Girls Basketball Association</option>
-            <option value="The Loppet Foundation">The Loppet Foundation</option>
-            <option value="Fusion Soccer Club MN">Fusion Soccer Club MN</option>
-            <option value="Internet search">Internet search</option>
-            <option value="Referral">Referral</option>
-          </select><br />
-          {this.state.how_did_you_find_us === 'Referral' &&
-          <>
-            <label>If referral, please let us know who:</label> <br />
-            <textarea className="semantic-radio" onChange={this.handleChange('how_did_you_find_us_referral')} value={this.state.how_did_you_find_us_referral} rows="4" cols="50"></textarea>
-            <br />
-            </>
 
-    }
+          <span className="survey-questions">8. Select all that apply:</span> <br />
+          <Input onChange={this.handleCheckBox('parent_or_guardian')} type="checkbox" checked={!!this.state.parent_or_guardian} className="semantic-radio" name="q2" value={true} />I’m a parent or guardian of a child between 0 and 18 years old<br />
+          <Input onChange={this.handleCheckBox('healthcare_professional')} type="checkbox" checked={!!this.state.healthcare_professional} className="semantic-radio" name="q2" value={true} />I’m health care professional<br />
+          <Input onChange={this.handleCheckBox('teacher')} type="checkbox" checked={!!this.state.teacher} className="semantic-radio" name="q2" value={true} />I’m a teacher at an elementary school, middle school, or high school<br />
+          <br />
+
+          <span className="survey-questions">9. What youth sports organizations are you or your team affiliated with?</span> <br />
+          <label>If none, reply with “none.”</label><br />
+          <Input
+            name="sports_org"
+            className="semantic-radio"
+            onChange={this.handleChange('sports_org')}
+            placeholder="Sports Organization..."
+            value={this.state.sports_org || ''}
+          /><br />
           <br />
         </div>
         <br />

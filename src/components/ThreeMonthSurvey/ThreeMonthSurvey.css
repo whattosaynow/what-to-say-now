@@ -29,3 +29,9 @@
     height: 275px;
     background-color: #FAF0E8;
 }
+
+p {
+    margin: 5%;
+    display: inline-block;
+    line-height: 1.6;;
+}

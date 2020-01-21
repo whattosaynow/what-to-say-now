@@ -17,7 +17,10 @@ const topMargin = {
 
 
 class PostSurvey_3 extends Component {
-  state = {};
+  state = {
+    favorite_thing: this.props.reduxState.answersReducer.postSurveyReducer.favorite_thing || '', 
+    call_more_information: this.props.reduxState.answersReducer.postSurveyReducer.call_more_information || ''
+  };
 
   handleChangeFor = propertyName => event => {
     this.setState({
@@ -27,14 +30,17 @@ class PostSurvey_3 extends Component {
   };
 
   handleClickNext = () => {
-    let survey2 = Object.keys(this.state);
-    if (survey2.length < 2) {
+    let survey = this.state; 
+    if (
+      survey.favorite_thing.trim() === '' ||
+      survey.call_more_information.trim() === '' 
+    ) {
       alert("Please Answer All Questions");
     } else {
       this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state });
       MySwal.fire({
         title: "",
-        text: `Are you done filling out the form?`,
+        text: `Thank you for your time!`,
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -53,12 +59,20 @@ class PostSurvey_3 extends Component {
   }; // end handleClickNext
 
   handleClickBack = () => {
+    this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state })
     this.props.history.push("/postsurvey2");
   };
 
   render() {
     return (
       <>
+       <center>
+          <header className="sign-up-header">
+            Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
+            Please fill out this brief survey about your experience.<br />
+            <br />
+          </header>
+        </center>
         <div className="questions-wrapper"><br />
           <span className="survey-questions"> 9. What was your favorite thing about the Challenge?</span>
           <br />
@@ -68,14 +82,16 @@ class PostSurvey_3 extends Component {
             rows="10"
             cols="100"
             className="semantic-radio"
-          />
+            value={this.state.favorite_thing || ''}
+          /><br />
           <br />
           <span className="survey-questions">
-            10.Can we call you for more information about your experience?
-          </span>
-          <br />
+            10. Can we call you for more information about your experience?
+          </span><br />
+          <label>choose one</label><br />
           <Input
             onChange={this.handleChangeFor("call_more_information")}
+            checked={this.state.call_more_information === 'Yes'}
             name="q10"
             style={topMargin}
             type="radio"
@@ -86,6 +102,7 @@ class PostSurvey_3 extends Component {
           <br />
           <Input
             onChange={this.handleChangeFor("call_more_information")}
+            checked={this.state.call_more_information === 'No'}
             name="q10"
             type="radio"
             value="No"
@@ -95,7 +112,7 @@ class PostSurvey_3 extends Component {
           <br /><br />
         </div>
         <div className="bottomDiv">
-          <Button onClick={this.handleClickBack}>Go Back</Button>
+          <Button onClick={this.handleClickBack}>Previous</Button>
           <Button onClick={this.handleClickNext}>Submit</Button>
         </div>
 
