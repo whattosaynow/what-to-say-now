@@ -102,7 +102,7 @@ class PostSurvey_3 extends Component {
           <br /><br />
         </div>
         <div className="bottomDiv">
-          <Button onClick={this.handleClickBack}>Go Back</Button>
+          <Button onClick={this.handleClickBack}>Previous</Button>
           <Button onClick={this.handleClickNext}>Submit</Button>
         </div>
 
