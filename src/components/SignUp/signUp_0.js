@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from './signUp_header';
 import './signUp.css';
 //semantic-ui
-import { Input, Button } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 
 class signUp_0 extends Component {
 
@@ -22,9 +21,9 @@ class signUp_0 extends Component {
         <br />
         <div className="signup-questions">
           <p id="signup-welcome">
-            <center>Welcome to <b>WithAll’s “What to Say” Coaches Challenge.</b><br />
+            <span>Welcome to <b>WithAll’s “What to Say” Coaches Challenge.</b><br />
               <br />
-              Here’s how the Coaches Challenge works:<br /></center>
+              Here’s how the Coaches Challenge works:<br /></span>
             <br />
             Every Sunday at 6:00pm CST you will receive a link to that week’s Challenge
             that includes a phrase that you can use with the kids you coach, along with:<br />
@@ -60,8 +59,8 @@ class signUp_0 extends Component {
               <br />
               If you have questions about the Coaches Challenge, you can ask me or you can contact WithAll directly at <a href="mailto:hello@withall.org">hello@withall.org</a>.<br />
               <br />
-              <center>Copyright 2019 © by WithAll<br />
-              All rights reserved, including the right of reproduction in whole or in part in any form</center>
+              <span>Copyright 2019 © by WithAll<br />
+              All rights reserved, including the right of reproduction in whole or in part in any form</span>
            </i>
           </p>
         </div>

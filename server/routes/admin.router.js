@@ -88,6 +88,10 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
         "S1_how_did_you_find_us_referral",
         "S1_why_are_you_participating",
         "S1_why_are_you_participating_other",
+        "S1_parent_or_guardian",
+        "S1_healthcare_professional",
+        "S1_teacher",
+        "S1_sports_org",
         
         "S2_challenge_completed",
         "S2_participating_was_easy",
@@ -98,6 +102,8 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
         "S2_understanding_importance_changed",
         "S2_affected_ability_interact",
         "S2_favorite_thing",
+        "S2_what_learned",
+        "S2_how_impacted",
         "S2_call_more_information",
         
         "S3_continued_impact",
@@ -105,6 +111,7 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
         "S3_continued_affected_ability_interact",
         "S3_anything_else",
         "S3_call_more_information"
+        
          FROM "user";
 `).then(response => {
         res.send(response.rows)
@@ -124,7 +131,6 @@ cron.schedule('*/30 * * * *', () => {
 //this functions does a pool query to the database to select all users
 //then with the response, forEach user it will run the receive challenge function
 function automatedContact() {
-    console.log('auto')
     //BETWEEN NOW() - INTERVAL '14 WEEK' AND NOW();
     pool.query(`
     UPDATE "user"
@@ -134,7 +140,6 @@ function automatedContact() {
     `
     ).then(response => {
         response.rows.forEach(user => {
-            console.log('updated username:', user.id)
             receiveChallenge(user)
         })
     }).catch(error => {
@@ -164,7 +169,6 @@ function receiveEmail(user) {
     let dateCreated = moment(user.date_created);
     let currentDate = moment();
     let answer = moment(currentDate).diff(dateCreated, 'days');
-    console.log('answer,', answer)
 
     if (answer <= 7 && answer >= 0) {
         sendEmail(user, 1) //week 1

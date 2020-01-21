@@ -114,6 +114,7 @@ class signUp_1 extends Component {
             <br />
             <Input
               name="phone_number"
+              type="tel"
               onChange={this.handleChange}
               placeholder="Phone Number - Required"
               value={this.state.newUser.phone_number || ''}

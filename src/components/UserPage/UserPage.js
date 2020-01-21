@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Card } from 'semantic-ui-react'
-import moment from 'moment';
 import CardTemplate from './CardTemplate';
 import { Button } from "semantic-ui-react";
 
@@ -31,7 +30,6 @@ class UserPage extends Component {
   render() {
     let content = this.props.reduxState.weeklyContentReducer.weeklyContentReducer;
     let sortedContent = content.sort((a, b) => { if (a.id > b.id) { return 1 } else { return -1 } });
-    console.log(sortedContent)
 
     return (
       <>
