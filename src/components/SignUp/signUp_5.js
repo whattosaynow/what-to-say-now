@@ -67,7 +67,7 @@ class signUp_5 extends Component {
         <Header width={'100%'} /><br />
         <center><h2>Personal Information Continued</h2></center><br />
         <div className="signup-questions"><br />
-        <span className="survey-questions">10. How did you find us?</span><br />
+        <span className="survey-questions">9. How did you find us?</span><br />
           <label>choose one</label><br />
           <select className="semantic-radio" onChange={this.handleChange('how_did_you_find_us')} value={this.state.how_did_you_find_us} >
             <option>--choose one--</option>
@@ -88,7 +88,8 @@ class signUp_5 extends Component {
               <br />
             </>
           }
-          <span className="survey-questions">9. Why are you particpating in the "What to say" Coaches Challenge?</span><br />
+          <br />
+          <span className="survey-questions">10. Why are you particpating in the "What to say" Coaches Challenge?</span><br />
           <label>choose one</label><br />
           <Input onChange={this.handleChange('why_are_you_participating')} type="radio" className="semantic-radio" checked={this.state.why_are_you_participating === "I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image."} name="q1" value="I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image." /><span className="radio-answer">I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image</span><br />
           <Input onChange={this.handleChange('why_are_you_participating')} type="radio" className="semantic-radio" checked={this.state.why_are_you_participating === "I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something."} name="q1" value="I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something." /><span className="radio-answer">I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something</span><br />
@@ -104,7 +105,7 @@ class signUp_5 extends Component {
         <br />
         <div className="bottomDiv">
           <Button onClick={this.handleClickBack}>Back</Button>
-          <Button onClick={this.handleClickNext}>Next</Button>
+          <Button onClick={this.handleClickNext}>Finish</Button>
         </div>
       </>
     );
