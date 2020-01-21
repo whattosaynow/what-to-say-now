@@ -294,7 +294,7 @@ function sendText(user, week) {
     //if the user is less than or equal to 5 weeks, they receive the weekly challenge info based on their role, the week, and their age group
     if (week <= 5) {
         client.messages.create({
-            body: `Hi ${user.username}! Welcome to week {number} of the challenge! Here is the link to this weeks info: ${process.env.API_URL}/${user.role}/${week}/${user.S1_focus_ages}`,
+            body: `Hi ${user.username}! Welcome to week ${week} of the challenge! Here is the link to this weeks info: ${process.env.API_URL}/${user.role}/${week}/${user.S1_focus_ages}`,
             from: '+16512731912',
             to: user.phone_number
         }).then(message => console.log(message.status))
