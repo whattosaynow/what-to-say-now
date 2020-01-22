@@ -91,6 +91,7 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
         "S1_why_are_you_participating_other",
         "S1_parent_or_guardian",
         "S1_healthcare_professional",
+        "S1_non_above",
         "S1_teacher",
         "S1_sports_org",
         
