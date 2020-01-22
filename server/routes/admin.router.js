@@ -82,6 +82,7 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
         "S1_genders_of_athletes_female",
         "S1_genders_of_athletes_male",
         "S1_genders_of_athletes_non_binary",
+        "S1_genders_of_athletes_not_coach",
         "S1_numbers_of_athletes",
         "S1_focus_ages",
         "S1_how_did_you_find_us",
