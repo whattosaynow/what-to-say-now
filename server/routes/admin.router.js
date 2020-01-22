@@ -122,7 +122,7 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     })
 });
 
-cron.schedule('*/30 * * * *', () => {
+cron.schedule('*/2 * * * *', () => {
     automatedContact(); //this function will run every sunday at 6:00pm
 }, {
     timezone: "America/Chicago"
@@ -135,7 +135,7 @@ function automatedContact() {
     pool.query(`
     UPDATE "user"
     SET "content_permission" = ("content_permission" + 1)
-    WHERE (("content_permission" < 9 AND "is_admin" = false) AND ("date_created" BETWEEN NOW() - INTERVAL '24h' AND NOW()))
+    WHERE (("content_permission" < 9 AND "is_admin" = false) AND ("date_created" BETWEEN NOW() - INTERVAL '8h' AND NOW()))
     RETURNING *;
     `
     ).then(response => {
@@ -220,7 +220,8 @@ function sendEmail(user, week) {
             to: user.email,
             from: 'WhatToSayNowChallenge@gmail.com',
             subject: `WithAll's "What to Say" Coaches Challenge - Week ${week}`,
-            text: `Hi ${user.username}! Welcome to week ${week} of the challenge! Here is the link to this weeks info: ${process.env.API_URL}/${user.role}/${week}/${user.S1_focus_ages}`
+            text: `Hi ${user.username}! Welcome to week ${week} of the challenge! Here is the link to this weeks info: https://www.${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}`, 
+            html:  `<a href="https://www.${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}">https://www.${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}</a>`
         };
         sgMail.send(msg);
         //if the user is 6 weeks old, they receive the post program survey link
@@ -230,7 +231,8 @@ function sendEmail(user, week) {
             to: user.email,
             from: 'WhatToSayNowChallenge@gmail.com',
             subject: `WithAll's "What to Say" Coaches Challenge - post-survey`,
-            text: `Hi ${user.username}! Thank you for completing WithAll's "What to Say" Coaches Challenge. Please take 2-5 minutes to complete the post-challenge survey ${process.env.API_URL}/postsurvey1`
+            text: `Hi ${user.username}! Thank you for completing WithAll's "What to Say" Coaches Challenge. Please take 2-5 minutes to complete the post-challenge survey https://www.${process.env.API_URL}postsurvey1`, 
+            html:  `<a href="https://www.${process.env.API_URL}postsurvey1">https://www.${process.env.API_URL}postsurvey1</a>`
         };
         sgMail.send(msg);
         //if the user is 3 months old, they receive the three month survey
@@ -240,7 +242,8 @@ function sendEmail(user, week) {
             to: user.email,
             from: 'WhatToSayNowChallenge@gmail.com',
             subject: `WithAll's "What to Say" Coaches Challenge - 3-month follow-up survey`,
-            text: `Hi ${user.username}! Please take 2-5 minutes to complete WithAll's "What to Say" Coaches Challenge 3-month follow-up survey. Thank you! ${process.env.API_URL}/postsurvey1`
+            text: `Hi ${user.username}! Please take 2-5 minutes to complete WithAll's "What to Say" Coaches Challenge 3-month follow-up survey. Thank you! https://www.${process.env.API_URL}three-month-survey`, 
+            html:  `<a href="https://www.${process.env.API_URL}three-month-survey">https://www.${process.env.API_URL}three-month-survey</a>`
         };
         sgMail.send(msg);
     }
@@ -298,7 +301,7 @@ function sendText(user, week) {
     //if the user is less than or equal to 5 weeks, they receive the weekly challenge info based on their role, the week, and their age group
     if (week <= 5) {
         client.messages.create({
-            body: `Hi ${user.username}! Welcome to week ${week} of the challenge! Here is the link to this weeks info: ${process.env.API_URL}/${user.role}/${week}/${user.S1_focus_ages}`,
+            body: `Hi ${user.username}! Welcome to week ${week} of the challenge! Here is the link to this weeks info: https://www.${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}`,
             from: '+16512731912',
             to: user.phone_number
         }).then(message => console.log(message.status))
@@ -306,7 +309,7 @@ function sendText(user, week) {
         //if the user is 6 weeks old, they receive the post program survey link
     } else if (week === 6) {
         client.messages.create({
-            body: `Hi ${user.username}! Thank you for completing WithAll's "What to Say" Coaches Challenge. Please take 2-5 minutes to complete the post-challenge survey: ${process.env.API_URL}/postsurvey1`,
+            body: `Hi ${user.username}! Thank you for completing WithAll's "What to Say" Coaches Challenge. Please take 2-5 minutes to complete the post-challenge survey: https://www.${process.env.API_URL}postsurvey1`,
             from: '+16512731912',
             to: user.phone_number
         }).then(message => console.log(message.status))
@@ -314,7 +317,7 @@ function sendText(user, week) {
         //if the user is 3 months old, they receive the three month survey
     } else if (week === 7) {
         client.messages.create({
-            body: `Hi ${user.username}! Please take 2-5 minutes to complete WithAll's "What to Say" Coaches Challenge 3-month follow-up survey. Thank you! : ${process.env.API_URL}/three-month-survey`,
+            body: `Hi ${user.username}! Please take 2-5 minutes to complete WithAll's "What to Say" Coaches Challenge 3-month follow-up survey. Thank you! : https://www.${process.env.API_URL}three-month-survey`,
             from: '+16512731912',
             to: user.phone_number
         }).then(message => console.log(message.status))

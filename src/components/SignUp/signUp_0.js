@@ -33,9 +33,9 @@ class signUp_0 extends Component {
             Ready to dive in? Please start by filling out this brief survey below
             so we can get to know you better and distribute the Challenge that aligns with the age group you coach.<br /><br />
             After you complete the 5-week Challenge, you will also receive a post-challenge survey & 3-month follow-up survey.
-            Your feedback is extremely valuable and will help shape the future of What to Say and the Coaches Challenge.
-            Thank you in advance for time.<br /><br />
-            For questions or to send real-time feedback, please email us at hello@withall.org<br /><br />
+            Your feedback is extremely valuable and will help shape the future of "What to Say" and the Coaches Challenge.
+            Thank you in advance for your time.<br /><br />
+            For questions or to send real-time feedback, please email us at <a href="mailto:hello@withall.org">hello@withall.org</a>.<br /><br />
             We’ve also provided an introductory email below that you can share with your team’s parents so
             they can follow along with the Coaches Challenge and gather helpful tips and tools they can use too.
             Simply copy and paste the below email and send it along!<br /><br />
@@ -59,7 +59,7 @@ class signUp_0 extends Component {
               <br />
               If you have questions about the Coaches Challenge, you can ask me or you can contact WithAll directly at <a href="mailto:hello@withall.org">hello@withall.org</a>.<br />
               <br />
-              <span>Copyright 2019 © by WithAll<br />
+              <span>Copyright 2020 © by WithAll<br />
               All rights reserved, including the right of reproduction in whole or in part in any form</span>
            </i>
           </p>
