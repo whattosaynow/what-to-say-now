@@ -223,7 +223,7 @@ function sendEmail(user, week) {
             subject: `WithAll's "What to Say" Coaches Challenge - Week ${week}`,
             text: `Hi ${user.first_name}. 
             
-            Welcome to Week ${week} of WithAll's What to SayCoach's Challenge! Here is the link to this week’s info: https://www.${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}
+            Welcome to Week ${week} of WithAll's What to SayCoach's Challenge! Here is the link to this week’s info: https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}
             
             If you have questions or feedback as you go along, pleasecontact WithAll at hello@withall.org Thank you for actively working to support children's mental andphysical health! 
             
@@ -232,7 +232,7 @@ function sendEmail(user, week) {
             html:  `
             Hi ${user.first_name}. 
             <br /><br />
-            Welcome to Week ${week} of WithAll's What to SayCoach's Challenge! Here is the link to this week’s info: <a href="https://www.${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}">https://www.${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}</a>
+            Welcome to Week ${week} of WithAll's What to SayCoach's Challenge! Here is the link to this week’s info: <a href="https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}">https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}</a>
             <br /><br />
             If you have questions or feedback as you go along, pleasecontact WithAll at <a href="mailto:hello@withall.org">hello@withall.org</a> Thank you for actively working to support children's mental andphysical health! 
             <br /><br />
@@ -249,7 +249,7 @@ function sendEmail(user, week) {
             subject: `WithAll's "What to Say" Coaches Challenge - post-survey`,
             text: `Hi ${user.first_name}! 
             
-            Thank you for participating in WithAll's What to Say Coach'sChallenge! Please take 2-5 minutes to complete the post-survey https://www.${process.env.API_URL}postsurvey1 
+            Thank you for participating in WithAll's What to Say Coach'sChallenge! Please take 2-5 minutes to complete the post-survey https://${process.env.API_URL}postsurvey1 
 
             Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for time and for actively working tosupport children's mental and physical health! 
             
@@ -257,7 +257,7 @@ function sendEmail(user, week) {
             `, 
             html:  `Hi ${user.first_name}! 
             <br /><br />
-            Thank you for participating in WithAll's What to Say Coach'sChallenge! Please take 2-5 minutes to complete the post-survey <a href="https://www.${process.env.API_URL}postsurvey1">https://www.${process.env.API_URL}postsurvey1</a>
+            Thank you for participating in WithAll's What to Say Coach'sChallenge! Please take 2-5 minutes to complete the post-survey <a href="https://${process.env.API_URL}postsurvey1">https://${process.env.API_URL}postsurvey1</a>
 <br /><br />
             Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for time and for actively working tosupport children's mental and physical health! 
             <br /><br />
@@ -274,7 +274,7 @@ function sendEmail(user, week) {
             subject: `WithAll's "What to Say" Coaches Challenge - 3-month follow-up survey`,
             text: `Hi ${user.first_name}! 
             
-            Thank you for participating in WithAll's What to Say Coach'sChallenge! Please take 2-5 minutes to complete the 3-month follow-up survey https://www.${process.env.API_URL}three-month-survey 
+            Thank you for participating in WithAll's What to Say Coach'sChallenge! Please take 2-5 minutes to complete the 3-month follow-up survey https://${process.env.API_URL}three-month-survey 
             
             Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for time and for actively working tosupport children's mental and physical health! 
             
@@ -282,7 +282,7 @@ function sendEmail(user, week) {
             `, 
             html:  `Hi ${user.first_name}! 
             <br /><br />
-            Thank you for participating in WithAll's What to Say Coach'sChallenge! Please take 2-5 minutes to complete the 3-month follow-up survey <a href="https://www.${process.env.API_URL}three-month-survey">https://www.${process.env.API_URL}three-month-survey</a>
+            Thank you for participating in WithAll's What to Say Coach'sChallenge! Please take 2-5 minutes to complete the 3-month follow-up survey <a href="https://${process.env.API_URL}three-month-survey">https://${process.env.API_URL}three-month-survey</a>
             <br /><br />
             Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for time and for actively working tosupport children's mental and physical health! 
             <br /><br />
@@ -347,7 +347,7 @@ function sendText(user, week) {
         client.messages.create({
             body: `Hi ${user.first_name}. 
             
-            Welcome to Week ${week} of WithAll's What to SayCoach's Challenge! Here is the link to this week’s info: https://www.${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}
+            Welcome to Week ${week} of WithAll's What to SayCoach's Challenge! Here is the link to this week’s info: https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}
             
             If you have questions or feedback as you go along, pleasecontact WithAll at hello@withall.org Thank you for actively working to support children's mental andphysical health! 
             
@@ -361,7 +361,7 @@ function sendText(user, week) {
         client.messages.create({
             body: `Hi ${user.first_name}! 
             
-            Thank you for participating in WithAll's What to Say Coach'sChallenge! Please take 2-5 minutes to complete the post-survey https://www.${process.env.API_URL}postsurvey1 
+            Thank you for participating in WithAll's What to Say Coach'sChallenge! Please take 2-5 minutes to complete the post-survey https://${process.env.API_URL}postsurvey1 
 
             Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for time and for actively working tosupport children's mental and physical health! 
             
@@ -375,7 +375,7 @@ function sendText(user, week) {
         client.messages.create({
             body: `Hi ${user.first_name}! 
             
-            Thank you for participating in WithAll's What to Say Coach'sChallenge! Please take 2-5 minutes to complete the 3-month follow-up survey https://www.${process.env.API_URL}three-month-survey 
+            Thank you for participating in WithAll's What to Say Coach'sChallenge! Please take 2-5 minutes to complete the 3-month follow-up survey https://${process.env.API_URL}three-month-survey 
             
             Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for time and for actively working tosupport children's mental and physical health! 
             
