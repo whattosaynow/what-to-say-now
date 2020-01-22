@@ -15,6 +15,7 @@ class signUp_4 extends Component {
     parent_or_guardian: this.props.reduxState.answersReducer.signupReducer.parent_or_guardian || false,
     healthcare_professional: this.props.reduxState.answersReducer.signupReducer.healthcare_professional || false,
     teacher: this.props.reduxState.answersReducer.signupReducer.teacher || false,
+    none_above: this.props.reduxState.answersReducer.signupReducer.none_above || false,
     sports_org: this.props.reduxState.answersReducer.signupReducer.sports_org || '',
   }
 
@@ -48,6 +49,7 @@ class signUp_4 extends Component {
     let survey = this.state
     if (
       survey.focus_ages.trim() === '' ||
+      (survey.parent_or_guardian === false && survey.healthcare_professional === false && survey.teacher === false && survey.none_above === false) ||
       survey.sports_org.trim() === ''
     ) {
       alert("Please Answer All Questions")
@@ -77,6 +79,7 @@ class signUp_4 extends Component {
           <Input onChange={this.handleCheckBox('parent_or_guardian')} type="checkbox" checked={!!this.state.parent_or_guardian} className="semantic-radio" name="q2" value={true} />I’m a parent or guardian of a child between 0 and 18 years old<br />
           <Input onChange={this.handleCheckBox('healthcare_professional')} type="checkbox" checked={!!this.state.healthcare_professional} className="semantic-radio" name="q2" value={true} />I’m health care professional<br />
           <Input onChange={this.handleCheckBox('teacher')} type="checkbox" checked={!!this.state.teacher} className="semantic-radio" name="q2" value={true} />I’m a teacher in early education, elementary school, middle school, or high school<br />
+          <Input onChange={this.handleCheckBox('none_above')} type="checkbox" checked={!!this.state.none_above} className="semantic-radio" name="q2" value={true} />None of the above<br />
           <br />
 
           <span className="survey-questions">9. What youth sports organizations are you or your team affiliated with?</span> <br />

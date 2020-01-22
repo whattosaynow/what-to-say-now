@@ -50,13 +50,14 @@ router.post("/signup", (req, res) => {
                             "S1_focus_ages",
                             "S1_parent_or_guardian",
                             "S1_healthcare_professional",
+                            "S1_non_above",
                             "S1_teacher",
                             "S1_sports_org",
                             "S1_how_did_you_find_us",
                             "S1_how_did_you_find_us_referral",
                             "S1_why_are_you_participating",
                             "S1_why_are_you_participating_other")
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29);
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30);
         `,
     [req.body.first_name,
     req.body.last_name,
@@ -81,6 +82,7 @@ router.post("/signup", (req, res) => {
     req.body.focus_ages,
     req.body.parent_or_guardian,
     req.body.healthcare_professional,
+    req.body.non_above,
     req.body.teacher,
     req.body.sports_org,
     req.body.how_did_you_find_us,
