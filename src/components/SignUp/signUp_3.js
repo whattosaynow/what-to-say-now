@@ -15,6 +15,7 @@ class signUp_3 extends Component {
     genders_of_athletes_female: this.props.reduxState.answersReducer.signupReducer.genders_of_athletes_female || false,
     genders_of_athletes_male: this.props.reduxState.answersReducer.signupReducer.genders_of_athletes_male || false,
     genders_of_athletes_non_binary: this.props.reduxState.answersReducer.signupReducer.genders_of_athletes_non_binary || false,
+    genders_of_athletes_not_coach: this.props.reduxState.answersReducer.signupReducer.genders_of_athletes_not_coach || false,
     number_of_athletes: this.props.reduxState.answersReducer.signupReducer.number_of_athletes || '',
   }
 
@@ -50,7 +51,7 @@ class signUp_3 extends Component {
       survey.years_coaching.trim() === '' ||
       survey.number_of_athletes.trim() === '' ||
       (
-        survey.genders_of_athletes_female === false && survey.genders_of_athletes_male === false && survey.genders_of_athletes_non_binary === false
+        survey.genders_of_athletes_female === false && survey.genders_of_athletes_male === false && survey.genders_of_athletes_non_binary === false && survey.genders_of_athletes_not_coach === false
       )
     ) {
       alert("Please Answer All Questions")
@@ -74,20 +75,24 @@ class signUp_3 extends Component {
           <Input onChange={this.handleChange('years_coaching')} type="radio" className="semantic-radio" checked={this.state.years_coaching === '6-10 years'} name="q1" value="6-10 years" />6-10 years<br />
           <Input onChange={this.handleChange('years_coaching')} type="radio" className="semantic-radio" checked={this.state.years_coaching === '11-20 years'} name="q1" value="11-20 years" />11-20 years<br />
           <Input onChange={this.handleChange('years_coaching')} type="radio" className="semantic-radio" checked={this.state.years_coaching === 'More than 21 years'} name="q1" value="More than 21 years" />More than 21 years<br />
+          <Input onChange={this.handleChange('years_coaching')} type="radio" className="semantic-radio" checked={this.state.years_coaching === `I'm not a coach`} name="q1" value="I'm not a coach" />I'm not a coach<br />
           <br />
           <span className="survey-questions">5. Genders of the athletes you coach:</span> <br />
           <label>select all that apply</label><br />
           <Input onChange={this.handleCheckBox('genders_of_athletes_female')} type="checkbox" checked={!!this.state.genders_of_athletes_female} className="semantic-radio" name="q2" value={true} />Female<br />
           <Input onChange={this.handleCheckBox('genders_of_athletes_male')} type="checkbox" checked={!!this.state.genders_of_athletes_male} className="semantic-radio" name="q2" value={true} />Male<br />
           <Input onChange={this.handleCheckBox('genders_of_athletes_non_binary')} type="checkbox" checked={!!this.state.genders_of_athletes_non_binary} className="semantic-radio" name="q2" value={true} />Non-binary<br />
+          <Input onChange={this.handleCheckBox('genders_of_athletes_not_coach')} type="checkbox" checked={!!this.state.genders_of_athletes_not_coach} className="semantic-radio" name="q2" value={true} />I'm not a coach<br />
           <br />
           <span className="survey-questions">6. Number of athletes on the team you coach?</span><br />
           <label>choose one</label><br />
-          <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" checked={this.state.number_of_athletes === '5-10' } name="q3" value="5-10" />5-10<br />
-          <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" checked={this.state.number_of_athletes === '11-15' } name="q3" value="11-15" />11-15<br />
-          <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" checked={this.state.number_of_athletes === '16-20' } name="q3" value="16-20" />16-20<br />
-          <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" checked={this.state.number_of_athletes === '21-25' } name="q3" value="21-25" />21-25<br />
-          <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" checked={this.state.number_of_athletes === 'More than 25' } name="q3" value="More than 25" />More than 25<br />
+          <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" checked={this.state.number_of_athletes === '5-10'} name="q3" value="5-10" />5-10<br />
+          <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" checked={this.state.number_of_athletes === '11-15'} name="q3" value="11-15" />11-15<br />
+          <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" checked={this.state.number_of_athletes === '16-20'} name="q3" value="16-20" />16-20<br />
+          <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" checked={this.state.number_of_athletes === '21-25'} name="q3" value="21-25" />21-25<br />
+          <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" checked={this.state.number_of_athletes === 'More than 25'} name="q3" value="More than 25" />More than 25<br />
+          <Input onChange={this.handleChange('number_of_athletes')} type="radio" className="semantic-radio" checked={this.state.number_of_athletes === `I'm not a coach`} name="q3" value="I'm not a coach" />I'm not a coach<br />
+          <br />
           <br />
         </div>
         <br />
