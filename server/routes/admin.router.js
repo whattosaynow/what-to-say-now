@@ -125,11 +125,11 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     })
 });
 
-// cron.schedule('*/30 * * * *', () => {
-//     automatedContact(); //this function will run every sunday at 6:00pm
-// }, {
-//     timezone: "America/Chicago"
-// })
+cron.schedule('*/30 * * * *', () => {
+    automatedContact(); //this function will run every sunday at 6:00pm
+}, {
+    timezone: "America/Chicago"
+})
 
 //this functions does a pool query to the database to select all users
 //then with the response, forEach user it will run the receive challenge function
