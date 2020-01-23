@@ -52,6 +52,7 @@ class signUp_2 extends Component {
           <br />
 
           <div className="signup-questions"><br />
+          
             <span className="survey-questions">1. Choose to receive the Challenges via email, text, or both:</span><br />
             <label>choose one</label><br />
             <Input

@@ -90,12 +90,13 @@ class signUp_4 extends Component {
             className="semantic-radio"
             checked={this.state.focus_ages === '3'}
             name="q1"
-            value="3" />High school youth (14-18 years old)<br />
-          <i><label>*We realize some of you may coachmultiple age groups or may not be a coach, however, the Coaches Challenge is setup to focus on one age group at a time so please choose one age group.
-            If you’dlike to focus on different age group in the future, please take the Challengeagain..</label></i><br />
+            value="3" />High school youth (13-18 years old)<br />
+          <i><label>*We realize some of you may coach multiple age groups or may not be a coach, however,
+            the Coaches Challenge is setup to focus on one age group at a time, so please choose one age group.
+            If you’d like to focus on a different age group in the future, please take the Challengeagain.</label></i><br />
           <br />
 
-          <span className="survey-questions">8. Your answer to thisquestion informs WithAll for future programming. Select all that apply:</span> <br />
+          <span className="survey-questions">8. Your answer to this question informs WithAll for future programming. Select all that apply:</span> <br />
           <Input
             onChange={this.handleCheckBox('parent_or_guardian')}
             type="checkbox"
