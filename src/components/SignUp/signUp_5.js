@@ -93,7 +93,7 @@ class signUp_5 extends Component {
           { this.state.how_did_you_find_us === 'Other' &&
             <>
               <label>If other, please tell us more:</label> <br />
-              <textarea className="semantic-radio" onChange={this.handleChange('how_did_you_find_us_other')} value={this.state.how_did_you_find_us_referral} rows="4" cols="50"></textarea>
+              <textarea className="semantic-radio" onChange={this.handleChange('how_did_you_find_us_other')} value={this.state.how_did_you_find_us_other} rows="4" cols="50"></textarea>
               <br />
             </>
           }
