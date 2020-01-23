@@ -16,7 +16,8 @@ class signUp_5 extends Component {
     why_are_you_participating: this.props.reduxState.answersReducer.signupReducer.why_are_you_participating || '',
     why_are_you_participating_other: this.props.reduxState.answersReducer.signupReducer.why_are_you_participating_other || '',
     how_did_you_find_us: this.props.reduxState.answersReducer.signupReducer.how_did_you_find_us || '',
-    how_did_you_find_us_referral: this.props.reduxState.answersReducer.signupReducer.how_did_you_find_us_referral || ''
+    how_did_you_find_us_referral: this.props.reduxState.answersReducer.signupReducer.how_did_you_find_us_referral || '',
+    how_did_you_find_us_other: this.props.reduxState.answersReducer.signupReducer.how_did_you_find_us_other || ''
   }
 
 
@@ -67,7 +68,7 @@ class signUp_5 extends Component {
         <Header width={'100%'} /><br />
         <center><h2>Personal Information Continued</h2></center><br />
         <div className="signup-questions"><br />
-          <span className="survey-questions">9. How did you find us?</span><br />
+          <span className="survey-questions">10. How did you find us?</span><br />
           <label>choose one</label><br />
           <select className="semantic-radio" onChange={this.handleChange('how_did_you_find_us')} value={this.state.how_did_you_find_us} >
             <option>--choose one--</option>
@@ -80,16 +81,24 @@ class signUp_5 extends Component {
             <option value="Social Media">Social Media</option>
             <option value="Mail">Mail</option>
             <option value="Referral">Referral</option>
+            <option value="Other">Other</option>
           </select><br />
-          {this.state.how_did_you_find_us === 'Referral' &&
+          { this.state.how_did_you_find_us === 'Referral' &&
             <>
               <label>If referral, please let us know who:</label> <br />
               <textarea className="semantic-radio" onChange={this.handleChange('how_did_you_find_us_referral')} value={this.state.how_did_you_find_us_referral} rows="4" cols="50"></textarea>
               <br />
             </>
           }
+          { this.state.how_did_you_find_us === 'Other' &&
+            <>
+              <label>If other, please tell us more:</label> <br />
+              <textarea className="semantic-radio" onChange={this.handleChange('how_did_you_find_us_other')} value={this.state.how_did_you_find_us_referral} rows="4" cols="50"></textarea>
+              <br />
+            </>
+          }
           <br />
-          <span className="survey-questions">10. Why are you particpating in the "What to say" Coaches Challenge?</span><br />
+          <span className="survey-questions">11. Why are you particpating in the "What to say" Coaches Challenge?</span><br />
           <label>choose one</label><br />
           <Input
             onChange={this.handleChange('why_are_you_participating')}

@@ -47,9 +47,10 @@ router.post("/signup", (req, res) => {
                             "S1_sports_org",
                             "S1_how_did_you_find_us",
                             "S1_how_did_you_find_us_referral",
+                            "S1_how_did_you_find_us_other",
                             "S1_why_are_you_participating",
                             "S1_why_are_you_participating_other")
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30);
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31);
         `,
     [req.body.first_name,
     req.body.last_name,
@@ -79,6 +80,7 @@ router.post("/signup", (req, res) => {
     req.body.sports_org,
     req.body.how_did_you_find_us,
     req.body.how_did_you_find_us_referral,
+    req.body.how_did_you_find_us_other,
     req.body.why_are_you_participating,
     req.body.why_are_you_participating_other,
 
