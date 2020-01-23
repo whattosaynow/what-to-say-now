@@ -223,22 +223,23 @@ function sendEmail(user, week) {
             to: user.email,
             from: 'WhatToSayNowChallenge@gmail.com',
             subject: `WithAll's "What to Say" Coaches Challenge - Week ${week}`,
-            text: `Hi ${user.first_name}. 
-            
-            Welcome to Week ${week} of WithAll's What to SayCoach's Challenge! Here is the link to this week’s info: https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}
-            
-            If you have questions or feedback as you go along, pleasecontact WithAll at hello@withall.org Thank you for actively working to support children's mental andphysical health! 
-            
-            - The WithAll Team
+            text: `
+Hi ${user.first_name}. 
+
+Welcome to Week ${week} of WithAll's "What to Say" Coach's Challenge! Here is the link to this week’s info: https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}
+
+If you have questions or feedback as you go along, please contact WithAll at hello@withall.org Thank you for actively working to support children's mental and physical health! 
+
+- The WithAll Team
             `, 
             html:  `
-            Hi ${user.first_name}. 
-            <br /><br />
-            Welcome to Week ${week} of WithAll's What to SayCoach's Challenge! Here is the link to this week’s info: <a href="https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}">https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}</a>
-            <br /><br />
-            If you have questions or feedback as you go along, pleasecontact WithAll at <a href="mailto:hello@withall.org">hello@withall.org</a> Thank you for actively working to support children's mental andphysical health! 
-            <br /><br />
-            - The WithAll Team
+Hi ${user.first_name}. 
+<br /><br />
+Welcome to Week ${week} of WithAll's What to SayCoach's Challenge! Here is the link to this week’s info: <a href="https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}">https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}</a>
+<br /><br />
+If you have questions or feedback as you go along, please contact WithAll at <a href="mailto:hello@withall.org">hello@withall.org</a> Thank you for actively working to support children's mental and physical health! 
+<br /><br />
+- The WithAll Team
             `
         };
         sgMail.send(msg);
