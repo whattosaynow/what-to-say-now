@@ -70,10 +70,27 @@ pre {
 }
 
 /* mobile only settings */
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 565px) {
     .content-header {
-        margin-top: 46px;
-        margin-bottom: 46px;
+        padding-top: 50px;
+        padding-bottom: 46px;
+    }
+    .welcomeDiv, .postDiv {
+        margin-left: 7px;
+        margin-right: 7px;
+    }
+    .user-page{
+        margin-top: 100px;
+    }
+    #intro {
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width: 365px) {
+    .content-header {
+        padding-top: 100px;
+        padding-bottom: 46px;
     }
     .welcomeDiv, .postDiv {
         margin-left: 7px;

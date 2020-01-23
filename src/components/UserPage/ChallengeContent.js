@@ -55,10 +55,10 @@ class ChallengeContent extends Component {
   render() {
     return (
 
-      <div>
+      <div className="challenge-div">
 
         <header style={name} className="content-header">
-          Hello, {this.props.reduxState.user.first_name}!
+          <p>Hello, {this.props.reduxState.user.first_name}!</p>
         </header>
 
         <main>
