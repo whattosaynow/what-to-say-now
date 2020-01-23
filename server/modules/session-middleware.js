@@ -29,6 +29,6 @@ module.exports = cookieSession({
   key: 'user', // this is the name of the req.variable. 'user' is convention, but not required
   resave: 'false',
   saveUninitialized: false,
-  maxAge: 60 * 60 * 1000, // Set to 1 hour - 60 min/hour * 60 s/min * 1000 ms/s
+  maxAge: 14 * 7 * 24 * 60 * 60 * 1000, // Set to 14 weeks - the length of the program - 14weeks/program 7day/week 24hr/day 60 min/hour * 60 s/min * 1000 ms/s
   secure: false
 });

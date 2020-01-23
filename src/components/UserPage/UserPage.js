@@ -40,11 +40,8 @@ class UserPage extends Component {
                 this.props.reduxState.user.content_permission === 0 ?
                   <div className="week-zero">
                     <p>
-                      Thank you for signing up! <br />
-                      Week one content will be posted Sunday at 6:00pm!<br />
-                      <br />
-                      Thanks!
-                </p>
+                      Thank you for signing up! Week one content will be posted Sunday at 6:00pm.<br />
+                    </p>
                   </div>
                   :
                   <>

@@ -16,14 +16,6 @@ const sgMail = require('@sendgrid/mail');
 
 //router for posting Sign Up Survey answers
 router.post("/signup", (req, res) => {
-  if (req.body.choose_receive === "email") {
-    welcomeEmail(req.body)
-  } else if (req.body.choose_receive === "text") {
-    welcomeText(req.body)
-  } else if (req.body.choose_receive === "both") {
-    welcomeEmail(req.body)
-    welcomeText(req.body)
-  }
   const password = encryptLib.encryptPassword(req.body.password);
   pool.query(`
         INSERT INTO "user" (
@@ -55,9 +47,10 @@ router.post("/signup", (req, res) => {
                             "S1_sports_org",
                             "S1_how_did_you_find_us",
                             "S1_how_did_you_find_us_referral",
+                            "S1_how_did_you_find_us_other",
                             "S1_why_are_you_participating",
                             "S1_why_are_you_participating_other")
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30);
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31);
         `,
     [req.body.first_name,
     req.body.last_name,
@@ -87,11 +80,20 @@ router.post("/signup", (req, res) => {
     req.body.sports_org,
     req.body.how_did_you_find_us,
     req.body.how_did_you_find_us_referral,
+    req.body.how_did_you_find_us_other,
     req.body.why_are_you_participating,
     req.body.why_are_you_participating_other,
 
     ]).then((result) => {
       res.sendStatus(201)
+      if (req.body.choose_receive === "email") {
+        welcomeEmail(req.body)
+      } else if (req.body.choose_receive === "text") {
+        welcomeText(req.body)
+      } else if (req.body.choose_receive === "both") {
+        welcomeEmail(req.body)
+        welcomeText(req.body)
+      }
     })
     .catch((error) => {
       console.log('error with INSERT INTO, error:', error)
@@ -105,12 +107,13 @@ function welcomeEmail(user) {
     to: user.email,
     from: 'WhatToSayNowChallenge@gmail.com',
     subject: 'Welcome!',
-    text: `Thank you for signing up for WithAll’s “What to Say” Coaches Challenge. You will receive your first Challenge on Sunday at 6 PM CST.
+    text: `
+Thank you for signing up for WithAll’s “What to Say” Coaches Challenge. You will receive your first Challenge on Sunday at 6 PM CST.
 
-    Sincerely,
-    
-    The WithAll Team
-    `
+Sincerely,
+
+The WithAll Team
+  `
   };
   sgMail.send(msg);
 
@@ -118,11 +121,12 @@ function welcomeEmail(user) {
 
 function welcomeText(user) {
   client.messages.create({
-    body: `Thank you for signing up for WithAll’s “What to Say” Coaches Challenge. You will receive your first Challenge on Sunday at 6 PM CST.
+    body: `
+Thank you for signing up for WithAll’s “What to Say” Coaches Challenge. You will receive your first Challenge on Sunday at 6 PM CST.
 
-    Sincerely,
+Sincerely,
     
-    The WithAll Team`,
+The WithAll Team`,
     from: '+16512731912',
     to: user.phone_number
   }).then(message => console.log(message.status))

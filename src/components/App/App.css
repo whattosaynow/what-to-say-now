@@ -57,7 +57,7 @@ input {
 
 /* mobile only settings for login page */
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 420px) {
     .loginWrapper {
         display: flex;
         flex-direction: column;

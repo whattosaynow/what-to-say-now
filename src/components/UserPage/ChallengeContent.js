@@ -55,10 +55,10 @@ class ChallengeContent extends Component {
   render() {
     return (
 
-      <div>
+      <div className="challenge-div">
 
         <header style={name} className="content-header">
-          Hello, {this.props.reduxState.user.first_name}!
+          <p>Hello, {this.props.reduxState.user.first_name}!</p>
         </header>
 
         <main>
@@ -71,8 +71,8 @@ class ChallengeContent extends Component {
                 <div style={welcomeDiv} className='welcomeDiv'>
                   <h2 className='welcomeWeek'>Welcome to Week
                   <span className='weekNumber'> {info.week} </span>
-                    of the "What to Say" Coaches Challenge!</h2>
-                  <p id='intro'>{info.intro}</p>
+                    of WithAll's "What to Say" Coaches Challenge!</h2>
+                  <pre id='intro'>{info.intro}</pre>
                   <h2>This week's "What to Say" phrase is : </h2>
                   <p id='phrase'> {info.phrase} </p>
                 </div>
@@ -129,7 +129,7 @@ class ChallengeContent extends Component {
                   {this.state.action_steps ?
                     <>
                       <h2 onClick={() => { this.handleDrop('action_steps') }}
-                        style={matter}>Action steps options
+                        style={matter}>Action step options
                           <Icon name='chevron up' />
                       </h2>
                       <div className='backgroundDiv'>
@@ -146,12 +146,12 @@ class ChallengeContent extends Component {
                     </>}
 
                 </div>
-
+                <br />
                 <div className="postDiv">
-                  <h2 style={goodLuck} >Good luck with this challenge!  Email any questions or suggestions to us.</h2>
+                  <h2 style={goodLuck} >Good luck with this challenge! Email us at <a href="mailto:hello@withall.org">hello@withall.org</a> with anyquestions or suggestions.</h2><br />
                   <h2 style={quote}>"A good coach can change a game.  A great coach can change a life."
                     -John Wooden
-                  </h2>
+                  </h2><br />
                 </div>
               </div>
             )

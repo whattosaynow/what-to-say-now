@@ -31,6 +31,7 @@ import Admin from '../Admin/AdminPage';
 import './App.css';
 import ThreeMonthSurvey from '../ThreeMonthSurvey/ThreeMonthSurvey';
 import PasswordReset from '../PasswordReset/PasswordReset';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 class App extends Component {
   componentDidMount() {
@@ -40,6 +41,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <ScrollToTop />
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}

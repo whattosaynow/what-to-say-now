@@ -42,6 +42,7 @@ CREATE TABLE "user" (
 "S1_focus_ages" INT REFERENCES "ageGroup"(id),
 "S1_how_did_you_find_us" VARCHAR,
 "S1_how_did_you_find_us_referral" VARCHAR CONSTANT 'NA',
+"S1_how_did_you_find_us_other" VARCHAR CONSTANT 'NA',
 "S1_why_are_you_participating" VARCHAR,
 "S1_why_are_you_participating_other" VARCHAR CONSTANT 'NA',
 "S2_challenge_completed" VARCHAR,

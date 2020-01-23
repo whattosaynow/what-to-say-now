@@ -68,18 +68,67 @@ class signUp_4 extends Component {
         <div className="signup-questions"><br />
           <span className="survey-questions">7. Age(s) you coach and want to focus on with during the Challenge:</span><br />
           <label>choose one*</label><br />
-          <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" checked={this.state.focus_ages === '1'} name="q1" value="1" />Elementary school youth (6-10 years old) <br />
-          <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" checked={this.state.focus_ages === '2'} name="q1" value="2" />Middle school youth (10-13 years old)<br />
-          <Input onChange={this.handleChange('focus_ages')} type="radio" className="semantic-radio" checked={this.state.focus_ages === '3'} name="q1" value="3" />High school youth (14-18 years old)<br />
-          <i><label>*We realize some of you may coachmultiple age groups or may not be a coach, however, the Coaches Challenge is setup to focus on one age group at a time so please choose one age group. 
-            If you’dlike to focus on different age group in the future, please take the Challengeagain..</label></i><br />
+          <Input
+            onChange={this.handleChange('focus_ages')}
+            type="radio"
+            className="semantic-radio"
+            checked={this.state.focus_ages === '1'}
+            name="q1"
+            value="1" />Elementary school youth (6-10 years old) <br />
+
+          <Input
+            onChange={this.handleChange('focus_ages')}
+            type="radio"
+            className="semantic-radio"
+            checked={this.state.focus_ages === '2'}
+            name="q1"
+            value="2" />Middle school youth (10-13 years old)<br />
+
+          <Input
+            onChange={this.handleChange('focus_ages')}
+            type="radio"
+            className="semantic-radio"
+            checked={this.state.focus_ages === '3'}
+            name="q1"
+            value="3" />High school youth (13-18 years old)<br />
+          <i><label>*We realize some of you may coach multiple age groups or may not be a coach, however,
+            the Coaches Challenge is setup to focus on one age group at a time, so please choose one age group.
+            If you’d like to focus on a different age group in the future, please take the Challengeagain.</label></i><br />
           <br />
 
-          <span className="survey-questions">8. Your answer to thisquestion informs WithAll for future programming. Select all that apply:</span> <br />
-          <Input onChange={this.handleCheckBox('parent_or_guardian')} type="checkbox" checked={!!this.state.parent_or_guardian} className="semantic-radio" name="q2" value={true} />I’m a parent or guardian of a child between 0 and 18 years old<br />
-          <Input onChange={this.handleCheckBox('healthcare_professional')} type="checkbox" checked={!!this.state.healthcare_professional} className="semantic-radio" name="q2" value={true} />I’m health care professional<br />
-          <Input onChange={this.handleCheckBox('teacher')} type="checkbox" checked={!!this.state.teacher} className="semantic-radio" name="q2" value={true} />I’m a teacher in early education, elementary school, middle school, or high school<br />
-          <Input onChange={this.handleCheckBox('none_above')} type="checkbox" checked={!!this.state.none_above} className="semantic-radio" name="q2" value={true} />None of the above<br />
+          <span className="survey-questions">8. Your answer to this question informs WithAll for future programming. Select all that apply:</span> <br />
+          <Input
+            onChange={this.handleCheckBox('parent_or_guardian')}
+            type="checkbox"
+            checked={!!this.state.parent_or_guardian}
+            className="semantic-radio"
+            name="q2"
+            value={true} />I’m a parent or guardian of a child between 0 and 18 years old<br />
+
+          <Input
+            onChange={this.handleCheckBox('healthcare_professional')}
+            type="checkbox"
+            checked={!!this.state.healthcare_professional}
+            className="semantic-radio"
+            name="q2"
+            value={true} />I’m health care professional<br />
+
+          <Input
+            onChange={this.handleCheckBox('teacher')}
+            type="checkbox"
+            checked={!!this.state.teacher}
+            className="semantic-radio"
+            name="q2"
+            value={true} />I’m a teacher in early education, elementary school, middle school, or high school<br />
+
+          <Input
+            onChange={this.handleCheckBox('none_above')}
+            type="checkbox"
+            checked={!!this.state.none_above}
+            className="semantic-radio"
+            name="q2"
+            value={true} />None of the above<br />
+
           <br />
 
           <span className="survey-questions">9. What youth sports organizations are you or your team affiliated with?</span> <br />

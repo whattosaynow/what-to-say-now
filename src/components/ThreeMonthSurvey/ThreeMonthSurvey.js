@@ -70,7 +70,7 @@ class ThreeMonthSurvey extends Component {
           </header>
         </center>
         <div className="questions-wrapper">
-          <p><br />
+          <p id="three-month-p"><br />
             We hope that you are continuing to implement the things you learned in WithAll’s “What to Say” Coaches Challenge.
             Please fill out this very brief survey. Your feedback is extremely valuable and will help shape the future of “What to Say” and the Coaches Challenge.<br />
             <br />
