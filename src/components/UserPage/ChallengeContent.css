@@ -70,7 +70,7 @@ pre {
 }
 
 /* mobile only settings */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 420px) {
     .content-header {
         margin-top: 46px;
         margin-bottom: 46px;
