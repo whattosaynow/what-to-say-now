@@ -75,7 +75,7 @@ class signUp_2 extends Component {
               value='text'
               id='text'
               >
-            </Input>Text<br />
+            </Input><label for="text">Text</label><br />
 
             <Input
               onChange={this.handleChangeFor('choose_receive')}
@@ -86,7 +86,7 @@ class signUp_2 extends Component {
               value='both'
               id='both'
               >
-            </Input>Both<br />
+            </Input><label for="both">Both</label><br />
             <label className="question-label">You will receive links to Challenges on Sundays at 6:00pm CST</label><br /><br />
 
             <span className="survey-questions">2. Your gender:</span><br />
@@ -100,7 +100,7 @@ class signUp_2 extends Component {
               value='female'
               id='female'
               >
-            </Input>Female<br />
+            </Input><label for="female">Female</label><br />
 
             <Input
               onChange={this.handleChangeFor('your_gender')}
@@ -111,7 +111,7 @@ class signUp_2 extends Component {
               value='male'
               id='male'
               >
-            </Input>Male<br />
+            </Input><label for="male">Male</label><br />
 
             <Input
               onChange={this.handleChangeFor('your_gender')}
@@ -122,7 +122,7 @@ class signUp_2 extends Component {
               value='non-binary'
               id='non-binary'
               >
-            </Input>Non-binary<br /><br />
+            </Input><label for="non-binary">Non-binary</label><br /><br />
 
             <span className="survey-questions">3. Your age:</span><br />
             <label className="question-label">choose one</label><br />
@@ -130,12 +130,12 @@ class signUp_2 extends Component {
               onChange={this.handleChangeFor('your_age')}
               type='radio'
               className="semantic-radio"
-              checked={this.state.your_age === '21-36 years old'}
+              checked={this.state.your_age === '21-35 years old'}
               name='age'
-              value='21-36 years old'
-              id='21-36 years old'
+              value='21-35 years old'
+              id='21-35 years old'
               >
-            </Input>21-35 years old<br />
+            </Input><label for="21-35 years old">21-35 years old</label><br />
 
             <Input
               onChange={this.handleChangeFor('your_age')}
@@ -146,7 +146,7 @@ class signUp_2 extends Component {
               value='36-51 years old'
               id='36-51 years old'
               >
-            </Input>36-51 years old<br />
+            </Input><label for="36-51 years old">36-51 years old</label><br />
 
             <Input
               onChange={this.handleChangeFor('your_age')}
@@ -157,7 +157,7 @@ class signUp_2 extends Component {
               value='52+ years old'
               id='52+ years old'
               >
-            </Input>52+ years old<br />
+            </Input><label for="52+ years old">52+ years old</label><br />
 
             <br />
           </div>
