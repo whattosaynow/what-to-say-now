@@ -53,7 +53,7 @@ class PostSurvey_1 extends Component {
           <span className="survey-questions">
             1. How much of the Challenge did you complete?
         </span><br />
-          <label>choose one</label>
+          <label className="question-label">choose one</label>
           <br />
           <Input
             onChange={this.handleChangeFor("challenge_completed")}
@@ -88,7 +88,7 @@ class PostSurvey_1 extends Component {
           <span className="survey-questions">
             2. Participating in the Challenge was easy to do.
         </span><br />
-          <label>choose one</label>
+          <label className="question-label">choose one</label>
           <br />
           <Input
             onChange={this.handleChangeFor("participating_was_easy")}
@@ -123,7 +123,7 @@ class PostSurvey_1 extends Component {
           <span className="survey-questions">
             3. I learned something new from participating in the Challenge.
         </span><br />
-          <label>choose one</label>
+          <label className="question-label">choose one</label>
           <br />
           <Input
             onChange={this.handleChangeFor("learned_something_new")}
@@ -137,7 +137,7 @@ class PostSurvey_1 extends Component {
         {this.state.learned_something_new === 'Agree' &&
             <>
               <br />
-              <label>What did you learn?</label><br />
+              <label className="question-label">What did you learn?</label><br />
               <Input
                 name="what_learned"
                 className="semantic-radio"
@@ -171,7 +171,7 @@ class PostSurvey_1 extends Component {
           <span className="survey-questions">
             4. I would encourage another coach I know to do the Challenge.
         </span><br />
-          <label>choose one</label>
+          <label className="question-label">choose one</label>
           <br />
           <Input
             onChange={this.handleChangeFor("would_encourage")}

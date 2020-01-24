@@ -30,7 +30,7 @@
     background-color: #FAF0E8;
 }
 
-label {
+.question-label {
     margin-left: 10%;
     font-size: 10px;
     font-weight: bold;

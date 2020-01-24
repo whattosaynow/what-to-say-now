@@ -54,15 +54,17 @@ class signUp_2 extends Component {
           <div className="signup-questions"><br />
           
             <span className="survey-questions">1. Choose to receive the Challenges via email, text, or both:</span><br />
-            <label>choose one</label><br />
+            <label className="question-label">choose one</label><br />
             <Input
               onChange={this.handleChangeFor('choose_receive')}
               type='radio'
               className="semantic-radio"
               checked={this.state.choose_receive === 'email'}
               name='receive'
-              value='email'>
-            </Input>Email<br />
+              value='email'
+              id='email'
+              >
+            </Input><label for="email">Email</label><br />
 
             <Input
               onChange={this.handleChangeFor('choose_receive')}
@@ -70,7 +72,9 @@ class signUp_2 extends Component {
               className="semantic-radio"
               checked={this.state.choose_receive === 'text'}
               name='receive'
-              value='text'>
+              value='text'
+              id='text'
+              >
             </Input>Text<br />
 
             <Input
@@ -79,19 +83,23 @@ class signUp_2 extends Component {
               className="semantic-radio"
               checked={this.state.choose_receive === 'both'}
               name='receive'
-              value='both'>
+              value='both'
+              id='both'
+              >
             </Input>Both<br />
-            <label>You will receive links to Challenges on Sundays at 6:00pm CST</label><br /><br />
+            <label className="question-label">You will receive links to Challenges on Sundays at 6:00pm CST</label><br /><br />
 
             <span className="survey-questions">2. Your gender:</span><br />
-            <label>choose one</label><br />
+            <label className="question-label">choose one</label><br />
             <Input
               onChange={this.handleChangeFor('your_gender')}
               type='radio'
               className="semantic-radio"
               checked={this.state.your_gender === 'female'}
               name='gender'
-              value='female'>
+              value='female'
+              id='female'
+              >
             </Input>Female<br />
 
             <Input
@@ -100,7 +108,9 @@ class signUp_2 extends Component {
               className="semantic-radio"
               checked={this.state.your_gender === 'male'}
               name='gender'
-              value='male'>
+              value='male'
+              id='male'
+              >
             </Input>Male<br />
 
             <Input
@@ -109,18 +119,22 @@ class signUp_2 extends Component {
               className="semantic-radio"
               checked={this.state.your_gender === 'non-binary'}
               name='gender'
-              value='non-binary'>
+              value='non-binary'
+              id='non-binary'
+              >
             </Input>Non-binary<br /><br />
 
             <span className="survey-questions">3. Your age:</span><br />
-            <label>choose one</label><br />
+            <label className="question-label">choose one</label><br />
             <Input
               onChange={this.handleChangeFor('your_age')}
               type='radio'
               className="semantic-radio"
               checked={this.state.your_age === '21-36 years old'}
               name='age'
-              value='21-36 years old'>
+              value='21-36 years old'
+              id='21-36 years old'
+              >
             </Input>21-35 years old<br />
 
             <Input
@@ -129,7 +143,9 @@ class signUp_2 extends Component {
               className="semantic-radio"
               checked={this.state.your_age === '36-51 years old'}
               name='age'
-              value='36-51 years old'>
+              value='36-51 years old'
+              id='36-51 years old'
+              >
             </Input>36-51 years old<br />
 
             <Input
@@ -138,7 +154,9 @@ class signUp_2 extends Component {
               className="semantic-radio"
               checked={this.state.your_age === '52+ years old'}
               name='age'
-              value='52+ years old'>
+              value='52+ years old'
+              id='52+ years old'
+              >
             </Input>52+ years old<br />
 
             <br />
