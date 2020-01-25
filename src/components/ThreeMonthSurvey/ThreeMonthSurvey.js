@@ -144,7 +144,7 @@ class ThreeMonthSurvey extends Component {
           </textarea><br />
           <br />
         </div>
-        <div className='bottomDiv'>
+        <div className='signup-prev-next-div'>
           <Button onClick={this.handleClick}>Submit</Button>
         </div>
       </>

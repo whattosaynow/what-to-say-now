@@ -2,7 +2,7 @@
   margin-top: 10px;
 }
 
-.bottomDiv {
+.signup-prev-next-div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,7 +10,7 @@
     background-color: #FAF0E8;
 }
 
-.bottomDiv .ui.button{
+.signup-prev-next-div .ui.button{
   font-size: 30px;
   padding: 0.5em 1.0em;
 }
@@ -26,10 +26,11 @@
 
 /* Styles for signUp_0.js */
 
-#signup-welcome {
+.signup-welcome {
   margin: 5%;
   display: inline-block;
-  line-height: 1.6;;
+  line-height: 1.6;
+  padding: 10px;
 }
 
 /* Styles for signUp_1.js */
@@ -37,11 +38,6 @@
 .signUp1Div {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-
 }
 
 .signUp1Div h2 {
@@ -79,7 +75,7 @@
 }
 
 
-.signup-questions{
+.signup-card{
 box-shadow: 2px 4px 6px #b3b3b3;
 width: 50%;
 margin: auto;
@@ -120,7 +116,7 @@ border-radius: 10px;
 
 /* mobile only settings */
 @media only screen and (max-width: 420px) {
-  div .signup-questions{
+  div .signup-card{
     width: 90%;
   }
 

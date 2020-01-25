@@ -74,7 +74,7 @@ class UserPreferences extends Component {
   render() {
     return (
       <div className='userPreferencesMainDiv'><br />
-        <div className="signup-questions"><br />
+        <div className="signup-card"><br />
           <h1>Update Preferences</h1>
           {this.state.enabled ? (
             <div className="buttonDiv">

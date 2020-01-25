@@ -204,7 +204,7 @@ class PostSurvey_1 extends Component {
           Disagree
         <br /><br />
         </div>
-        <div className="bottomDiv">
+        <div className="signup-prev-next-div">
           <Button onClick={this.handleClick}>Next</Button>
         </div>
       </>

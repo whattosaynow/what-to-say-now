@@ -19,8 +19,8 @@ class signUp_0 extends Component {
         <header className="sign-up-header">
         </header>
         <br />
-        <div className="signup-questions">
-          <p id="signup-welcome">
+        <div className="signup-card">
+          <p className="signup-welcome">
             <span>Welcome to <b>WithAll’s “What to Say” Coaches Challenge.</b><br />
               <br />
               Here’s how the Coaches Challenge works:<br /></span>
@@ -42,8 +42,8 @@ class signUp_0 extends Component {
             <u>Thank you for your commitment to helping our kids build healthy relationships with food and body!</u>
           </p>
         </div>
-        <div className="signup-questions">
-          <p id="signup-welcome">
+        <div className="signup-card">
+          <p className="signup-welcome">
             <i>
               Dear Parents,<br /><br />
               I wanted you to be aware that I’m proud to be participating in WithAll’s “What To Say” Coaches Challenge – 
@@ -66,7 +66,7 @@ class signUp_0 extends Component {
         </div>
 
         <br />
-        <div className='bottomDiv'>
+        <div className='signup-prev-next-div'>
           <Button onClick={this.handleClickNext}>Begin</Button>
         </div>
       </>

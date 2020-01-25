@@ -191,7 +191,7 @@ class PostSurvey_2 extends Component {
           <br /><br />
         </div>
         <br />
-        <div className="bottomDiv">
+        <div className="signup-prev-next-div">
           <Button onClick={this.handleClickBack}>Previous</Button><Button onClick={this.handleClick}>Next</Button>
         </div>
       </>

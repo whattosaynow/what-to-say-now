@@ -51,7 +51,7 @@ class signUp_2 extends Component {
         </h2></center>
           <br />
 
-          <div className="signup-questions"><br />
+          <div className="signup-card"><br />
           
             <span className="survey-questions">1. Choose to receive the Challenges via email, text, or both:</span><br />
             <label className="question-label">choose one</label><br />
@@ -162,7 +162,7 @@ class signUp_2 extends Component {
             <br />
           </div>
           <br />
-          <div className='bottomDiv'>
+          <div className='signup-prev-next-div'>
             <Button onClick={this.handleClickBack}>Back</Button><Button onClick={this.handleClickNext}>Next</Button>
           </div>
 

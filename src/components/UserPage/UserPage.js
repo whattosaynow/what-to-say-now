@@ -61,7 +61,7 @@ class UserPage extends Component {
 
           </div>
 
-          <div className='bottomDiv'>
+          <div className='signup-prev-next-div'>
             <Button onClick={this.handleClick}>Update My Account Preferences</Button>
           </div>
 

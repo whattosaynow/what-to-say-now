@@ -65,7 +65,7 @@ class signUp_4 extends Component {
       <>
         <Header width={'80%'} /><br />
         <center><h2>Personal Information Continued</h2></center><br />
-        <div className="signup-questions"><br />
+        <div className="signup-card"><br />
           <span className="survey-questions">7. Age(s) you coach and want to focus on with during the Challenge:</span><br />
           <label className="question-label">choose one*</label><br />
           <Input
@@ -157,7 +157,7 @@ class signUp_4 extends Component {
           <br />
         </div>
         <br />
-        <div className="bottomDiv">
+        <div className="signup-prev-next-div">
           <Button onClick={this.handleClickBack}>Back</Button>
           <Button onClick={this.handleClickNext}>Next</Button>
         </div>

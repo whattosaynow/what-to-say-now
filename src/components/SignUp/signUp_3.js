@@ -68,7 +68,7 @@ class signUp_3 extends Component {
       <>
         <Header width={'60%'} />
         <center><h2>Personal Information Continued</h2></center><br />
-        <div className="signup-questions"><br />
+        <div className="signup-card"><br />
 
           <span className="survey-questions">4. Number of years you’ve been coaching:</span><br />
           <label className="question-label">choose one</label><br />
@@ -232,7 +232,7 @@ class signUp_3 extends Component {
           <br />
         </div>
         <br />
-        <div className="bottomDiv">
+        <div className="signup-prev-next-div">
           <Button onClick={this.handleClickBack}>Back</Button>
           <Button onClick={this.handleClickNext}>Next</Button>
         </div>

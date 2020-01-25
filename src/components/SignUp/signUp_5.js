@@ -70,7 +70,7 @@ class signUp_5 extends Component {
       <>
         <Header width={'100%'} /><br />
         <center><h2>Personal Information Continued</h2></center><br />
-        <div className="signup-questions"><br />
+        <div className="signup-card"><br />
           <span className="survey-questions">10. How did you find us?</span><br />
           <label>choose one</label><br />
           <select className="semantic-radio" onChange={this.handleChange('how_did_you_find_us')} value={this.state.how_did_you_find_us} >
@@ -150,7 +150,7 @@ class signUp_5 extends Component {
           <br />
         </div>
         <br />
-        <div className="bottomDiv">
+        <div className="signup-prev-next-div">
           <Button onClick={this.handleClickBack}>Back</Button>
           <Button onClick={this.handleClickNext}>Finish</Button>
         </div>
