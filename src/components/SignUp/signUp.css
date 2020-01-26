@@ -66,13 +66,7 @@
   overflow: hidden;
 }
 
-.semantic-radio{
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-left: 7.5%;
-  padding-right: 10px;
-  float: left;
-}
+
 
 
 .signup-card{
@@ -81,7 +75,8 @@ width: 50%;
 margin: auto;
 margin-bottom: 20px;
 border-radius: 10px;
-/* white-space: pre-wrap; */
+display: flex;
+flex-direction: column;
 }
 
 .survey-questions{
@@ -91,13 +86,6 @@ border-radius: 10px;
   vertical-align: top;
 }
 
-.survey-answers {
-  border: solid black 1px;
-  display: block;
-  margin-left: 10%;
-  width: 90%;
-}
-
 .question-label{
   margin-left: 10%;
   font-size: 10px;
@@ -105,6 +93,23 @@ border-radius: 10px;
   display: inline-block;
   vertical-align: top;
 }
+
+.semantic-radio{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 7.5%;
+  padding-right: 10px;
+  float: left;
+}
+
+.survey-answers {
+  border: solid black 1px;
+  display: block;
+  margin-left: 10%;
+  width: 90%;
+}
+
+
 
 .radio-answer{
   /* margin-left: 10%; */
