@@ -84,7 +84,7 @@ class PasswordReset extends Component {
         } else if (this.props.reduxState.passwordResetReducer === 'SET_PW_USER') {
             return (
                 <div><br />
-                    <div className="signup-questions"><br />
+                    <div className="signup-card"><br />
                         <center>
                             <h1>Update Password</h1>
                             <br />

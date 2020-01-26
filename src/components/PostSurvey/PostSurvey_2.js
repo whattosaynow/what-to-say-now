@@ -60,7 +60,7 @@ class PostSurvey_2 extends Component {
           <Input
             onChange={this.handleChangeFor('challenge_felt_relavent')}
             checked={this.state.challenge_felt_relavent === 'Agree'}
-            className="semantic-radio"
+            className="radio-button"
             name='q5'
             type="radio"
             value="Agree"
@@ -69,7 +69,7 @@ class PostSurvey_2 extends Component {
           <Input
             onChange={this.handleChangeFor('challenge_felt_relavent')}
             checked={this.state.challenge_felt_relavent === 'Neutral'}
-            className="semantic-radio"
+            className="radio-button"
             name='q5'
             type="radio"
             value="Neutral"
@@ -78,7 +78,7 @@ class PostSurvey_2 extends Component {
           <Input
             onChange={this.handleChangeFor('challenge_felt_relavent')}
             checked={this.state.challenge_felt_relavent === 'Disagree'}
-            className="semantic-radio"
+            className="radio-button"
             name='q5'
             type="radio"
             value="Disagree"
@@ -90,7 +90,7 @@ class PostSurvey_2 extends Component {
           <Input
             onChange={this.handleChangeFor('challenge_impacted_behavior')}
             checked={this.state.challenge_impacted_behavior === 'Agree'}
-            className="semantic-radio"
+            className="radio-button"
             name='q6'
             type="radio"
             value="Agree"
@@ -101,7 +101,7 @@ class PostSurvey_2 extends Component {
               <label>What did you notice?</label><br />
               <Input
                 name="how_impacted"
-                className="semantic-radio"
+                className="radio-button"
                 onChange={this.handleChangeFor('how_impacted')}
                 placeholder="I saw..."
                 value={this.state.how_impacted || ''}
@@ -112,7 +112,7 @@ class PostSurvey_2 extends Component {
           <Input
             onChange={this.handleChangeFor('challenge_impacted_behavior')}
             checked={this.state.challenge_impacted_behavior === 'Neutral'}
-            className="semantic-radio"
+            className="radio-button"
             name='q6'
             type="radio"
             value="Neutral"
@@ -121,7 +121,7 @@ class PostSurvey_2 extends Component {
           <Input
             onChange={this.handleChangeFor('challenge_impacted_behavior')}
             checked={this.state.challenge_impacted_behavior === 'Disagree'}
-            className="semantic-radio"
+            className="radio-button"
             name='q6'
             type="radio"
             value="Disagree"
@@ -134,7 +134,7 @@ class PostSurvey_2 extends Component {
           <Input
             onChange={this.handleChangeFor('understanding_importance_changed')}
             checked={this.state.understanding_importance_changed === 'Agree'}
-            className="semantic-radio"
+            className="radio-button"
             name='q7'
             type="radio"
             value="Agree"
@@ -143,7 +143,7 @@ class PostSurvey_2 extends Component {
           <Input
             onChange={this.handleChangeFor('understanding_importance_changed')}
             checked={this.state.understanding_importance_changed === 'Neutral'}
-            className="semantic-radio"
+            className="radio-button"
             name='q7'
             type="radio"
             value="Neutral"
@@ -152,7 +152,7 @@ class PostSurvey_2 extends Component {
           <Input
             onChange={this.handleChangeFor('understanding_importance_changed')}
             checked={this.state.understanding_importance_changed === 'Disagree'}
-            className="semantic-radio"
+            className="radio-button"
             name='q7'
             type="radio"
             value="Disagree"
@@ -165,7 +165,7 @@ class PostSurvey_2 extends Component {
           <Input
             onChange={this.handleChangeFor('affected_ability_interact')}
             checked={this.state.affected_ability_interact === 'Agree'}
-            className="semantic-radio"
+            className="radio-button"
             name='q8'
             type="radio"
             value="Agree"
@@ -174,7 +174,7 @@ class PostSurvey_2 extends Component {
           <Input
             onChange={this.handleChangeFor('affected_ability_interact')}
             checked={this.state.affected_ability_interact === 'Neutral'}
-            className="semantic-radio"
+            className="radio-button"
             name='q8'
             type="radio"
             value="Neutral"
@@ -183,7 +183,7 @@ class PostSurvey_2 extends Component {
           <Input
             onChange={this.handleChangeFor('affected_ability_interact')}
             checked={this.state.affected_ability_interact === 'Disagree'}
-            className="semantic-radio"
+            className="radio-button"
             name='q8'
             type="radio"
             value="Disagree"
@@ -191,7 +191,7 @@ class PostSurvey_2 extends Component {
           <br /><br />
         </div>
         <br />
-        <div className="bottomDiv">
+        <div className="signup-prev-next-div">
           <Button onClick={this.handleClickBack}>Previous</Button><Button onClick={this.handleClick}>Next</Button>
         </div>
       </>
