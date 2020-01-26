@@ -62,7 +62,7 @@ class PostSurvey_1 extends Component {
               value="All"
               id="ques1answer1"
             />
-            <label for="ques1answer1">All</label>
+            <label className="survey-answers"  for="ques1answer1">All</label>
           </div>
         
           <div class="radio-answer-pair">
@@ -75,7 +75,7 @@ class PostSurvey_1 extends Component {
               value="3-4 weeks"
               id="ques1answer2"
             />
-            <label for="ques1answer2">3-4 weeks</label>
+            <label className="survey-answers"  for="ques1answer2">3-4 weeks</label>
           </div>
         
           <div class="radio-answer-pair">
@@ -88,7 +88,7 @@ class PostSurvey_1 extends Component {
               value="1-2 weeks"
               id="ques1answer3"
             />
-            <label for="ques1answer3">1-2 weeks</label>
+            <label className="survey-answers"  for="ques1answer3">1-2 weeks</label>
           </div>
           <br />
           <span className="survey-questions">
@@ -105,7 +105,7 @@ class PostSurvey_1 extends Component {
               value="Agree"
               id="ques2answer1"
             />
-            <label for="ques2answer1">Agree</label>
+            <label className="survey-answers" for="ques2answer1">Agree</label>
           </div>
         
           <div class="radio-answer-pair">
@@ -118,7 +118,7 @@ class PostSurvey_1 extends Component {
               value="Neutral"
               id="ques2answer2"
             />
-            <label for="ques2answer2">Neutral</label>
+            <label className="survey-answers" for="ques2answer2">Neutral</label>
           </div>
         
           <div class="radio-answer-pair">
@@ -131,7 +131,7 @@ class PostSurvey_1 extends Component {
               value="Disagree"
               id="ques2answer3"
             />
-            <label for="ques2answer3">Disagree</label>
+            <label className="survey-answers" for="ques2answer3">Disagree</label>
           </div>
           <span className="survey-questions">
             3. I learned something new from participating in the Challenge.
@@ -147,7 +147,7 @@ class PostSurvey_1 extends Component {
               value="Agree"
               id="ques3answer1"
             />
-            <label for="ques3answer1">Agree</label>
+            <label className="survey-answers" for="ques3answer1">Agree</label>
           </div>
         {this.state.learned_something_new === 'Agree' &&
             <>
@@ -172,7 +172,7 @@ class PostSurvey_1 extends Component {
               value="Neutral"
               id="ques3answer2"
             />
-            <label for="ques3answer2">Neutral</label>
+            <label className="survey-answers" for="ques3answer2">Neutral</label>
           </div>
         
           <div class="radio-answer-pair">
@@ -185,7 +185,7 @@ class PostSurvey_1 extends Component {
               value="Disagree"
               id="ques3answer3"
             />
-            <label for="ques3answer3">Disagree</label>
+            <label className="survey-answers" for="ques3answer3">Disagree</label>
           </div>
           <span className="survey-questions">
             4. I would encourage another coach I know to do the Challenge.
@@ -201,7 +201,7 @@ class PostSurvey_1 extends Component {
               value="Agree"
               id="ques4answer1"
             />
-            <label for="ques4answer1">Agree</label>
+            <label className="survey-answers" for="ques4answer1">Agree</label>
           </div>
         
           <div class="radio-answer-pair">
@@ -214,7 +214,7 @@ class PostSurvey_1 extends Component {
               value="Neutral"
               id="ques4answer2"
             />
-            <label for="ques4answer2">Neutral</label>
+            <label className="survey-answers" for="ques4answer2">Neutral</label>
           </div>
         
           <div class="radio-answer-pair">
@@ -227,7 +227,7 @@ class PostSurvey_1 extends Component {
               value="Disagree"
               id="ques4answer3"
             />
-            <label for="ques4answer3">Disagree</label>
+            <label className="survey-answers" for="ques4answer3">Disagree</label>
           </div>
         <br />
         </div>
