@@ -54,7 +54,7 @@ class PostSurvey_2 extends Component {
             <br />
           </header>
         </center>
-        <div className="questions-wrapper"><br />
+        <div className="signup-card"><br />
           <span className="survey-questions">5. The Challenge felt relevant to the age I coach.</span>
           <label>choose one</label><br />
           <Input

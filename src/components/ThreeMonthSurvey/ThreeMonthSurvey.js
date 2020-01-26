@@ -69,7 +69,7 @@ class ThreeMonthSurvey extends Component {
             <br />
           </header>
         </center>
-        <div className="questions-wrapper">
+        <div className="signup-card">
           <p id="three-month-p"><br />
             We hope that you are continuing to implement the things you learned in WithAll’s “What to Say” Coaches Challenge.
             Please fill out this very brief survey. Your feedback is extremely valuable and will help shape the future of “What to Say” and the Coaches Challenge.<br />
@@ -79,7 +79,7 @@ class ThreeMonthSurvey extends Component {
             <u>Thank you again for your commitment to helping our kids build healthy relationships with food and body!</u>
           </p><br />
         </div>
-        <div className="questions-wrapper"><br />
+        <div className="signup-card"><br />
           <span className="survey-questions"> 1. The Challenge has continued to impact my behavior with the althletes I coach.</span><br />
           <label>choose one</label><br />
           <Input

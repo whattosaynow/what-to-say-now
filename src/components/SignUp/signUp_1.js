@@ -71,7 +71,6 @@ class signUp_1 extends Component {
       <>
         <Header width={"20%"} />
         <br />
-
         <center><h2>Personal Information</h2></center><br />
         <div className="signUp1Div">
           <form id="signUp1" style={{ backgroundColor: "white" }}><br />

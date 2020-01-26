@@ -73,7 +73,7 @@ class PostSurvey_3 extends Component {
             <br />
           </header>
         </center>
-        <div className="questions-wrapper"><br />
+        <div className="signup-card"><br />
           <span className="survey-questions"> 9. What was your favorite thing about the Challenge?</span>
           <br />
           <textarea
