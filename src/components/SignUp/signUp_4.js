@@ -71,7 +71,7 @@ class signUp_4 extends Component {
           <Input
             onChange={this.handleChange('focus_ages')}
             type="radio"
-            className="semantic-radio"
+            className="radio-button"
             checked={this.state.focus_ages === '1'}
             name="q1"
             value="1"
@@ -81,7 +81,7 @@ class signUp_4 extends Component {
           <Input
             onChange={this.handleChange('focus_ages')}
             type="radio"
-            className="semantic-radio"
+            className="radio-button"
             checked={this.state.focus_ages === '2'}
             name="q1"
             value="2"
@@ -91,7 +91,7 @@ class signUp_4 extends Component {
           <Input
             onChange={this.handleChange('focus_ages')}
             type="radio"
-            className="semantic-radio"
+            className="radio-button"
             checked={this.state.focus_ages === '3'}
             name="q1"
             value="3"
@@ -107,7 +107,7 @@ class signUp_4 extends Component {
             onChange={this.handleCheckBox('parent_or_guardian')}
             type="checkbox"
             checked={!!this.state.parent_or_guardian}
-            className="semantic-radio"
+            className="radio-button"
             name="q2"
             value={true} 
             id="ques8answer1"
@@ -117,7 +117,7 @@ class signUp_4 extends Component {
             onChange={this.handleCheckBox('healthcare_professional')}
             type="checkbox"
             checked={!!this.state.healthcare_professional}
-            className="semantic-radio"
+            className="radio-button"
             name="q2"
             value={true} 
             id="ques8answer2"
@@ -127,7 +127,7 @@ class signUp_4 extends Component {
             onChange={this.handleCheckBox('teacher')}
             type="checkbox"
             checked={!!this.state.teacher}
-            className="semantic-radio"
+            className="radio-button"
             name="q2"
             value={true} 
             id="ques8answer3"
@@ -137,7 +137,7 @@ class signUp_4 extends Component {
             onChange={this.handleCheckBox('none_above')}
             type="checkbox"
             checked={!!this.state.none_above}
-            className="semantic-radio"
+            className="radio-button"
             name="q2"
             value={true} 
             id="ques8answer4"
@@ -149,7 +149,7 @@ class signUp_4 extends Component {
           <label className="question-label">If none, reply with “none.”</label><br />
           <Input
             name="sports_org"
-            className="semantic-radio"
+            className="radio-button"
             onChange={this.handleChange('sports_org')}
             placeholder="Sports Organization..."
             value={this.state.sports_org || ''}

@@ -94,7 +94,11 @@ flex-direction: column;
   vertical-align: top;
 }
 
-.semantic-radio{
+.radio-answer-pair {
+  margin-top: 1%;
+}
+
+.radio-button{
   padding-top: 10px;
   padding-bottom: 10px;
   margin-left: 7.5%;
@@ -103,10 +107,8 @@ flex-direction: column;
 }
 
 .survey-answers {
-  border: solid black 1px;
-  display: block;
-  margin-left: 10%;
-  width: 90%;
+  vertical-align: middle;
+  margin-left: 1%;
 }
 
 

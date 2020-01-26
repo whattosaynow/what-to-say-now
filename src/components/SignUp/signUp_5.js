@@ -73,7 +73,7 @@ class signUp_5 extends Component {
         <div className="signup-card"><br />
           <span className="survey-questions">10. How did you find us?</span><br />
           <label>choose one</label><br />
-          <select className="semantic-radio" onChange={this.handleChange('how_did_you_find_us')} value={this.state.how_did_you_find_us} >
+          <select className="radio-button" onChange={this.handleChange('how_did_you_find_us')} value={this.state.how_did_you_find_us} >
             <option>--choose one--</option>
             <option value="Girls on the Run">Girls on the Run</option>
             <option value="Wayzata Girls Basketball Association">Wayzata Girls Basketball Association</option>
@@ -89,14 +89,14 @@ class signUp_5 extends Component {
           { this.state.how_did_you_find_us === 'Referral' &&
             <>
               <label>If referral, please let us know who:</label> <br />
-              <textarea className="semantic-radio" onChange={this.handleChange('how_did_you_find_us_referral')} value={this.state.how_did_you_find_us_referral} rows="4" cols="50"></textarea>
+              <textarea className="radio-button" onChange={this.handleChange('how_did_you_find_us_referral')} value={this.state.how_did_you_find_us_referral} rows="4" cols="50"></textarea>
               <br />
             </>
           }
           { this.state.how_did_you_find_us === 'Other' &&
             <>
               <label>If other, please tell us more:</label> <br />
-              <textarea className="semantic-radio" onChange={this.handleChange('how_did_you_find_us_other')} value={this.state.how_did_you_find_us_other} rows="4" cols="50"></textarea>
+              <textarea className="radio-button" onChange={this.handleChange('how_did_you_find_us_other')} value={this.state.how_did_you_find_us_other} rows="4" cols="50"></textarea>
               <br />
             </>
           }
@@ -106,7 +106,7 @@ class signUp_5 extends Component {
           <Input
             onChange={this.handleChange('why_are_you_participating')}
             type="radio"
-            className="semantic-radio"
+            className="radio-button"
             checked={this.state.why_are_you_participating === "I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image."}
             name="q1"
             value="I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image." />
@@ -115,7 +115,7 @@ class signUp_5 extends Component {
           <Input
             onChange={this.handleChange('why_are_you_participating')}
             type="radio"
-            className="semantic-radio"
+            className="radio-button"
             checked={this.state.why_are_you_participating === "I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something."}
             name="q1"
             value="I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something." />
@@ -124,7 +124,7 @@ class signUp_5 extends Component {
           <Input
             onChange={this.handleChange('why_are_you_participating')}
             type="radio"
-            className="semantic-radio"
+            className="radio-button"
             checked={this.state.why_are_you_participating === "This is not a priority issue for me as a coach, but I’m doing this because I was asked to participate."}
             name="q1"
             value="This is not a priority issue for me as a coach, but I’m doing this because I was asked to participate." />
@@ -133,14 +133,14 @@ class signUp_5 extends Component {
           <Input
             onChange={this.handleChange('why_are_you_participating')}
             type="radio"
-            className="semantic-radio"
+            className="radio-button"
             checked={this.state.why_are_you_participating === "Other"}
             value="Other"
             name="q1" /><span className="radio-answer">I have other reasons for participating. They are:</span><br />
           {this.state.why_are_you_participating === "Other" &&
             <>
               <textarea
-                className="semantic-radio"
+                className="radio-button"
                 onChange={this.handleChange('why_are_you_participating_other')}
                 value={this.state.why_are_you_participating_other}
                 rows="4" cols="50"

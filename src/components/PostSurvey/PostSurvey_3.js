@@ -81,7 +81,7 @@ class PostSurvey_3 extends Component {
             style={topMargin}
             rows="10"
             cols="100"
-            className="semantic-radio"
+            className="radio-button"
             value={this.state.favorite_thing || ''}
           /><br />
           <br />
@@ -96,7 +96,7 @@ class PostSurvey_3 extends Component {
             style={topMargin}
             type="radio"
             value="Yes"
-            className="semantic-radio"
+            className="radio-button"
           />
           Yes
           <br />
@@ -106,7 +106,7 @@ class PostSurvey_3 extends Component {
             name="q10"
             type="radio"
             value="No"
-            className="semantic-radio"
+            className="radio-button"
           />
           No
           <br /><br />

@@ -44,145 +44,142 @@ class signUp_2 extends Component {
   render() {
     return (
       <>
-        <div>
-          <Header width={'40%'} /><br />
-          <center><h2>
-            Personal Information (cont.)
-        </h2></center>
-          <br />
-          <div className="signup-card"><br />
-            <span className="survey-questions">1. Choose to receive the Challenges via email, text, or both:</span>
-            <label className="question-label">choose one</label>
-            <div class="radio-answer-pair">
-              <input
-                onChange={this.handleChangeFor('choose_receive')}
-                type='radio'
-                className="semantic-radio"
-                checked={this.state.choose_receive === 'email'}
-                name='receive'
-                value='email'
-                id='email'
-              >
-              </input><label for="email">Email</label><br />
-            </div>
-
-            <div class="radio-answer-pair">
-              <input
-                onChange={this.handleChangeFor('choose_receive')}
-                type='radio'
-                className="semantic-radio"
-                checked={this.state.choose_receive === 'text'}
-                name='receive'
-                value='text'
-                id='text'
-              >
-              </input><label for="text">Text</label><br />
-            </div>
-
-            <div class="radio-answer-pair">
-              <input
-                onChange={this.handleChangeFor('choose_receive')}
-                type='radio'
-                className="semantic-radio"
-                checked={this.state.choose_receive === 'both'}
-                name='receive'
-                value='both'
-                id='both'
-              >
-              </input><label for="both">Both</label><br />
-              
-            </div>
-            <label className="question-label">You will receive links to Challenges on Sundays at 6:00pm CST</label><br />
-
-            <span className="survey-questions">2. Your gender:</span>
-            <label className="question-label">choose one</label>
-            <div class="radio-answer-pair">
-              <input
-                onChange={this.handleChangeFor('your_gender')}
-                type='radio'
-                className="semantic-radio"
-                checked={this.state.your_gender === 'female'}
-                name='gender'
-                value='female'
-                id='female'
-              >
-              </input><label for="female">Female</label><br />
-            </div>
-
-            <div class="radio-answer-pair">
-              <input
-                onChange={this.handleChangeFor('your_gender')}
-                type='radio'
-                className="semantic-radio"
-                checked={this.state.your_gender === 'male'}
-                name='gender'
-                value='male'
-                id='male'
-              >
-              </input><label for="male">Male</label><br />
-            </div>
-
-            <div class="radio-answer-pair">
-              <input
-                onChange={this.handleChangeFor('your_gender')}
-                type='radio'
-                className="semantic-radio"
-                checked={this.state.your_gender === 'non-binary'}
-                name='gender'
-                value='non-binary'
-                id='non-binary'
-              >
-              </input><label for="non-binary">Non-binary</label><br /><br />
-            </div>
-
-            <span className="survey-questions">3. Your age:</span>
-            <label className="question-label">choose one</label>
-            <div class="radio-answer-pair">
-              <input
-                onChange={this.handleChangeFor('your_age')}
-                type='radio'
-                className="semantic-radio"
-                checked={this.state.your_age === '21-35 years old'}
-                name='age'
-                value='21-35 years old'
-                id='21-35 years old'
-              >
-              </input><label for="21-35 years old">21-35 years old</label><br />
-            </div>
-
-            <div class="radio-answer-pair">
-              <input
-                onChange={this.handleChangeFor('your_age')}
-                type='radio'
-                className="semantic-radio"
-                checked={this.state.your_age === '36-51 years old'}
-                name='age'
-                value='36-51 years old'
-                id='36-51 years old'
-              >
-              </input><label for="36-51 years old">36-51 years old</label><br />
-            </div>
-
-            <div class="radio-answer-pair">
-              <input
-                onChange={this.handleChangeFor('your_age')}
-                type='radio'
-                className="semantic-radio"
-                checked={this.state.your_age === '52+ years old'}
-                name='age'
-                value='52+ years old'
-                id='52+ years old'
-              >
-              </input><label for="52+ years old">52+ years old</label><br />
-            </div>
-
-            <br />
-          </div>
-          <br />
-          <div className='signup-prev-next-div'>
-            <Button onClick={this.handleClickBack}>Back</Button><Button onClick={this.handleClickNext}>Next</Button>
+        <Header width={'40%'} /><br />
+        <center>
+          <h2>Personal Information (cont.)</h2>
+        </center>
+        <br />
+        <div className="signup-card"><br />
+          <span className="survey-questions">1. Choose to receive the Challenges via email, text, or both:</span>
+          <label className="question-label">choose one</label>
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('choose_receive')}
+              type='radio'
+              className="radio-button"
+              checked={this.state.choose_receive === 'email'}
+              name='receive'
+              value='email'
+              id='email'
+            >
+            </input><label for="email">Email</label><br />
           </div>
 
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('choose_receive')}
+              type='radio'
+              className="radio-button"
+              checked={this.state.choose_receive === 'text'}
+              name='receive'
+              value='text'
+              id='text'
+            >
+            </input><label for="text">Text</label><br />
+          </div>
+
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('choose_receive')}
+              type='radio'
+              className="radio-button"
+              checked={this.state.choose_receive === 'both'}
+              name='receive'
+              value='both'
+              id='both'
+            >
+            </input><label for="both">Both</label><br />
+
+          </div>
+          <label className="question-label">You will receive links to Challenges on Sundays at 6:00pm CST</label><br />
+
+          <span className="survey-questions">2. Your gender:</span>
+          <label className="question-label">choose one</label>
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('your_gender')}
+              type='radio'
+              className="radio-button"
+              checked={this.state.your_gender === 'female'}
+              name='gender'
+              value='female'
+              id='female'
+            >
+            </input><label for="female">Female</label><br />
+          </div>
+
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('your_gender')}
+              type='radio'
+              className="radio-button"
+              checked={this.state.your_gender === 'male'}
+              name='gender'
+              value='male'
+              id='male'
+            >
+            </input><label for="male">Male</label><br />
+          </div>
+
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('your_gender')}
+              type='radio'
+              className="radio-button"
+              checked={this.state.your_gender === 'non-binary'}
+              name='gender'
+              value='non-binary'
+              id='non-binary'
+            >
+            </input><label for="non-binary">Non-binary</label><br /><br />
+          </div>
+
+          <span className="survey-questions">3. Your age:</span>
+          <label className="question-label">choose one</label>
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('your_age')}
+              type='radio'
+              className="radio-button"
+              checked={this.state.your_age === '21-35 years old'}
+              name='age'
+              value='21-35 years old'
+              id='21-35 years old'
+            >
+            </input><label for="21-35 years old">21-35 years old</label><br />
+          </div>
+
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('your_age')}
+              type='radio'
+              className="radio-button"
+              checked={this.state.your_age === '36-51 years old'}
+              name='age'
+              value='36-51 years old'
+              id='36-51 years old'
+            >
+            </input><label for="36-51 years old">36-51 years old</label><br />
+          </div>
+
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('your_age')}
+              type='radio'
+              className="radio-button"
+              checked={this.state.your_age === '52+ years old'}
+              name='age'
+              value='52+ years old'
+              id='52+ years old'
+            >
+            </input><label for="52+ years old">52+ years old</label><br />
+          </div>
+
+          <br />
+        </div>
+        <br />
+        <div className='signup-prev-next-div'>
+          <Button onClick={this.handleClickBack}>Back</Button><Button onClick={this.handleClickNext}>Next</Button>
         </div>
       </>
     );

@@ -85,7 +85,7 @@ class ThreeMonthSurvey extends Component {
           <Input
             onChange={this.handleChangeFor('continued_impact')}
             checked={this.state.continued_impact === 'agree'}
-            className="semantic-radio"
+            className="radio-button"
             type='radio'
             name='impact'
             value='agree' />
@@ -93,7 +93,7 @@ class ThreeMonthSurvey extends Component {
           <Input
             onChange={this.handleChangeFor('continued_impact')}
             checked={this.state.continued_impact === 'Neutral'}
-            className="semantic-radio"
+            className="radio-button"
             type='radio'
             name='impact'
             value='Neutral' />
@@ -101,7 +101,7 @@ class ThreeMonthSurvey extends Component {
           <Input
             onChange={this.handleChangeFor('continued_impact')}
             checked={this.state.continued_impact === 'Disagree'}
-            className="semantic-radio"
+            className="radio-button"
             type='radio'
             name='impact'
             value='Disagree' />
@@ -111,7 +111,7 @@ class ThreeMonthSurvey extends Component {
           <Input
             onChange={this.handleChangeFor('continued_affected_ability_interact')}
             checked={this.state.continued_affected_ability_interact === 'agree'}
-            className="semantic-radio"
+            className="radio-button"
             type='radio'
             name='positive'
             value='agree' />
@@ -119,7 +119,7 @@ class ThreeMonthSurvey extends Component {
           <Input
             onChange={this.handleChangeFor('continued_affected_ability_interact')}
             checked={this.state.continued_affected_ability_interact === 'Neutral'}
-            className="semantic-radio"
+            className="radio-button"
             type='radio'
             name='positive'
             value='Neutral' />
@@ -127,7 +127,7 @@ class ThreeMonthSurvey extends Component {
           <Input
             onChange={this.handleChangeFor('continued_affected_ability_interact')}
             checked={this.state.continued_affected_ability_interact === 'Disagree'}
-            className="semantic-radio"
+            className="radio-button"
             type='radio'
             name='positive'
             value='Disagree' />
@@ -137,7 +137,7 @@ class ThreeMonthSurvey extends Component {
           <br />
           <textarea
             onChange={this.handleChangeFor('anything_else')}
-            className="semantic-radio"
+            className="radio-button"
             value={this.state.anything_else}
             style={topMargin}
             rows='10' cols='100'>
