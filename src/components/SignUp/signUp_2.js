@@ -60,9 +60,9 @@ class signUp_2 extends Component {
               checked={this.state.choose_receive === 'email'}
               name='receive'
               value='email'
-              id='email'
+              id='ques1answer1'
             >
-            </input><label for="email">Email</label><br />
+            </input><label className="survey-answers" for="ques1answer1">Email</label><br />
           </div>
 
           <div class="radio-answer-pair">
@@ -73,9 +73,9 @@ class signUp_2 extends Component {
               checked={this.state.choose_receive === 'text'}
               name='receive'
               value='text'
-              id='text'
+              id='ques1answer2'
             >
-            </input><label for="text">Text</label><br />
+            </input><label className="survey-answers" for="ques1answer2">Text</label><br />
           </div>
 
           <div class="radio-answer-pair">
@@ -86,9 +86,9 @@ class signUp_2 extends Component {
               checked={this.state.choose_receive === 'both'}
               name='receive'
               value='both'
-              id='both'
+              id='ques1answer3'
             >
-            </input><label for="both">Both</label><br />
+            </input><label className="survey-answers" for="ques1answer3">Both</label><br />
 
           </div>
           <label className="question-label">You will receive links to Challenges on Sundays at 6:00pm CST</label><br />
@@ -103,9 +103,9 @@ class signUp_2 extends Component {
               checked={this.state.your_gender === 'female'}
               name='gender'
               value='female'
-              id='female'
+              id='ques2answer1'
             >
-            </input><label for="female">Female</label><br />
+            </input><label className="survey-answers" for="ques2answer1">Female</label><br />
           </div>
 
           <div class="radio-answer-pair">
@@ -116,9 +116,9 @@ class signUp_2 extends Component {
               checked={this.state.your_gender === 'male'}
               name='gender'
               value='male'
-              id='male'
+              id='ques2answer2'
             >
-            </input><label for="male">Male</label><br />
+            </input><label className="survey-answers" for="ques2answer2">Male</label><br />
           </div>
 
           <div class="radio-answer-pair">
@@ -129,9 +129,9 @@ class signUp_2 extends Component {
               checked={this.state.your_gender === 'non-binary'}
               name='gender'
               value='non-binary'
-              id='non-binary'
+              id='ques2answer3'
             >
-            </input><label for="non-binary">Non-binary</label><br /><br />
+            </input><label className="survey-answers" for="ques2answer3">Non-binary</label><br /><br />
           </div>
 
           <span className="survey-questions">3. Your age:</span>
@@ -144,9 +144,9 @@ class signUp_2 extends Component {
               checked={this.state.your_age === '21-35 years old'}
               name='age'
               value='21-35 years old'
-              id='21-35 years old'
+              id='ques3answer1'
             >
-            </input><label for="21-35 years old">21-35 years old</label><br />
+            </input><label className="survey-answers" for="ques3answer1">21-35 years old</label><br />
           </div>
 
           <div class="radio-answer-pair">
@@ -157,9 +157,9 @@ class signUp_2 extends Component {
               checked={this.state.your_age === '36-51 years old'}
               name='age'
               value='36-51 years old'
-              id='36-51 years old'
+              id='ques3anser2'
             >
-            </input><label for="36-51 years old">36-51 years old</label><br />
+            </input><label className="survey-answers" for="ques3anser2">36-51 years old</label><br />
           </div>
 
           <div class="radio-answer-pair">
@@ -170,9 +170,9 @@ class signUp_2 extends Component {
               checked={this.state.your_age === '52+ years old'}
               name='age'
               value='52+ years old'
-              id='52+ years old'
+              id='ques3answer3'
             >
-            </input><label for="52+ years old">52+ years old</label><br />
+            </input><label className="survey-answers" for="ques3answer3">52+ years old</label><br />
           </div>
 
           <br />
