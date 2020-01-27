@@ -67,9 +67,7 @@ class signUp_3 extends Component {
     return (
       <>
         <Header width={'60%'} />
-        <center>
-          <h2>Personal Information Continued</h2>
-        </center>
+        <br />
         <div className="signup-card"><br />
           <span className="survey-questions">4. Number of years you’ve been coaching:</span>
           <label className="question-label">choose one</label>

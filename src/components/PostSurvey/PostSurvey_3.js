@@ -8,6 +8,7 @@ import { Input, Button } from "semantic-ui-react";
 //sweetAlert
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import PostSurvey_Header from './PostSurvey_Header';
 const MySwal = withReactContent(Swal)
 
 const topMargin = {
@@ -66,13 +67,7 @@ class PostSurvey_3 extends Component {
   render() {
     return (
       <>
-        <center>
-          <header className="sign-up-header">
-            Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
-            Please fill out this brief survey about your experience.<br />
-            <br />
-          </header>
-        </center>
+        <PostSurvey_Header width={'100%'} /><br />
         <div className="signup-card"><br />
           <span className="survey-questions"> 9. What was your favorite thing about the Challenge?</span>
           <Input
@@ -112,6 +107,7 @@ class PostSurvey_3 extends Component {
           </div>
           <br />
         </div>
+        <br />
         <div className="signup-prev-next-div">
           <Button onClick={this.handleClickBack}>Previous</Button>
           <Button onClick={this.handleClickNext}>Submit</Button>

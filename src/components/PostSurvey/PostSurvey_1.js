@@ -4,6 +4,7 @@ import './postSurvey.css';
 
 //semantic-ui
 import { Input, Button } from "semantic-ui-react";
+import PostSurvey_Header from './PostSurvey_Header';
 
 class PostSurvey_1 extends Component {
 
@@ -42,13 +43,8 @@ class PostSurvey_1 extends Component {
   render() {
     return (
       <>
-        <center>
-          <header className="sign-up-header">
-            Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
-            Please fill out this brief survey about your experience.<br />
-            <br />
-          </header>
-        </center>
+        <PostSurvey_Header width={'33.33%'} />
+        <br />
         <div className="signup-card"><br />
           <span className="survey-questions">1. How much of the Challenge did you complete? </span>
           <label className="question-label">choose one</label>
@@ -62,9 +58,9 @@ class PostSurvey_1 extends Component {
               value="All"
               id="ques1answer1"
             />
-            <label className="survey-answers"  for="ques1answer1">All</label>
+            <label className="survey-answers" for="ques1answer1">All</label>
           </div>
-        
+
           <div class="radio-answer-pair">
             <input
               onChange={this.handleChangeFor("challenge_completed")}
@@ -75,9 +71,9 @@ class PostSurvey_1 extends Component {
               value="3-4 weeks"
               id="ques1answer2"
             />
-            <label className="survey-answers"  for="ques1answer2">3-4 weeks</label>
+            <label className="survey-answers" for="ques1answer2">3-4 weeks</label>
           </div>
-        
+
           <div class="radio-answer-pair">
             <input
               onChange={this.handleChangeFor("challenge_completed")}
@@ -88,7 +84,7 @@ class PostSurvey_1 extends Component {
               value="1-2 weeks"
               id="ques1answer3"
             />
-            <label className="survey-answers"  for="ques1answer3">1-2 weeks</label>
+            <label className="survey-answers" for="ques1answer3">1-2 weeks</label>
           </div>
           <br />
           <span className="survey-questions">
@@ -107,7 +103,7 @@ class PostSurvey_1 extends Component {
             />
             <label className="survey-answers" for="ques2answer1">Agree</label>
           </div>
-        
+
           <div class="radio-answer-pair">
             <input
               onChange={this.handleChangeFor("participating_was_easy")}
@@ -120,7 +116,7 @@ class PostSurvey_1 extends Component {
             />
             <label className="survey-answers" for="ques2answer2">Neutral</label>
           </div>
-        
+
           <div class="radio-answer-pair">
             <input
               onChange={this.handleChangeFor("participating_was_easy")}
@@ -133,6 +129,7 @@ class PostSurvey_1 extends Component {
             />
             <label className="survey-answers" for="ques2answer3">Disagree</label>
           </div>
+          <br />
           <span className="survey-questions">
             3. I learned something new from participating in the Challenge.
         </span>
@@ -149,7 +146,7 @@ class PostSurvey_1 extends Component {
             />
             <label className="survey-answers" for="ques3answer1">Agree</label>
           </div>
-        {this.state.learned_something_new === 'Agree' &&
+          {this.state.learned_something_new === 'Agree' &&
             <>
               <br />
               <label className="question-label">What did you learn?</label>
@@ -174,7 +171,7 @@ class PostSurvey_1 extends Component {
             />
             <label className="survey-answers" for="ques3answer2">Neutral</label>
           </div>
-        
+
           <div class="radio-answer-pair">
             <input
               onChange={this.handleChangeFor("learned_something_new")}
@@ -187,6 +184,7 @@ class PostSurvey_1 extends Component {
             />
             <label className="survey-answers" for="ques3answer3">Disagree</label>
           </div>
+          <br />
           <span className="survey-questions">
             4. I would encourage another coach I know to do the Challenge.
         </span>
@@ -203,7 +201,7 @@ class PostSurvey_1 extends Component {
             />
             <label className="survey-answers" for="ques4answer1">Agree</label>
           </div>
-        
+
           <div class="radio-answer-pair">
             <input
               onChange={this.handleChangeFor("would_encourage")}
@@ -216,7 +214,7 @@ class PostSurvey_1 extends Component {
             />
             <label className="survey-answers" for="ques4answer2">Neutral</label>
           </div>
-        
+
           <div class="radio-answer-pair">
             <input
               onChange={this.handleChangeFor("would_encourage")}
@@ -229,8 +227,9 @@ class PostSurvey_1 extends Component {
             />
             <label className="survey-answers" for="ques4answer3">Disagree</label>
           </div>
-        <br />
+          <br />
         </div>
+        <br />
         <div className="signup-prev-next-div">
           <Button onClick={this.handleClick}>Next</Button>
         </div>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import './postSurvey.css';
 //semantic-ui
 import { Input, Button } from "semantic-ui-react";
+import PostSurvey_Header from './PostSurvey_Header';
 
 class PostSurvey_2 extends Component {
 
@@ -47,13 +48,7 @@ class PostSurvey_2 extends Component {
   render() {
     return (
       <>
-        <center>
-          <header className="sign-up-header">
-            Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
-            Please fill out this brief survey about your experience.<br />
-            <br />
-          </header>
-        </center>
+       <PostSurvey_Header width={'66.6%'} /><br />
         <div className="signup-card"><br />
           <span className="survey-questions">5. The Challenge felt relevant to the age I coach.</span>
           <label className="question-label">choose one</label>

@@ -63,10 +63,8 @@ class signUp_4 extends Component {
   render() {
     return (
       <>
-        <Header width={'80%'} /><br />
-        <center>
-          <h2>Personal Information Continued</h2>
-        </center>
+        <Header width={'80%'} />
+        <br />
         <div className="signup-card"><br />
           <span className="survey-questions">7. Age(s) you coach and want to focus on with during the Challenge:</span>
           <label className="question-label">choose one*</label>

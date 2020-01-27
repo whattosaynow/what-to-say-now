@@ -156,14 +156,13 @@ class ThreeMonthSurvey extends Component {
           <span className="survey-questions"> 3. Is there anything else you would like to share?</span>
           <Input
             onChange={this.handleChangeFor('anything_else')}
-            className="radio-button"
+            className="radio-button mobile-input"
             value={this.state.anything_else}
-            style={topMargin}
-            rows='10' cols='100'
+            placeholder="Anything you can share helps!"
           />
-
-
+          <br />
         </div>
+        <br />
         <div className='signup-prev-next-div'>
           <Button onClick={this.handleClick}>Submit</Button>
         </div>

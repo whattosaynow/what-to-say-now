@@ -45,9 +45,6 @@ class signUp_2 extends Component {
     return (
       <>
         <Header width={'40%'} /><br />
-        <center>
-          <h2>Personal Information (cont.)</h2>
-        </center>
         <div className="signup-card"><br />
           <span className="survey-questions">1. Choose to receive the Challenges via email, text, or both:</span>
           <label className="question-label">choose one</label>
