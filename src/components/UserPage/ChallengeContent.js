@@ -51,6 +51,16 @@ class ChallengeContent extends Component {
     })
   }
 
+  // createMarkup = () => {
+  //   this.props.dispatch({ type: 'GET_WEEKLY', payload: this.props.match.params })
+  //   return {__html: '<h1>Hello there!</h1>'}
+  // }
+  
+  MyComponent = (info) => {
+    let markup = {__html: info}
+    return <pre dangerouslySetInnerHTML={markup} />;
+  }
+
 
   render() {
     return (
@@ -72,7 +82,7 @@ class ChallengeContent extends Component {
                   <h2 className='welcomeWeek'>Welcome to Week
                   <span className='weekNumber'> {info.week} </span>
                     of WithAll's "What to Say" Coaches Challenge!</h2>
-                  <pre id='intro'>{info.intro}</pre>
+                  {this.MyComponent(info.intro)}
                   <h2>This week's "What to Say" phrase is : </h2>
                   <p id='phrase'> {info.phrase} </p>
                 </div>

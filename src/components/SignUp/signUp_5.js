@@ -43,10 +43,8 @@ class signUp_5 extends Component {
       this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
       MySwal.fire({
         title: '',
-        html: `You are now signed up for WithAll’s “What to Say” Coaches Challenge. You will receive a message on Sunday at 6:00pm when Week one content is available. In the meantime, happy coaching! 
-        <br /><br />
-        -The WithAll Team
-        .
+        html: `
+        Thank you! <br />If you do not receive a confirmation email after hitting “submit,” please email us at <a href="mailto:hello@withall.org">hello@withall.org</a>
         `,
         type: 'info',
         showCancelButton: true,
