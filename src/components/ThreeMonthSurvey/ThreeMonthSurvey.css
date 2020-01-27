@@ -1,25 +1,7 @@
-.signup-card {
-    box-shadow: 2px 4px 6px #b3b3b3;
-    width: 50%;
-    margin: auto;
-    border-radius: 10px;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    /* white-space: pre-wrap; */
-}
-
-.survey-questions {
-    margin-left: 5%;
+#three-month-p {
+    margin: 5%;
     display: inline-block;
-    width: 80%;
-    vertical-align: top;
-}
-
-.radio-button {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-left: 7.5%;
-    padding-right: 10px;
+    line-height: 1.6;;
 }
 
 .signup-prev-next-div {
@@ -30,8 +12,95 @@
     background-color: #FAF0E8;
 }
 
-#three-month-p {
-    margin: 5%;
-    display: inline-block;
-    line-height: 1.6;;
-}
+
+.signup-card{
+    box-shadow: 2px 4px 6px #b3b3b3;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    }
+    
+    .survey-questions{
+      margin-left: 5%;
+      display: inline-block;
+      width: 80%;
+      vertical-align: top;
+    }
+    
+    .question-label{
+      margin-left: 10%;
+      font-size: 10px;
+      font-weight: bold;
+      display: inline-block;
+      vertical-align: top;
+    }
+    
+    .exemption {
+      margin-right: 5%;
+    }
+    
+    .radio-answer-pair {
+      margin-top: 1%;
+    }
+    
+    .radio-button{
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-left: 7.5%;
+      padding-right: 10px;
+      float: left;
+    }
+    
+    .radio-select {
+      width: 80%
+    }
+    
+    .survey-answers {
+      vertical-align: middle;
+      margin-left: 1%;
+      margin-right: 1%;
+    }
+    
+    .radio-answer{
+      /* margin-left: 10%; */
+      display: inline-block;
+      width: 80%;
+      vertical-align: top;
+      padding: 5px
+    }
+    
+    /* mobile only settings */
+    
+    @media only screen and (max-width: 700px) {
+      div .signup-card{
+        width: 80%;
+      }
+    }
+    
+    @media only screen and (max-width: 420px) {
+      div .signup-card{
+        width: 90%;
+      }
+    
+      .sign-up-header{
+        padding: 5%;
+      }
+    
+      .survey-answers {
+        display: block;
+        margin-left: 15%;
+        margin-right: 2%;
+      }
+    
+      .radio-answer-pair {
+        margin-top: 2%;
+      }
+    
+      .mobile-input {
+        margin-left: 2%;
+        margin-right: 2%;
+      }
+    }
