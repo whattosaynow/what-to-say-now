@@ -109,7 +109,7 @@ class PostSurvey_2 extends Component {
               <label className="question-label">What did you notice?</label>
               <Input
                 name="how_impacted"
-                className="radio-button"
+                className="radio-button mobile-input"
                 onChange={this.handleChangeFor('how_impacted')}
                 placeholder="I saw..."
                 value={this.state.how_impacted || ''}

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './postSurvey.css';
 
 //semantic-ui
-import { Button } from "semantic-ui-react";
+import { Input, Button } from "semantic-ui-react";
 
 class PostSurvey_1 extends Component {
 
@@ -153,9 +153,9 @@ class PostSurvey_1 extends Component {
             <>
               <br />
               <label className="question-label">What did you learn?</label>
-              <input
+              <Input
                 name="what_learned"
-                className="radio-button"
+                className="radio-button mobile-input"
                 onChange={this.handleChangeFor('what_learned')}
                 placeholder="I learned..."
                 value={this.state.what_learned || ''}

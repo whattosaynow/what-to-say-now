@@ -18,7 +18,7 @@ const topMargin = {
 
 class PostSurvey_3 extends Component {
   state = {
-    favorite_thing: this.props.reduxState.answersReducer.postSurveyReducer.favorite_thing || '', 
+    favorite_thing: this.props.reduxState.answersReducer.postSurveyReducer.favorite_thing || '',
     call_more_information: this.props.reduxState.answersReducer.postSurveyReducer.call_more_information || ''
   };
 
@@ -30,10 +30,10 @@ class PostSurvey_3 extends Component {
   };
 
   handleClickNext = () => {
-    let survey = this.state; 
+    let survey = this.state;
     if (
       survey.favorite_thing.trim() === '' ||
-      survey.call_more_information.trim() === '' 
+      survey.call_more_information.trim() === ''
     ) {
       alert("Please Answer All Questions");
     } else {
@@ -66,7 +66,7 @@ class PostSurvey_3 extends Component {
   render() {
     return (
       <>
-       <center>
+        <center>
           <header className="sign-up-header">
             Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
             Please fill out this brief survey about your experience.<br />
@@ -75,41 +75,42 @@ class PostSurvey_3 extends Component {
         </center>
         <div className="signup-card"><br />
           <span className="survey-questions"> 9. What was your favorite thing about the Challenge?</span>
-          <br />
-          <textarea
+          <Input
             onChange={this.handleChangeFor("favorite_thing")}
             style={topMargin}
-            rows="10"
-            cols="100"
-            className="radio-button"
+            placeholder="My favorite part..."
+            className="radio-button mobile-input"
             value={this.state.favorite_thing || ''}
-          /><br />
-          <br />
+          />
           <span className="survey-questions">
             10. Can we call you for more information about your experience?
-          </span><br />
-          <label>choose one</label><br />
-          <Input
-            onChange={this.handleChangeFor("call_more_information")}
-            checked={this.state.call_more_information === 'Yes'}
-            name="q10"
-            style={topMargin}
-            type="radio"
-            value="Yes"
-            className="radio-button"
-          />
-          Yes
+          </span>
+          <label className="question-label">choose one</label>
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("call_more_information")}
+              checked={this.state.call_more_information === 'Yes'}
+              name="q10"
+              type="radio"
+              value="Yes"
+              className="radio-button"
+              id="ques10answer1"
+            />
+            <label className="survey-answers" for="ques10answer1">Yes</label>
+          </div>
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("call_more_information")}
+              checked={this.state.call_more_information === 'No'}
+              name="q10"
+              type="radio"
+              value="No"
+              className="radio-button"
+              id="ques10answer2"
+            />
+            <label className="survey-answers" for="ques10answer2">No</label>
+          </div>
           <br />
-          <Input
-            onChange={this.handleChangeFor("call_more_information")}
-            checked={this.state.call_more_information === 'No'}
-            name="q10"
-            type="radio"
-            value="No"
-            className="radio-button"
-          />
-          No
-          <br /><br />
         </div>
         <div className="signup-prev-next-div">
           <Button onClick={this.handleClickBack}>Previous</Button>

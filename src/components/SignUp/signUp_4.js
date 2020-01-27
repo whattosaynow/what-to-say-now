@@ -165,7 +165,7 @@ class signUp_4 extends Component {
           <label className="question-label">If none, reply with “none.”</label>
           <Input
             name="sports_org"
-            className="radio-button"
+            className="radio-button mobile-input"
             onChange={this.handleChange('sports_org')}
             placeholder="Sports Organization..."
             value={this.state.sports_org || ''}
