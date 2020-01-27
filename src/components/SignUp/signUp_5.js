@@ -69,10 +69,6 @@ class signUp_5 extends Component {
     return (
       <>
         <Header width={'100%'} /><br />
-        <center>
-          <h2>Personal Information Continued</h2>
-        </center>
-        <br />
         <div className="signup-card"><br />
           <span className="survey-questions">10. How did you find us?</span>
           <label className="question-label">choose one</label>

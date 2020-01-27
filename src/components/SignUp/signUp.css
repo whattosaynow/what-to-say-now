@@ -129,6 +129,13 @@ flex-direction: column;
 }
 
 /* mobile only settings */
+
+@media only screen and (max-width: 700px) {
+  div .signup-card{
+    width: 80%;
+  }
+}
+
 @media only screen and (max-width: 420px) {
   div .signup-card{
     width: 90%;

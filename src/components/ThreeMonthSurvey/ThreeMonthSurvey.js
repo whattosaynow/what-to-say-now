@@ -11,7 +11,7 @@ import { Input, Button } from "semantic-ui-react";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
-   
+
 const topMargin = {
   marginTop: '10px'
 }
@@ -68,9 +68,9 @@ class ThreeMonthSurvey extends Component {
             Please fill out this brief survey about your experience.<br />
             <br />
           </header>
-        </center>
-        <div className="questions-wrapper">
-          <p id="three-month-p"><br />
+        </center><br />
+        <div className="signup-card">
+          <p id="three-month-p">
             We hope that you are continuing to implement the things you learned in WithAll’s “What to Say” Coaches Challenge.
             Please fill out this very brief survey. Your feedback is extremely valuable and will help shape the future of “What to Say” and the Coaches Challenge.<br />
             <br />
@@ -79,71 +79,90 @@ class ThreeMonthSurvey extends Component {
             <u>Thank you again for your commitment to helping our kids build healthy relationships with food and body!</u>
           </p><br />
         </div>
-        <div className="questions-wrapper"><br />
-          <span className="survey-questions"> 1. The Challenge has continued to impact my behavior with the althletes I coach.</span><br />
-          <label>choose one</label><br />
-          <Input
-            onChange={this.handleChangeFor('continued_impact')}
-            checked={this.state.continued_impact === 'agree'}
-            className="radio-button"
-            type='radio'
-            name='impact'
-            value='agree' />
-          Agree<br />
-          <Input
-            onChange={this.handleChangeFor('continued_impact')}
-            checked={this.state.continued_impact === 'Neutral'}
-            className="radio-button"
-            type='radio'
-            name='impact'
-            value='Neutral' />
-          Neutral<br />
-          <Input
-            onChange={this.handleChangeFor('continued_impact')}
-            checked={this.state.continued_impact === 'Disagree'}
-            className="radio-button"
-            type='radio'
-            name='impact'
-            value='Disagree' />
-          Disagree<br /><br />
-          <span className="survey-questions"> 2. The Challenge tools have continued to positivley affect my ability to interact with my team about body and food.</span><br />
-          <label>choose one</label><br />
-          <Input
-            onChange={this.handleChangeFor('continued_affected_ability_interact')}
-            checked={this.state.continued_affected_ability_interact === 'agree'}
-            className="radio-button"
-            type='radio'
-            name='positive'
-            value='agree' />
-          Agree<br />
-          <Input
-            onChange={this.handleChangeFor('continued_affected_ability_interact')}
-            checked={this.state.continued_affected_ability_interact === 'Neutral'}
-            className="radio-button"
-            type='radio'
-            name='positive'
-            value='Neutral' />
-          Neutral<br />
-          <Input
-            onChange={this.handleChangeFor('continued_affected_ability_interact')}
-            checked={this.state.continued_affected_ability_interact === 'Disagree'}
-            className="radio-button"
-            type='radio'
-            name='positive'
-            value='Disagree' />
-          Disagree<br />
+
+        <div className="signup-card"><br />
+          <span className="survey-questions"> 1. The Challenge has continued to impact my behavior with the althletes I coach.</span>
+          <label className="question-label">choose one</label>
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('continued_impact')}
+              checked={this.state.continued_impact === 'agree'}
+              className="radio-button"
+              type='radio'
+              name='impact'
+              id="ques1answer1"
+              value='agree' />
+            <label for="ques1answer1" class="survey-answers">Agree</label>
+          </div>
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('continued_impact')}
+              checked={this.state.continued_impact === 'Neutral'}
+              className="radio-button"
+              type='radio'
+              name='impact'
+              id=""
+              value='Neutral' />
+            <label for="" class="survey-answers">Neutral</label>
+          </div>
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('continued_impact')}
+              checked={this.state.continued_impact === 'Disagree'}
+              className="radio-button"
+              type='radio'
+              name='impact'
+              id=""
+              value='Disagree' />
+            <label for="" class="survey-answers">Disagree</label>
+          </div>
+          <br />
+          <span className="survey-questions"> 2. The Challenge tools have continued to positivley affect my ability to interact with my team about body and food.</span>
+          <label className="question-label">choose one</label>
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('continued_affected_ability_interact')}
+              checked={this.state.continued_affected_ability_interact === 'agree'}
+              className="radio-button"
+              type='radio'
+              name='positive'
+              id=""
+              value='agree' />
+            <label for="" class="survey-answers">Agree</label>
+          </div>
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('continued_affected_ability_interact')}
+              checked={this.state.continued_affected_ability_interact === 'Neutral'}
+              className="radio-button"
+              type='radio'
+              name='positive'
+              id=""
+              value='Neutral' />
+            <label for="" class="survey-answers">Neutral</label>
+          </div>
+          <div class="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor('continued_affected_ability_interact')}
+              checked={this.state.continued_affected_ability_interact === 'Disagree'}
+              className="radio-button"
+              type='radio'
+              name='positive'
+              id=""
+              value='Disagree' />
+            <label for="" class="survey-answers">Disagree</label>
+          </div>
           <br />
           <span className="survey-questions"> 3. Is there anything else you would like to share?</span>
-          <br />
-          <textarea
+          <Input
             onChange={this.handleChangeFor('anything_else')}
-            className="radio-button"
+            className="radio-button mobile-input"
             value={this.state.anything_else}
-            style={topMargin}
-            rows='10' cols='100'>
-          </textarea><br />
+            placeholder="Anything you can share helps!"
+          />
           <br />
         </div>
+        <br />
         <div className='signup-prev-next-div'>
           <Button onClick={this.handleClick}>Submit</Button>
         </div>

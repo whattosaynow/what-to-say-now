@@ -45,10 +45,6 @@ class signUp_2 extends Component {
     return (
       <>
         <Header width={'40%'} /><br />
-        <center>
-          <h2>Personal Information (cont.)</h2>
-        </center>
-        <br />
         <div className="signup-card"><br />
           <span className="survey-questions">1. Choose to receive the Challenges via email, text, or both:</span>
           <label className="question-label">choose one</label>
@@ -89,10 +85,9 @@ class signUp_2 extends Component {
               id='ques1answer3'
             >
             </input><label className="survey-answers" for="ques1answer3">Both</label><br />
-
           </div>
-          <label className="question-label">You will receive links to Challenges on Sundays at 6:00pm CST</label><br />
 
+          <label className="question-label">You will receive links to Challenges on Sundays at 6:00pm CST</label><br />
           <span className="survey-questions">2. Your gender:</span>
           <label className="question-label">choose one</label>
           <div class="radio-answer-pair">
