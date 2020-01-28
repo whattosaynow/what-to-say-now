@@ -111,7 +111,7 @@ class signUp_5 extends Component {
           <span className="survey-questions">11. Why are you particpating in the "What to say" Coaches Challenge?</span>
           <label className="question-label">choose one</label>
           <div className="radio-answer-pair">
-            <input
+            <input 
               onChange={this.handleChange('why_are_you_participating')}
               type="radio"
               className="radio-button"
