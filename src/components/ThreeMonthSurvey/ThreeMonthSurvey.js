@@ -70,14 +70,14 @@ class ThreeMonthSurvey extends Component {
             We hope that you are continuing to implement the things you learned in WithAll’s “What to Say” Coaches Challenge.
             Please fill out this very brief survey. Your feedback is extremely valuable and will help shape the future of “What to Say” and the Coaches Challenge.<br />
             <br />
-            If you have any questions, please email us at <a href="mailto:hello@withall.org">hello@withall.org</a><br />
+            If you have any questions, please email us at <a href="mailto:hello@withall.org">hello@withall.org</a>.<br />
             <br />
             <u>Thank you again for your commitment to helping our kids build healthy relationships with food and body!</u>
           </p><br />
         </div>
 
         <div className="signup-card"><br />
-          <span className="survey-questions"> 1. The Challenge has continued to impact my behavior with the althletes I coach.</span>
+          <span className="survey-questions"> 1. The Challenge has continued to impact my behavior with the athletes I coach.</span>
           <label className="question-label">choose one</label>
           <div className="radio-answer-pair">
             <input
