@@ -113,7 +113,7 @@ class ThreeMonthSurvey extends Component {
             <label htmlFor="ques1answer3" className="survey-answers">Disagree</label>
           </div>
           <br />
-          <span className="survey-questions"> 2. The Challenge tools have continued to positivley affect my ability to interact with my team about body and food.</span>
+          <span className="survey-questions"> 2. The Challenge tools have continued to positively affect my ability to interact with my team about body and food.</span>
           <label className="question-label">choose one</label>
           <div className="radio-answer-pair">
             <input
