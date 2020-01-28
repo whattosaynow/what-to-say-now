@@ -255,7 +255,7 @@ Hi ${user.first_name}!
 
 Thank you for participating in WithAll's "What to Say" Coaches Challenge! Please take 2-5 minutes to complete the post-survey https://${process.env.API_URL}postsurvey1 
 
-Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working tosupport children's mental and physical health! 
+Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working to support children's mental and physical health! 
 
 - The WithAll Team
             `,
@@ -264,7 +264,7 @@ Hi ${user.first_name}!
 <br /><br />
 Thank you for participating in WithAll's "What to Say" Coaches Challenge! Please take 2-5 minutes to complete the post-survey <a href="https://${process.env.API_URL}postsurvey1" target="_blank" rel="noopener noreferrer">https://${process.env.API_URL}postsurvey1</a>
 <br /><br />
-Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working tosupport children's mental and physical health! 
+Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working to support children's mental and physical health! 
 <br /><br />
 - The WithAll Team
             `
@@ -282,7 +282,7 @@ Hi ${user.first_name}!
 
 Thank you for participating in WithAll's "What to Say" Coaches Challenge! Please take 2-5 minutes to complete the 3-month follow-up survey https://${process.env.API_URL}three-month-survey 
 
-Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working tosupport children's mental and physical health! 
+Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working to support children's mental and physical health! 
 
 - The WithAll Team
             `,
@@ -291,7 +291,7 @@ Hi ${user.first_name}!
 <br /><br />
 Thank you for participating in WithAll's "What to Say" Coaches Challenge! Please take 2-5 minutes to complete the 3-month follow-up survey <a href="https://${process.env.API_URL}three-month-survey" target="_blank" rel="noopener noreferrer">https://${process.env.API_URL}three-month-survey</a>
 <br /><br />
-Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working tosupport children's mental and physical health! 
+Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working to support children's mental and physical health! 
 <br /><br />
 - The WithAll Team
             `
@@ -372,7 +372,7 @@ Hi ${user.first_name}!
 
 Thank you for participating in WithAll's "What to Say" Coaches Challenge! Please take 2-5 minutes to complete the post-survey https://${process.env.API_URL}postsurvey1 
 
-Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working tosupport children's mental and physical health! 
+Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working to support children's mental and physical health! 
 
 - The WithAll Team`,
             from: '+16512731912',
@@ -387,7 +387,7 @@ Hi ${user.first_name}!
 
 Thank you for participating in WithAll's "What to Say" Coaches Challenge! Please take 2-5 minutes to complete the 3-month follow-up survey https://${process.env.API_URL}three-month-survey 
 
-Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working tosupport children's mental and physical health! 
+Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working to support children's mental and physical health! 
 
 - The WithAll Team`,
             from: '+16512731912',
