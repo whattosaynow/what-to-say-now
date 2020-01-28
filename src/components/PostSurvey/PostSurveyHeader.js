@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class PostSurvey_Header extends Component {
+class PostSurveyHeader extends Component {
     outerBar = {
         backgroundColor: 'white',
         width: '300px',
@@ -32,4 +32,4 @@ class PostSurvey_Header extends Component {
     }
 }
 
-export default PostSurvey_Header;
+export default PostSurveyHeader;

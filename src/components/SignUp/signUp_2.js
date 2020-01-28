@@ -48,7 +48,7 @@ class signUp_2 extends Component {
         <div className="signup-card"><br />
           <span className="survey-questions">1. Choose to receive the Challenges via email, text, or both:</span>
           <label className="question-label">choose one</label>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('choose_receive')}
               type='radio'
@@ -58,10 +58,10 @@ class signUp_2 extends Component {
               value='email'
               id='ques1answer1'
             >
-            </input><label className="survey-answers" for="ques1answer1">Email</label><br />
+            </input><label className="survey-answers" htmlFor="ques1answer1">Email</label><br />
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('choose_receive')}
               type='radio'
@@ -71,10 +71,10 @@ class signUp_2 extends Component {
               value='text'
               id='ques1answer2'
             >
-            </input><label className="survey-answers" for="ques1answer2">Text</label><br />
+            </input><label className="survey-answers" htmlFor="ques1answer2">Text</label><br />
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('choose_receive')}
               type='radio'
@@ -84,13 +84,13 @@ class signUp_2 extends Component {
               value='both'
               id='ques1answer3'
             >
-            </input><label className="survey-answers" for="ques1answer3">Both</label><br />
+            </input><label className="survey-answers" htmlFor="ques1answer3">Both</label><br />
           </div>
 
           <label className="question-label">You will receive links to Challenges on Sundays at 6:00pm CST</label><br />
           <span className="survey-questions">2. Your gender:</span>
           <label className="question-label">choose one</label>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('your_gender')}
               type='radio'
@@ -100,10 +100,10 @@ class signUp_2 extends Component {
               value='female'
               id='ques2answer1'
             >
-            </input><label className="survey-answers" for="ques2answer1">Female</label><br />
+            </input><label className="survey-answers" htmlFor="ques2answer1">Female</label><br />
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('your_gender')}
               type='radio'
@@ -113,10 +113,10 @@ class signUp_2 extends Component {
               value='male'
               id='ques2answer2'
             >
-            </input><label className="survey-answers" for="ques2answer2">Male</label><br />
+            </input><label className="survey-answers" htmlFor="ques2answer2">Male</label><br />
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('your_gender')}
               type='radio'
@@ -126,12 +126,12 @@ class signUp_2 extends Component {
               value='non-binary'
               id='ques2answer3'
             >
-            </input><label className="survey-answers" for="ques2answer3">Non-binary</label><br /><br />
+            </input><label className="survey-answers" htmlFor="ques2answer3">Non-binary</label><br /><br />
           </div>
 
           <span className="survey-questions">3. Your age:</span>
           <label className="question-label">choose one</label>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('your_age')}
               type='radio'
@@ -141,10 +141,10 @@ class signUp_2 extends Component {
               value='21-35 years old'
               id='ques3answer1'
             >
-            </input><label className="survey-answers" for="ques3answer1">21-35 years old</label><br />
+            </input><label className="survey-answers" htmlFor="ques3answer1">21-35 years old</label><br />
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('your_age')}
               type='radio'
@@ -154,10 +154,10 @@ class signUp_2 extends Component {
               value='36-51 years old'
               id='ques3anser2'
             >
-            </input><label className="survey-answers" for="ques3anser2">36-51 years old</label><br />
+            </input><label className="survey-answers" htmlFor="ques3anser2">36-51 years old</label><br />
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('your_age')}
               type='radio'
@@ -167,7 +167,7 @@ class signUp_2 extends Component {
               value='52+ years old'
               id='ques3answer3'
             >
-            </input><label className="survey-answers" for="ques3answer3">52+ years old</label><br />
+            </input><label className="survey-answers" htmlFor="ques3answer3">52+ years old</label><br />
           </div>
 
           <br />

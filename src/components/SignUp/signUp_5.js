@@ -110,7 +110,7 @@ class signUp_5 extends Component {
           <br />
           <span className="survey-questions">11. Why are you particpating in the "What to say" Coaches Challenge?</span>
           <label className="question-label">choose one</label>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChange('why_are_you_participating')}
               type="radio"
@@ -121,13 +121,13 @@ class signUp_5 extends Component {
               value="I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image."
             />
             <label
-              for="ques11answer1"
+              htmlFor="ques11answer1"
               className="radio-answer">
               I’m eager for guidance. I know how I talk to my athletes matters, but I want help knowing the right words/phrases to say about food and body image.
             </label>
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChange('why_are_you_participating')}
               type="radio"
@@ -138,13 +138,13 @@ class signUp_5 extends Component {
               value="I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something."
             />
             <label
-              for="ques11answer2"
+              htmlFor="ques11answer2"
               className="radio-answer">
               I’m just curious. I know how I talk to my athletes matters, but I feel like my current approach/language is good. Maybe I’ll learn something.
               </label>
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChange('why_are_you_participating')}
               type="radio"
@@ -153,10 +153,10 @@ class signUp_5 extends Component {
               name="q1"
               id="ques11answer3"
               value="This is not a priority issue for me as a coach, but I’m doing this because I was asked to participate." />
-            <label for="ques11answer3" className="radio-answer">This is not a priority issue for me as a coach, but I’m doing this because I was asked to participate.</label>
+            <label htmlFor="ques11answer3" className="radio-answer">This is not a priority issue for me as a coach, but I’m doing this because I was asked to participate.</label>
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChange('why_are_you_participating')}
               type="radio"
@@ -164,7 +164,7 @@ class signUp_5 extends Component {
               checked={this.state.why_are_you_participating === "Other"}
               id="ques11answer4"
               value="Other"
-              name="q1" /><label for="ques11answer4" className="radio-answer">I have other reasons for participating. They are:</label>
+              name="q1" /><label htmlFor="ques11answer4" className="radio-answer">I have other reasons for participating. They are:</label>
           </div>
           {this.state.why_are_you_participating === "Other" &&
             <>

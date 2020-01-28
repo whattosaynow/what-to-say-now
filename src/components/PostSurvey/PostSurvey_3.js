@@ -8,7 +8,7 @@ import { Input, Button } from "semantic-ui-react";
 //sweetAlert
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import PostSurvey_Header from './PostSurvey_Header';
+import PostSurveyHeader from './PostSurveyHeader';
 const MySwal = withReactContent(Swal)
 
 const topMargin = {
@@ -75,7 +75,7 @@ class PostSurvey_3 extends Component {
   render() {
     return (
       <>
-        <PostSurvey_Header width={'100%'} /><br />
+        <PostSurveyHeader width={'100%'} /><br />
         <div className="signup-card"><br />
           <span className="survey-questions"> 9. What was your favorite thing about the Challenge?</span>
           <Input
@@ -89,7 +89,7 @@ class PostSurvey_3 extends Component {
             10. Can we call you for more information about your experience?
           </span>
           <label className="question-label">choose one</label>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor("call_more_information")}
               checked={this.state.call_more_information === 'Yes'}
@@ -99,9 +99,9 @@ class PostSurvey_3 extends Component {
               className="radio-button"
               id="ques10answer1"
             />
-            <label className="survey-answers" for="ques10answer1">Yes</label>
+            <label className="survey-answers" htmlFor="ques10answer1">Yes</label>
           </div>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor("call_more_information")}
               checked={this.state.call_more_information === 'No'}
@@ -111,7 +111,7 @@ class PostSurvey_3 extends Component {
               className="radio-button"
               id="ques10answer2"
             />
-            <label className="survey-answers" for="ques10answer2">No</label>
+            <label className="survey-answers" htmlFor="ques10answer2">No</label>
           </div>
           <br />
         </div>

@@ -19,10 +19,6 @@ const matter = {
   margin: '0',
 }
 
-const dropDownDiv = {
-  backgroundColor: '#faf0e8'
-}
-
 const goodLuck = {
   color: '#35297f'
 }
@@ -50,11 +46,6 @@ class ChallengeContent extends Component {
       [propertyName]: !this.state[propertyName]
     })
   }
-
-  // createMarkup = () => {
-  //   this.props.dispatch({ type: 'GET_WEEKLY', payload: this.props.match.params })
-  //   return {__html: '<h1>Hello there!</h1>'}
-  // }
 
   MyComponent = (content) => {
     let markup = { __html: content }
