@@ -4,6 +4,7 @@ import './postSurvey.css';
 
 //semantic-ui
 import { Input, Button } from "semantic-ui-react";
+import PostSurveyHeader from './PostSurveyHeader';
 
 class PostSurvey_1 extends Component {
 
@@ -11,8 +12,8 @@ class PostSurvey_1 extends Component {
     challenge_completed: this.props.reduxState.answersReducer.postSurveyReducer.challenge_completed || '',
     participating_was_easy: this.props.reduxState.answersReducer.postSurveyReducer.participating_was_easy || '',
     learned_something_new: this.props.reduxState.answersReducer.postSurveyReducer.learned_something_new || '',
-    what_learned: this.props.reduxState.answersReducer.postSurveyReducer.what_learned || '',
-    would_encourage: this.props.reduxState.answersReducer.postSurveyReducer.would_encourage || ''
+    would_encourage: this.props.reduxState.answersReducer.postSurveyReducer.would_encourage || '',
+    what_learned: this.props.reduxState.answersReducer.postSurveyReducer.what_learned || ''
   }
 
   handleChangeFor = (propertyName) => (event) => {
@@ -24,187 +25,215 @@ class PostSurvey_1 extends Component {
 
   handleClick = () => {
     let survey = this.state
-    if (
-      survey.challenge_completed.trim() === '' ||
-      survey.participating_was_easy.trim() === '' ||
-      survey.learned_something_new.trim() === '' ||
-      (survey.learned_something_new === 'Agree' && survey.what_learned.trim() === '') ||
-      survey.would_encourage.trim() === ''
-    ) {
-      alert("Please Answer All Questions")
-    } else {
+    let missingAnswers = []
+
+    Object.entries(survey).forEach(([key, value], index) => {
+      if (key !== 'what_learned' && value === '') {
+        missingAnswers.push('Please answer question ' + (index + 1) + '. ')
+      } else {
+        return
+      }
+    }
+    )
+
+    if (missingAnswers.length === 0) {
       this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state })
       this.props.history.push('/postsurvey2');
+    } else {
+      alert(missingAnswers.join(' \n'))
     }
-
   }
 
   render() {
     return (
       <>
-        <center>
-          <header className="sign-up-header">
-            Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
-            Please fill out this brief survey about your experience.<br />
-            <br />
-          </header>
-        </center>
-        <div className="questions-wrapper"><br />
-          <span className="survey-questions">
-            1. How much of the Challenge did you complete?
-        </span><br />
-          <label>choose one</label>
+        <PostSurveyHeader width={'33.33%'} />
+        <br />
+        <div className="signup-card"><br />
+          <span className="survey-questions">1. How much of the Challenge did you complete? </span>
+          <label className="question-label">choose one</label>
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("challenge_completed")}
+              type="radio"
+              className="radio-button"
+              checked={this.state.challenge_completed === 'All'}
+              name="q1"
+              value="All"
+              id="ques1answer1"
+            />
+            <label className="survey-answers" htmlFor="ques1answer1">All</label>
+          </div>
+
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("challenge_completed")}
+              checked={this.state.challenge_completed === '3-4 weeks'}
+              className="radio-button"
+              name="q1"
+              type="radio"
+              value="3-4 weeks"
+              id="ques1answer2"
+            />
+            <label className="survey-answers" htmlFor="ques1answer2">3-4 weeks</label>
+          </div>
+
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("challenge_completed")}
+              checked={this.state.challenge_completed === '1-2 weeks'}
+              className="radio-button"
+              name="q1"
+              type="radio"
+              value="1-2 weeks"
+              id="ques1answer3"
+            />
+            <label className="survey-answers" htmlFor="ques1answer3">1-2 weeks</label>
+          </div>
           <br />
-          <Input
-            onChange={this.handleChangeFor("challenge_completed")}
-            checked={this.state.challenge_completed === 'All'}
-            className="semantic-radio"
-            name="q1"
-            type="radio"
-            value="All"
-          />
-          All
-        <br />
-          <Input
-            onChange={this.handleChangeFor("challenge_completed")}
-            checked={this.state.challenge_completed === '3-4 weeks'}
-            className="semantic-radio"
-            name="q1"
-            type="radio"
-            value="3-4 weeks"
-          />
-          3-4 weeks
-        <br />
-          <Input
-            onChange={this.handleChangeFor("challenge_completed")}
-            checked={this.state.challenge_completed === '1-2 weeks'}
-            className="semantic-radio"
-            name="q1"
-            type="radio"
-            value="1-2 weeks"
-          />
-          1-2 weeks
-        <br /><br />
           <span className="survey-questions">
             2. Participating in the Challenge was easy to do.
-        </span><br />
-          <label>choose one</label>
+        </span>
+          <label className="question-label">choose one</label>
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("participating_was_easy")}
+              checked={this.state.participating_was_easy === 'Agree'}
+              className="radio-button"
+              name="q2"
+              type="radio"
+              value="Agree"
+              id="ques2answer1"
+            />
+            <label className="survey-answers" htmlFor="ques2answer1">Agree</label>
+          </div>
+
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("participating_was_easy")}
+              checked={this.state.participating_was_easy === 'Neutral'}
+              className="radio-button"
+              name="q2"
+              type="radio"
+              value="Neutral"
+              id="ques2answer2"
+            />
+            <label className="survey-answers" htmlFor="ques2answer2">Neutral</label>
+          </div>
+
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("participating_was_easy")}
+              checked={this.state.participating_was_easy === 'Disagree'}
+              className="radio-button"
+              name="q2"
+              type="radio"
+              value="Disagree"
+              id="ques2answer3"
+            />
+            <label className="survey-answers" htmlFor="ques2answer3">Disagree</label>
+          </div>
           <br />
-          <Input
-            onChange={this.handleChangeFor("participating_was_easy")}
-            checked={this.state.participating_was_easy === 'Agree'}
-            className="semantic-radio"
-            name="q2"
-            type="radio"
-            value="Agree"
-          />
-          Agree
-        <br />
-          <Input
-            onChange={this.handleChangeFor("participating_was_easy")}
-            checked={this.state.participating_was_easy === 'Neutral'}
-            className="semantic-radio"
-            name="q2"
-            type="radio"
-            value="Neutral"
-          />
-          Neutral
-        <br />
-          <Input
-            onChange={this.handleChangeFor("participating_was_easy")}
-            checked={this.state.participating_was_easy === 'Disagree'}
-            className="semantic-radio"
-            name="q2"
-            type="radio"
-            value="Disagree"
-          />
-          Disagree
-        <br /><br />
           <span className="survey-questions">
             3. I learned something new from participating in the Challenge.
-        </span><br />
-          <label>choose one</label>
-          <br />
-          <Input
-            onChange={this.handleChangeFor("learned_something_new")}
-            checked={this.state.learned_something_new === 'Agree'}
-            className="semantic-radio"
-            name="q3"
-            type="radio"
-            value="Agree"
-          />
-          Agree
-        {this.state.learned_something_new === 'Agree' &&
+        </span>
+          <label className="question-label">choose one</label>
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("learned_something_new")}
+              checked={this.state.learned_something_new === 'Agree'}
+              className="radio-button"
+              name="q3"
+              type="radio"
+              value="Agree"
+              id="ques3answer1"
+            />
+            <label className="survey-answers" htmlFor="ques3answer1">Agree</label>
+          </div>
+          {this.state.learned_something_new === 'Agree' &&
             <>
-              <br />
-              <label>What did you learn?</label><br />
+              <label className="question-label">Please share at least one thing you learned—-but feel free to list more than one! No need to write complete sentences.</label>
               <Input
                 name="what_learned"
-                className="semantic-radio"
+                className="radio-button mobile-input"
                 onChange={this.handleChangeFor('what_learned')}
                 placeholder="I learned..."
                 value={this.state.what_learned || ''}
               />
             </>
           }
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("learned_something_new")}
+              checked={this.state.learned_something_new === 'Neutral'}
+              className="radio-button"
+              name="q3"
+              type="radio"
+              value="Neutral"
+              id="ques3answer2"
+            />
+            <label className="survey-answers" htmlFor="ques3answer2">Neutral</label>
+          </div>
+
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("learned_something_new")}
+              checked={this.state.learned_something_new === 'Disagree'}
+              className="radio-button"
+              name="q3"
+              type="radio"
+              value="Disagree"
+              id="ques3answer3"
+            />
+            <label className="survey-answers" htmlFor="ques3answer3">Disagree</label>
+          </div>
           <br />
-          <Input
-            onChange={this.handleChangeFor("learned_something_new")}
-            checked={this.state.learned_something_new === 'Neutral'}
-            className="semantic-radio"
-            name="q3"
-            type="radio"
-            value="Neutral"
-          />
-          Neutral
-        <br />
-          <Input
-            onChange={this.handleChangeFor("learned_something_new")}
-            checked={this.state.learned_something_new === 'Disagree'}
-            className="semantic-radio"
-            name="q3"
-            type="radio"
-            value="Disagree"
-          />
-          Disagree
-        <br /><br />
           <span className="survey-questions">
             4. I would encourage another coach I know to do the Challenge.
-        </span><br />
-          <label>choose one</label>
+        </span>
+          <label className="question-label">choose one</label>
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("would_encourage")}
+              checked={this.state.would_encourage === 'Agree'}
+              className="radio-button"
+              name="q4"
+              type="radio"
+              value="Agree"
+              id="ques4answer1"
+            />
+            <label className="survey-answers" htmlFor="ques4answer1">Agree</label>
+          </div>
+
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("would_encourage")}
+              checked={this.state.would_encourage === 'Neutral'}
+              className="radio-button"
+              name="q4"
+              type="radio"
+              value="Neutral"
+              id="ques4answer2"
+            />
+            <label className="survey-answers" htmlFor="ques4answer2">Neutral</label>
+          </div>
+
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("would_encourage")}
+              checked={this.state.would_encourage === 'Disagree'}
+              className="radio-button"
+              name="q4"
+              type="radio"
+              value="Disagree"
+              id="ques4answer3"
+            />
+            <label className="survey-answers" htmlFor="ques4answer3">Disagree</label>
+          </div>
           <br />
-          <Input
-            onChange={this.handleChangeFor("would_encourage")}
-            checked={this.state.would_encourage === 'Agree'}
-            className="semantic-radio"
-            name="q4"
-            type="radio"
-            value="Agree"
-          />
-          Agree
-        <br />
-          <Input
-            onChange={this.handleChangeFor("would_encourage")}
-            checked={this.state.would_encourage === 'Neutral'}
-            className="semantic-radio"
-            name="q4"
-            type="radio"
-            value="Neutral"
-          />
-          Neutral
-        <br />
-          <Input
-            onChange={this.handleChangeFor("would_encourage")}
-            checked={this.state.would_encourage === 'Disagree'}
-            className="semantic-radio"
-            name="q4"
-            type="radio"
-            value="Disagree"
-          />
-          Disagree
-        <br /><br />
         </div>
-        <div className="bottomDiv">
+        <br />
+        <div className="signup-prev-next-div">
           <Button onClick={this.handleClick}>Next</Button>
         </div>
       </>

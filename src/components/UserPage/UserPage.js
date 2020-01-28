@@ -33,15 +33,16 @@ class UserPage extends Component {
 
     return (
       <>
-        <center className="user-page">
+        <center className="user-page"><br />
           <div style={margins} >
             <Card.Group centered stackable>
               {
                 this.props.reduxState.user.content_permission === 0 ?
                   <div className="week-zero">
-                    <p>
-                      Thank you for signing up! Week one content will be posted Sunday at 6:00pm.<br />
-                    </p>
+                    <p style={{padding:'10px'}}>
+                      You are now signed up for WithAll’s “What to Say” Coaches Challenge. You will receive a message on Sunday at 6:00pm when Week one content is available. In the meantime, happy coaching!
+                    <br />
+                      -The WithAll Team</p>
                   </div>
                   :
                   <>
@@ -60,8 +61,8 @@ class UserPage extends Component {
             </Card.Group>
 
           </div>
-
-          <div className='bottomDiv'>
+              <br />
+          <div className='signup-prev-next-div'>
             <Button onClick={this.handleClick}>Update My Account Preferences</Button>
           </div>
 

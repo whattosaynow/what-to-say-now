@@ -56,7 +56,7 @@ class Forgot extends Component {
         return (
             <>
                 <br />
-                <div className="signup-questions">
+                <div className="signup-card">
                     <br />
                     <center>
                         <Button

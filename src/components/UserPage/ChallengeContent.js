@@ -19,10 +19,6 @@ const matter = {
   margin: '0',
 }
 
-const dropDownDiv = {
-  backgroundColor: '#faf0e8'
-}
-
 const goodLuck = {
   color: '#35297f'
 }
@@ -51,6 +47,11 @@ class ChallengeContent extends Component {
     })
   }
 
+  MyComponent = (content) => {
+    let markup = { __html: content }
+    return <pre dangerouslySetInnerHTML={markup} />;
+  }
+
 
   render() {
     return (
@@ -72,9 +73,9 @@ class ChallengeContent extends Component {
                   <h2 className='welcomeWeek'>Welcome to Week
                   <span className='weekNumber'> {info.week} </span>
                     of WithAll's "What to Say" Coaches Challenge!</h2>
-                  <pre id='intro'>{info.intro}</pre>
+                  {this.MyComponent(info.intro)}
                   <h2>This week's "What to Say" phrase is : </h2>
-                  <p id='phrase'> {info.phrase} </p>
+                  <div id='phrase'> {this.MyComponent(info.phrase)} </div>
                 </div>
 
                 <div className='dropDownDiv'>
@@ -86,9 +87,7 @@ class ChallengeContent extends Component {
                           <Icon name='chevron up' />
                       </h2>
                       <div className='backgroundDiv'>
-                        <p className='dropdowns' style={dropDownDiv} >
-                          {info.why_matters}
-                        </p>
+                        {this.MyComponent(info.why_matters)}
                       </div>
                     </>
 
@@ -111,9 +110,7 @@ class ChallengeContent extends Component {
                           <Icon name='chevron up' />
                       </h2>
                       <div className='backgroundDiv'>
-                        <p className='dropdowns' style={dropDownDiv} >
-                          {info.reflection}
-                        </p>
+                        {this.MyComponent(info.reflection)}
                       </div>
                     </>
 
@@ -133,14 +130,14 @@ class ChallengeContent extends Component {
                           <Icon name='chevron up' />
                       </h2>
                       <div className='backgroundDiv'>
-                        <pre>{info.action_steps}</pre>
+                        {this.MyComponent(info.action_steps)}
                       </div>
                     </>
                     :
                     <>
                       <h2 onClick={() => { this.handleDrop('action_steps') }}
                         style={matter}>
-                        Action steps options
+                        Action step options
                           <Icon name='chevron down' />
                       </h2>
                     </>}
@@ -148,7 +145,7 @@ class ChallengeContent extends Component {
                 </div>
                 <br />
                 <div className="postDiv">
-                  <h2 style={goodLuck} >Good luck with this challenge! Email us at <a href="mailto:hello@withall.org">hello@withall.org</a> with anyquestions or suggestions.</h2><br />
+                  <h2 style={goodLuck} >Good luck with this challenge! Email us at <a href="mailto:hello@withall.org">hello@withall.org</a> with any questions or suggestions.</h2><br />
                   <h2 style={quote}>"A good coach can change a game.  A great coach can change a life."
                     -John Wooden
                   </h2><br />

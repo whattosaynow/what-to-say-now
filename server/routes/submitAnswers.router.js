@@ -186,19 +186,17 @@ router.post('/threeMonth', rejectUnauthenticated, (req, res) => {
     `
     UPDATE "user" SET 
                           "S3_continued_impact" = $1, 
-                          "S3_how_impact" = $2, 
+                          "S3_how_continued_impact" = $2, 
                           "S3_continued_affected_ability_interact" = $3, 
-                          "S3_anything_else" = $4, 
-                          "S3_call_more_information" = $5
+                          "S3_anything_else" = $4
                           
-      WHERE id = $6;
+      WHERE id = $5;
   `,
     [
       req.body.continued_impact,
-      req.body.how_impact,
+      req.body.how_continued_impact,
       req.body.continued_affected_ability_interact,
       req.body.anything_else,
-      req.body.call_more_information,
       req.user.id
     ]
   )

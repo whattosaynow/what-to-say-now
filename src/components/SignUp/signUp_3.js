@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //semantic-ui
-import { Input, Button } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 
 //styling
 import Header from './signUp_header';
@@ -67,142 +67,201 @@ class signUp_3 extends Component {
     return (
       <>
         <Header width={'60%'} />
-        <center><h2>Personal Information Continued</h2></center><br />
-        <div className="signup-questions"><br />
+        <br />
+        <div className="signup-card"><br />
+          <span className="survey-questions">4. Number of years you’ve been coaching:</span>
+          <label className="question-label">choose one</label>
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChange('years_coaching')}
+              type="radio"
+              className="radio-button"
+              checked={this.state.years_coaching === 'Less than 5 years'}
+              name="q1"
+              value="Less than 5 years"
+              id="ques4answer1"
+            /><label className="survey-answers" htmlFor="ques4answer1">Less than 5 years</label>
+          </div>
 
-          <span className="survey-questions">4. Number of years you’ve been coaching:</span><br />
-          <label>choose one</label><br />
-          <Input
-            onChange={this.handleChange('years_coaching')}
-            type="radio"
-            className="semantic-radio"
-            checked={this.state.years_coaching === 'Less than 5 years'}
-            name="q1"
-            value="Less than 5 years" />Less than 5 years<br />
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChange('years_coaching')}
+              type="radio"
+              className="radio-button"
+              checked={this.state.years_coaching === '6-10 years'}
+              name="q1"
+              value="6-10 years"
+              id="ques4answer2"
+            /><label className="survey-answers" htmlFor="ques4answer2">6-10 years</label>
+          </div>
 
-          <Input
-            onChange={this.handleChange('years_coaching')}
-            type="radio"
-            className="semantic-radio"
-            checked={this.state.years_coaching === '6-10 years'}
-            name="q1"
-            value="6-10 years" />6-10 years<br />
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChange('years_coaching')}
+              type="radio"
+              className="radio-button"
+              checked={this.state.years_coaching === '11-20 years'}
+              name="q1"
+              value="11-20 years"
+              id="ques4answer3"
+            /><label className="survey-answers" htmlFor="ques4answer3">11-20 years</label>
+          </div>
 
-          <Input
-            onChange={this.handleChange('years_coaching')}
-            type="radio"
-            className="semantic-radio"
-            checked={this.state.years_coaching === '11-20 years'}
-            name="q1"
-            value="11-20 years" />11-20 years<br />
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChange('years_coaching')}
+              type="radio"
+              className="radio-button"
+              checked={this.state.years_coaching === 'More than 21 years'}
+              name="q1"
+              value="More than 21 years"
+              id="ques4answer4"
+            /><label className="survey-answers" htmlFor="ques4answer4">More than 21 years</label>
+          </div>
 
-          <Input
-            onChange={this.handleChange('years_coaching')}
-            type="radio"
-            className="semantic-radio"
-            checked={this.state.years_coaching === 'More than 21 years'}
-            name="q1"
-            value="More than 21 years" />More than 21 years<br />
-
-          <Input
-            onChange={this.handleChange('years_coaching')}
-            type="radio"
-            className="semantic-radio"
-            checked={this.state.years_coaching === `I'm not a coach`}
-            name="q1"
-            value="I'm not a coach" />I'm not a coach<br />
-
-          <br />
-          <span className="survey-questions">5. Genders of the athletes you coach:</span> <br />
-          <label>select all that apply</label><br />
-          <Input
-            onChange={this.handleCheckBox('genders_of_athletes_female')}
-            type="checkbox"
-            checked={!!this.state.genders_of_athletes_female}
-            className="semantic-radio"
-            name="q2"
-            value={true} />Female<br />
-
-          <Input
-            onChange={this.handleCheckBox('genders_of_athletes_male')}
-            type="checkbox"
-            checked={!!this.state.genders_of_athletes_male}
-            className="semantic-radio"
-            name="q2"
-            value={true} />Male<br />
-
-          <Input
-            onChange={this.handleCheckBox('genders_of_athletes_non_binary')}
-            type="checkbox"
-            checked={!!this.state.genders_of_athletes_non_binary}
-            className="semantic-radio"
-            name="q2"
-            value={true} />Non-binary<br />
-
-          <Input
-            onChange={this.handleCheckBox('genders_of_athletes_not_coach')}
-            type="checkbox"
-            checked={!!this.state.genders_of_athletes_not_coach}
-            className="semantic-radio"
-            name="q2"
-            value={true} />I'm not a coach<br />
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChange('years_coaching')}
+              type="radio"
+              className="radio-button"
+              checked={this.state.years_coaching === `I'm not a coach`}
+              name="q1"
+              value="I'm not a coach"
+              id="ques4answer5"
+            /><label className="survey-answers" htmlFor="ques4answer5">I'm not a coach</label>
+          </div>
 
           <br />
-          <span className="survey-questions">6. Number of athletes on the team you coach?</span><br />
-          <label>choose one</label><br />
-          <Input
-            onChange={this.handleChange('number_of_athletes')}
-            type="radio"
-            className="semantic-radio"
-            checked={this.state.number_of_athletes === '5-10'}
-            name="q3"
-            value="5-10" />5-10<br />
+          <span className="survey-questions">5. Genders of the athletes you coach:</span>
+          <label className="question-label">select all that apply</label>
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleCheckBox('genders_of_athletes_female')}
+              type="checkbox"
+              checked={!!this.state.genders_of_athletes_female}
+              className="radio-button"
+              name="q2"
+              value={true}
+              id="ques5answer1"
+            /><label className="survey-answers" htmlFor="ques5answer1">Female</label>
+          </div>
 
-          <Input
-            onChange={this.handleChange('number_of_athletes')}
-            type="radio"
-            className="semantic-radio"
-            checked={this.state.number_of_athletes === '11-15'}
-            name="q3"
-            value="11-15" />11-15<br />
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleCheckBox('genders_of_athletes_male')}
+              type="checkbox"
+              checked={!!this.state.genders_of_athletes_male}
+              className="radio-button"
+              name="q2"
+              value={true}
+              id="ques5answer2"
+            /><label className="survey-answers" htmlFor="ques5answer2">Male</label>
+          </div>
 
-          <Input
-            onChange={this.handleChange('number_of_athletes')}
-            type="radio"
-            className="semantic-radio"
-            checked={this.state.number_of_athletes === '16-20'}
-            name="q3"
-            value="16-20" />16-20<br />
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleCheckBox('genders_of_athletes_non_binary')}
+              type="checkbox"
+              checked={!!this.state.genders_of_athletes_non_binary}
+              className="radio-button"
+              name="q2"
+              value={true}
+              id="ques5answer3"
+            /><label className="survey-answers" htmlFor="ques5answer3">Non-binary</label>
+          </div>
 
-          <Input
-            onChange={this.handleChange('number_of_athletes')}
-            type="radio"
-            className="semantic-radio"
-            checked={this.state.number_of_athletes === '21-25'}
-            name="q3"
-            value="21-25" />21-25<br />
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleCheckBox('genders_of_athletes_not_coach')}
+              type="checkbox"
+              checked={!!this.state.genders_of_athletes_not_coach}
+              className="radio-button"
+              name="q2"
+              value={true}
+              id="ques5answer4"
+            /><label className="survey-answers" htmlFor="ques5answer4">I'm not a coach</label>
+          </div>
 
-          <Input
-            onChange={this.handleChange('number_of_athletes')}
-            type="radio"
-            className="semantic-radio"
-            checked={this.state.number_of_athletes === 'More than 25'}
-            name="q3"
-            value="More than 25" />More than 25<br />
+          <br />
+          <span className="survey-questions">6. Number of athletes on the team you coach?</span>
+          <label className="question-label">choose one</label>
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChange('number_of_athletes')}
+              type="radio"
+              className="radio-button"
+              checked={this.state.number_of_athletes === '5-10'}
+              name="q3"
+              value="5-10"
+              id="ques6answer1"
+            /><label className="survey-answers" htmlFor="ques6answer1">5-10</label>
+          </div>
 
-          <Input
-            onChange={this.handleChange('number_of_athletes')}
-            type="radio"
-            className="semantic-radio"
-            checked={this.state.number_of_athletes === `I'm not a coach`}
-            name="q3"
-            value="I'm not a coach" />I'm not a coach<br />
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChange('number_of_athletes')}
+              type="radio"
+              className="radio-button"
+              checked={this.state.number_of_athletes === '11-15'}
+              name="q3"
+              value="11-15"
+              id="ques6answer2"
+            /><label className="survey-answers" htmlFor="ques6answer2">11-15</label>
+          </div>
+
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChange('number_of_athletes')}
+              type="radio"
+              className="radio-button"
+              checked={this.state.number_of_athletes === '16-20'}
+              name="q3"
+              value="16-20"
+              id="ques6answer3"
+            /><label className="survey-answers" htmlFor="ques6answer3">16-20</label>
+          </div>
+
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChange('number_of_athletes')}
+              type="radio"
+              className="radio-button"
+              checked={this.state.number_of_athletes === '21-25'}
+              name="q3"
+              value="21-25"
+              id="ques6answer4"
+            /><label className="survey-answers" htmlFor="ques6answer4">21-25</label>
+          </div>
+
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChange('number_of_athletes')}
+              type="radio"
+              className="radio-button"
+              checked={this.state.number_of_athletes === 'More than 25'}
+              name="q3"
+              value="More than 25"
+              id="ques6answer5"
+            /><label className="survey-answers" htmlFor="ques6answer5">More than 25</label>
+          </div>
+
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChange('number_of_athletes')}
+              type="radio"
+              className="radio-button"
+              checked={this.state.number_of_athletes === `I'm not a coach`}
+              name="q3"
+              value="I'm not a coach"
+              id="ques6answer6"
+            /><label className="survey-answers" htmlFor="ques6answer6">I'm not a coach</label>
+          </div>
 
           <br />
           <br />
         </div>
         <br />
-        <div className="bottomDiv">
+        <div className="signup-prev-next-div">
           <Button onClick={this.handleClickBack}>Back</Button>
           <Button onClick={this.handleClickNext}>Next</Button>
         </div>

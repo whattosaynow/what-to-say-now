@@ -19,8 +19,8 @@ class signUp_0 extends Component {
         <header className="sign-up-header">
         </header>
         <br />
-        <div className="signup-questions">
-          <p id="signup-welcome">
+        <div className="signup-card">
+          <p className="signup-welcome">
             <span>Welcome to <b>WithAll’s “What to Say” Coaches Challenge.</b><br />
               <br />
               Here’s how the Coaches Challenge works:<br /></span>
@@ -42,8 +42,8 @@ class signUp_0 extends Component {
             <u>Thank you for your commitment to helping our kids build healthy relationships with food and body!</u>
           </p>
         </div>
-        <div className="signup-questions">
-          <p id="signup-welcome">
+        <div className="signup-card">
+          <p className="signup-welcome">
             <i>
               Dear Parents,<br /><br />
               I wanted you to be aware that I’m proud to be participating in WithAll’s “What To Say” Coaches Challenge – 
@@ -51,9 +51,9 @@ class signUp_0 extends Component {
               <br />
               Every week for 5 weeks, the Coaches Challenge will present me with a new phrase that I can use, along with why the phrase matters, 
               an exercise for my own reflection, and action steps I can take with the team. If you’re interested in learning more about the Coaches Challenge, 
-              visit <a href="https://whattosaynow.org/coaches/">whattosaynow.org/coaches</a>. There you’ll find the phrases I’ll be working with and why those phrases matter.<br />
+              visit <a href="https://whattosaynow.org/coaches/" target="_blank" rel="noopener noreferrer">whattosaynow.org/coaches</a>. There you’ll find the phrases I’ll be working with and why those phrases matter.<br />
               <br />
-              If you’re interested in learning more about WithAll’s “What to Say” initiative overall, visit <a href="https://whattosaynow.org/">whattosaynow.org</a>, 
+              If you’re interested in learning more about WithAll’s “What to Say” initiative overall, visit <a href="https://whattosaynow.org/" target="_blank" rel="noopener noreferrer">whattosaynow.org</a>, 
               which includes a video about their mission and 5 phrases that any adult can use with the kids in their lives to empower their self-esteem and 
               healthy relationships with food and body.<br />
               <br />
@@ -66,7 +66,7 @@ class signUp_0 extends Component {
         </div>
 
         <br />
-        <div className='bottomDiv'>
+        <div className='signup-prev-next-div'>
           <Button onClick={this.handleClickNext}>Begin</Button>
         </div>
       </>

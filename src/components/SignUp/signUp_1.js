@@ -71,8 +71,9 @@ class signUp_1 extends Component {
       <>
         <Header width={"20%"} />
         <br />
-
-        <center><h2>Personal Information</h2></center><br />
+        <center>
+          <h2>Personal Information</h2>
+        </center>
         <div className="signUp1Div">
           <form id="signUp1" style={{ backgroundColor: "white" }}><br />
             <Input
@@ -151,7 +152,7 @@ class signUp_1 extends Component {
             <br />
           </form><br />
         </div><br />
-        <div className="bottomDiv">
+        <div className="signup-prev-next-div">
           <Button onClick={this.handleClick} className="next-button">
             Next
           </Button>

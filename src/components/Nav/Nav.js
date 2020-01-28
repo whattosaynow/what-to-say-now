@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
-import Logo from './new-logo.png';
+import Logo from './with-all-w2s.png';
 
 const Nav = (props) => (
   <div className="nav">

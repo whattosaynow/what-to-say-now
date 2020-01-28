@@ -8,6 +8,7 @@ import { Input, Button } from "semantic-ui-react";
 //sweetAlert
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import PostSurveyHeader from './PostSurveyHeader';
 const MySwal = withReactContent(Swal)
 
 const topMargin = {
@@ -18,7 +19,7 @@ const topMargin = {
 
 class PostSurvey_3 extends Component {
   state = {
-    favorite_thing: this.props.reduxState.answersReducer.postSurveyReducer.favorite_thing || '', 
+    favorite_thing: this.props.reduxState.answersReducer.postSurveyReducer.favorite_thing || '',
     call_more_information: this.props.reduxState.answersReducer.postSurveyReducer.call_more_information || ''
   };
 
@@ -30,17 +31,23 @@ class PostSurvey_3 extends Component {
   };
 
   handleClickNext = () => {
-    let survey = this.state; 
-    if (
-      survey.favorite_thing.trim() === '' ||
-      survey.call_more_information.trim() === '' 
-    ) {
-      alert("Please Answer All Questions");
-    } else {
+    let survey = this.state
+    let missingAnswers = []
+
+    Object.entries(survey).forEach(([key, value], index) => {
+      if (value.trim() === '') {
+        missingAnswers.push('Please answer question ' + (index + 9) + '. ')
+      } else {
+        return
+      }
+    }
+    )
+
+    if (missingAnswers.length === 0) {
       this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state });
       MySwal.fire({
         title: "",
-        text: `Thank you for your time!`,
+        text: `Thank you for your participation.`,
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -55,6 +62,8 @@ class PostSurvey_3 extends Component {
           this.props.history.push("/home");
         }
       });
+    } else {
+      alert(missingAnswers.join(' \n'))
     }
   }; // end handleClickNext
 
@@ -66,52 +75,48 @@ class PostSurvey_3 extends Component {
   render() {
     return (
       <>
-       <center>
-          <header className="sign-up-header">
-            Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
-            Please fill out this brief survey about your experience.<br />
-            <br />
-          </header>
-        </center>
-        <div className="questions-wrapper"><br />
+        <PostSurveyHeader width={'100%'} /><br />
+        <div className="signup-card"><br />
           <span className="survey-questions"> 9. What was your favorite thing about the Challenge?</span>
-          <br />
-          <textarea
+          <Input
             onChange={this.handleChangeFor("favorite_thing")}
             style={topMargin}
-            rows="10"
-            cols="100"
-            className="semantic-radio"
+            placeholder="My favorite part..."
+            className="radio-button mobile-input"
             value={this.state.favorite_thing || ''}
-          /><br />
-          <br />
+          />
           <span className="survey-questions">
             10. Can we call you for more information about your experience?
-          </span><br />
-          <label>choose one</label><br />
-          <Input
-            onChange={this.handleChangeFor("call_more_information")}
-            checked={this.state.call_more_information === 'Yes'}
-            name="q10"
-            style={topMargin}
-            type="radio"
-            value="Yes"
-            className="semantic-radio"
-          />
-          Yes
+          </span>
+          <label className="question-label">choose one</label>
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("call_more_information")}
+              checked={this.state.call_more_information === 'Yes'}
+              name="q10"
+              type="radio"
+              value="Yes"
+              className="radio-button"
+              id="ques10answer1"
+            />
+            <label className="survey-answers" htmlFor="ques10answer1">Yes</label>
+          </div>
+          <div className="radio-answer-pair">
+            <input
+              onChange={this.handleChangeFor("call_more_information")}
+              checked={this.state.call_more_information === 'No'}
+              name="q10"
+              type="radio"
+              value="No"
+              className="radio-button"
+              id="ques10answer2"
+            />
+            <label className="survey-answers" htmlFor="ques10answer2">No</label>
+          </div>
           <br />
-          <Input
-            onChange={this.handleChangeFor("call_more_information")}
-            checked={this.state.call_more_information === 'No'}
-            name="q10"
-            type="radio"
-            value="No"
-            className="semantic-radio"
-          />
-          No
-          <br /><br />
         </div>
-        <div className="bottomDiv">
+        <br />
+        <div className="signup-prev-next-div">
           <Button onClick={this.handleClickBack}>Previous</Button>
           <Button onClick={this.handleClickNext}>Submit</Button>
         </div>

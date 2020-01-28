@@ -226,7 +226,7 @@ function sendEmail(user, week) {
             text: `
 Hi ${user.first_name}. 
 
-Welcome to Week ${week} of WithAll's "What to Say" Coach's Challenge! Here is the link to this week’s info: https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}
+Welcome to Week ${week} of WithAll's "What to Say" Coaches Challenge! Here is the link to this week’s info: https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}
 
 If you have questions or feedback as you go along, please contact WithAll at hello@withall.org. Thank you for actively working to support children's mental and physical health! 
 
@@ -235,9 +235,9 @@ If you have questions or feedback as you go along, please contact WithAll at he
             html: `
 Hi ${user.first_name}. 
 <br /><br />
-Welcome to Week ${week} of WithAll's What to SayCoach's Challenge! Here is the link to this week’s info: <a href="https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}">https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}</a>
+Welcome to Week ${week} of WithAll's What to Say Coaches Challenge! Here is the link to this week’s info: <a href="https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}" target="_blank" rel="noopener noreferrer" >https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}</a>
 <br /><br />
-If you have questions or feedback as you go along, please contact WithAll at <a href="mailto:hello@withall.org">hello@withall.org</a> Thank you for actively working to support children's mental and physical health! 
+If you have questions or feedback as you go along, please contact WithAll at <a href="mailto:hello@withall.org">hello@withall.org</a>. Thank you for actively working to support children's mental and physical health! 
 <br /><br />
 - The WithAll Team
             `
@@ -253,18 +253,18 @@ If you have questions or feedback as you go along, please contact WithAll at <a
             text: `
 Hi ${user.first_name}! 
 
-Thank you for participating in WithAll's "What to Say" Coach's Challenge! Please take 2-5 minutes to complete the post-survey https://${process.env.API_URL}postsurvey1 
+Thank you for participating in WithAll's "What to Say" Coaches Challenge! Please take 2-5 minutes to complete the post-survey https://${process.env.API_URL}postsurvey1 
 
-Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working tosupport children's mental and physical health! 
+Your feedback is extremely valuable and will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working to support children's mental and physical health! 
 
 - The WithAll Team
             `,
             html: `
 Hi ${user.first_name}! 
 <br /><br />
-Thank you for participating in WithAll's "What to Say" Coach's Challenge! Please take 2-5 minutes to complete the post-survey <a href="https://${process.env.API_URL}postsurvey1">https://${process.env.API_URL}postsurvey1</a>
+Thank you for participating in WithAll's "What to Say" Coaches Challenge! Please take 2-5 minutes to complete the post-survey <a href="https://${process.env.API_URL}postsurvey1" target="_blank" rel="noopener noreferrer">https://${process.env.API_URL}postsurvey1</a>
 <br /><br />
-Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working tosupport children's mental and physical health! 
+Your feedback is extremely valuable and will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working to support children's mental and physical health! 
 <br /><br />
 - The WithAll Team
             `
@@ -280,18 +280,18 @@ Your feedback is extremely valuableand will help shape the future of “What to 
             text: `
 Hi ${user.first_name}! 
 
-Thank you for participating in WithAll's "What to Say" Coach's Challenge! Please take 2-5 minutes to complete the 3-month follow-up survey https://${process.env.API_URL}three-month-survey 
+Thank you for participating in WithAll's "What to Say" Coaches Challenge! Please take 2-5 minutes to complete the 3-month follow-up survey https://${process.env.API_URL}three-month-survey 
 
-Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working tosupport children's mental and physical health! 
+Your feedback is extremely valuable and will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working to support children's mental and physical health! 
 
 - The WithAll Team
             `,
             html: `
 Hi ${user.first_name}! 
 <br /><br />
-Thank you for participating in WithAll's "What to Say" Coach's Challenge! Please take 2-5 minutes to complete the 3-month follow-up survey <a href="https://${process.env.API_URL}three-month-survey">https://${process.env.API_URL}three-month-survey</a>
+Thank you for participating in WithAll's "What to Say" Coaches Challenge! Please take 2-5 minutes to complete the 3-month follow-up survey <a href="https://${process.env.API_URL}three-month-survey" target="_blank" rel="noopener noreferrer">https://${process.env.API_URL}three-month-survey</a>
 <br /><br />
-Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working tosupport children's mental and physical health! 
+Your feedback is extremely valuable and will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working to support children's mental and physical health! 
 <br /><br />
 - The WithAll Team
             `
@@ -355,7 +355,7 @@ function sendText(user, week) {
             body: `
 Hi ${user.first_name}. 
 
-Welcome to Week ${week} of WithAll's "What to Say" Coach's Challenge! Here is the link to this week’s info: https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}
+Welcome to Week ${week} of WithAll's "What to Say" Coaches Challenge! Here is the link to this week’s info: https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}
  
 If you have questions or feedback as you go along, please contact WithAll at hello@withall.org. Thank you for actively working to support children's mental and physical health! 
 
@@ -370,9 +370,9 @@ If you have questions or feedback as you go along, please contact WithAll at he
             body: `
 Hi ${user.first_name}! 
 
-Thank you for participating in WithAll's "What to Say" Coach's Challenge! Please take 2-5 minutes to complete the post-survey https://${process.env.API_URL}postsurvey1 
+Thank you for participating in WithAll's "What to Say" Coaches Challenge! Please take 2-5 minutes to complete the post-survey https://${process.env.API_URL}postsurvey1 
 
-Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working tosupport children's mental and physical health! 
+Your feedback is extremely valuable and will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working to support children's mental and physical health! 
 
 - The WithAll Team`,
             from: '+16512731912',
@@ -385,9 +385,9 @@ Your feedback is extremely valuableand will help shape the future of “What to 
             body: `
 Hi ${user.first_name}! 
 
-Thank you for participating in WithAll's "What to Say" Coach's Challenge! Please take 2-5 minutes to complete the 3-month follow-up survey https://${process.env.API_URL}three-month-survey 
+Thank you for participating in WithAll's "What to Say" Coaches Challenge! Please take 2-5 minutes to complete the 3-month follow-up survey https://${process.env.API_URL}three-month-survey 
 
-Your feedback is extremely valuableand will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working tosupport children's mental and physical health! 
+Your feedback is extremely valuable and will help shape the future of “What to Say” and the Coaches Challenge. Thank you in advance for your time and for actively working to support children's mental and physical health! 
 
 - The WithAll Team`,
             from: '+16512731912',

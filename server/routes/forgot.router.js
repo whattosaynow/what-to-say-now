@@ -34,9 +34,15 @@ function forgotUsername(user) {
         to: user.email,
         from: 'WhatToSayNowChallenge@gmail.com',
         subject: 'Forgot Username Request',
-        text: `Hi ${user.first_name}! 
-        Your username to login with is: ${user.username}
-        To login, visit:  ${process.env.API_URL}
+        text: `
+Hi ${user.first_name}! 
+Your username to login with is: ${user.username}
+To login, visit:  https://${process.env.API_URL}
+        `,
+        html: `
+Hi ${user.first_name}! <br />
+Your username to login with is: ${user.username}<br />
+To login, visit:  <a href="https://${process.env.API_URL}" target="_blank" rel="noopener noreferrer" >https://${process.env.API_URL}</a>
         `
     };
     sgMail.send(msg);
@@ -60,10 +66,17 @@ function forgotPassword(user) {
         to: user.email,
         from: 'WhatToSayNowChallenge@gmail.com',
         subject: 'Forgot Password Request',
-        text: `Hi ${user.first_name}! 
-        You are receiving this email because you requested it via the forgot email form.
-        Your username is ${user.username}
-        To login, visit:  ${process.env.API_URL}reset/${user.reset_token_code}
+        text: `
+Hi ${user.first_name}! 
+You are receiving this email because you requested it via the forgot password form.
+Your username is ${user.username}
+To reset your password, visit:  https://${process.env.API_URL}reset/${user.reset_token_code} within the next 15 minutes to reset your password. 
+        `,
+        html: `
+Hi ${user.first_name}! <br />
+You are receiving this email because you requested it via the forgot password form.<br />
+Your username is ${user.username}<br />
+To reset your password, visit:  <a href="https://${process.env.API_URL}reset/${user.reset_token_code}" target="_blank" rel="noopener noreferrer">https://${process.env.API_URL}reset/${user.reset_token_code}</A> within the next 15 minutes to reset your password. 
         `
     };
     sgMail.send(msg);
@@ -89,10 +102,17 @@ function forgotEmail(user) {
         to: user.email,
         from: 'WhatToSayNowChallenge@gmail.com',
         subject: 'Forgot Email Request',
-        text: `Hi ${user.first_name}! 
-      You are receiving this email because you requested it via the forgot email form.
-      Your username is ${user.username}
-      To login, visit:  ${process.env.API_URL}
+        text: `
+Hi ${user.first_name}! 
+You are receiving this email because you requested it via the forgot email form.
+Your username is ${user.username}
+To login, visit:  https://${process.env.API_URL}
+      `,
+        html: `
+Hi ${user.first_name}! <br />
+You are receiving this email because you requested it via the forgot email form.<br />
+Your username is ${user.username}<br />
+To login, visit:  <a href="https://${process.env.API_URL}" target="_blank" rel="noopener noreferrer" >https://${process.env.API_URL}</a>
       `
     };
     sgMail.send(msg);
