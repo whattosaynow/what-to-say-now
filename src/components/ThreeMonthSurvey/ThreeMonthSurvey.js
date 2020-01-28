@@ -97,9 +97,9 @@ class ThreeMonthSurvey extends Component {
               className="radio-button"
               type='radio'
               name='impact'
-              id=""
+              id="ques1answer2"
               value='Neutral' />
-            <label for="" className="survey-answers">Neutral</label>
+            <label htmlFor="ques1answer2" className="survey-answers">Neutral</label>
           </div>
           <div className="radio-answer-pair">
             <input
@@ -108,9 +108,9 @@ class ThreeMonthSurvey extends Component {
               className="radio-button"
               type='radio'
               name='impact'
-              id=""
+              id="ques1answer3"
               value='Disagree' />
-            <label for="" className="survey-answers">Disagree</label>
+            <label htmlFor="ques1answer3" className="survey-answers">Disagree</label>
           </div>
           <br />
           <span className="survey-questions"> 2. The Challenge tools have continued to positivley affect my ability to interact with my team about body and food.</span>
@@ -122,9 +122,9 @@ class ThreeMonthSurvey extends Component {
               className="radio-button"
               type='radio'
               name='positive'
-              id=""
+              id="ques2answer1"
               value='agree' />
-            <label for="" className="survey-answers">Agree</label>
+            <label htmlFor="ques2answer1" className="survey-answers">Agree</label>
           </div>
           <div className="radio-answer-pair">
             <input
@@ -133,9 +133,9 @@ class ThreeMonthSurvey extends Component {
               className="radio-button"
               type='radio'
               name='positive'
-              id=""
+              id="ques2answer2"
               value='Neutral' />
-            <label for="" className="survey-answers">Neutral</label>
+            <label htmlFor="ques2answer2" className="survey-answers">Neutral</label>
           </div>
           <div className="radio-answer-pair">
             <input
@@ -144,9 +144,9 @@ class ThreeMonthSurvey extends Component {
               className="radio-button"
               type='radio'
               name='positive'
-              id=""
+              id="ques2answer3"
               value='Disagree' />
-            <label for="" className="survey-answers">Disagree</label>
+            <label htmlFor="ques2answer3" className="survey-answers">Disagree</label>
           </div>
           <br />
           <span className="survey-questions"> 3. Is there anything else you would like to share?</span>
