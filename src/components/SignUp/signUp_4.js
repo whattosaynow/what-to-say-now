@@ -105,7 +105,7 @@ class signUp_4 extends Component {
           </div>
           <i><label className="question-label exemption">*We realize some of you may coach multiple age groups or may not be a coach, however,
             the Coaches Challenge is setup to focus on one age group at a time, so please choose one age group.
-            If you’d like to focus on a different age group in the future, please take the Challengeagain.</label></i><br />
+            If you’d like to focus on a different age group in the future, please take the Challenge again.</label></i><br />
           <br />
 
           <span className="survey-questions">8. Your answer to this question informs WithAll for future programming. Select all that apply:</span> <br />

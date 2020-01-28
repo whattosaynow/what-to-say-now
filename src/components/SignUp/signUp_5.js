@@ -44,7 +44,7 @@ class signUp_5 extends Component {
       MySwal.fire({
         title: '',
         html: `
-        Thank you! <br />If you do not receive a confirmation email after hitting “submit,” please email us at <a href="mailto:hello@withall.org">hello@withall.org</a>
+        Thank you! <br />If you do not receive a confirmation email after hitting “submit,” please email us at <a href="mailto:hello@withall.org">hello@withall.org</a>.
         `,
         type: 'info',
         showCancelButton: true,
