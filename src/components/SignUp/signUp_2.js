@@ -27,16 +27,22 @@ class signUp_2 extends Component {
 
   handleClickNext = () => {
     let survey = this.state
-    if (
-      survey.choose_receive.trim() === '' ||
-      survey.your_gender.trim() === '' ||
-      survey.your_age.trim() === ''
-    ) {
-      alert("Please Answer All Questions")
-    } else {
+    let missingAnswers = []
+
+    Object.entries(survey).forEach(([key, value], index) => {
+      if (key !== 'what_learned' && value === '') {
+        missingAnswers.push('Please answer question ' + (index + 1) + '. ')
+      } else {
+        return
+      }
+    }
+    )
+
+    if (missingAnswers.length === 0) {
       this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
       this.props.history.push('/signup3');
-
+    } else {
+      alert(missingAnswers.join(' \n'))
     }
 
   }
