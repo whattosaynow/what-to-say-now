@@ -16,6 +16,7 @@ class ThreeMonthSurvey extends Component {
 
   state = {
     continued_impact: this.props.reduxState.answersReducer.threeMonthReducer.continued_impact || '',
+    how_continued_impact: this.props.reduxState.answersReducer.threeMonthReducer.how_continued_impact || '',
     continued_affected_ability_interact: this.props.reduxState.answersReducer.threeMonthReducer.continued_affected_ability_interact || '',
     anything_else: this.props.reduxState.answersReducer.threeMonthReducer.anything_else || '',
   }
@@ -82,14 +83,26 @@ class ThreeMonthSurvey extends Component {
           <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('continued_impact')}
-              checked={this.state.continued_impact === 'agree'}
+              checked={this.state.continued_impact === 'Agree'}
               className="radio-button"
               type='radio'
               name='impact'
               id="ques1answer1"
-              value='agree' />
+              value='Agree' />
             <label htmlFor="ques1answer1" className="survey-answers">Agree</label>
           </div>
+          {this.state.continued_impact === 'Agree' &&
+            <>
+              <label className="question-label">How has it impacted your behavior?</label>
+              <Input
+                name="how_continued_impact"
+                className="radio-button mobile-input"
+                onChange={this.handleChangeFor('how_continued_impact')}
+                placeholder=""
+                value={this.state.how_continued_impact || ''}
+              />
+            </>
+          }
           <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('continued_impact')}
