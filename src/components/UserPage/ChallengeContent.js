@@ -145,7 +145,7 @@ class ChallengeContent extends Component {
                 </div>
                 <br />
                 <div className="postDiv">
-                  <h2 style={goodLuck} >Good luck with this challenge! Email us at <a href="mailto:hello@withall.org">hello@withall.org</a> with anyquestions or suggestions.</h2><br />
+                  <h2 style={goodLuck} >Good luck with this challenge! Email us at <a href="mailto:hello@withall.org">hello@withall.org</a> with any questions or suggestions.</h2><br />
                   <h2 style={quote}>"A good coach can change a game.  A great coach can change a life."
                     -John Wooden
                   </h2><br />
