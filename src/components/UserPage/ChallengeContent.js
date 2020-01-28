@@ -84,7 +84,7 @@ class ChallengeContent extends Component {
                     of WithAll's "What to Say" Coaches Challenge!</h2>
                   {this.MyComponent(info.intro)}
                   <h2>This week's "What to Say" phrase is : </h2>
-                  <p id='phrase'> {this.MyComponent(info.phrase)} </p>
+                  <div id='phrase'> {this.MyComponent(info.phrase)} </div>
                 </div>
 
                 <div className='dropDownDiv'>

@@ -12,8 +12,8 @@ class PostSurvey_1 extends Component {
     challenge_completed: this.props.reduxState.answersReducer.postSurveyReducer.challenge_completed || '',
     participating_was_easy: this.props.reduxState.answersReducer.postSurveyReducer.participating_was_easy || '',
     learned_something_new: this.props.reduxState.answersReducer.postSurveyReducer.learned_something_new || '',
-    what_learned: this.props.reduxState.answersReducer.postSurveyReducer.what_learned || '',
-    would_encourage: this.props.reduxState.answersReducer.postSurveyReducer.would_encourage || ''
+    would_encourage: this.props.reduxState.answersReducer.postSurveyReducer.would_encourage || '',
+    what_learned: this.props.reduxState.answersReducer.postSurveyReducer.what_learned || ''
   }
 
   handleChangeFor = (propertyName) => (event) => {
@@ -25,19 +25,23 @@ class PostSurvey_1 extends Component {
 
   handleClick = () => {
     let survey = this.state
-    if (
-      survey.challenge_completed.trim() === '' ||
-      survey.participating_was_easy.trim() === '' ||
-      survey.learned_something_new.trim() === '' ||
-      (survey.learned_something_new === 'Agree' && survey.what_learned.trim() === '') ||
-      survey.would_encourage.trim() === ''
-    ) {
-      alert("Please Answer All Questions")
-    } else {
+    let missingAnswers = []
+
+    Object.entries(survey).forEach(([key, value], index) => {
+      if (key !== 'what_learned' && value === '') {
+        missingAnswers.push('Please answer question ' + (index + 1) + '. ')
+      } else {
+        return
+      }
+    }
+    )
+
+    if (missingAnswers.length === 0) {
       this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state })
       this.props.history.push('/postsurvey2');
+    } else {
+      alert(missingAnswers.join(' \n'))
     }
-
   }
 
   render() {
@@ -148,7 +152,6 @@ class PostSurvey_1 extends Component {
           </div>
           {this.state.learned_something_new === 'Agree' &&
             <>
-              <br />
               <label className="question-label">What did you learn?</label>
               <Input
                 name="what_learned"

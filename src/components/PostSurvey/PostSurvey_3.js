@@ -31,13 +31,19 @@ class PostSurvey_3 extends Component {
   };
 
   handleClickNext = () => {
-    let survey = this.state;
-    if (
-      survey.favorite_thing.trim() === '' ||
-      survey.call_more_information.trim() === ''
-    ) {
-      alert("Please Answer All Questions");
-    } else {
+    let survey = this.state
+    let missingAnswers = []
+
+    Object.entries(survey).forEach(([key, value], index) => {
+      if (value.trim() === '') {
+        missingAnswers.push('Please answer question ' + (index + 9) + '. ')
+      } else {
+        return
+      }
+    }
+    )
+
+    if (missingAnswers.length === 0) {
       this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state });
       MySwal.fire({
         title: "",
@@ -56,6 +62,8 @@ class PostSurvey_3 extends Component {
           this.props.history.push("/home");
         }
       });
+    } else {
+      alert(missingAnswers.join(' \n'))
     }
   }; // end handleClickNext
 

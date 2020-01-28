@@ -11,9 +11,9 @@ class PostSurvey_2 extends Component {
   state = {
     challenge_felt_relavent: this.props.reduxState.answersReducer.postSurveyReducer.challenge_felt_relavent || '',
     challenge_impacted_behavior: this.props.reduxState.answersReducer.postSurveyReducer.challenge_impacted_behavior || '',
-    how_impacted: this.props.reduxState.answersReducer.postSurveyReducer.how_impacted || '',
     understanding_importance_changed: this.props.reduxState.answersReducer.postSurveyReducer.understanding_importance_changed || '',
     affected_ability_interact: this.props.reduxState.answersReducer.postSurveyReducer.affected_ability_interact || '',
+    how_impacted: this.props.reduxState.answersReducer.postSurveyReducer.how_impacted || '',
   }
 
   handleChangeFor = (propertyName) => (event) => {
@@ -24,20 +24,24 @@ class PostSurvey_2 extends Component {
   }
 
   handleClick = () => {
-    let survey = this.state;
-    if (
-      survey.challenge_felt_relavent.trim() === '' ||
-      survey.challenge_impacted_behavior.trim() === '' ||
-      (survey.challenge_impacted_behavior === 'Agree' && survey.how_impacted.trim() === '') ||
-      survey.understanding_importance_changed.trim() === '' ||
-      survey.affected_ability_interact.trim() === ''
-    ) {
-      alert("Please Answer All Questions")
-    } else {
+    let survey = this.state
+    let missingAnswers = []
+
+    Object.entries(survey).forEach(([key, value], index) => {
+      if (key !== 'how_impacted' && value === '') {
+        missingAnswers.push('Please answer question ' + (index + 5) + '. ')
+      } else {
+        return
+      }
+    }
+    )
+
+    if (missingAnswers.length === 0) {
       this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state })
       this.props.history.push('/postsurvey3');
+    } else {
+      alert(missingAnswers.join(' \n'))
     }
-
   }
 
   handleClickBack = () => {
@@ -48,7 +52,7 @@ class PostSurvey_2 extends Component {
   render() {
     return (
       <>
-       <PostSurvey_Header width={'66.6%'} /><br />
+        <PostSurvey_Header width={'66.6%'} /><br />
         <div className="signup-card"><br />
           <span className="survey-questions">5. The Challenge felt relevant to the age I coach.</span>
           <label className="question-label">choose one</label>
