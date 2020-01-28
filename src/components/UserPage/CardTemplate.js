@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router';
 
+import logo from '../Nav/with-all-w2s.png'
+
+
 class CardTemplate extends Component {
 
     handleClickLink = () => {
@@ -15,7 +18,7 @@ class CardTemplate extends Component {
         return (
 
             <Card style={{ width: "250px", maxHeight: "400px", overflow: "auto" }} >
-                <Image src={this.props.content.image} alt='image' wrapped ui={false} />
+                <Image src={logo} alt='image' wrapped ui={false} />
                 <Card.Content extra style={{ overflow: "auto", height: "117px" }}>
                     <Card.Header>Week {this.props.content.week}</Card.Header>
                     <Card.Meta>

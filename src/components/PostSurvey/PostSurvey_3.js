@@ -47,7 +47,7 @@ class PostSurvey_3 extends Component {
       this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state });
       MySwal.fire({
         title: "",
-        text: `Thank you for your time!`,
+        text: `Thank you for your participation.`,
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",

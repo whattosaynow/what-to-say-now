@@ -16,6 +16,7 @@ class ThreeMonthSurvey extends Component {
 
   state = {
     continued_impact: this.props.reduxState.answersReducer.threeMonthReducer.continued_impact || '',
+    how_continued_impact: this.props.reduxState.answersReducer.threeMonthReducer.how_continued_impact || '',
     continued_affected_ability_interact: this.props.reduxState.answersReducer.threeMonthReducer.continued_affected_ability_interact || '',
     anything_else: this.props.reduxState.answersReducer.threeMonthReducer.anything_else || '',
   }
@@ -70,26 +71,38 @@ class ThreeMonthSurvey extends Component {
             We hope that you are continuing to implement the things you learned in WithAll’s “What to Say” Coaches Challenge.
             Please fill out this very brief survey. Your feedback is extremely valuable and will help shape the future of “What to Say” and the Coaches Challenge.<br />
             <br />
-            If you have any questions, please email us at <a href="mailto:hello@withall.org">hello@withall.org</a><br />
+            If you have any questions, please email us at <a href="mailto:hello@withall.org">hello@withall.org</a>.<br />
             <br />
             <u>Thank you again for your commitment to helping our kids build healthy relationships with food and body!</u>
           </p><br />
         </div>
 
         <div className="signup-card"><br />
-          <span className="survey-questions"> 1. The Challenge has continued to impact my behavior with the althletes I coach.</span>
+          <span className="survey-questions"> 1. The Challenge has continued to impact my behavior with the athletes I coach.</span>
           <label className="question-label">choose one</label>
           <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('continued_impact')}
-              checked={this.state.continued_impact === 'agree'}
+              checked={this.state.continued_impact === 'Agree'}
               className="radio-button"
               type='radio'
               name='impact'
               id="ques1answer1"
-              value='agree' />
+              value='Agree' />
             <label htmlFor="ques1answer1" className="survey-answers">Agree</label>
           </div>
+          {this.state.continued_impact === 'Agree' &&
+            <>
+              <label className="question-label">How has it impacted your behavior?</label>
+              <Input
+                name="how_continued_impact"
+                className="radio-button mobile-input"
+                onChange={this.handleChangeFor('how_continued_impact')}
+                placeholder=""
+                value={this.state.how_continued_impact || ''}
+              />
+            </>
+          }
           <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('continued_impact')}
@@ -113,7 +126,7 @@ class ThreeMonthSurvey extends Component {
             <label htmlFor="ques1answer3" className="survey-answers">Disagree</label>
           </div>
           <br />
-          <span className="survey-questions"> 2. The Challenge tools have continued to positivley affect my ability to interact with my team about body and food.</span>
+          <span className="survey-questions"> 2. The Challenge tools have continued to positively affect my ability to interact with my team about body and food.</span>
           <label className="question-label">choose one</label>
           <div className="radio-answer-pair">
             <input

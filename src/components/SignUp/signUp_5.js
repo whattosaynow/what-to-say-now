@@ -44,7 +44,7 @@ class signUp_5 extends Component {
       MySwal.fire({
         title: '',
         html: `
-        Thank you! <br />If you do not receive a confirmation email after hitting “submit,” please email us at <a href="mailto:hello@withall.org">hello@withall.org</a>
+        Thank you! <br />If you do not receive a confirmation email after hitting “submit,” please email us at <a href="mailto:hello@withall.org">hello@withall.org</a>.
         `,
         type: 'info',
         showCancelButton: true,
@@ -111,7 +111,7 @@ class signUp_5 extends Component {
           <span className="survey-questions">11. Why are you particpating in the "What to say" Coaches Challenge?</span>
           <label className="question-label">choose one</label>
           <div className="radio-answer-pair">
-            <input
+            <input 
               onChange={this.handleChange('why_are_you_participating')}
               type="radio"
               className="radio-button"

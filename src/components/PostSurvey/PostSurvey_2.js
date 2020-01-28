@@ -104,8 +104,7 @@ class PostSurvey_2 extends Component {
           </div>
           {this.state.challenge_impacted_behavior === 'Agree' &&
             <>
-              <br />
-              <label className="question-label">What did you notice?</label>
+              <label className="question-label">Please share at least one example of what changed with your coaching behavior as a result of participating. No need to write complete sentences.</label>
               <Input
                 name="how_impacted"
                 className="radio-button mobile-input"

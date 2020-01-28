@@ -152,7 +152,7 @@ class PostSurvey_1 extends Component {
           </div>
           {this.state.learned_something_new === 'Agree' &&
             <>
-              <label className="question-label">What did you learn?</label>
+              <label className="question-label">Please share at least one thing you learned—-but feel free to list more than one! No need to write complete sentences.</label>
               <Input
                 name="what_learned"
                 className="radio-button mobile-input"
