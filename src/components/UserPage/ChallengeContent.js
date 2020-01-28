@@ -55,9 +55,9 @@ class ChallengeContent extends Component {
   //   this.props.dispatch({ type: 'GET_WEEKLY', payload: this.props.match.params })
   //   return {__html: '<h1>Hello there!</h1>'}
   // }
-  
-  MyComponent = (info) => {
-    let markup = {__html: info}
+
+  MyComponent = (content) => {
+    let markup = { __html: content }
     return <pre dangerouslySetInnerHTML={markup} />;
   }
 
@@ -84,7 +84,7 @@ class ChallengeContent extends Component {
                     of WithAll's "What to Say" Coaches Challenge!</h2>
                   {this.MyComponent(info.intro)}
                   <h2>This week's "What to Say" phrase is : </h2>
-                  <p id='phrase'> {info.phrase} </p>
+                  <p id='phrase'> {this.MyComponent(info.phrase)} </p>
                 </div>
 
                 <div className='dropDownDiv'>
@@ -96,9 +96,7 @@ class ChallengeContent extends Component {
                           <Icon name='chevron up' />
                       </h2>
                       <div className='backgroundDiv'>
-                        <p className='dropdowns' style={dropDownDiv} >
-                          {info.why_matters}
-                        </p>
+                        {this.MyComponent(info.why_matters)}
                       </div>
                     </>
 
@@ -121,9 +119,7 @@ class ChallengeContent extends Component {
                           <Icon name='chevron up' />
                       </h2>
                       <div className='backgroundDiv'>
-                        <p className='dropdowns' style={dropDownDiv} >
-                          {info.reflection}
-                        </p>
+                        {this.MyComponent(info.reflection)}
                       </div>
                     </>
 
@@ -143,14 +139,14 @@ class ChallengeContent extends Component {
                           <Icon name='chevron up' />
                       </h2>
                       <div className='backgroundDiv'>
-                        <pre>{info.action_steps}</pre>
+                        {this.MyComponent(info.action_steps)}
                       </div>
                     </>
                     :
                     <>
                       <h2 onClick={() => { this.handleDrop('action_steps') }}
                         style={matter}>
-                        Action steps options
+                        Action step options
                           <Icon name='chevron down' />
                       </h2>
                     </>}

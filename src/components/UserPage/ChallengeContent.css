@@ -43,8 +43,9 @@ pre {
 }
 
 pre {
-    width: inherit;
+    width: 100%;
     font-family: inherit;
+    word-wrap: break-word;
     white-space: pre-wrap;
     margin-left: 5%;
     margin-right: 5%;
