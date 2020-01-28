@@ -61,7 +61,7 @@ class ThreeMonthSurvey extends Component {
       <>
         <center>
           <header className="sign-up-header">
-            Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
+            Thank you for participating in WithAll's "What to Say" Coaches Challenge.<br />
             Please fill out this brief survey about your experience.<br />
             <br />
           </header>
