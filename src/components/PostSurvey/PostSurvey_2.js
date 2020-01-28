@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 import './postSurvey.css';
 //semantic-ui
 import { Input, Button } from "semantic-ui-react";
-import PostSurvey_Header from './PostSurvey_Header';
+import PostSurveyHeader from './PostSurveyHeader';
 
 class PostSurvey_2 extends Component {
 
   state = {
     challenge_felt_relavent: this.props.reduxState.answersReducer.postSurveyReducer.challenge_felt_relavent || '',
     challenge_impacted_behavior: this.props.reduxState.answersReducer.postSurveyReducer.challenge_impacted_behavior || '',
-    how_impacted: this.props.reduxState.answersReducer.postSurveyReducer.how_impacted || '',
     understanding_importance_changed: this.props.reduxState.answersReducer.postSurveyReducer.understanding_importance_changed || '',
     affected_ability_interact: this.props.reduxState.answersReducer.postSurveyReducer.affected_ability_interact || '',
+    how_impacted: this.props.reduxState.answersReducer.postSurveyReducer.how_impacted || '',
   }
 
   handleChangeFor = (propertyName) => (event) => {
@@ -24,20 +24,24 @@ class PostSurvey_2 extends Component {
   }
 
   handleClick = () => {
-    let survey = this.state;
-    if (
-      survey.challenge_felt_relavent.trim() === '' ||
-      survey.challenge_impacted_behavior.trim() === '' ||
-      (survey.challenge_impacted_behavior === 'Agree' && survey.how_impacted.trim() === '') ||
-      survey.understanding_importance_changed.trim() === '' ||
-      survey.affected_ability_interact.trim() === ''
-    ) {
-      alert("Please Answer All Questions")
-    } else {
+    let survey = this.state
+    let missingAnswers = []
+
+    Object.entries(survey).forEach(([key, value], index) => {
+      if (key !== 'how_impacted' && value === '') {
+        missingAnswers.push('Please answer question ' + (index + 5) + '. ')
+      } else {
+        return
+      }
+    }
+    )
+
+    if (missingAnswers.length === 0) {
       this.props.dispatch({ type: `SET_POST_ANSWERS`, payload: this.state })
       this.props.history.push('/postsurvey3');
+    } else {
+      alert(missingAnswers.join(' \n'))
     }
-
   }
 
   handleClickBack = () => {
@@ -48,11 +52,11 @@ class PostSurvey_2 extends Component {
   render() {
     return (
       <>
-       <PostSurvey_Header width={'66.6%'} /><br />
+        <PostSurveyHeader width={'66.6%'} /><br />
         <div className="signup-card"><br />
           <span className="survey-questions">5. The Challenge felt relevant to the age I coach.</span>
           <label className="question-label">choose one</label>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('challenge_felt_relavent')}
               checked={this.state.challenge_felt_relavent === 'Agree'}
@@ -61,9 +65,9 @@ class PostSurvey_2 extends Component {
               type="radio"
               value="Agree"
               id="ques5answer1"
-            /> <label className="survey-answers" for="ques5answer1">Agree</label>
+            /> <label className="survey-answers" htmlFor="ques5answer1">Agree</label>
           </div>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('challenge_felt_relavent')}
               checked={this.state.challenge_felt_relavent === 'Neutral'}
@@ -72,9 +76,9 @@ class PostSurvey_2 extends Component {
               type="radio"
               value="Neutral"
               id="ques5answer2"
-            /> <label className="survey-answers" for="ques5answer2">Neutral</label>
+            /> <label className="survey-answers" htmlFor="ques5answer2">Neutral</label>
           </div>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('challenge_felt_relavent')}
               checked={this.state.challenge_felt_relavent === 'Disagree'}
@@ -83,11 +87,11 @@ class PostSurvey_2 extends Component {
               type="radio"
               value="Disagree"
               id="ques5answer3"
-            /> <label className="survey-answers" for="ques5answer3">Disagree</label>
+            /> <label className="survey-answers" htmlFor="ques5answer3">Disagree</label>
           </div><br />
           <span className="survey-questions">6. The Challenge impacted my behavior with the athletes I coach.</span>
           <label className="question-label">choose one</label>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('challenge_impacted_behavior')}
               checked={this.state.challenge_impacted_behavior === 'Agree'}
@@ -96,7 +100,7 @@ class PostSurvey_2 extends Component {
               type="radio"
               value="Agree"
               id="ques6answer1"
-            /> <label className="survey-answers" for="ques6answer1">Agree</label>
+            /> <label className="survey-answers" htmlFor="ques6answer1">Agree</label>
           </div>
           {this.state.challenge_impacted_behavior === 'Agree' &&
             <>
@@ -111,7 +115,7 @@ class PostSurvey_2 extends Component {
               />
             </>
           }
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('challenge_impacted_behavior')}
               checked={this.state.challenge_impacted_behavior === 'Neutral'}
@@ -120,9 +124,9 @@ class PostSurvey_2 extends Component {
               type="radio"
               value="Neutral"
               id="ques6answer2"
-            /> <label className="survey-answers" for="ques6answer2">Neutral</label>
+            /> <label className="survey-answers" htmlFor="ques6answer2">Neutral</label>
           </div>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('challenge_impacted_behavior')}
               checked={this.state.challenge_impacted_behavior === 'Disagree'}
@@ -131,12 +135,12 @@ class PostSurvey_2 extends Component {
               type="radio"
               value="Disagree"
               id="ques6answer3"
-            /> <label className="survey-answers" for="ques6answer3">Disagree</label>
+            /> <label className="survey-answers" htmlFor="ques6answer3">Disagree</label>
           </div><br />
           <span className="survey-questions">7. My understanding of the importance of messages kids hear from
             adults about food and body has changed.</span>
           <label className="question-label">choose one</label>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('understanding_importance_changed')}
               checked={this.state.understanding_importance_changed === 'Agree'}
@@ -145,9 +149,9 @@ class PostSurvey_2 extends Component {
               type="radio"
               value="Agree"
               id="ques7answer1"
-            /> <label className="survey-answers" for="ques7answer1">Agree</label>
+            /> <label className="survey-answers" htmlFor="ques7answer1">Agree</label>
           </div>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('understanding_importance_changed')}
               checked={this.state.understanding_importance_changed === 'Neutral'}
@@ -156,9 +160,9 @@ class PostSurvey_2 extends Component {
               type="radio"
               value="Neutral"
               id="ques7answer2"
-            /> <label for="ques7answer2" class="survey-answers">Neutral</label>
+            /> <label htmlFor="ques7answer2" className="survey-answers">Neutral</label>
           </div>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('understanding_importance_changed')}
               checked={this.state.understanding_importance_changed === 'Disagree'}
@@ -167,12 +171,12 @@ class PostSurvey_2 extends Component {
               type="radio"
               value="Disagree"
               id="ques7answer3"
-            /> <label className="survey-answers" for="ques7answer3">Disagree</label>
+            /> <label className="survey-answers" htmlFor="ques7answer3">Disagree</label>
           </div><br />
           <span className="survey-questions">8. The Challenge tools have positively affected my ability to interact
             with my team about body and food.</span>
           <label className="question-label">choose one</label>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('affected_ability_interact')}
               checked={this.state.affected_ability_interact === 'Agree'}
@@ -181,9 +185,9 @@ class PostSurvey_2 extends Component {
               type="radio"
               value="Agree"
               id="ques8answer1"
-            /> <label className="survey-answers" for="ques8answer1">Agree</label>
+            /> <label className="survey-answers" htmlFor="ques8answer1">Agree</label>
           </div>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('affected_ability_interact')}
               checked={this.state.affected_ability_interact === 'Neutral'}
@@ -192,9 +196,9 @@ class PostSurvey_2 extends Component {
               type="radio"
               value="Neutral"
               id="ques8answer2"
-            /> <label className="survey-answers" for="ques8answer2">Neutral</label>
+            /> <label className="survey-answers" htmlFor="ques8answer2">Neutral</label>
           </div>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('affected_ability_interact')}
               checked={this.state.affected_ability_interact === 'Disagree'}
@@ -203,7 +207,7 @@ class PostSurvey_2 extends Component {
               type="radio"
               value="Disagree"
               id="ques8answer3"
-            /> <label className="survey-answers" for="ques8answer3">Disagree</label>
+            /> <label className="survey-answers" htmlFor="ques8answer3">Disagree</label>
           </div><br />
         </div>
         <br />

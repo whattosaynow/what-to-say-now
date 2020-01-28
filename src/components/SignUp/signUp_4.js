@@ -68,7 +68,7 @@ class signUp_4 extends Component {
         <div className="signup-card"><br />
           <span className="survey-questions">7. Age(s) you coach and want to focus on with during the Challenge:</span>
           <label className="question-label">choose one*</label>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChange('focus_ages')}
               type="radio"
@@ -77,10 +77,10 @@ class signUp_4 extends Component {
               name="q1"
               value="1"
               id="ques7answer1"
-            /><label className="survey-answers" for="ques7answer1">Elementary school youth (6-10 years old)</label>
+            /><label className="survey-answers" htmlFor="ques7answer1">Elementary school youth (6-10 years old)</label>
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChange('focus_ages')}
               type="radio"
@@ -89,10 +89,10 @@ class signUp_4 extends Component {
               name="q1"
               value="2"
               id="ques7answer2"
-            /><label className="survey-answers" for="ques7answer2">Middle school youth (10-13 years old)</label>
+            /><label className="survey-answers" htmlFor="ques7answer2">Middle school youth (10-13 years old)</label>
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChange('focus_ages')}
               type="radio"
@@ -101,7 +101,7 @@ class signUp_4 extends Component {
               name="q1"
               value="3"
               id="ques7answer3"
-            /><label className="survey-answers" for="ques7answer3">High school youth (13-18 years old)</label>
+            /><label className="survey-answers" htmlFor="ques7answer3">High school youth (13-18 years old)</label>
           </div>
           <i><label className="question-label exemption">*We realize some of you may coach multiple age groups or may not be a coach, however,
             the Coaches Challenge is setup to focus on one age group at a time, so please choose one age group.
@@ -109,7 +109,7 @@ class signUp_4 extends Component {
           <br />
 
           <span className="survey-questions">8. Your answer to this question informs WithAll for future programming. Select all that apply:</span> <br />
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleCheckBox('parent_or_guardian')}
               type="checkbox"
@@ -118,10 +118,10 @@ class signUp_4 extends Component {
               name="q2"
               value={true}
               id="ques8answer1"
-            /><label className="survey-answers" for="ques8answer1">I’m a parent or guardian of a child between 0 and 18 years old</label>
+            /><label className="survey-answers" htmlFor="ques8answer1">I’m a parent or guardian of a child between 0 and 18 years old</label>
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleCheckBox('healthcare_professional')}
               type="checkbox"
@@ -130,10 +130,10 @@ class signUp_4 extends Component {
               name="q2"
               value={true}
               id="ques8answer2"
-            /><label className="survey-answers" for="ques8answer2">I’m health care professional</label>
+            /><label className="survey-answers" htmlFor="ques8answer2">I’m health care professional</label>
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleCheckBox('teacher')}
               type="checkbox"
@@ -142,10 +142,10 @@ class signUp_4 extends Component {
               name="q2"
               value={true}
               id="ques8answer3"
-            /><label className="survey-answers" for="ques8answer3">I’m a teacher in early education, elementary school, middle school, or high school</label>
+            /><label className="survey-answers" htmlFor="ques8answer3">I’m a teacher in early education, elementary school, middle school, or high school</label>
           </div>
 
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleCheckBox('none_above')}
               type="checkbox"
@@ -154,7 +154,7 @@ class signUp_4 extends Component {
               name="q2"
               value={true}
               id="ques8answer4"
-            /><label className="survey-answers" for="ques8answer4">None of the above</label>
+            /><label className="survey-answers" htmlFor="ques8answer4">None of the above</label>
           </div>
 
           <br />

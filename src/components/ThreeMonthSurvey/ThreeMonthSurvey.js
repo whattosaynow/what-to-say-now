@@ -12,10 +12,6 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
 
-const topMargin = {
-  marginTop: '10px'
-}
-
 class ThreeMonthSurvey extends Component {
 
   state = {
@@ -83,7 +79,7 @@ class ThreeMonthSurvey extends Component {
         <div className="signup-card"><br />
           <span className="survey-questions"> 1. The Challenge has continued to impact my behavior with the althletes I coach.</span>
           <label className="question-label">choose one</label>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('continued_impact')}
               checked={this.state.continued_impact === 'agree'}
@@ -92,65 +88,65 @@ class ThreeMonthSurvey extends Component {
               name='impact'
               id="ques1answer1"
               value='agree' />
-            <label for="ques1answer1" class="survey-answers">Agree</label>
+            <label htmlFor="ques1answer1" className="survey-answers">Agree</label>
           </div>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('continued_impact')}
               checked={this.state.continued_impact === 'Neutral'}
               className="radio-button"
               type='radio'
               name='impact'
-              id=""
+              id="ques1answer2"
               value='Neutral' />
-            <label for="" class="survey-answers">Neutral</label>
+            <label htmlFor="ques1answer2" className="survey-answers">Neutral</label>
           </div>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('continued_impact')}
               checked={this.state.continued_impact === 'Disagree'}
               className="radio-button"
               type='radio'
               name='impact'
-              id=""
+              id="ques1answer3"
               value='Disagree' />
-            <label for="" class="survey-answers">Disagree</label>
+            <label htmlFor="ques1answer3" className="survey-answers">Disagree</label>
           </div>
           <br />
           <span className="survey-questions"> 2. The Challenge tools have continued to positivley affect my ability to interact with my team about body and food.</span>
           <label className="question-label">choose one</label>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('continued_affected_ability_interact')}
               checked={this.state.continued_affected_ability_interact === 'agree'}
               className="radio-button"
               type='radio'
               name='positive'
-              id=""
+              id="ques2answer1"
               value='agree' />
-            <label for="" class="survey-answers">Agree</label>
+            <label htmlFor="ques2answer1" className="survey-answers">Agree</label>
           </div>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('continued_affected_ability_interact')}
               checked={this.state.continued_affected_ability_interact === 'Neutral'}
               className="radio-button"
               type='radio'
               name='positive'
-              id=""
+              id="ques2answer2"
               value='Neutral' />
-            <label for="" class="survey-answers">Neutral</label>
+            <label htmlFor="ques2answer2" className="survey-answers">Neutral</label>
           </div>
-          <div class="radio-answer-pair">
+          <div className="radio-answer-pair">
             <input
               onChange={this.handleChangeFor('continued_affected_ability_interact')}
               checked={this.state.continued_affected_ability_interact === 'Disagree'}
               className="radio-button"
               type='radio'
               name='positive'
-              id=""
+              id="ques2answer3"
               value='Disagree' />
-            <label for="" class="survey-answers">Disagree</label>
+            <label htmlFor="ques2answer3" className="survey-answers">Disagree</label>
           </div>
           <br />
           <span className="survey-questions"> 3. Is there anything else you would like to share?</span>
