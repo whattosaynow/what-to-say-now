@@ -30,7 +30,7 @@ class signUp_2 extends Component {
     let missingAnswers = []
 
     Object.entries(survey).forEach(([key, value], index) => {
-      if (key !== 'what_learned' && value === '') {
+      if (value === '') {
         missingAnswers.push('Please answer question ' + (index + 1) + '. ')
       } else {
         return
