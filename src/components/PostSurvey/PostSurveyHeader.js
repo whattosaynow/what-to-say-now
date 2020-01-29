@@ -21,7 +21,7 @@ class PostSurveyHeader extends Component {
     render() {
         return (
             <header className="sign-up-header">
-                <p>Thank you for participating in WithAll's "What To Say" Coaches Challenge. </p>
+                <p>Thank you for participating in WithAll's "What to Say" Coaches Challenge. </p>
                 <p>Please fill out this brief survey about your experience.</p>
                 <div className="outerBar" style={this.outerBar}>
                     <div className="innerBar" style={this.innerBar} />

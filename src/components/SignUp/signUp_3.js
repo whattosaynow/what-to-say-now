@@ -47,19 +47,40 @@ class signUp_3 extends Component {
 
   handleClickNext = () => {
     let survey = this.state
+
+    //everytime next is clicked, it resets missingAnswers to an empty array, then checks each question to see if it has an answer
+    //if it is blank, it adds it to the missing array, then at the end we check if the array has a length (aka if any ques aren't answered)
+    //if it has no lnegth, it means every question was answered and we can move on, 
+    //if it has length, it alerts us to what. 
+    let missingAnswers = []
+
+    if (survey.years_coaching.trim() === '') {
+      missingAnswers.push('Please answer question 4. ')
+    }
+
     if (
-      survey.years_coaching.trim() === '' ||
-      survey.number_of_athletes.trim() === '' ||
-      (
-        survey.genders_of_athletes_female === false && survey.genders_of_athletes_male === false && survey.genders_of_athletes_non_binary === false && survey.genders_of_athletes_not_coach === false
-      )
+      survey.genders_of_athletes_female === false &&
+      survey.genders_of_athletes_male === false &&
+      survey.genders_of_athletes_non_binary === false &&
+      survey.genders_of_athletes_not_coach === false
     ) {
-      alert("Please Answer All Questions")
+      missingAnswers.push('Please answer question 5. ')
+    }
+
+    if (survey.number_of_athletes.trim() === '') {
+      missingAnswers.push('Please answer question 6. ')
+    }
+
+
+
+    if (missingAnswers.length > 0) {
+      alert(missingAnswers.join(' \n'))
     } else {
       this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
       this.props.history.push('/signup4');
 
     }
+    console.log('missingAnswers', missingAnswers)
 
   }
 

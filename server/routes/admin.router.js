@@ -235,7 +235,7 @@ If you have questions or feedback as you go along, please contact WithAll at he
             html: `
 Hi ${user.first_name}. 
 <br /><br />
-Welcome to Week ${week} of WithAll's What to Say Coaches Challenge! Here is the link to this week’s info: <a href="https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}" target="_blank" rel="noopener noreferrer" >https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}</a>
+Welcome to Week ${week} of WithAll's "What to Say" Coaches Challenge! Here is the link to this week’s info: <a href="https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}" target="_blank" rel="noopener noreferrer" >https://${process.env.API_URL}challenge/${user.role}/${week}/${user.S1_focus_ages}</a>
 <br /><br />
 If you have questions or feedback as you go along, please contact WithAll at <a href="mailto:hello@withall.org">hello@withall.org</a>. Thank you for actively working to support children's mental and physical health! 
 <br /><br />

@@ -47,15 +47,36 @@ class signUp_4 extends Component {
 
   handleClickNext = () => {
     let survey = this.state
+
+    //everytime next is clicked, it resets missingAnswers to an empty array, then checks each question to see if it has an answer
+    //if it is blank, it adds it to the missing array, then at the end we check if the array has a length (aka if any ques aren't answered)
+    //if it has no lnegth, it means every question was answered and we can move on, 
+    //if it has length, it alerts us to what. 
+    let missingAnswers = []
+
+    if (survey.focus_ages.trim() === '') {
+      missingAnswers.push('Please answer question 7. ')
+    }
+
     if (
-      survey.focus_ages.trim() === '' ||
-      (survey.parent_or_guardian === false && survey.healthcare_professional === false && survey.teacher === false && survey.none_above === false) ||
-      survey.sports_org.trim() === ''
+      survey.parent_or_guardian === false &&
+      survey.healthcare_professional === false &&
+      survey.teacher === false &&
+      survey.none_above === false
     ) {
-      alert("Please Answer All Questions")
+      missingAnswers.push('Please answer question 8. ')
+    }
+
+    if (survey.sports_org.trim() === '') {
+      missingAnswers.push('Please answer question 9. If none, please reply none')
+    }
+
+    if (missingAnswers.length > 0) {
+      alert(missingAnswers.join(' \n'))
     } else {
       this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
       this.props.history.push('/signup5');
+
     }
 
   }
