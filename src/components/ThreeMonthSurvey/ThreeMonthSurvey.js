@@ -39,12 +39,7 @@ class ThreeMonthSurvey extends Component {
 
     if (survey.continued_impact.trim() === '') {
       missingAnswers.push('Please answer question 1. ')
-    } else if (
-      survey.continued_impact === 'Agree' &&
-      survey.how_continued_impact.trim() === ''
-    ) {
-      missingAnswers.push('For question 1, please let us know how. ')
-    }
+    } 
 
     if (survey.continued_affected_ability_interact.trim() === '') {
       missingAnswers.push('Please answer question 2. ')
