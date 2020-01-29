@@ -49,16 +49,43 @@ class signUp_1 extends Component {
 
   handleClick = () => {
     let survey = this.state.newUser;
-    if (
-      survey.first_name.trim() === '' ||
-      survey.last_name.trim() === '' ||
-      survey.username.trim() === '' ||
-      survey.email.trim() === '' ||
-      survey.password.trim() === '' ||
-      survey.phone_number.trim() === '' ||
-      survey.zip.trim() === ''
-    ) {
-      alert('Please complete required fields')
+
+    //everytime next is clicked, it resets missingAnswers to an empty array, then checks each question to see if it has an answer
+    //if it is blank, it adds it to the missing array, then at the end we check if the array has a length (aka if any ques aren't answered)
+    //if it has no lnegth, it means every question was answered and we can move on, 
+    //if it has length, it alerts us to what. 
+    let missingAnswers = []
+
+    if (survey.first_name.trim() === '') {
+      missingAnswers.push('Please fill in your first name. ')
+    }
+
+    if (survey.last_name.trim() === '') {
+      missingAnswers.push('Please fill in your last name. ')
+    }
+
+    if (survey.username.trim() === '') {
+      missingAnswers.push('Please fill in a username. ')
+    }
+
+    if (survey.email.trim() === '') {
+      missingAnswers.push('Please fill in your email. ')
+    }
+
+    if (survey.password.trim() === '') {
+      missingAnswers.push('Please fill in your password. ')
+    }
+
+    if (survey.phone_number.trim() === '') {
+      missingAnswers.push('Please fill in your phone number. ')
+    }
+
+    if (survey.zip.trim() === '') {
+      missingAnswers.push('Please fill in your zip code. ')
+    }
+
+    if (missingAnswers.length > 0) {
+      alert(missingAnswers.join(' \n'))
     } else {
       this.props.dispatch({ type: 'SET_SIGNUP_ANSWERS', payload: this.state.newUser });
       this.props.history.push('/signup2');

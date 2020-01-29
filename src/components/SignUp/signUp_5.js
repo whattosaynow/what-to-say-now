@@ -35,10 +35,37 @@ class signUp_5 extends Component {
 
   handleClickNext = () => {
     let survey = this.state
-    if (
-      survey.why_are_you_participating.trim() === ''
+    //everytime next is clicked, it resets missingAnswers to an empty array, then checks each question to see if it has an answer
+    //if it is blank, it adds it to the missing array, then at the end we check if the array has a length (aka if any ques aren't answered)
+    //if it has no lnegth, it means every question was answered and we can move on, 
+    //if it has length, it alerts us to what. 
+    let missingAnswers = []
+
+    if (survey.how_did_you_find_us.trim() === '') {
+      missingAnswers.push('Please answer question 10. ')
+    } else if (
+      survey.how_did_you_find_us === 'Referral' &&
+      survey.how_did_you_find_us_other.trim() === ''
     ) {
-      alert("Please Answer All Questions")
+      missingAnswers.push('For question 10, please let us know who referred you. ')
+    } else if (
+      survey.how_did_you_find_us === 'Other' &&
+      survey.how_did_you_find_us_other.trim() === ''
+    ) {
+      missingAnswers.push('For question 10, please tell us more. ')
+    }
+
+    if (survey.why_are_you_participating.trim() === '') {
+      missingAnswers.push('Please answer question 11. ')
+    } else if (
+      survey.why_are_you_participating === 'Other' &&
+      survey.why_are_you_participating_other.trim() === ''
+    ) {
+      missingAnswers.push('For question 11, please let us why know you are participating.')
+    }
+
+    if (missingAnswers.length > 0) {
+      alert(missingAnswers.join(' \n'))
     } else {
       this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
       MySwal.fire({
@@ -60,6 +87,7 @@ class signUp_5 extends Component {
       )
 
     }
+
 
   } // end handleClickNext 
 
@@ -111,7 +139,7 @@ class signUp_5 extends Component {
           <span className="survey-questions">11. Why are you particpating in the "What to say" Coaches Challenge?</span>
           <label className="question-label">choose one</label>
           <div className="radio-answer-pair">
-            <input 
+            <input
               onChange={this.handleChange('why_are_you_participating')}
               type="radio"
               className="radio-button"

@@ -22,7 +22,7 @@ class signUp_header extends Component {
         return (
           <header className="sign-up-header">
             <p>
-              Thank you for participating in WithAll's "What To Say"
+              Thank you for participating in WithAll's "What to Say"
               Coaches Challenge.
             </p>
             <p>Please fill out the following form to participate.</p>

@@ -46,7 +46,7 @@ class signUp_0 extends Component {
           <p className="signup-welcome">
             <i>
               Dear Parents,<br /><br />
-              I wanted you to be aware that I’m proud to be participating in WithAll’s “What To Say” Coaches Challenge – 
+              I wanted you to be aware that I’m proud to be participating in WithAll’s “What to Say” Coaches Challenge – 
               a program that offers guidance to youth sports coaches so they can help their athletes develop healthy relationships with food and body.<br />
               <br />
               Every week for 5 weeks, the Coaches Challenge will present me with a new phrase that I can use, along with why the phrase matters, 

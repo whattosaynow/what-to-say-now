@@ -30,19 +30,32 @@ class ThreeMonthSurvey extends Component {
 
 
   handleClick = () => {
-    let survey = this.state;
-    if (
-      survey.continued_impact.trim() === '' ||
-      survey.continued_affected_ability_interact.trim() === '' ||
-      survey.anything_else.trim() === ''
-    ) {
-      alert("Please Answer All Questions")
-    } else {
+    let survey = this.state
+    //everytime next is clicked, it resets missingAnswers to an empty array, then checks each question to see if it has an answer
+    //if it is blank, it adds it to the missing array, then at the end we check if the array has a length (aka if any ques aren't answered)
+    //if it has no lnegth, it means every question was answered and we can move on, 
+    //if it has length, it alerts us to what. 
+    let missingAnswers = []
 
+    if (survey.continued_impact.trim() === '') {
+      missingAnswers.push('Please answer question 1. ')
+    } 
+
+    if (survey.continued_affected_ability_interact.trim() === '') {
+      missingAnswers.push('Please answer question 2. ')
+    }
+
+    if (survey.anything_else.trim() === '') {
+      missingAnswers.push('Please answer question 3. ')
+    }
+
+    if (missingAnswers.length > 0) {
+      alert(missingAnswers.join(' \n'))
+    } else {
       MySwal.fire({
         title: "",
         text: `Thank you for your time!`,
-        type: "warning",
+        type: "success",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
@@ -61,7 +74,7 @@ class ThreeMonthSurvey extends Component {
       <>
         <center>
           <header className="sign-up-header">
-            Thank you for participating in WithAll's "What To Say" Coaches Challenge.<br />
+            Thank you for participating in WithAll's "What to Say" Coaches Challenge.<br />
             Please fill out this brief survey about your experience.<br />
             <br />
           </header>
