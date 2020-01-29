@@ -54,6 +54,7 @@ class ThreeMonthSurvey extends Component {
     } else {
       MySwal.fire({
         title: "",
+        width: '300px',
         text: `Thank you for your time!`,
         type: "success",
         showCancelButton: true,

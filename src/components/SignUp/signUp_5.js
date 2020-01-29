@@ -70,6 +70,7 @@ class signUp_5 extends Component {
       this.props.dispatch({ type: `SET_SIGNUP_ANSWERS`, payload: this.state })
       MySwal.fire({
         title: '',
+        width: '300px',
         html: `
         Thank you! <br />If you do not receive a confirmation email after hitting “submit,” please email us at <a href="mailto:hello@withall.org">hello@withall.org</a>.
         `,
