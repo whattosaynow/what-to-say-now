@@ -38,6 +38,7 @@ class PasswordReset extends Component {
         this.props.dispatch({ type: `UPDATE_PASSWORD`, payload: { password: this.state.newPassword, resetToken: this.props.match.params.token } })
         MySwal.fire({
             title: 'Thank You',
+            width: '300px',
             text: `Your password has been updated. Please click continue to log in
             `,
             type: 'info',

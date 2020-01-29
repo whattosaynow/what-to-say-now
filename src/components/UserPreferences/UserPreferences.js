@@ -32,6 +32,7 @@ class UserPreferences extends Component {
     this.props.history.push("/home");
     MySwal.fire({
       title: 'Updated',
+      width: '300px',
       text: `Your email is now: ${this.state.email} and you are receiving the content via ${this.state.choose_receive}`,
       type: 'Success',
       confirmButtonText: 'Ok'
@@ -46,6 +47,7 @@ class UserPreferences extends Component {
     //sweetalert to confirm user wants to delete account
     MySwal.fire({
       title: "",
+      width: '300px',
       text: `Are you sure you want to delete your account?`,
       type: "warning",
       showCancelButton: true,
