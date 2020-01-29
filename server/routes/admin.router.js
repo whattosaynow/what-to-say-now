@@ -125,7 +125,7 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     })
 });
 
-cron.schedule('*/30 * * * *', () => {
+cron.schedule('* 18 * * 0', () => {
     automatedContact(); //this function will run every sunday at 6:00pm
 }, {
     timezone: "America/Chicago"
@@ -138,7 +138,7 @@ function automatedContact() {
     pool.query(`
     UPDATE "user"
     SET "content_permission" = ("content_permission" + 1)
-    WHERE (("content_permission" < 9 AND "is_admin" = false) AND ("date_created" BETWEEN NOW() - INTERVAL '6h' AND NOW()))
+    WHERE ("content_permission" < 9 AND "is_admin" = false) AND ("date_created" BETWEEN NOW() - INTERVAL '16 weeks' AND NOW())
     RETURNING *;
     `
     ).then(response => {
