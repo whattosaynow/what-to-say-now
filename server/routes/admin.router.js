@@ -125,7 +125,7 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     })
 });
 
-cron.schedule('*/30 * * * *', () => {
+cron.schedule('0 18 * * Sun', () => {
     automatedContact(); //this function will run every sunday at 6:00pm
 }, {
     timezone: "America/Chicago"
