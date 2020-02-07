@@ -45,7 +45,7 @@ class signUp_5 extends Component {
       missingAnswers.push('Please answer question 10. ')
     } else if (
       survey.how_did_you_find_us === 'Referral' &&
-      survey.how_did_you_find_us_other.trim() === ''
+      survey.how_did_you_find_us_referral.trim() === ''
     ) {
       missingAnswers.push('For question 10, please let us know who referred you. ')
     } else if (

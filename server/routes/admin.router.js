@@ -64,60 +64,59 @@ router.get('/csv', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`
     SELECT 
 
-    "first_name",
-    "last_name",
-    "username",
-    "email",
-    "phone_number",
-    "street_address",
-    "city",
-    "state",
-    "zip",
-    "date_created",
+    "first_name" as "First Name",
+    "last_name" as "Last name",
+    "username" as "Username",
+    "email" as "Email",
+    "phone_number" as "Phone Number",
+    "street_address" as "Street Address",
+    "city" as "City",
+    "state" as "State",
+    "zip" as "Zip",
+    "date_created" as "Date Created",
 
-    "S1_choose_receive",
-    "S1_your_gender",
-    "S1_your_age",
-    "S1_years_coaching",
-    "S1_genders_of_athletes_female",
-    "S1_numbers_of_athletes",
-    "S1_focus_ages",
-    "S1_how_did_you_find_us",
-    "S1_why_are_you_participating",
-    "S1_can_we_call_after_completion",
-    "S1_genders_of_athletes_male",
-    "S1_genders_of_athletes_non_binary",
-    "S1_genders_of_athletes_not_coach",
-    "S1_how_did_you_find_us_referral",
-    "S1_why_are_you_participating_other",
-    "S1_parent_or_guardian",
-    "S1_healthcare_professional",
-    "S1_teacher",
-    "S1_non_above",
-    "S1_sports_org",
-    "S1_how_did_you_find_us_other",    
+    "S1_choose_receive" as "S1 - Choose to receive the Challenges",
+    "S1_your_gender" as "S1 - User gender",
+    "S1_your_age" as "S1 - User age",
+    "S1_years_coaching" as "S1 - Number of years you’ve been coaching",
+    "S1_genders_of_athletes_female" as "S1 - Athletes gender - female",
+    "S1_genders_of_athletes_male" as "S1 - Athletes gender - male",
+    "S1_genders_of_athletes_non_binary" as "S1 - Athletes gender - non-binary",
+    "S1_genders_of_athletes_not_coach" as "S1 - User is not a coach",
+    "S1_numbers_of_athletes" as "S1 - Number of athletes on the team you coach",
+    "S1_focus_ages" as "S1 - Age(s) you coach and want to focus on with during the Challenge",
+    "S1_parent_or_guardian" as "S1 - Question 8 - I’m a parent or guardian of a child",
+    "S1_healthcare_professional" as "S1 - Question 8 - I’m health care professional",
+    "S1_teacher" as "S1 - Question 8 - I’m a teacher",
+    "S1_non_above" as "S1 - Question 8 - None of the above",
+    "S1_sports_org" as "S1 - What youth sports organizations affiliated with",
+    "S1_how_did_you_find_us" as "S1 - How did you find us",
+    "S1_how_did_you_find_us_other" as "S1 - How did you find us - other - fill in the blank",    
+    "S1_how_did_you_find_us_referral" as "S1 - How did you find us - referral - fill in the blank",
+    "S1_why_are_you_participating" as "S1 - Why are you particpating in the What to Say Coaches Challenge",
+    "S1_why_are_you_participating_other" as "S1 - Why are you particpating in the What to Say Coaches Challenge - other - fill in the blank",
 
-    "S2_challenge_completed",
-    "S2_participating_was_easy",
-    "S2_learned_something_new",
-    "S2_what_learned",
-    "S2_would_encourage",
-    "S2_challenge_felt_relavent",
-    "S2_challenge_impacted_behavior",
-    "S2_understanding_importance_changed",
-    "S2_how_impacted",
-    "S2_affected_ability_interact",
-    "S2_favorite_thing",
-    "S2_call_more_information",
+    "S2_challenge_completed" as "S2 - How much of the Challenge did you complete",
+    "S2_participating_was_easy" as "S2 - Participating in the Challenge was easy to do",
+    "S2_learned_something_new" as "S2 - I learned something new from participating in the Challenge",
+    "S2_what_learned" as "S2 - Learned something new - Agree - fill in the blank",
+    "S2_would_encourage" as "S2 - I would encourage another coach I know to do the Challenge",
+    "S2_challenge_felt_relavent" as "S2 - The Challenge felt relevant to the age I coach",
+    "S2_challenge_impacted_behavior" as "S2 - The Challenge impacted my behavior with the athletes I coach.",
+    "S2_how_impacted" as "S2 - Challenge impacted behavior - agree - fill in the blank",
+    "S2_understanding_importance_changed" as "S2 - My understanding of the importance of messages kids hear from adults about food and body has changed",
+    "S2_affected_ability_interact" as "S2 - The Challenge tools have positively affected my ability to interact with my team about body and food",
+    "S2_favorite_thing" as "S2 - What was your favorite thing about the Challenge",
+    "S2_call_more_information" as "S2 - Can we call you for more information about your experience",
 
-    "S3_continued_impact",
-    "S3_how_continued_impact",
-    "S3_continued_affected_ability_interact",
-    "S3_anything_else",
-    "S3_call_more_information"
+    "S3_continued_impact" as "S3 - The Challenge has continued to impact my behavior with the athletes I coach",
+    "S3_how_continued_impact" as "S3 - Continued impact - agree - fill in the blank",
+    "S3_continued_affected_ability_interact" as "S3 - The Challenge tools have continued to positively affect my ability to interact with my team about body and food",
+    "S3_anything_else" as "S3 - Is there anything else you would like to share"
     
     FROM "user"
-    WHERE "is_admin" = false;
+    WHERE "is_admin" = false
+    ORDER BY "id" ASC;
 `).then(response => {
         res.send(response.rows)
     }
@@ -136,11 +135,10 @@ cron.schedule('0 18 * * Sun', () => {
 //this functions does a pool query to the database to select all users
 //then with the response, forEach user it will run the receive challenge function
 function automatedContact() {
-    //BETWEEN NOW() - INTERVAL '14 WEEK' AND NOW();
     pool.query(`
     UPDATE "user"
     SET "content_permission" = ("content_permission" + 1)
-    WHERE ("content_permission" < 9 AND "is_admin" = false) AND ("date_created" BETWEEN NOW() - INTERVAL '16 weeks' AND NOW())
+    WHERE ("content_permission" < 20 AND "is_admin" = false) AND ("date_created" BETWEEN NOW() - INTERVAL '20 weeks' AND NOW())
     RETURNING *;
     `
     ).then(response => {
@@ -211,8 +209,8 @@ function receiveEmailTest(user) {
         sendEmail(user, 5) //week 5
     } else if (answer === 6) {
         sendEmail(user, 6) //post survey
-    } else if (answer === 7) {
-        sendEmail(user, 7) //3month survey
+    } else if (answer === 18) {
+        sendEmail(user, 18) //3month survey
     }
 }
 
@@ -273,7 +271,7 @@ Your feedback is extremely valuable and will help shape the future of “What to
         };
         sgMail.send(msg);
         //if the user is 3 months old, they receive the three month survey
-    } else if (week === 7) {
+    } else if (week === 18) {
         sgMail.setApiKey(process.env.SENDGRID_API_KEY);
         const msg = {
             to: user.email,
@@ -345,8 +343,8 @@ function receiveTextTest(user) {
         sendText(user, 5) //week 5
     } else if (answer === 6) {
         sendText(user, 6) //post survey
-    } else if (answer === 7) {
-        sendText(user, 7) //3month survey
+    } else if (answer === 18) {
+        sendText(user, 18) //3month survey
     }
 }
 
@@ -382,7 +380,7 @@ Your feedback is extremely valuable and will help shape the future of “What to
         }).then(message => console.log(message.status))
             .done();
         //if the user is 3 months old, they receive the three month survey
-    } else if (week === 7) {
+    } else if (week === 18) {
         client.messages.create({
             body: `
 Hi ${user.first_name}! 
