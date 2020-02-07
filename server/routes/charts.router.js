@@ -10,7 +10,7 @@ router.get('/ageGroups', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`SELECT "S1_focus_ages",
     Count ("S1_focus_ages")
     FROM "user"
-    WHERE "S1_focus_ages" is not null
+    WHERE ("S1_focus_ages" is not null  AND "is_admin" = false)
     GROUP BY "S1_focus_ages";`)
         .then(response => {
             res.send(response.rows)
@@ -24,7 +24,7 @@ router.get('/findUs', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`SELECT "S1_how_did_you_find_us",
     COUNT ("S1_how_did_you_find_us")
     FROM "user"
-    WHERE "S1_how_did_you_find_us" is not null
+    WHERE ("S1_how_did_you_find_us" is not null  AND "is_admin" = false)
     GROUP BY "S1_how_did_you_find_us";
     `)
         .then(response => {
@@ -40,7 +40,7 @@ router.get('/learnedSomething', rejectUnauthenticated, rejectNonAdmin, (req, res
     pool.query(`SELECT "S2_learned_something_new",
     COUNT ("S2_learned_something_new")
     FROM "user"
-    WHERE "S2_learned_something_new" is not null
+    WHERE ("S2_learned_something_new" is not null  AND "is_admin" = false)
     GROUP BY "S2_learned_something_new";`)
         .then(response => {
             res.send(response.rows)
@@ -54,7 +54,7 @@ router.get('/encourage', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`SELECT "S2_would_encourage",
     COUNT ("S2_would_encourage")
     FROM "user"
-    WHERE "S2_would_encourage" is not null
+    WHERE ("S2_would_encourage" is not null  AND "is_admin" = false)
     GROUP BY "S2_would_encourage";`)
         .then(response => {
             res.send(response.rows)
@@ -69,7 +69,7 @@ router.get('/impact', rejectUnauthenticated, rejectNonAdmin, (req, res) => {
     pool.query(`SELECT "S2_challenge_impacted_behavior",
     COUNT ("S2_challenge_impacted_behavior")
     FROM "user"
-    WHERE "S2_challenge_impacted_behavior" is not null
+    WHERE ("S2_challenge_impacted_behavior" is not null  AND "is_admin" = false)
     GROUP BY "S2_challenge_impacted_behavior";`)
         .then(response => {
             res.send(response.rows)

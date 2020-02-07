@@ -70,7 +70,7 @@ router.post("/signup", (req, res) => {
     req.body.genders_of_athletes_female,
     req.body.genders_of_athletes_male,
     req.body.genders_of_athletes_non_binary,
-    req.body.genders_of_athletes_not_couch,
+    req.body.genders_of_athletes_not_coach,
     req.body.number_of_athletes,
     req.body.focus_ages,
     req.body.parent_or_guardian,
